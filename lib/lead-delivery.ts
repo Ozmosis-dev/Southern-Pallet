@@ -58,8 +58,18 @@ function buildIdempotencyKey(
   replyTo: string,
   payload: Record<string, unknown>,
 ): string {
+  const submissionId =
+    typeof payload.submissionId === "string" && payload.submissionId.trim()
+      ? payload.submissionId.trim()
+      : null;
   const digest = createHash("sha256")
-    .update(JSON.stringify({ formType, replyTo, payload }))
+    .update(
+      JSON.stringify(
+        submissionId
+          ? { formType, replyTo, submissionId }
+          : { formType, replyTo, payload },
+      ),
+    )
     .digest("hex");
 
   return `southern-pallet-${digest}`;

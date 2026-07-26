@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { buildThankYouUrl } from "@/lib/form-redirect";
 
@@ -32,6 +32,7 @@ export default function RecycleCTASection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState("");
+  const submissionIdRef = useRef<string | null>(null);
 
   const formatPhoneNumber = (value: string) => {
     // Remove all non-numeric characters
@@ -80,8 +81,12 @@ export default function RecycleCTASection() {
       };
 
       // Prepare data for API submission
+      const submissionId =
+        submissionIdRef.current ?? window.crypto.randomUUID();
+      submissionIdRef.current = submissionId;
       const submissionData = {
         ...formData,
+        submissionId,
         timestamp: new Date().toISOString(),
         source: "website_recycle_pallet",
         utmParams: utmParams,

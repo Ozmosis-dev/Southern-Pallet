@@ -20,6 +20,7 @@ export interface ContactFormData {
   phone?: string;
   productInterest?: string;
   message?: string;
+  submissionId?: string;
   website?: string;
   timestamp: string;
   source: string;
@@ -29,7 +30,19 @@ export interface ContactFormData {
 
 export async function POST(request: NextRequest) {
   try {
-    const formData: ContactFormData = await request.json();
+    const body: unknown = await request.json();
+
+    if (!body || typeof body !== 'object' || Array.isArray(body)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Name and email are required',
+        },
+        { status: 400 }
+      );
+    }
+
+    const formData = body as ContactFormData;
 
     if (
       typeof formData.name !== 'string' ||

@@ -24,6 +24,7 @@ export interface RecycleFormData {
   location?: string;
   additionalDetails?: string;
   pickupService?: string;
+  submissionId?: string;
   website?: string;
   timestamp: string;
   source: string;
@@ -33,7 +34,19 @@ export interface RecycleFormData {
 
 export async function POST(request: NextRequest) {
   try {
-    const formData: RecycleFormData = await request.json();
+    const body: unknown = await request.json();
+
+    if (!body || typeof body !== 'object' || Array.isArray(body)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Full name and email are required',
+        },
+        { status: 400 }
+      );
+    }
+
+    const formData = body as RecycleFormData;
 
     if (
       typeof formData.fullName !== 'string' ||

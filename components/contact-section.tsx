@@ -11,7 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { buildThankYouUrl } from "@/lib/form-redirect";
 
@@ -20,6 +20,7 @@ export default function ContactSection() {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submissionError, setSubmissionError] = useState<string>("");
+  const submissionIdRef = useRef<string | null>(null);
 
   const formatPhoneNumber = (value: string) => {
     // Remove all non-numeric characters
@@ -69,6 +70,9 @@ export default function ContactSection() {
 
       // Get form data
       const formData = new FormData(e.currentTarget);
+      const submissionId =
+        submissionIdRef.current ?? window.crypto.randomUUID();
+      submissionIdRef.current = submissionId;
       const data = {
         name: formData.get("name") as string,
         company: formData.get("company") as string,
@@ -78,6 +82,7 @@ export default function ContactSection() {
         productInterest: formData.get("productInterest") as string,
         message: formData.get("message") as string,
         smsConsent: formData.get("smsConsent") === "on",
+        submissionId,
         timestamp: new Date().toISOString(),
         source: "website_new_contact_form",
         utmParams: utmParams,

@@ -286,3 +286,62 @@ test("honeypot submissions do not trigger delivery", async () => {
   assert.equal(response.status, 200);
   assert.equal(deliveryAttempted, false);
 });
+
+test("user retries reuse the same Resend idempotency key", async () => {
+  clearDeliveryEnvironment();
+  process.env.RESEND_API_KEY = "re_test_key";
+  process.env.LEAD_NOTIFICATION_EMAIL = "info@example.com";
+  process.env.LEAD_FROM_EMAIL = "Southern Pallet Website <leads@example.com>";
+
+  const idempotencyKeys: string[] = [];
+  globalThis.fetch = async (_input, init) => {
+    idempotencyKeys.push(
+      new Headers(init?.headers).get("Idempotency-Key") ?? "",
+    );
+    return Response.json({ id: `email_${idempotencyKeys.length}` });
+  };
+
+  for (const timestamp of [
+    "2026-07-26T20:00:00.000Z",
+    "2026-07-26T20:01:00.000Z",
+  ]) {
+    await postContact(
+      new NextRequest("http://localhost/api/contact", {
+        method: "POST",
+        body: JSON.stringify({
+          name: "Jordan Buyer",
+          email: "jordan@example.com",
+          submissionId: "submission_123",
+          timestamp,
+        }),
+      }),
+    );
+  }
+
+  assert.equal(idempotencyKeys.length, 2);
+  assert.equal(idempotencyKeys[0], idempotencyKeys[1]);
+});
+
+test("null JSON bodies return 400 for both form routes", async () => {
+  clearDeliveryEnvironment();
+  process.env.LEAD_WEBHOOK_URL = "https://hooks.example.com/leads";
+  globalThis.fetch = async () => {
+    throw new Error("Malformed submissions must not trigger delivery");
+  };
+
+  const contactResponse = await postContact(
+    new NextRequest("http://localhost/api/contact", {
+      method: "POST",
+      body: "null",
+    }),
+  );
+  const recycleResponse = await postRecycle(
+    new NextRequest("http://localhost/api/recycle", {
+      method: "POST",
+      body: "null",
+    }),
+  );
+
+  assert.equal(contactResponse.status, 400);
+  assert.equal(recycleResponse.status, 400);
+});
