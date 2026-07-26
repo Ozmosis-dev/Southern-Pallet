@@ -17,11 +17,20 @@ export class LeadDeliveryFailedError extends Error {
   }
 }
 
+interface LeadAttachment {
+  filename: string;
+  content: string;
+  contentType: string;
+}
+
 interface DeliverLeadOptions {
   formType: string;
   subject: string;
   replyTo: string;
   payload: Record<string, unknown>;
+  notificationEmail?: string;
+  attachments?: LeadAttachment[];
+  allowWebhook?: boolean;
 }
 
 function formatValue(value: unknown): string {
@@ -105,11 +114,18 @@ export async function deliverLead({
   subject,
   replyTo,
   payload,
+  notificationEmail: notificationEmailOverride,
+  attachments,
+  allowWebhook = true,
 }: DeliverLeadOptions): Promise<{ channels: string[] }> {
   const apiKey = process.env.RESEND_API_KEY?.trim();
-  const notificationEmail = process.env.LEAD_NOTIFICATION_EMAIL?.trim();
+  const notificationEmail =
+    notificationEmailOverride?.trim() ||
+    process.env.LEAD_NOTIFICATION_EMAIL?.trim();
   const fromEmail = process.env.LEAD_FROM_EMAIL?.trim();
-  const webhookUrl = process.env.LEAD_WEBHOOK_URL?.trim();
+  const webhookUrl = allowWebhook
+    ? process.env.LEAD_WEBHOOK_URL?.trim()
+    : undefined;
   const hasResendConfiguration = Boolean(
     apiKey || notificationEmail || fromEmail,
   );
@@ -147,6 +163,7 @@ export async function deliverLead({
                   replyTo,
                   subject,
                   text: buildLeadEmailText(formType, payload),
+                  attachments,
                 },
                 {
                   idempotencyKey,

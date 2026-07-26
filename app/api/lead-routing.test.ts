@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { afterEach, beforeEach, test } from "node:test";
 import { NextRequest } from "next/server";
+import { deliverLead } from "../../lib/lead-delivery";
 import { POST as postContact } from "./contact/route";
 import { POST as postRecycle } from "./recycle/route";
 
@@ -344,4 +345,48 @@ test("null JSON bodies return 400 for both form routes", async () => {
 
   assert.equal(contactResponse.status, 400);
   assert.equal(recycleResponse.status, 400);
+});
+
+test("career delivery uses its own recipient and includes a resume", async () => {
+  clearDeliveryEnvironment();
+  process.env.RESEND_API_KEY = "re_test_key";
+  process.env.LEAD_NOTIFICATION_EMAIL = "quotes@example.com";
+  process.env.LEAD_FROM_EMAIL = "Southern Pallet Website <leads@example.com>";
+  process.env.LEAD_WEBHOOK_URL = "https://hooks.example.com/leads";
+
+  let sentBody: Record<string, unknown> | undefined;
+  globalThis.fetch = async (_input, init) => {
+    sentBody = JSON.parse(String(init?.body));
+    return Response.json({ id: "career_email_123" });
+  };
+
+  const result = await deliverLead({
+    formType: "career_application",
+    subject: "New Southern Pallet employment application",
+    replyTo: "applicant@example.com",
+    notificationEmail: "careers@example.com",
+    allowWebhook: false,
+    attachments: [
+      {
+        filename: "resume.pdf",
+        content: "cGRmLWNvbnRlbnQ=",
+        contentType: "application/pdf",
+      },
+    ],
+    payload: {
+      firstName: "Jordan",
+      lastName: "Applicant",
+      submissionId: "career_submission_123",
+    },
+  });
+
+  assert.deepEqual(result.channels, ["resend"]);
+  assert.deepEqual(sentBody?.to, ["careers@example.com"]);
+  assert.deepEqual(sentBody?.attachments, [
+    {
+      filename: "resume.pdf",
+      content: "cGRmLWNvbnRlbnQ=",
+      content_type: "application/pdf",
+    },
+  ]);
 });
