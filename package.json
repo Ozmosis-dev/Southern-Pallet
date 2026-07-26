@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test:navigation": "node scripts/check-header-navigation.mjs",
-    "test:forms": "node --import tsx --test app/api/lead-routing.test.ts lib/form-redirect.test.ts"
+    "test:forms": "node --import tsx --test app/api/lead-routing.test.ts app/api/careers/route.test.ts lib/form-redirect.test.ts"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.2.5",
