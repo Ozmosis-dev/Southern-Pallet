@@ -1,4 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
+import {
+  deliverLead,
+  LeadDeliveryFailedError,
+  LeadDeliveryNotConfiguredError,
+} from '../../../lib/lead-delivery';
 
 /**
  * RECYCLE / SELL-PALLETS API ENDPOINT
@@ -31,6 +36,16 @@ export async function POST(request: NextRequest) {
   try {
     const formData: RecycleFormData = await request.json();
 
+    if (!formData.fullName?.trim() || !formData.email?.trim()) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Full name and email are required',
+        },
+        { status: 400 }
+      );
+    }
+
     console.log('Recycle form submission received:', {
       fullName: formData.fullName,
       email: formData.email,
@@ -40,24 +55,41 @@ export async function POST(request: NextRequest) {
       timestamp: formData.timestamp,
     });
 
-    const webhookUrl = process.env.LEAD_WEBHOOK_URL;
-    if (webhookUrl) {
-      await fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, formType: 'pallet_sell_request' }),
-      });
-    } else {
-      console.warn('LEAD_WEBHOOK_URL is not set — form data was logged only, not delivered anywhere.');
-    }
+    const delivery = await deliverLead({
+      formType: 'pallet_sell_request',
+      subject: 'New Southern Pallet recycling quote request',
+      replyTo: formData.email,
+      payload: { ...formData },
+    });
 
     return NextResponse.json({
       success: true,
       message: 'Pallet sell request received successfully',
       timestamp: new Date().toISOString(),
+      deliveryChannels: delivery.channels,
     });
   } catch (error) {
     console.error('Recycle form submission error:', error);
+
+    if (error instanceof LeadDeliveryNotConfiguredError) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Lead delivery is not configured',
+        },
+        { status: 503 }
+      );
+    }
+
+    if (error instanceof LeadDeliveryFailedError) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Failed to deliver pallet sell request',
+        },
+        { status: 502 }
+      );
+    }
 
     return NextResponse.json(
       {

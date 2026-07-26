@@ -60,29 +60,75 @@ export async function deliverLead({
   const apiKey = process.env.RESEND_API_KEY?.trim();
   const notificationEmail = process.env.LEAD_NOTIFICATION_EMAIL?.trim();
   const fromEmail = process.env.LEAD_FROM_EMAIL?.trim();
+  const webhookUrl = process.env.LEAD_WEBHOOK_URL?.trim();
+  const hasResendConfiguration = Boolean(
+    apiKey || notificationEmail || fromEmail,
+  );
+  const channels: string[] = [];
+  const failures: string[] = [];
 
-  if (!apiKey && !notificationEmail && !fromEmail) {
+  if (!hasResendConfiguration && !webhookUrl) {
     throw new LeadDeliveryNotConfiguredError();
   }
 
-  if (!apiKey || !notificationEmail || !fromEmail) {
-    throw new LeadDeliveryFailedError(
-      "Resend lead delivery configuration is incomplete.",
-    );
+  if (hasResendConfiguration) {
+    if (!apiKey || !notificationEmail || !fromEmail) {
+      failures.push("Resend lead delivery configuration is incomplete.");
+    } else {
+      try {
+        const resend = new Resend(apiKey);
+        const { error } = await resend.emails.send({
+          from: fromEmail,
+          to: [notificationEmail],
+          replyTo,
+          subject,
+          text: buildLeadEmailText(formType, payload),
+        });
+
+        if (error) {
+          failures.push(`Resend delivery failed: ${error.message}`);
+        } else {
+          channels.push("resend");
+        }
+      } catch (error) {
+        failures.push(
+          `Resend delivery failed: ${
+            error instanceof Error ? error.message : "Unknown error"
+          }`,
+        );
+      }
+    }
   }
 
-  const resend = new Resend(apiKey);
-  const { error } = await resend.emails.send({
-    from: fromEmail,
-    to: [notificationEmail],
-    replyTo,
-    subject,
-    text: buildLeadEmailText(formType, payload),
-  });
+  if (webhookUrl) {
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...payload, formType }),
+      });
 
-  if (error) {
-    throw new LeadDeliveryFailedError(`Resend delivery failed: ${error.message}`);
+      if (!response.ok) {
+        failures.push(`Webhook delivery failed with status ${response.status}.`);
+      } else {
+        channels.push("webhook");
+      }
+    } catch (error) {
+      failures.push(
+        `Webhook delivery failed: ${
+          error instanceof Error ? error.message : "Unknown error"
+        }`,
+      );
+    }
   }
 
-  return { channels: ["resend"] };
+  if (channels.length === 0) {
+    throw new LeadDeliveryFailedError(failures.join(" "));
+  }
+
+  if (failures.length > 0) {
+    console.error("Lead delivery partially failed:", failures);
+  }
+
+  return { channels };
 }

@@ -1,9 +1,13 @@
 import assert from "node:assert/strict";
-import { afterEach, test } from "node:test";
+import { afterEach, beforeEach, test } from "node:test";
 import { NextRequest } from "next/server";
 import { POST as postContact } from "./contact/route.ts";
+import { POST as postRecycle } from "./recycle/route.ts";
 
 const originalFetch = globalThis.fetch;
+const originalConsoleLog = console.log;
+const originalConsoleError = console.error;
+const originalConsoleWarn = console.warn;
 const deliveryEnvironmentKeys = [
   "RESEND_API_KEY",
   "LEAD_NOTIFICATION_EMAIL",
@@ -14,8 +18,39 @@ const originalEnvironment = Object.fromEntries(
   deliveryEnvironmentKeys.map((key) => [key, process.env[key]]),
 );
 
+function clearDeliveryEnvironment() {
+  for (const key of deliveryEnvironmentKeys) {
+    delete process.env[key];
+  }
+}
+
+function createContactRequest() {
+  return new NextRequest("http://localhost/api/contact", {
+    method: "POST",
+    body: JSON.stringify({
+      name: "Jordan Buyer",
+      company: "Example Logistics",
+      email: "jordan@example.com",
+      phone: "(555) 123-4567",
+      productInterest: "standard",
+      message: "Need 100 pallets",
+      timestamp: "2026-07-26T20:00:00.000Z",
+      source: "website_new_contact_form",
+    }),
+  });
+}
+
+beforeEach(() => {
+  console.log = () => {};
+  console.error = () => {};
+  console.warn = () => {};
+});
+
 afterEach(() => {
   globalThis.fetch = originalFetch;
+  console.log = originalConsoleLog;
+  console.error = originalConsoleError;
+  console.warn = originalConsoleWarn;
 
   for (const key of deliveryEnvironmentKeys) {
     const originalValue = originalEnvironment[key];
@@ -28,10 +63,10 @@ afterEach(() => {
 });
 
 test("contact submissions are delivered through Resend when configured", async () => {
+  clearDeliveryEnvironment();
   process.env.RESEND_API_KEY = "re_test_key";
   process.env.LEAD_NOTIFICATION_EMAIL = "info@example.com";
   process.env.LEAD_FROM_EMAIL = "Southern Pallet Website <leads@example.com>";
-  delete process.env.LEAD_WEBHOOK_URL;
 
   let sentRequest:
     | {
@@ -49,21 +84,7 @@ test("contact submissions are delivered through Resend when configured", async (
     return Response.json({ id: "email_123" });
   };
 
-  const response = await postContact(
-    new NextRequest("http://localhost/api/contact", {
-      method: "POST",
-      body: JSON.stringify({
-        name: "Jordan Buyer",
-        company: "Example Logistics",
-        email: "jordan@example.com",
-        phone: "(555) 123-4567",
-        productInterest: "standard",
-        message: "Need 100 pallets",
-        timestamp: "2026-07-26T20:00:00.000Z",
-        source: "website_new_contact_form",
-      }),
-    }),
-  );
+  const response = await postContact(createContactRequest());
 
   assert.equal(response.status, 200);
   assert.equal(sentRequest?.url, "https://api.resend.com/emails");
@@ -75,4 +96,88 @@ test("contact submissions are delivered through Resend when configured", async (
   assert.match(body.subject, /quote request/i);
   assert.match(body.text, /Jordan Buyer/);
   assert.match(body.text, /Need 100 pallets/);
+});
+
+test("recycle submissions use the recycle email label and subject", async () => {
+  clearDeliveryEnvironment();
+  process.env.RESEND_API_KEY = "re_test_key";
+  process.env.LEAD_NOTIFICATION_EMAIL = "info@example.com";
+  process.env.LEAD_FROM_EMAIL = "Southern Pallet Website <leads@example.com>";
+
+  let sentBody: Record<string, unknown> | undefined;
+  globalThis.fetch = async (_input, init) => {
+    sentBody = JSON.parse(String(init?.body));
+    return Response.json({ id: "email_456" });
+  };
+
+  const response = await postRecycle(
+    new NextRequest("http://localhost/api/recycle", {
+      method: "POST",
+      body: JSON.stringify({
+        fullName: "Taylor Seller",
+        companyName: "Example Warehouse",
+        email: "taylor@example.com",
+        phone: "(555) 987-6543",
+        palletType: "standard",
+        quantity: "100+",
+        condition: "good",
+        location: "Mobile, AL",
+        pickupService: "yes",
+        timestamp: "2026-07-26T20:05:00.000Z",
+        source: "website_recycle_pallet",
+      }),
+    }),
+  );
+
+  assert.equal(response.status, 200);
+  assert.match(String(sentBody?.subject), /recycl/i);
+  assert.equal(sentBody?.reply_to, "taylor@example.com");
+  assert.match(String(sentBody?.text), /pallet_sell_request/);
+  assert.match(String(sentBody?.text), /Taylor Seller/);
+});
+
+test("a form submission returns 503 when no delivery channel is configured", async () => {
+  clearDeliveryEnvironment();
+  globalThis.fetch = async () => {
+    throw new Error("No network request should be made");
+  };
+
+  const response = await postContact(createContactRequest());
+  assert.equal(response.status, 503);
+});
+
+test("the existing webhook remains a delivery fallback", async () => {
+  clearDeliveryEnvironment();
+  process.env.LEAD_WEBHOOK_URL = "https://hooks.example.com/leads";
+
+  let webhookRequest:
+    | {
+        url: string;
+        body: Record<string, unknown>;
+      }
+    | undefined;
+
+  globalThis.fetch = async (input, init) => {
+    webhookRequest = {
+      url: input instanceof Request ? input.url : String(input),
+      body: JSON.parse(String(init?.body)),
+    };
+    return Response.json({ accepted: true });
+  };
+
+  const response = await postContact(createContactRequest());
+
+  assert.equal(response.status, 200);
+  assert.equal(webhookRequest?.url, "https://hooks.example.com/leads");
+  assert.equal(webhookRequest?.body.formType, "contact_request");
+});
+
+test("a failed webhook returns 502 instead of reporting success", async () => {
+  clearDeliveryEnvironment();
+  process.env.LEAD_WEBHOOK_URL = "https://hooks.example.com/leads";
+  globalThis.fetch = async () =>
+    new Response("Webhook unavailable", { status: 503 });
+
+  const response = await postContact(createContactRequest());
+  assert.equal(response.status, 502);
 });
