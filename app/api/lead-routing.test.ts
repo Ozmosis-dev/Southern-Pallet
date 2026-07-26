@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { afterEach, beforeEach, test } from "node:test";
 import { NextRequest } from "next/server";
-import { POST as postContact } from "./contact/route.ts";
-import { POST as postRecycle } from "./recycle/route.ts";
+import { POST as postContact } from "./contact/route";
+import { POST as postRecycle } from "./recycle/route";
 
 const originalFetch = globalThis.fetch;
 const originalConsoleLog = console.log;
