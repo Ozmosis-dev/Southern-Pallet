@@ -33,11 +33,15 @@ See `env.example.txt` for the full list with comments. Summary:
 
 | Variable | Purpose | Required? |
 |---|---|---|
-| `LEAD_WEBHOOK_URL` | Where the two lead forms POST their submissions | No — forms work without it, they just log instead of delivering |
+| `RESEND_API_KEY` | Server-side API key for email delivery | Required for Resend |
+| `LEAD_NOTIFICATION_EMAIL` | Inbox that receives both lead types | Required for Resend |
+| `LEAD_FROM_EMAIL` | Verified sender identity used by Resend | Required for Resend |
+| `LEAD_WEBHOOK_URL` | Optional secondary destination for lead JSON | No |
 | `NEXT_PUBLIC_GTM_ID` | Google Tag Manager container ID | No — GTM script doesn't load at all if unset |
 | `NEXT_PUBLIC_BUSINESS_PLAN_PASSWORD` | Gate value for `/private/business-plan` | No — defaults to `changeme` |
 
-Nothing is required for the site to build and run; these just turn features on.
+Nothing is required for the site to build and run, but at least one complete
+lead-delivery channel must be configured before the forms can report success.
 
 ## Forms & lead capture
 
@@ -46,7 +50,30 @@ There are two forms, both under `app/api/*/route.ts`:
 - **Contact / quote request** (`app/api/contact/route.ts`) — the main form at the bottom of the homepage.
 - **Recycle / sell pallets** (`app/api/recycle/route.ts`) — the form on the recycle page.
 
-Both routes do the same thing: validate the incoming JSON, log it server-side, and — if `LEAD_WEBHOOK_URL` is set — POST the form data as JSON to that URL. This is a blank slot, not a live connection: there is no existing webhook wired up, and nothing here depends on any particular provider. Point it at whatever you want to receive leads with — a Zapier "Catch Hook" trigger, a Make.com scenario, a custom endpoint you write — it's your choice entirely. There is no email-sending code and no database — the webhook is the only delivery path. If `LEAD_WEBHOOK_URL` is unset, submissions are logged to the server console only and go nowhere else, so set it before you rely on the forms for real leads.
+Both routes validate their required contact fields and pass the lead to a shared
+server-only delivery module:
+
+- When `RESEND_API_KEY`, `LEAD_NOTIFICATION_EMAIL`, and `LEAD_FROM_EMAIL` are
+  set, the complete lead is emailed through Resend. The submitter's email is
+  used as Reply-To.
+- When `LEAD_WEBHOOK_URL` is set, the same lead is also posted there as JSON.
+  Zapier, Make, or a custom endpoint can use this optional secondary channel.
+- If neither channel is configured, the API returns `503` instead of showing a
+  false success. If every configured channel fails, it returns `502`.
+
+There is still no database or server-side lead history. Resend and the optional
+webhook are the delivery paths.
+
+### Activating Resend on Vercel
+
+1. Add Resend from the Vercel Marketplace or create a Resend account directly.
+2. Verify the sending domain in Resend by adding its SPF and DKIM DNS records.
+3. Add `RESEND_API_KEY`, `LEAD_NOTIFICATION_EMAIL`, and `LEAD_FROM_EMAIL` to the
+   Vercel project's Production, Preview, and Development environments as needed.
+4. Redeploy after the variables are set.
+
+For production recipients, Resend requires `LEAD_FROM_EMAIL` to use a verified
+domain. Keep all three values out of source control.
 
 ## Analytics / tag manager
 
