@@ -13,11 +13,13 @@ import {
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { buildThankYouUrl } from "@/lib/form-redirect";
 
 export default function ContactSection() {
   const router = useRouter();
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submissionError, setSubmissionError] = useState<string>("");
 
   const formatPhoneNumber = (value: string) => {
     // Remove all non-numeric characters
@@ -49,6 +51,7 @@ export default function ContactSection() {
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmissionError("");
 
     try {
       // Get UTM parameters from URL
@@ -70,6 +73,7 @@ export default function ContactSection() {
         name: formData.get("name") as string,
         company: formData.get("company") as string,
         email: formData.get("email") as string,
+        website: formData.get("website") as string,
         phone: phoneNumber,
         productInterest: formData.get("productInterest") as string,
         message: formData.get("message") as string,
@@ -120,29 +124,12 @@ export default function ContactSection() {
         }
       }
 
-      // Build UTM parameters for tracking
-      const redirectUrlParams = new URLSearchParams();
-
-      // Add form data
-      Object.entries(data).forEach(([key, value]) => {
-        if (typeof value !== "object" && value) {
-          redirectUrlParams.append(key, value.toString());
-        }
-      });
-
-      // Add UTM parameters
-      Object.entries(utmParams).forEach(([key, value]) => {
-        redirectUrlParams.append(key, value);
-      });
-
-      redirectUrlParams.append("form_type", "quote_request");
-      redirectUrlParams.append("conversion", "true");
-
-      // Redirect to thank you page with UTM parameters
-      router.push(`/thank-you?${redirectUrlParams.toString()}`);
+      router.push(buildThankYouUrl("quote_request", utmParams));
     } catch (error) {
       console.error("Form submission error:", error);
-      // TODO: Add proper error handling/display
+      setSubmissionError(
+        "We couldn’t submit your request. Please try again or call us at (601) 746-5012."
+      );
       setIsSubmitting(false);
     }
   };
@@ -209,6 +196,19 @@ export default function ContactSection() {
             </h3>
 
             <form className="space-y-6" onSubmit={handleFormSubmit}>
+              <div
+                className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
+                aria-hidden="true"
+              >
+                <label htmlFor="contact-website">Website</label>
+                <Input
+                  id="contact-website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">Name</label>
@@ -330,6 +330,16 @@ export default function ContactSection() {
                 </button>
                 .
               </p>
+
+              {submissionError && (
+                <p
+                  role="alert"
+                  aria-live="polite"
+                  className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+                >
+                  {submissionError}
+                </p>
+              )}
 
               <Button
                 type="submit"

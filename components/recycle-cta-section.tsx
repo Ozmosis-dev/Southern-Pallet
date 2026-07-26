@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { buildThankYouUrl } from "@/lib/form-redirect";
 
 export default function RecycleCTASection() {
   const router = useRouter();
@@ -27,7 +28,10 @@ export default function RecycleCTASection() {
     additionalDetails: "",
     pickupService: "",
     smsConsent: false,
+    website: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState("");
 
   const formatPhoneNumber = (value: string) => {
     // Remove all non-numeric characters
@@ -58,6 +62,8 @@ export default function RecycleCTASection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmissionError("");
 
     try {
       // Get UTM parameters from URL for thank you page redirect
@@ -123,32 +129,13 @@ export default function RecycleCTASection() {
         }
       }
 
-      const redirectUrlParams = new URLSearchParams();
-
-      Object.entries(formData).forEach(([key, value]) => {
-        if (value !== null && value !== undefined && value !== "") {
-          // Convert boolean to string for URL parameters
-          const stringValue =
-            typeof value === "boolean" ? value.toString() : value;
-          redirectUrlParams.append(key, stringValue);
-        }
-      });
-
-      Object.entries(utmParams).forEach(([key, value]) => {
-        redirectUrlParams.append(key, value);
-      });
-
-      redirectUrlParams.append("form_type", "recycle_request");
-      redirectUrlParams.append("conversion", "true");
-
-      // Redirect to thank you page with parameters
-      router.push(`/thank-you?${redirectUrlParams.toString()}`);
+      router.push(buildThankYouUrl("recycle_request", utmParams));
     } catch (error) {
       console.error("❌ Recycle form submission error:", error);
-      // TODO: Show error message to user
-      alert(
+      setSubmissionError(
         "There was an error submitting your request. Please try again or call us at (601) 746-5012."
       );
+      setIsSubmitting(false);
     }
   };
 
@@ -171,6 +158,22 @@ export default function RecycleCTASection() {
             </h3>
 
             <form className="space-y-6" onSubmit={handleSubmit}>
+              <div
+                className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
+                aria-hidden="true"
+              >
+                <label htmlFor="recycle-website">Website</label>
+                <Input
+                  id="recycle-website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.website}
+                  onChange={(e) =>
+                    setFormData({ ...formData, website: e.target.value })
+                  }
+                />
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">
@@ -406,11 +409,22 @@ export default function RecycleCTASection() {
                 .
               </p>
 
+              {submissionError && (
+                <p
+                  role="alert"
+                  aria-live="polite"
+                  className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+                >
+                  {submissionError}
+                </p>
+              )}
+
               <Button
                 type="submit"
-                className="w-full bg-[#22c55e] text-black hover:bg-[#16a34a] font-semibold"
+                disabled={isSubmitting}
+                className="w-full bg-[#22c55e] text-black hover:bg-[#16a34a] font-semibold disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Submit Quote Request
+                {isSubmitting ? "Submitting..." : "Submit Quote Request"}
               </Button>
             </form>
           </div>

@@ -9,10 +9,8 @@ import {
  * RECYCLE / SELL-PALLETS API ENDPOINT
  *
  * Handles the sell/recycle-pallets form on the recycle page.
- * Forwards submissions to LEAD_WEBHOOK_URL if set (Zapier, Make, a custom
- * endpoint, etc. all work — it's just a POST of the JSON body). If the env
- * var is unset, the submission is logged only. See README.md "Forms & lead
- * capture" for setup.
+ * Delivers submissions through Resend and/or LEAD_WEBHOOK_URL. See README.md
+ * "Forms & lead capture" for setup.
  */
 
 export interface RecycleFormData {
@@ -26,6 +24,7 @@ export interface RecycleFormData {
   location?: string;
   additionalDetails?: string;
   pickupService?: string;
+  website?: string;
   timestamp: string;
   source: string;
   utmParams?: Record<string, string>;
@@ -36,7 +35,12 @@ export async function POST(request: NextRequest) {
   try {
     const formData: RecycleFormData = await request.json();
 
-    if (!formData.fullName?.trim() || !formData.email?.trim()) {
+    if (
+      typeof formData.fullName !== 'string' ||
+      !formData.fullName.trim() ||
+      typeof formData.email !== 'string' ||
+      !formData.email.trim()
+    ) {
       return NextResponse.json(
         {
           success: false,
@@ -44,6 +48,13 @@ export async function POST(request: NextRequest) {
         },
         { status: 400 }
       );
+    }
+
+    if (typeof formData.website === 'string' && formData.website.trim()) {
+      return NextResponse.json({
+        success: true,
+        message: 'Pallet sell request received successfully',
+      });
     }
 
     console.log('Recycle form submission received:', {
@@ -55,11 +66,14 @@ export async function POST(request: NextRequest) {
       timestamp: formData.timestamp,
     });
 
+    const leadPayload: Record<string, unknown> = { ...formData };
+    delete leadPayload.website;
+
     const delivery = await deliverLead({
       formType: 'pallet_sell_request',
       subject: 'New Southern Pallet recycling quote request',
       replyTo: formData.email,
-      payload: { ...formData },
+      payload: leadPayload,
     });
 
     return NextResponse.json({

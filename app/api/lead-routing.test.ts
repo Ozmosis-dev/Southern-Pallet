@@ -13,6 +13,7 @@ const deliveryEnvironmentKeys = [
   "LEAD_NOTIFICATION_EMAIL",
   "LEAD_FROM_EMAIL",
   "LEAD_WEBHOOK_URL",
+  "LEAD_DELIVERY_TIMEOUT_MS",
 ] as const;
 const originalEnvironment = Object.fromEntries(
   deliveryEnvironmentKeys.map((key) => [key, process.env[key]]),
@@ -96,6 +97,10 @@ test("contact submissions are delivered through Resend when configured", async (
   assert.match(body.subject, /quote request/i);
   assert.match(body.text, /Jordan Buyer/);
   assert.match(body.text, /Need 100 pallets/);
+  assert.match(
+    new Headers(sentRequest?.init?.headers).get("Idempotency-Key") ?? "",
+    /^southern-pallet-[a-f0-9]{64}$/,
+  );
 });
 
 test("recycle submissions use the recycle email label and subject", async () => {
@@ -180,4 +185,104 @@ test("a failed webhook returns 502 instead of reporting success", async () => {
 
   const response = await postContact(createContactRequest());
   assert.equal(response.status, 502);
+});
+
+test("non-string required contact fields return 400", async () => {
+  clearDeliveryEnvironment();
+  process.env.LEAD_WEBHOOK_URL = "https://hooks.example.com/leads";
+  globalThis.fetch = async () => {
+    throw new Error("Malformed submissions must not trigger delivery");
+  };
+
+  const response = await postContact(
+    new NextRequest("http://localhost/api/contact", {
+      method: "POST",
+      body: JSON.stringify({
+        name: 42,
+        email: "jordan@example.com",
+      }),
+    }),
+  );
+
+  assert.equal(response.status, 400);
+});
+
+test("non-string required recycle fields return 400", async () => {
+  clearDeliveryEnvironment();
+  process.env.LEAD_WEBHOOK_URL = "https://hooks.example.com/leads";
+  globalThis.fetch = async () => {
+    throw new Error("Malformed submissions must not trigger delivery");
+  };
+
+  const response = await postRecycle(
+    new NextRequest("http://localhost/api/recycle", {
+      method: "POST",
+      body: JSON.stringify({
+        fullName: "Taylor Seller",
+        email: 42,
+      }),
+    }),
+  );
+
+  assert.equal(response.status, 400);
+});
+
+test("a stalled webhook does not block a successful Resend delivery", async () => {
+  clearDeliveryEnvironment();
+  process.env.RESEND_API_KEY = "re_test_key";
+  process.env.LEAD_NOTIFICATION_EMAIL = "info@example.com";
+  process.env.LEAD_FROM_EMAIL = "Southern Pallet Website <leads@example.com>";
+  process.env.LEAD_WEBHOOK_URL = "https://hooks.example.com/leads";
+  process.env.LEAD_DELIVERY_TIMEOUT_MS = "10";
+
+  globalThis.fetch = async (input, init) => {
+    const url = input instanceof Request ? input.url : String(input);
+
+    if (url === "https://api.resend.com/emails") {
+      return Response.json({ id: "email_789" });
+    }
+
+    return await new Promise<Response>((_resolve, reject) => {
+      init?.signal?.addEventListener("abort", () => {
+        reject(new DOMException("The operation was aborted.", "AbortError"));
+      });
+    });
+  };
+
+  const result = await Promise.race([
+    postContact(createContactRequest()),
+    new Promise<"timed-out">((resolve) => {
+      setTimeout(() => resolve("timed-out"), 200);
+    }),
+  ]);
+
+  assert.notEqual(result, "timed-out");
+  assert.equal((result as Response).status, 200);
+  assert.deepEqual((await (result as Response).json()).deliveryChannels, [
+    "resend",
+  ]);
+});
+
+test("honeypot submissions do not trigger delivery", async () => {
+  clearDeliveryEnvironment();
+  process.env.LEAD_WEBHOOK_URL = "https://hooks.example.com/leads";
+  let deliveryAttempted = false;
+  globalThis.fetch = async () => {
+    deliveryAttempted = true;
+    return Response.json({ accepted: true });
+  };
+
+  const response = await postContact(
+    new NextRequest("http://localhost/api/contact", {
+      method: "POST",
+      body: JSON.stringify({
+        name: "Spam Bot",
+        email: "bot@example.com",
+        website: "https://spam.example.com",
+      }),
+    }),
+  );
+
+  assert.equal(response.status, 200);
+  assert.equal(deliveryAttempted, false);
 });

@@ -37,6 +37,7 @@ See `env.example.txt` for the full list with comments. Summary:
 | `LEAD_NOTIFICATION_EMAIL` | Inbox that receives both lead types | Required for Resend |
 | `LEAD_FROM_EMAIL` | Verified sender identity used by Resend | Required for Resend |
 | `LEAD_WEBHOOK_URL` | Optional secondary destination for lead JSON | No |
+| `LEAD_DELIVERY_TIMEOUT_MS` | Outbound delivery timeout; defaults to 8000 ms | No |
 | `NEXT_PUBLIC_GTM_ID` | Google Tag Manager container ID | No — GTM script doesn't load at all if unset |
 | `NEXT_PUBLIC_BUSINESS_PLAN_PASSWORD` | Gate value for `/private/business-plan` | No — defaults to `changeme` |
 
@@ -60,6 +61,13 @@ server-only delivery module:
   Zapier, Make, or a custom endpoint can use this optional secondary channel.
 - If neither channel is configured, the API returns `503` instead of showing a
   false success. If every configured channel fails, it returns `502`.
+- Resend requests use an idempotency key to prevent duplicate notification
+  emails on a retry, and every delivery attempt has a bounded timeout.
+- Both forms include a server-checked honeypot. The linked Vercel project also
+  rate-limits POST requests to `/api/contact` and `/api/recycle` to five per IP
+  every ten minutes.
+- Thank-you redirects keep conversion and UTM attribution in the URL without
+  exposing names, email addresses, phone numbers, or messages.
 
 There is still no database or server-side lead history. Resend and the optional
 webhook are the delivery paths.

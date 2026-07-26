@@ -9,10 +9,8 @@ import {
  * CONTACT FORM API ENDPOINT
  *
  * Handles the main quote-request form at the bottom of the homepage.
- * Forwards submissions to LEAD_WEBHOOK_URL if set (Zapier, Make, a custom
- * endpoint, etc. all work — it's just a POST of the JSON body). If the env
- * var is unset, the submission is logged only. See README.md "Forms & lead
- * capture" for setup.
+ * Delivers submissions through Resend and/or LEAD_WEBHOOK_URL. See README.md
+ * "Forms & lead capture" for setup.
  */
 
 export interface ContactFormData {
@@ -22,6 +20,7 @@ export interface ContactFormData {
   phone?: string;
   productInterest?: string;
   message?: string;
+  website?: string;
   timestamp: string;
   source: string;
   utmParams?: Record<string, string>;
@@ -32,7 +31,12 @@ export async function POST(request: NextRequest) {
   try {
     const formData: ContactFormData = await request.json();
 
-    if (!formData.name?.trim() || !formData.email?.trim()) {
+    if (
+      typeof formData.name !== 'string' ||
+      !formData.name.trim() ||
+      typeof formData.email !== 'string' ||
+      !formData.email.trim()
+    ) {
       return NextResponse.json(
         {
           success: false,
@@ -42,6 +46,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (typeof formData.website === 'string' && formData.website.trim()) {
+      return NextResponse.json({
+        success: true,
+        message: 'Quote request received successfully',
+      });
+    }
+
     console.log('Contact form submission received:', {
       name: formData.name,
       email: formData.email,
@@ -49,11 +60,14 @@ export async function POST(request: NextRequest) {
       timestamp: formData.timestamp,
     });
 
+    const leadPayload: Record<string, unknown> = { ...formData };
+    delete leadPayload.website;
+
     const delivery = await deliverLead({
       formType: 'contact_request',
       subject: 'New Southern Pallet quote request',
       replyTo: formData.email,
-      payload: { ...formData },
+      payload: leadPayload,
     });
 
     return NextResponse.json({
