@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+
 interface SharedHeaderProps {
   isRecyclePage?: boolean;
   isPrivatePage?: boolean;
@@ -14,9 +16,12 @@ export default function SharedHeader({
   isPrivatePage = false,
 }: SharedHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage =
+    pathname === "/" && !isRecyclePage && !isPrivatePage;
 
   const handleLogoClick = () => {
-    if (isRecyclePage || isPrivatePage) {
+    if (!isHomePage) {
       window.location.href = "/";
     } else {
       const startPosition = window.scrollY;
@@ -47,7 +52,7 @@ export default function SharedHeader({
   };
 
   const handleGetQuoteClick = (e: React.MouseEvent) => {
-    if (isRecyclePage || isPrivatePage) {
+    if (!isHomePage) {
       window.location.href = "/#contact";
     } else {
       e.preventDefault();
@@ -85,11 +90,11 @@ export default function SharedHeader({
   };
 
   const getNavHref = (section: string) => {
-    return (isRecyclePage || isPrivatePage) ? `/#${section}` : `#${section}`;
+    return isHomePage ? `#${section}` : `/#${section}`;
   };
 
   const getNavClickHandler = (section: string) => {
-    if (isRecyclePage || isPrivatePage) {
+    if (!isHomePage) {
       return undefined;
     }
 
@@ -135,7 +140,7 @@ export default function SharedHeader({
           <button
             onClick={handleLogoClick}
             className="cursor-pointer hover:opacity-80 transition-opacity"
-            aria-label={(isRecyclePage || isPrivatePage) ? "Go to homepage" : "Scroll to top"}
+            aria-label={isHomePage ? "Scroll to top" : "Go to homepage"}
           >
             <Image 
               src="/logo.svg" 
@@ -229,7 +234,7 @@ export default function SharedHeader({
             </button>
             <nav className="flex flex-col gap-4">
               <a
-                href={(isRecyclePage || isPrivatePage) ? "/" : "#home"}
+                href={isHomePage ? "#home" : "/"}
                 className="hover:text-[#22c55e] transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -298,4 +303,3 @@ export default function SharedHeader({
     </header>
   );
 }
-
