@@ -97,6 +97,12 @@ for (const route of routes) {
     `${route.path} Careers links should target /careers; received ${careersHrefs.join(", ")}`,
   );
 
+  assert.match(
+    html,
+    /<a\b(?=[^>]*href="tel:\+16017465012")(?=[^>]*aria-label="Call Southern Pallet at \(601\) 746-5012")[^>]*>/,
+    `${route.path} should render the header phone call action`,
+  );
+
   if (route.activeLabel) {
     assert.ok(
       hasActiveLink(html, route.activeLabel),

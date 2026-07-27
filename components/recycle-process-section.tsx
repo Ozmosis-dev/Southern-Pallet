@@ -1,37 +1,38 @@
+const steps = [
+  ["01", "Share your inventory", "Tell us the pallet type, approximate quantity, condition, and location."],
+  ["02", "Receive an evaluation", "Our team reviews the details and follows up with current pricing and options."],
+  ["03", "Plan the handoff", "We coordinate pickup when available or provide delivery instructions for your load."],
+];
+
 export default function RecycleProcessSection() {
   return (
-    <section id="process" className="pt-16 md:pb-16 bg-[#163d20]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-start gap-6">
-          <div className="bg-[#22c55e] p-4 rounded-full flex-shrink-0">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#1e4a2b"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-8 h-8"
+    <section id="process" className="bg-[var(--sp-paper)] py-24 lg:py-32">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[0.65fr_1.35fr] lg:px-10">
+        <div>
+          <p className="sp-eyebrow text-[var(--sp-green-dark)]">A direct process</p>
+          <h2 className="sp-display mt-5 max-w-md text-4xl text-[var(--sp-forest)] sm:text-5xl">
+            From excess inventory to a clear next step.
+          </h2>
+          <p className="mt-6 max-w-md text-sm leading-7 text-[var(--sp-ink)]/65">
+            Standard 48&quot; × 40&quot; pallets in usable condition are often
+            the most valuable, but we evaluate every request individually.
+          </p>
+        </div>
+        <div className="border-t border-[var(--sp-rule)]">
+          {steps.map(([number, title, detail]) => (
+            <article
+              key={number}
+              className="grid grid-cols-[3rem_1fr] gap-4 border-b border-[var(--sp-rule)] py-7 sm:grid-cols-[4rem_0.7fr_1fr]"
             >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 16v-4" />
-              <path d="M12 8h.01" />
-            </svg>
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-4">
-              How Our Process Works
-            </h3>
-            <p className="text-gray-300 text-lg leading-relaxed max-w-5xl">
-              Pallet values vary based on type, size, and condition. Standard
-              48&quot; x 40&quot; pallets in good condition are particularly
-              valuable. Contact us for current rates based on your specific
-              pallet needs and quantity.
-            </p>
-          </div>
+              <span className="text-sm font-semibold text-[var(--sp-green-dark)]">
+                {number}
+              </span>
+              <h3 className="text-xl font-semibold text-[var(--sp-forest)]">{title}</h3>
+              <p className="col-start-2 text-sm leading-6 text-[var(--sp-ink)]/65 sm:col-start-auto">
+                {detail}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

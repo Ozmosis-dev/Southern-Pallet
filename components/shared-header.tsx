@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -334,12 +334,22 @@ export default function SharedHeader({
           </div>
         </div>
 
-        <Button
-          className="hidden h-10 rounded-none bg-[#22c55e] px-5 font-bold text-[#102c1b] shadow-none hover:-translate-y-0.5 hover:bg-[#43d875] active:translate-y-px xl:inline-flex"
-          onClick={handleGetQuoteClick}
-        >
-          Get Quote
-        </Button>
+        <div className="hidden items-center gap-2 xl:flex">
+          <a
+            href="tel:+16017465012"
+            aria-label="Call Southern Pallet at (601) 746-5012"
+            className="inline-flex h-10 items-center gap-2 border border-white/30 px-4 text-xs font-semibold text-white hover:border-white hover:bg-white hover:text-[#102c1b]"
+          >
+            <Phone className="size-4" />
+            Call (601) 746-5012
+          </a>
+          <Button
+            className="h-10 rounded-none bg-[#22c55e] px-5 font-bold text-[#102c1b] shadow-none hover:-translate-y-0.5 hover:bg-[#43d875] active:translate-y-px"
+            onClick={handleGetQuoteClick}
+          >
+            Get Quote
+          </Button>
+        </div>
       </div>
     </header>
   );

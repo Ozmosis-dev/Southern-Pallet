@@ -145,24 +145,29 @@ export default function RecycleCTASection() {
   };
 
   return (
-    <section id="sell-pallets" className="py-20 bg-[#163d20] text-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Sell Your Used Pallets</h2>
-          <p className="text-xl text-gray-300">
+    <section id="sell-pallets" className="relative overflow-hidden bg-[var(--sp-forest)] py-24 text-white lg:py-32">
+      <div className="sp-diagonal absolute inset-0 opacity-10" aria-hidden="true" />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="grid gap-6 border-b border-white/20 pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div>
+            <p className="sp-eyebrow text-[var(--sp-green)]">Inventory evaluation</p>
+            <h2 className="sp-display mt-5 text-4xl sm:text-5xl">Sell your used pallets.</h2>
+          </div>
+          <p className="max-w-2xl text-base leading-7 text-white/68 lg:justify-self-end">
             Fill out the form below and we&apos;ll contact you with a
             competitive quote for your pallets. We buy standard and box pallets
             in any quantity.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white text-black p-8 rounded-lg">
-            <h3 className="text-2xl font-bold mb-8 text-center">
-              Get a Quote for Your Pallets
+        <div className="mx-auto mt-10 max-w-5xl">
+          <div className="border border-white/15 bg-[var(--sp-paper)] p-6 text-[var(--sp-ink)] sm:p-10">
+            <p className="sp-eyebrow text-[var(--sp-green-dark)]">Tell us what you have</p>
+            <h3 className="mt-3 text-3xl font-semibold text-[var(--sp-forest)]">
+              Get a pallet quote
             </h3>
 
-            <form className="space-y-6" onSubmit={handleSubmit}>
+            <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
               <div
                 className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
                 aria-hidden="true"
@@ -186,7 +191,7 @@ export default function RecycleCTASection() {
                   </label>
                   <Input
                     placeholder="Your name"
-                    className="border border-gray-500"
+                    className="rounded-none border-[var(--sp-rule)] bg-white"
                     value={formData.fullName}
                     onChange={(e) =>
                       setFormData({ ...formData, fullName: e.target.value })
@@ -200,7 +205,7 @@ export default function RecycleCTASection() {
                   </label>
                   <Input
                     placeholder="Your company"
-                    className="border border-gray-500"
+                    className="rounded-none border-[var(--sp-rule)] bg-white"
                     value={formData.companyName}
                     onChange={(e) =>
                       setFormData({ ...formData, companyName: e.target.value })
@@ -217,7 +222,7 @@ export default function RecycleCTASection() {
                   <Input
                     type="email"
                     placeholder="your.email@example.com"
-                    className="border border-gray-500"
+                    className="rounded-none border-[var(--sp-rule)] bg-white"
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
@@ -232,7 +237,7 @@ export default function RecycleCTASection() {
                   <Input
                     type="tel"
                     placeholder="(123) 456-7890"
-                    className="border border-gray-500"
+                    className="rounded-none border-[var(--sp-rule)] bg-white"
                     value={formData.phone}
                     onChange={handlePhoneChange}
                     maxLength={14}
@@ -241,8 +246,8 @@ export default function RecycleCTASection() {
                 </div>
               </div>
 
-              <div className="border-t pt-6">
-                <h4 className="text-lg font-bold mb-4">Pallet Information</h4>
+              <div className="border-t border-[var(--sp-rule)] pt-6">
+                <h4 className="mb-4 text-lg font-semibold text-[var(--sp-forest)]">Pallet information</h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -254,7 +259,7 @@ export default function RecycleCTASection() {
                         setFormData({ ...formData, palletType: value })
                       }
                     >
-                      <SelectTrigger className="border border-gray-500 w-full">
+                      <SelectTrigger className="w-full rounded-none border-[var(--sp-rule)] bg-white">
                         <SelectValue placeholder="Select pallet type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -276,7 +281,7 @@ export default function RecycleCTASection() {
                         setFormData({ ...formData, quantity: value })
                       }
                     >
-                      <SelectTrigger className="border border-gray-500 w-full">
+                      <SelectTrigger className="w-full rounded-none border-[var(--sp-rule)] bg-white">
                         <SelectValue placeholder="Select quantity range" />
                       </SelectTrigger>
                       <SelectContent>
@@ -299,7 +304,7 @@ export default function RecycleCTASection() {
                         setFormData({ ...formData, condition: value })
                       }
                     >
-                      <SelectTrigger className="border border-gray-500 w-full">
+                      <SelectTrigger className="w-full rounded-none border-[var(--sp-rule)] bg-white">
                         <SelectValue placeholder="Select condition" />
                       </SelectTrigger>
                       <SelectContent>
@@ -317,7 +322,7 @@ export default function RecycleCTASection() {
                     </label>
                     <Input
                       placeholder="City, State"
-                      className="border border-gray-500"
+                      className="rounded-none border-[var(--sp-rule)] bg-white"
                       value={formData.location}
                       onChange={(e) =>
                         setFormData({ ...formData, location: e.target.value })
@@ -334,7 +339,7 @@ export default function RecycleCTASection() {
                 <Textarea
                   placeholder="Any additional information about your pallets"
                   rows={4}
-                  className="border border-gray-500"
+                  className="rounded-none border-[var(--sp-rule)] bg-white"
                   value={formData.additionalDetails}
                   onChange={(e) =>
                     setFormData({
@@ -354,7 +359,7 @@ export default function RecycleCTASection() {
                     setFormData({ ...formData, pickupService: value })
                   }
                 >
-                  <SelectTrigger className="border border-gray-500 w-full">
+                  <SelectTrigger className="w-full rounded-none border-[var(--sp-rule)] bg-white">
                     <SelectValue placeholder="Select option" />
                   </SelectTrigger>
                   <SelectContent>
@@ -418,7 +423,7 @@ export default function RecycleCTASection() {
                 <p
                   role="alert"
                   aria-live="polite"
-                  className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+                  className="border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
                 >
                   {submissionError}
                 </p>
@@ -427,7 +432,7 @@ export default function RecycleCTASection() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#22c55e] text-black hover:bg-[#16a34a] font-semibold disabled:cursor-not-allowed disabled:opacity-50"
+                className="min-h-12 w-full rounded-none bg-[var(--sp-green)] font-bold uppercase tracking-[0.08em] text-[var(--sp-forest-deep)] hover:bg-[var(--sp-forest)] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? "Submitting..." : "Submit Quote Request"}
               </Button>
