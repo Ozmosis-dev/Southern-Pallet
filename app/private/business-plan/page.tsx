@@ -945,7 +945,7 @@ function BusinessPlanContent() {
     <div>
       <SharedHeader isPrivatePage={true} />
       <BusinessPlanPresentation />
-      <SharedFooter />
+      <SharedFooter isPrivatePage={true} />
     </div>
   );
 }

@@ -5,7 +5,13 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function SharedFooter() {
+interface SharedFooterProps {
+  isPrivatePage?: boolean;
+}
+
+export default function SharedFooter({
+  isPrivatePage = false,
+}: SharedFooterProps) {
   const [activeModal, setActiveModal] = useState<string | null>(null);
 
   const openModal = (modalType: string) => {
@@ -52,27 +58,28 @@ export default function SharedFooter() {
     };
   }, []);
   return (
-    <footer className="border-t-4 border-[#22c55e] bg-[#102c1b] text-white">
-      <div className="mx-auto max-w-7xl px-6 pb-6 pt-16 sm:px-8 lg:pt-20">
-        <div className="grid gap-12 border-b border-white/12 pb-14 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+    <footer className={isPrivatePage ? "bg-[#1e4a2b] py-6 text-white" : "border-t-4 border-[#22c55e] bg-[#102c1b] text-white"}>
+      <div className={isPrivatePage ? "mx-auto max-w-full px-8 lg:px-12 xl:px-16" : "mx-auto max-w-7xl px-6 pb-6 pt-16 sm:px-8 lg:pt-20"}>
+        <div className={isPrivatePage ? "mb-4 grid grid-cols-1 gap-8 border-b border-gray-600 pb-6 md:grid-cols-2 lg:ml-32 lg:grid-cols-6 xl:ml-40" : "grid gap-12 border-b border-white/12 pb-14 lg:grid-cols-12"}>
+          <div className={isPrivatePage ? "lg:col-span-2" : "lg:col-span-4"}>
             <Image
               src="/logo.svg"
               alt="Southern Pallet Recycling"
-              width={190}
+              width={isPrivatePage ? 48 : 190}
               height={48}
-              className="h-12 w-auto"
+              className={isPrivatePage ? "h-12 w-auto" : "h-12 w-auto"}
             />
-            <p className="mt-7 max-w-sm text-sm leading-7 text-white/65">
-              Quality new and recycled wooden pallets, responsive service, and
-              dependable delivery throughout the southeastern United States.
+            <p className={isPrivatePage ? "mb-6 mt-6 max-w-md text-gray-300" : "mt-7 max-w-sm text-sm leading-7 text-white/65"}>
+              {isPrivatePage
+                ? "Providing quality new and recycled wooden pallets throughout the southeastern United States since 2025."
+                : "Quality new and recycled wooden pallets, responsive service, and dependable delivery throughout the southeastern United States."}
             </p>
-            <Link
+            {!isPrivatePage && <Link
               href="/careers"
               className="mt-8 inline-flex border-b border-[#22c55e] pb-1 text-xs font-extrabold uppercase tracking-[0.2em] text-white hover:text-[#7ee29a]"
             >
               Careers at Southern Pallet
-            </Link>
+            </Link>}
           </div>
 
           <div className="lg:col-span-2">
@@ -151,7 +158,7 @@ export default function SharedFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 pt-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+        <div className={isPrivatePage ? "flex flex-col items-center justify-between border-t border-gray-600 pt-3 text-sm text-gray-400 md:flex-row" : "flex flex-col gap-4 pt-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between"}>
           <p>© 2025 Southern Pallet Company. All rights reserved.</p>
           <div className="flex gap-6">
             <button

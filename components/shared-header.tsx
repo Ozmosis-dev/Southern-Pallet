@@ -149,10 +149,26 @@ export default function SharedHeader({
 
   const mobileLinkClass =
     "border-b border-white/10 py-3 text-base font-semibold text-white/80 transition-colors hover:border-[#22c55e] hover:text-white";
+  const privateDesktopLinkClass =
+    "transition-colors hover:text-[#22c55e]";
+  const privateMobileLinkClass =
+    "py-2 transition-colors hover:text-[#22c55e]";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#173b24]/96 text-white shadow-[0_8px_30px_rgba(8,30,17,0.12)] backdrop-blur-md">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-7">
+    <header
+      className={
+        isPrivatePage
+          ? "fixed left-0 right-0 top-0 z-50 bg-[#1e4a2b] text-white shadow-lg"
+          : "fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#173b24]/96 text-white shadow-[0_8px_30px_rgba(8,30,17,0.12)] backdrop-blur-md"
+      }
+    >
+      <div
+        className={
+          isPrivatePage
+            ? "mx-auto flex h-18 max-w-7xl items-center justify-between px-4"
+            : "mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-7"
+        }
+      >
         <div className="flex items-center gap-1">
           <button
             onClick={handleLogoClick}
@@ -162,46 +178,53 @@ export default function SharedHeader({
             <Image 
               src="/logo.svg" 
               alt="Southern Pallet Recycling" 
-              width={168}
-              height={42}
-              className="h-10 w-auto"
+              width={isPrivatePage ? 32 : 168}
+              height={isPrivatePage ? 32 : 42}
+              className={isPrivatePage ? "h-8 w-auto" : "h-10 w-auto"}
             />
           </button>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Primary navigation">
+        <nav
+          className={
+            isPrivatePage
+              ? "hidden items-center gap-8 xl:flex"
+              : "hidden items-center gap-0.5 xl:flex"
+          }
+          aria-label="Primary navigation"
+        >
           <a
             href={getNavHref("products")}
             onClick={getNavClickHandler("products")}
-            className={sectionLinkClass}
+            className={isPrivatePage ? privateDesktopLinkClass : sectionLinkClass}
           >
             Products
           </a>
           <a
             href={getNavHref("services")}
             onClick={getNavClickHandler("services")}
-            className={sectionLinkClass}
+            className={isPrivatePage ? privateDesktopLinkClass : sectionLinkClass}
           >
             Services
           </a>
           <a
             href="/recycle-pallets"
-            className={routeLinkClass("/recycle-pallets")}
+            className={isPrivatePage ? privateDesktopLinkClass : routeLinkClass("/recycle-pallets")}
             aria-current={pathname === "/recycle-pallets" ? "page" : undefined}
           >
             Recycle Pallets
           </a>
           <a
             href="/blog"
-            className={routeLinkClass("/blog")}
+            className={isPrivatePage ? privateDesktopLinkClass : routeLinkClass("/blog")}
             aria-current={pathname.startsWith("/blog") ? "page" : undefined}
           >
             Blog
           </a>
           <a
             href="/careers"
-            className={routeLinkClass("/careers")}
+            className={isPrivatePage ? privateDesktopLinkClass : routeLinkClass("/careers")}
             aria-current={pathname === "/careers" ? "page" : undefined}
           >
             Careers
@@ -209,21 +232,21 @@ export default function SharedHeader({
           <a
             href={getNavHref("about")}
             onClick={getNavClickHandler("about")}
-            className={sectionLinkClass}
+            className={isPrivatePage ? privateDesktopLinkClass : sectionLinkClass}
           >
             About Us
           </a>
           <a
             href={getNavHref("delivery")}
             onClick={getNavClickHandler("delivery")}
-            className={sectionLinkClass}
+            className={isPrivatePage ? privateDesktopLinkClass : sectionLinkClass}
           >
             Delivery
           </a>
           <a
             href={getNavHref("contact")}
             onClick={getNavClickHandler("contact")}
-            className={sectionLinkClass}
+            className={isPrivatePage ? privateDesktopLinkClass : sectionLinkClass}
           >
             Contact
           </a>
@@ -232,7 +255,11 @@ export default function SharedHeader({
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="border border-white/15 p-2.5 transition-colors hover:border-[#22c55e] hover:bg-white/5 xl:hidden"
+          className={
+            isPrivatePage
+              ? "rounded-lg p-2 transition-colors hover:bg-white/10 xl:hidden"
+              : "border border-white/15 p-2.5 transition-colors hover:border-[#22c55e] hover:bg-white/5 xl:hidden"
+          }
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
@@ -243,7 +270,11 @@ export default function SharedHeader({
         {/* Mobile Navigation Backdrop */}
         {isMenuOpen && (
           <div
-            className="fixed inset-0 bg-[#071a0e]/70 backdrop-blur-sm transition-opacity xl:hidden"
+            className={
+              isPrivatePage
+                ? "fixed inset-0 bg-black/50 transition-opacity xl:hidden"
+                : "fixed inset-0 bg-[#071a0e]/70 backdrop-blur-sm transition-opacity xl:hidden"
+            }
             onClick={() => setIsMenuOpen(false)}
           />
         )}
@@ -251,43 +282,51 @@ export default function SharedHeader({
         {/* Mobile Navigation */}
         <div
           id="mobile-navigation"
-          className={`fixed right-0 top-0 h-full w-[min(22rem,88vw)] border-l border-white/10 bg-[#102c1b] shadow-[-24px_0_70px_rgba(3,18,9,0.28)] transform transition-transform duration-300 ease-in-out ${
+          className={`fixed right-0 top-0 h-full transform transition-transform duration-300 ease-in-out ${
+            isPrivatePage
+              ? "w-64 bg-[#1e4a2b] shadow-lg"
+              : "w-[min(22rem,88vw)] border-l border-white/10 bg-[#102c1b] shadow-[-24px_0_70px_rgba(3,18,9,0.28)]"
+          } ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           } xl:hidden z-[60]`}
         >
-          <div className="p-6">
+          <div className={isPrivatePage ? "p-4" : "p-6"}>
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="mb-8 border border-white/15 p-2 transition-colors hover:border-[#22c55e] hover:bg-white/5"
+              className={
+                isPrivatePage
+                  ? "mb-4 rounded-lg p-2 transition-colors hover:bg-white/10"
+                  : "mb-8 border border-white/15 p-2 transition-colors hover:border-[#22c55e] hover:bg-white/5"
+              }
               aria-label="Close navigation menu"
             >
               <X className="w-6 h-6" />
             </button>
-            <nav className="flex flex-col" aria-label="Mobile navigation">
+            <nav className={isPrivatePage ? "flex flex-col gap-4" : "flex flex-col"} aria-label="Mobile navigation">
               <a
                 href={isHomePage ? "#home" : "/"}
-                className={mobileLinkClass}
+                className={isPrivatePage ? privateMobileLinkClass : mobileLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </a>
               <a
                 href={getNavHref("products")}
-                className={mobileLinkClass}
+                className={isPrivatePage ? privateMobileLinkClass : mobileLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
               </a>
               <a
                 href={getNavHref("services")}
-                className={mobileLinkClass}
+                className={isPrivatePage ? privateMobileLinkClass : mobileLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Services
               </a>
               <a
                 href="/recycle-pallets"
-                className={mobileLinkClass}
+                className={isPrivatePage ? privateMobileLinkClass : mobileLinkClass}
                 aria-current={pathname === "/recycle-pallets" ? "page" : undefined}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -295,7 +334,7 @@ export default function SharedHeader({
               </a>
               <a
                 href="/blog"
-                className={mobileLinkClass}
+                className={isPrivatePage ? privateMobileLinkClass : mobileLinkClass}
                 aria-current={pathname.startsWith("/blog") ? "page" : undefined}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -303,7 +342,7 @@ export default function SharedHeader({
               </a>
               <a
                 href="/careers"
-                className={mobileLinkClass}
+                className={isPrivatePage ? privateMobileLinkClass : mobileLinkClass}
                 aria-current={pathname === "/careers" ? "page" : undefined}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -311,21 +350,21 @@ export default function SharedHeader({
               </a>
               <a
                 href={getNavHref("about")}
-                className={mobileLinkClass}
+                className={isPrivatePage ? privateMobileLinkClass : mobileLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us
               </a>
               <a
                 href={getNavHref("delivery")}
-                className={mobileLinkClass}
+                className={isPrivatePage ? privateMobileLinkClass : mobileLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Delivery
               </a>
               <a
                 href={getNavHref("contact")}
-                className={mobileLinkClass}
+                className={isPrivatePage ? privateMobileLinkClass : mobileLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
@@ -334,17 +373,21 @@ export default function SharedHeader({
           </div>
         </div>
 
-        <div className="hidden items-center gap-2 xl:flex">
-          <a
+        <div className={isPrivatePage ? "hidden xl:block" : "hidden items-center gap-2 xl:flex"}>
+          {!isPrivatePage && <a
             href="tel:+16017465012"
             aria-label="Call Southern Pallet at (601) 746-5012"
             className="inline-flex h-10 items-center gap-2 border border-white/30 px-4 text-xs font-semibold text-white hover:border-white hover:bg-white hover:text-[#102c1b]"
           >
             <Phone className="size-4" />
             Call (601) 746-5012
-          </a>
+          </a>}
           <Button
-            className="h-10 rounded-none bg-[#22c55e] px-5 font-bold text-[#102c1b] shadow-none hover:-translate-y-0.5 hover:bg-[#43d875] active:translate-y-px"
+            className={
+              isPrivatePage
+                ? "bg-[#22c55e] font-semibold text-black hover:bg-[#16a34a]"
+                : "h-10 rounded-none bg-[#22c55e] px-5 font-bold text-[#102c1b] shadow-none hover:-translate-y-0.5 hover:bg-[#43d875] active:translate-y-px"
+            }
             onClick={handleGetQuoteClick}
           >
             Get Quote
