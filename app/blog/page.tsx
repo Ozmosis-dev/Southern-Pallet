@@ -1,132 +1,161 @@
-import Header from "../../components/header"
-import Footer from "../../components/footer"
-import { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
-import PublicSiteShell from "../../components/public-site-shell"
+import { ArrowRight, Clock3 } from "lucide-react";
+import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import Footer from "../../components/footer";
+import Header from "../../components/header";
+import PublicSiteShell from "../../components/public-site-shell";
 
 export const metadata: Metadata = {
   title: "Pallet Blog | Pallets for Sale, Recycling & Supplier Tips",
-  description: "Explore our pallet blog for guides on buying new & used pallets, pallet recycling, supplier insights, and pallet management solutions near you.",
-  alternates: {
-    canonical: 'https://southernpallet.co/blog',
-  },
+  description:
+    "Explore our pallet blog for guides on buying new & used pallets, pallet recycling, supplier insights, and pallet management solutions near you.",
+  alternates: { canonical: "https://southernpallet.co/blog" },
   openGraph: {
     title: "Pallet Blog | Pallets for Sale, Recycling & Supplier Tips",
-    description: "Explore our pallet blog for guides on buying new & used pallets, pallet recycling, supplier insights, and pallet management solutions near you.",
-    url: 'https://southernpallet.co/blog',
-    images: ['/southern_pallet_og_image.png'],
+    description:
+      "Explore our pallet blog for guides on buying new & used pallets, pallet recycling, supplier insights, and pallet management solutions near you.",
+    url: "https://southernpallet.co/blog",
+    images: ["/southern_pallet_og_image.png"],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Pallet Blog | Pallets for Sale, Recycling & Supplier Tips',
-    description: 'Explore our pallet blog for guides on buying new & used pallets, pallet recycling, supplier insights, and pallet management solutions near you.',
-    images: ['/southern_pallet_og_image.png'],
+    card: "summary_large_image",
+    title: "Pallet Blog | Pallets for Sale, Recycling & Supplier Tips",
+    description:
+      "Explore our pallet blog for guides on buying new & used pallets, pallet recycling, supplier insights, and pallet management solutions near you.",
+    images: ["/southern_pallet_og_image.png"],
   },
-}
+};
+
+const posts = [
+  {
+    href: "/blog/where-to-buy-used-pallets",
+    title: "Where to buy used pallets near you",
+    description:
+      "How to compare local sources, evaluate quality, and find a dependable recycled pallet supplier.",
+    image: "/recyled_pallet_card.jpg",
+    alt: "Stacks of inspected recycled wooden pallets",
+    readTime: "5 min read",
+    topic: "Buying guide",
+  },
+  {
+    href: "/blog/pallet-recycling-environmental-benefits",
+    title: "The environmental value of pallet recycling",
+    description:
+      "How recovery programs reduce waste, conserve material, and support practical sustainability goals.",
+    image: "/recyle_pallet_hero.jpg",
+    alt: "Wood pallets stacked at a recycling facility",
+    readTime: "6 min read",
+    topic: "Sustainability",
+  },
+  {
+    href: "/blog/cost-effective-pallet-management-strategies",
+    title: "Cost-effective pallet management strategies",
+    description:
+      "Practical ways to reduce procurement, storage, repair, and transportation costs without sacrificing quality.",
+    image: "/stack.svg",
+    alt: "Organized wooden pallets ready for distribution",
+    readTime: "7 min read",
+    topic: "Operations",
+  },
+];
 
 export default function BlogPage() {
+  const [featured, ...supporting] = posts;
+
   return (
     <PublicSiteShell>
       <Header />
-      <main className="max-w-7xl mx-auto px-4 py-20">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Southern Pallet Blog
-          </h1>
-          
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Welcome to our blog. Here we share insights on pallets for sale, pallet recycling, and pallet supplier tips to help businesses manage pallets better.
-          </p>
-        </div>
+      <main data-blog-index="true" className="bg-[var(--sp-paper)] pt-20">
+        <section className="sp-grid border-b border-[var(--sp-rule)] bg-[var(--sp-cream)] py-20 lg:py-28">
+          <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end lg:px-10">
+            <div>
+              <p className="sp-eyebrow text-[var(--sp-green-dark)]">Southern Pallet field notes</p>
+              <h1 className="sp-display mt-5 max-w-2xl text-5xl text-[var(--sp-forest)] sm:text-6xl">
+                Practical guidance for better pallet operations.
+              </h1>
+            </div>
+            <p className="max-w-xl text-base leading-7 text-[var(--sp-ink)]/68 lg:justify-self-end">
+              Guides on sourcing pallets, managing inventory, controlling cost,
+              and building a more responsible recovery program.
+            </p>
+          </div>
+        </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Blog Post 1 */}
-          <Link href="/blog/where-to-buy-used-pallets" className="block">
-            <article className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-              <div className="h-48 relative overflow-hidden">
-                <Image 
-                  src="/recyled_pallet_card.jpg" 
-                  alt="Stacked recycled wooden pallets showing cost-effective used pallet options for businesses" 
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Where to Buy Used Pallets Near Me
-                </h3>
-                <p className="text-gray-600 mb-4 line-clamp-3">
-                  Learn the best places to buy used pallets near you. Southern Pallet supplies recycled pallets with fast delivery, affordable prices, and trusted quality.
+        <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+          <Link
+            href={featured.href}
+            className="group grid border border-[var(--sp-rule)] lg:grid-cols-[1.15fr_0.85fr]"
+          >
+            <div className="relative min-h-[360px] overflow-hidden lg:min-h-[560px]">
+              <Image
+                src={featured.image}
+                alt={featured.alt}
+                fill
+                priority
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                sizes="(min-width: 1024px) 58vw, 100vw"
+              />
+            </div>
+            <article className="flex flex-col justify-between bg-[var(--sp-forest)] p-7 text-white sm:p-10">
+              <div>
+                <p className="sp-eyebrow text-[var(--sp-green)]">{featured.topic}</p>
+                <h2 className="mt-6 text-3xl font-semibold sm:text-4xl">
+                  {featured.title}
+                </h2>
+                <p className="mt-5 max-w-md text-base leading-7 text-white/68">
+                  {featured.description}
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">5 min read</span>
-                  <span className="text-blue-600 hover:text-blue-800 font-medium">
-                    Read More →
-                  </span>
-                </div>
+              </div>
+              <div className="mt-12 flex items-center justify-between border-t border-white/20 pt-6">
+                <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-white/60">
+                  <Clock3 className="size-4 text-[var(--sp-green)]" />
+                  {featured.readTime}
+                </span>
+                <ArrowRight className="size-5 text-[var(--sp-green)] transition-transform group-hover:translate-x-1" />
               </div>
             </article>
           </Link>
 
-          {/* Blog Post 2 */}
-          <Link href="/blog/pallet-recycling-environmental-benefits" className="block">
-            <article className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-              <div className="h-48 relative overflow-hidden">
-                <Image 
-                  src="/recyle_pallet_hero.jpg" 
-                  alt="Professional pallet recycling process showing environmental sustainability and green business practices" 
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Pallet Recycling Environmental Benefits
-                </h3>
-                <p className="text-gray-600 mb-4 line-clamp-3">
-                  Discover the environmental benefits of pallet recycling. Learn how Southern Pallet&apos;s recycling program reduces waste, saves trees, and supports sustainable business practices.
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">6 min read</span>
-                  <span className="text-blue-600 hover:text-blue-800 font-medium">
-                    Read More →
-                  </span>
+          <div className="mt-10 grid border-l border-t border-[var(--sp-rule)] md:grid-cols-2">
+            {supporting.map((post, index) => (
+              <Link
+                key={post.href}
+                href={post.href}
+                className="group grid border-b border-r border-[var(--sp-rule)] sm:grid-cols-[0.85fr_1.15fr]"
+              >
+                <div className="relative min-h-[240px] overflow-hidden">
+                  <Image
+                    src={post.image}
+                    alt={post.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                    sizes="(min-width: 768px) 25vw, 100vw"
+                  />
                 </div>
-              </div>
-            </article>
-          </Link>
-
-          {/* Blog Post 3 */}
-          <Link href="/blog/cost-effective-pallet-management-strategies" className="block">
-            <article className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-              <div className="h-48 relative overflow-hidden">
-                <Image 
-                  src="/recyle_pallet_hero.jpg" 
-                  alt="High-quality wooden pallets stacked professionally demonstrating cost-effective pallet management and optimization strategies" 
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Cost-Effective Pallet Management Strategies
-                </h3>
-                <p className="text-gray-600 mb-4 line-clamp-3">
-                  Learn proven strategies to reduce pallet costs while maintaining quality. Discover Southern Pallet&apos;s cost-effective pallet management solutions for businesses of all sizes.
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">7 min read</span>
-                  <span className="text-blue-600 hover:text-blue-800 font-medium">
-                    Read More →
-                  </span>
-                </div>
-              </div>
-            </article>
-          </Link>
-        </div>
+                <article className="flex flex-col justify-between p-7">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--sp-green-dark)]">
+                      0{index + 2} · {post.topic}
+                    </p>
+                    <h2 className="mt-4 text-xl font-semibold text-[var(--sp-forest)]">
+                      {post.title}
+                    </h2>
+                    <p className="mt-3 text-sm leading-6 text-[var(--sp-ink)]/65">
+                      {post.description}
+                    </p>
+                  </div>
+                  <p className="mt-8 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--sp-sage)]">
+                    <Clock3 className="size-4 text-[var(--sp-green-dark)]" />
+                    {post.readTime}
+                  </p>
+                </article>
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
       <Footer />
     </PublicSiteShell>
-  )
+  );
 }

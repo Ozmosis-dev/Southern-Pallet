@@ -10,6 +10,7 @@
     "test:navigation": "node scripts/check-header-navigation.mjs",
     "test:design": "node scripts/check-public-design.mjs",
     "test:typography": "node scripts/check-public-typography.mjs",
+    "test:blog": "node scripts/check-blog-editorial.mjs",
     "test:forms": "node --import tsx --test app/api/lead-routing.test.ts app/api/careers/route.test.ts lib/form-redirect.test.ts"
   },
   "dependencies": {

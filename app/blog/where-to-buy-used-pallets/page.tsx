@@ -1,9 +1,6 @@
-import Header from "../../../components/header"
-import Footer from "../../../components/footer"
 import { Metadata } from "next"
-import Image from "next/image"
+import BlogArticleShell from "../../../components/blog-article-shell"
 import Link from "next/link"
-import PublicSiteShell from "../../../components/public-site-shell"
 
 export const metadata: Metadata = {
   title: "Where to Buy Used Pallets Near Me | Southern Pallet Supplier",
@@ -27,29 +24,14 @@ export const metadata: Metadata = {
 
 export default function WhereToBuyUsedPalletsPage() {
   return (
-    <PublicSiteShell>
-      <Header />
-      <main className="max-w-3xl mx-auto px-4 py-20">
-        <div className="mb-8">
-          <Link href="/blog" className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
-            ← Back to Blog
-          </Link>
-        </div>
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Where to Buy Used Pallets Near Me
-          </h1>
-          
-          <Image 
-            src="/recyled_pallet_card.jpg" 
-            alt="Quality used wooden pallets stacked in warehouse showing affordable pallet options for businesses seeking cost-effective solutions" 
-            width={800}
-            height={600}
-            className="rounded-lg shadow-lg w-full max-w-4xl mx-auto"
-          />
-        </div>
-
-                <div className="prose prose-lg max-w-none">
+    <BlogArticleShell
+      title="Where to buy used pallets near you"
+      description="How to compare local sources, evaluate pallet quality, and find a dependable recycled pallet supplier."
+      image="/recyled_pallet_card.jpg"
+      imageAlt="Quality used wooden pallets stacked in a warehouse"
+      readTime="5 min read"
+    >
+        <div className="prose prose-lg max-w-none">
           <p className="text-xl text-gray-700 mb-12 leading-relaxed">
             Businesses across industries are discovering the cost-saving benefits of used pallets. Whether you&apos;re managing a warehouse, running a distribution center, or operating a small business, finding quality used pallets can significantly reduce your operational expenses while supporting sustainability goals.
           </p>
@@ -125,7 +107,7 @@ export default function WhereToBuyUsedPalletsPage() {
           </ul>
 
           <p className="text-lg text-gray-700 mb-12 leading-relaxed">
-            Learn more about our <a href="/recycle-pallets" className="text-blue-600 hover:text-blue-800 underline font-medium">pallet recycling solutions</a> and how we ensure quality standards.
+            Learn more about our <Link href="/recycle-pallets" className="text-blue-600 hover:text-blue-800 underline font-medium">pallet recycling solutions</Link> and how we ensure quality standards.
           </p>
 
           <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">New vs. Used Pallets: Which Should You Choose?</h2>
@@ -171,11 +153,9 @@ export default function WhereToBuyUsedPalletsPage() {
         <div className="bg-green-50 border border-green-200 rounded-lg p-6 my-8">
           <h3 className="text-xl font-semibold mb-2">Ready to get started with quality used pallets?</h3>
           <p>Request a quote today by calling us or visiting our location. Our team is ready to help.</p>
-          <a href="/contact" className="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Request a Quote</a>
+          <Link href="/#contact" className="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Request a Quote</Link>
         </div>
         </div>
-      </main>
-      <Footer />
-    </PublicSiteShell>
+    </BlogArticleShell>
   )
 }
