@@ -7,6 +7,7 @@ import RecycleCTASection from "../../components/recycle-cta-section";
 import RecycleFooter from "../../components/recycle-footer";
 import { Metadata } from "next";
 import Script from "next/script";
+import PublicSiteShell from "../../components/public-site-shell";
 
 export const metadata: Metadata = {
   title: "Recycle Wood Pallets | Used Pallet Recycling Near Me Supplier",
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
 
 export default function RecyclePalletsPage() {
   return (
-    <div className="min-h-screen">
+    <PublicSiteShell>
       {/* Page-specific Schema for Recycling Service */}
       <Script
         id="schema-recycle-service"
@@ -77,6 +78,6 @@ export default function RecyclePalletsPage() {
       <RecycleProcessSection />
       <RecycleCTASection />
       <RecycleFooter />
-    </div>
+    </PublicSiteShell>
   );
 }

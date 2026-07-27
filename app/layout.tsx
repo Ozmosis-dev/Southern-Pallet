@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Barlow_Condensed,
+  Geist,
+  Geist_Mono,
+  Manrope,
+} from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
@@ -11,6 +16,19 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const publicBody = Manrope({
+  variable: "--font-public-body",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const publicDisplay = Barlow_Condensed({
+  variable: "--font-public-display",
+  subsets: ["latin"],
+  weight: ["600", "700", "800", "900"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -221,7 +239,7 @@ export default function RootLayout({
 
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${publicBody.variable} ${publicDisplay.variable} antialiased`}
       >
         {/* Google Tag Manager (noscript) */}
         {gtmId && (

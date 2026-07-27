@@ -3,6 +3,7 @@ import Footer from "../../components/footer"
 import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import PublicSiteShell from "../../components/public-site-shell"
 
 export const metadata: Metadata = {
   title: "Pallet Blog | Pallets for Sale, Recycling & Supplier Tips",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen">
+    <PublicSiteShell>
       <Header />
       <main className="max-w-7xl mx-auto px-4 py-20">
         <div className="text-center mb-16">
@@ -126,6 +127,6 @@ export default function BlogPage() {
         </div>
       </main>
       <Footer />
-    </div>
+    </PublicSiteShell>
   )
 }

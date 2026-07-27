@@ -4,6 +4,7 @@ import { ArrowDown, MapPin } from "lucide-react";
 import SharedHeader from "@/components/shared-header";
 import SharedFooter from "@/components/shared-footer";
 import CareersApplicationForm from "@/components/careers-application-form";
+import PublicSiteShell from "@/components/public-site-shell";
 
 export const metadata: Metadata = {
   title: "General Employment Application",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function CareersPage() {
   return (
-    <div className="min-h-screen bg-[#f3f0e7]">
+    <PublicSiteShell className="bg-[#f3f0e7]">
       <SharedHeader />
 
       <main>
@@ -103,6 +104,6 @@ export default function CareersPage() {
       </main>
 
       <SharedFooter />
-    </div>
+    </PublicSiteShell>
   );
 }

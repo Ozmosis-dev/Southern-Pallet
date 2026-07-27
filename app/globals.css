@@ -120,3 +120,98 @@
     @apply bg-background text-foreground;
   }
 }
+
+.public-site {
+  --sp-forest: #173b24;
+  --sp-forest-deep: #102c1b;
+  --sp-green: #22c55e;
+  --sp-green-dark: #168344;
+  --sp-cream: #f3f0e7;
+  --sp-paper: #fffef9;
+  --sp-ink: #183523;
+  --sp-sage: #647168;
+  --sp-rule: #bdc8bd;
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--sp-cream);
+  color: var(--sp-ink);
+  font-family: var(--font-public-body), sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+.public-site :is(h1, h2, h3, .font-display) {
+  font-family: var(--font-public-display), sans-serif;
+  text-wrap: balance;
+}
+
+.public-site p {
+  text-wrap: pretty;
+}
+
+.public-site :is(a, button, input, select, textarea) {
+  transition-duration: 220ms;
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.public-site :is(a, button):active {
+  transform: translateY(1px);
+}
+
+.public-site :is(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--sp-green) 65%, white);
+  outline-offset: 3px;
+}
+
+.public-site .sp-grid {
+  background-color: var(--sp-cream);
+  background-image:
+    linear-gradient(rgb(23 59 36 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(23 59 36 / 4%) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.public-site .sp-diagonal {
+  background-image: repeating-linear-gradient(
+    120deg,
+    transparent 0,
+    transparent 54px,
+    rgb(255 255 255 / 7%) 55px,
+    transparent 56px
+  );
+}
+
+.public-site .sp-eyebrow {
+  color: var(--sp-green-dark);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.public-site .sp-display {
+  font-family: var(--font-public-display), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.public-site .sp-section-rule {
+  border-color: var(--sp-rule);
+}
+
+.public-site .sp-paper-shadow {
+  box-shadow: 0 24px 70px rgb(25 54 35 / 12%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .public-site *,
+  .public-site *::before,
+  .public-site *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

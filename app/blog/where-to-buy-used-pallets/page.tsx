@@ -3,6 +3,7 @@ import Footer from "../../../components/footer"
 import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import PublicSiteShell from "../../../components/public-site-shell"
 
 export const metadata: Metadata = {
   title: "Where to Buy Used Pallets Near Me | Southern Pallet Supplier",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function WhereToBuyUsedPalletsPage() {
   return (
-    <div className="min-h-screen">
+    <PublicSiteShell>
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-20">
         <div className="mb-8">
@@ -175,6 +176,6 @@ export default function WhereToBuyUsedPalletsPage() {
         </div>
       </main>
       <Footer />
-    </div>
+    </PublicSiteShell>
   )
 }

@@ -9,6 +9,7 @@ import FAQSection from "../components/faq-section"
 import ContactSection from "../components/contact-section"
 import Footer from "../components/footer"
 import { Metadata } from "next"
+import PublicSiteShell from "../components/public-site-shell"
 
 export const metadata: Metadata = {
   title: "Pallets for Sale Near Me | Used & New Wood Pallets Supplier",
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="min-h-screen">
+    <PublicSiteShell>
       <Header />
       <HeroSection />
       <AboutSection />
@@ -43,6 +44,6 @@ export default function Page() {
       <FAQSection />
       <ContactSection />
       <Footer />
-    </div>
+    </PublicSiteShell>
   )
 }

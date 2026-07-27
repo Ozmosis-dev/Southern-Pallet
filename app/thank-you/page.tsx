@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Phone, Mail } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
+import PublicSiteShell from "@/components/public-site-shell";
 
 export const metadata: Metadata = {
   title: "Your Pallet Inquiry has been Received",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function ThankYouPage() {
   return (
-          <div className="min-h-screen bg-[#1e4a2b] text-white flex items-center justify-center px-6">
+    <PublicSiteShell className="bg-[#1e4a2b] text-white flex items-center justify-center px-6">
       <div className="max-w-2xl mx-auto text-center">
         <div className="mb-8">
           <CheckCircle className="w-20 h-20 text-[#22c55e] mx-auto mb-6" />
@@ -114,6 +115,6 @@ export default function ThankYouPage() {
           Most quotes are returned within 1 hour • Most deliveries within 24 hours
         </p>
       </div>
-    </div>
+    </PublicSiteShell>
   );
 } 
