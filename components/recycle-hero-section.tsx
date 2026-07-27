@@ -32,17 +32,17 @@ export default function RecycleHeroSection() {
             straightforward quotes and pickup support that keeps excess
             inventory moving.
           </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-2">
             <button
               type="button"
               onClick={scrollToForm}
-              className="inline-flex min-h-12 items-center justify-center gap-3 bg-[var(--sp-green)] px-7 text-sm font-bold uppercase tracking-[0.1em] text-[var(--sp-forest-deep)] hover:bg-white"
+              className="inline-flex min-h-12 shrink-0 items-center justify-center gap-3 whitespace-nowrap bg-[var(--sp-green)] px-5 text-sm font-bold uppercase tracking-[0.1em] text-[var(--sp-forest-deep)] hover:bg-white xl:px-7"
             >
               Get a pallet quote <ArrowDown className="size-4" />
             </button>
             <Link
               href="/#services"
-              className="inline-flex min-h-12 items-center justify-center gap-3 border border-white/45 px-7 text-sm font-bold uppercase tracking-[0.1em] text-white hover:bg-white hover:text-[var(--sp-forest-deep)]"
+              className="inline-flex min-h-12 shrink-0 items-center justify-center gap-3 whitespace-nowrap border border-white/45 px-5 text-sm font-bold uppercase tracking-[0.1em] text-white hover:bg-white hover:text-[var(--sp-forest-deep)] xl:px-7"
             >
               View all services <ArrowRight className="size-4" />
             </Link>

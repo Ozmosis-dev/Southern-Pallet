@@ -173,6 +173,12 @@
   background-size: 42px 42px;
 }
 
+.public-site .sp-grid.sp-grid-delivery {
+  background-image:
+    linear-gradient(rgb(23 59 36 / 7%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(23 59 36 / 7%) 1px, transparent 1px);
+}
+
 .public-site .sp-diagonal {
   background-image: repeating-linear-gradient(
     120deg,

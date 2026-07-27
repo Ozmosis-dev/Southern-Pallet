@@ -19,7 +19,7 @@ export default function DeliverySection() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   return (
-    <section id="delivery" className="sp-grid bg-[var(--sp-paper)] py-24 lg:py-32">
+    <section id="delivery" className="sp-grid sp-grid-delivery bg-[var(--sp-paper)] py-24 lg:py-32">
       <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-10">
         <div className="flex flex-col justify-center">
           <p className="sp-eyebrow text-[var(--sp-green-dark)]">Regional fleet</p>
