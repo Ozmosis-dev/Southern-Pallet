@@ -21,6 +21,7 @@ const routes = [
     homeHref: "/",
   },
   { path: "/recycle-pallets", sectionPrefix: "/#", homeHref: "/" },
+  { path: "/careers", sectionPrefix: "/#", homeHref: "/" },
 ];
 
 const sectionLinks = [
@@ -63,6 +64,16 @@ for (const route of routes) {
   assert.ok(
     homeHrefs.every((href) => href === route.homeHref),
     `${route.path} Home links should target ${route.homeHref}; received ${homeHrefs.join(", ")}`,
+  );
+
+  const careersHrefs = getLinkHrefs(html, "Careers");
+  assert.ok(
+    careersHrefs.length > 0,
+    `${route.path} should render the Careers link`,
+  );
+  assert.ok(
+    careersHrefs.every((href) => href === "/careers"),
+    `${route.path} Careers links should target /careers; received ${careersHrefs.join(", ")}`,
   );
 }
 

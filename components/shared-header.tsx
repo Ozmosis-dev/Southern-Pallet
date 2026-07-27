@@ -153,7 +153,7 @@ export default function SharedHeader({
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-8">
           <a
             href={getNavHref("products")}
             onClick={getNavClickHandler("products")}
@@ -181,6 +181,12 @@ export default function SharedHeader({
             Blog
           </a>
           <a
+            href="/careers"
+            className="hover:text-[#22c55e] transition-colors"
+          >
+            Careers
+          </a>
+          <a
             href={getNavHref("about")}
             onClick={getNavClickHandler("about")}
             className="hover:text-[#22c55e] transition-colors"
@@ -206,7 +212,10 @@ export default function SharedHeader({
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
+          className="xl:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
         >
           <Menu className="w-6 h-6" />
         </button>
@@ -214,21 +223,23 @@ export default function SharedHeader({
         {/* Mobile Navigation Backdrop */}
         {isMenuOpen && (
           <div
-            className="fixed inset-0 bg-black/50 transition-opacity md:hidden"
+            className="fixed inset-0 bg-black/50 transition-opacity xl:hidden"
             onClick={() => setIsMenuOpen(false)}
           />
         )}
 
         {/* Mobile Navigation */}
         <div
+          id="mobile-navigation"
           className={`fixed top-0 right-0 h-full w-64 bg-[#1e4a2b] shadow-lg transform transition-transform duration-300 ease-in-out ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
-          } md:hidden z-[60]`}
+          } xl:hidden z-[60]`}
         >
           <div className="p-4">
             <button
               onClick={() => setIsMenuOpen(false)}
               className="mb-4 p-2 hover:bg-white/10 rounded-lg transition-colors"
+              aria-label="Close navigation menu"
             >
               <X className="w-6 h-6" />
             </button>
@@ -269,6 +280,13 @@ export default function SharedHeader({
                 Blog
               </a>
               <a
+                href="/careers"
+                className="hover:text-[#22c55e] transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Careers
+              </a>
+              <a
                 href={getNavHref("about")}
                 className="hover:text-[#22c55e] transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
@@ -294,7 +312,7 @@ export default function SharedHeader({
         </div>
 
         <Button
-          className="hidden md:inline-flex bg-[#22c55e] text-black hover:bg-[#16a34a] font-semibold"
+          className="hidden xl:inline-flex bg-[#22c55e] text-black hover:bg-[#16a34a] font-semibold"
           onClick={handleGetQuoteClick}
         >
           Get Quote
