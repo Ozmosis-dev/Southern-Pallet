@@ -1,6 +1,6 @@
 # Southern Pallet — website
 
-Marketing site for Southern Pallet (southernpallet.co / southernpalletcompany.com). Next.js (App Router), React 19, Tailwind CSS 4. No database, no server-side data storage — it's a static/marketing site with two lead-capture forms.
+Marketing site for Southern Pallet (southernpallet.co / southernpalletcompany.com). Next.js (App Router), React 19, Tailwind CSS 4. No database, no server-side data storage — it's a static/marketing site with three submission forms.
 
 ## Stack
 
@@ -34,7 +34,8 @@ See `env.example.txt` for the full list with comments. Summary:
 | Variable | Purpose | Required? |
 |---|---|---|
 | `RESEND_API_KEY` | Server-side API key for email delivery | Required for Resend |
-| `LEAD_NOTIFICATION_EMAIL` | Inbox that receives both lead types | Required for Resend |
+| `LEAD_NOTIFICATION_EMAIL` | Inbox that receives quote and recycling leads | Required for those Resend forms |
+| `CAREERS_NOTIFICATION_EMAIL` | Separate inbox that receives career applications | Required for career delivery |
 | `LEAD_FROM_EMAIL` | Verified sender identity used by Resend | Required for Resend |
 | `LEAD_WEBHOOK_URL` | Optional secondary destination for lead JSON | No |
 | `LEAD_DELIVERY_TIMEOUT_MS` | Outbound delivery timeout; defaults to 8000 ms | No |
@@ -46,12 +47,15 @@ lead-delivery channel must be configured before the forms can report success.
 
 ## Forms & lead capture
 
-There are two forms, both under `app/api/*/route.ts`:
+There are three forms under `app/api/*/route.ts`:
 
 - **Contact / quote request** (`app/api/contact/route.ts`) — the main form at the bottom of the homepage.
 - **Recycle / sell pallets** (`app/api/recycle/route.ts`) — the form on the recycle page.
+- **General employment application** (`app/api/careers/route.ts`) — the
+  application on `/careers`, including an optional PDF, DOC, or DOCX resume up
+  to 5 MB.
 
-Both routes validate their required contact fields and pass the lead to a shared
+All routes validate their required fields and pass the submission to a shared
 server-only delivery module:
 
 - When `RESEND_API_KEY`, `LEAD_NOTIFICATION_EMAIL`, and `LEAD_FROM_EMAIL` are
@@ -59,13 +63,16 @@ server-only delivery module:
   used as Reply-To.
 - When `LEAD_WEBHOOK_URL` is set, the same lead is also posted there as JSON.
   Zapier, Make, or a custom endpoint can use this optional secondary channel.
+  Career applications are email-only and are never sent to the webhook.
+- Career applications use `CAREERS_NOTIFICATION_EMAIL`, so employment
+  submissions remain separate from sales and recycling leads.
 - If neither channel is configured, the API returns `503` instead of showing a
   false success. If every configured channel fails, it returns `502`.
 - Resend requests use an idempotency key to prevent duplicate notification
   emails on a retry, and every delivery attempt has a bounded timeout.
-- Both forms include a server-checked honeypot. The linked Vercel project also
-  rate-limits POST requests to `/api/contact` and `/api/recycle` to five per IP
-  every ten minutes.
+- All three forms include a server-checked honeypot. The linked Vercel project
+  also rate-limits POST requests to `/api/contact`, `/api/recycle`, and
+  `/api/careers` to five per IP every ten minutes.
 - Thank-you redirects keep conversion and UTM attribution in the URL without
   exposing names, email addresses, phone numbers, or messages.
 
@@ -76,8 +83,9 @@ webhook are the delivery paths.
 
 1. Add Resend from the Vercel Marketplace or create a Resend account directly.
 2. Verify the sending domain in Resend by adding its SPF and DKIM DNS records.
-3. Add `RESEND_API_KEY`, `LEAD_NOTIFICATION_EMAIL`, and `LEAD_FROM_EMAIL` to the
-   Vercel project's Production, Preview, and Development environments as needed.
+3. Add `RESEND_API_KEY`, `LEAD_NOTIFICATION_EMAIL`,
+   `CAREERS_NOTIFICATION_EMAIL`, and `LEAD_FROM_EMAIL` to the Vercel project's
+   Production, Preview, and Development environments as needed.
 4. Redeploy after the variables are set.
 
 For production recipients, Resend requires `LEAD_FROM_EMAIL` to use a verified

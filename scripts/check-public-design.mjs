@@ -21,6 +21,13 @@ for (const route of publicRoutes) {
     /data-public-site="true"/,
     `${route} should opt into the public design system`,
   );
+  if (route === "/thank-you") {
+    assert.match(
+      html,
+      /data-submission-confirmation="true"/,
+      "the thank-you route should use the shared submission confirmation layout",
+    );
+  }
 }
 
 const privateResponse = await fetch(`${baseUrl}/private/business-plan`);

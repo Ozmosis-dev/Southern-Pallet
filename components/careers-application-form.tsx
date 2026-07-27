@@ -14,9 +14,9 @@ const ALLOWED_RESUME_TYPES = new Set([
 ]);
 
 const fieldClassName =
-  "h-12 rounded-none border-[#b8c3b9] bg-white px-4 text-[#183523] shadow-none focus-visible:border-[#1e4a2b] focus-visible:ring-[#1e4a2b]/15";
+  "h-12 rounded-none border-[var(--sp-rule)] bg-white px-4 text-[var(--sp-ink)] shadow-none focus-visible:border-[var(--sp-forest)] focus-visible:ring-[var(--sp-forest)]/15";
 const selectClassName =
-  "h-12 w-full rounded-none border border-[#b8c3b9] bg-white px-4 text-sm text-[#183523] outline-none transition focus:border-[#1e4a2b] focus:ring-3 focus:ring-[#1e4a2b]/15";
+  "h-12 w-full rounded-none border border-[var(--sp-rule)] bg-white px-4 text-sm text-[var(--sp-ink)] outline-none transition focus:border-[var(--sp-forest)] focus:ring-3 focus:ring-[var(--sp-forest)]/15";
 
 function FieldLabel({
   children,
@@ -30,10 +30,10 @@ function FieldLabel({
   return (
     <label
       htmlFor={htmlFor}
-      className="mb-2 block text-xs font-bold uppercase tracking-[0.14em] text-[#35533f]"
+      className="mb-2 block text-xs font-bold uppercase tracking-[0.12em] text-[var(--sp-forest)]/82"
     >
       {children}
-      {required && <span className="ml-1 text-[#168344]">*</span>}
+      {required && <span className="ml-1 text-[var(--sp-green-dark)]">*</span>}
     </label>
   );
 }
@@ -104,28 +104,19 @@ export default function CareersApplicationForm() {
   return (
     <section
       id="application"
-      className="relative bg-[#f3f0e7] px-5 py-16 sm:px-8 lg:py-24"
+      className="sp-grid relative bg-[var(--sp-cream)] px-5 py-16 sm:px-8 lg:py-24"
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.035]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#1e4a2b 1px, transparent 1px), linear-gradient(90deg, #1e4a2b 1px, transparent 1px)",
-          backgroundSize: "42px 42px",
-        }}
-      />
-
       <div className="relative mx-auto max-w-6xl">
-        <div className="mb-10 grid gap-6 border-b border-[#bdc8bd] pb-10 lg:grid-cols-[1fr_1.2fr] lg:items-end">
+        <div className="mb-10 grid gap-6 border-b border-[var(--sp-rule)] pb-10 lg:grid-cols-[1fr_1.2fr] lg:items-end">
           <div>
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-[#168344]">
+            <p className="sp-eyebrow mb-3 text-[var(--sp-green-dark)]">
               General application
             </p>
-            <h2 className="max-w-xl text-3xl font-semibold tracking-[-0.025em] text-[#183523] sm:text-4xl">
+            <h2 className="max-w-xl text-3xl font-semibold tracking-[-0.025em] text-[var(--sp-forest)] sm:text-4xl">
               Tell us where you can make an impact.
             </h2>
           </div>
-          <p className="max-w-2xl text-base leading-7 text-[#526258]">
+          <p className="max-w-2xl text-base leading-7 text-[var(--sp-ink)]/68">
             Complete the application below. If your background aligns with a
             current or future opportunity, a member of the Southern Pallet team
             will contact you.
@@ -136,7 +127,7 @@ export default function CareersApplicationForm() {
           <div
             role="status"
             aria-live="polite"
-            className="mb-8 flex items-start gap-4 border border-[#7db58c] bg-[#e4f4e8] p-5 text-[#164527]"
+            className="mb-8 flex items-start gap-4 border border-[var(--sp-green-dark)]/45 bg-[var(--sp-green)]/10 p-5 text-[var(--sp-forest)]"
           >
             <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0" />
             <div>
@@ -152,7 +143,7 @@ export default function CareersApplicationForm() {
         <form
           onSubmit={handleSubmit}
           encType="multipart/form-data"
-          className="border-t-4 border-[#22c55e] bg-white shadow-[0_24px_70px_rgba(25,54,35,0.12)]"
+          className="sp-paper-shadow border-t-4 border-[var(--sp-green)] bg-white"
         >
           <div
             className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
@@ -168,16 +159,16 @@ export default function CareersApplicationForm() {
             />
           </div>
 
-          <div className="border-b border-[#d8dfd8] px-6 py-8 sm:px-10">
+          <div className="border-b border-[var(--sp-rule)]/60 px-6 py-8 sm:px-10">
             <div className="flex items-center gap-4">
-              <span className="flex h-10 w-10 items-center justify-center bg-[#1e4a2b] text-sm font-black text-white">
+              <span className="flex h-10 w-10 items-center justify-center bg-[var(--sp-forest)] text-sm font-bold text-white">
                 01
               </span>
               <div>
-                <h3 className="text-xl font-semibold text-[#183523]">
+                <h3 className="text-xl font-semibold text-[var(--sp-forest)]">
                   Opportunity preferences
                 </h3>
-                <p className="mt-1 text-sm text-[#647168]">
+                <p className="mt-1 text-sm text-[var(--sp-sage)]">
                   Tell us what kind of work and location interest you.
                 </p>
               </div>
@@ -220,16 +211,16 @@ export default function CareersApplicationForm() {
             </div>
           </div>
 
-          <div className="border-b border-[#d8dfd8] px-6 py-8 sm:px-10">
+          <div className="border-b border-[var(--sp-rule)]/60 px-6 py-8 sm:px-10">
             <div className="flex items-center gap-4">
-              <span className="flex h-10 w-10 items-center justify-center bg-[#1e4a2b] text-sm font-black text-white">
+              <span className="flex h-10 w-10 items-center justify-center bg-[var(--sp-forest)] text-sm font-bold text-white">
                 02
               </span>
               <div>
-                <h3 className="text-xl font-semibold text-[#183523]">
+                <h3 className="text-xl font-semibold text-[var(--sp-forest)]">
                   Applicant information
                 </h3>
-                <p className="mt-1 text-sm text-[#647168]">
+                <p className="mt-1 text-sm text-[var(--sp-sage)]">
                   Fields marked with an asterisk are required.
                 </p>
               </div>
@@ -345,14 +336,14 @@ export default function CareersApplicationForm() {
 
           <div className="px-6 py-8 sm:px-10">
             <div className="flex items-center gap-4">
-              <span className="flex h-10 w-10 items-center justify-center bg-[#1e4a2b] text-sm font-black text-white">
+              <span className="flex h-10 w-10 items-center justify-center bg-[var(--sp-forest)] text-sm font-bold text-white">
                 03
               </span>
               <div>
-                <h3 className="text-xl font-semibold text-[#183523]">
+                <h3 className="text-xl font-semibold text-[var(--sp-forest)]">
                   Availability and experience
                 </h3>
-                <p className="mt-1 text-sm text-[#647168]">
+                <p className="mt-1 text-sm text-[var(--sp-sage)]">
                   Add any details that help us understand your background.
                 </p>
               </div>
@@ -406,7 +397,7 @@ export default function CareersApplicationForm() {
                   id="experience"
                   name="experience"
                   rows={5}
-                  className="min-h-32 rounded-none border-[#b8c3b9] bg-white px-4 py-3 text-[#183523] shadow-none focus-visible:border-[#1e4a2b] focus-visible:ring-[#1e4a2b]/15"
+                  className="min-h-32 rounded-none border-[var(--sp-rule)] bg-white px-4 py-3 text-[var(--sp-ink)] shadow-none focus-visible:border-[var(--sp-forest)] focus-visible:ring-[var(--sp-forest)]/15"
                   placeholder="Share work history, equipment experience, certifications, or other relevant qualifications."
                 />
               </div>
@@ -414,13 +405,13 @@ export default function CareersApplicationForm() {
                 <FieldLabel htmlFor="resume">Resume (optional)</FieldLabel>
                 <label
                   htmlFor="resume"
-                  className="flex min-h-28 cursor-pointer flex-col items-center justify-center border border-dashed border-[#8da091] bg-[#f7f8f4] px-5 py-6 text-center transition hover:border-[#168344] hover:bg-[#f0f6ef]"
+                  className="flex min-h-28 cursor-pointer flex-col items-center justify-center border border-dashed border-[var(--sp-sage)]/65 bg-[var(--sp-cream)]/55 px-5 py-6 text-center transition hover:border-[var(--sp-green-dark)] hover:bg-[var(--sp-cream)]"
                 >
-                  <FileText className="mb-2 h-6 w-6 text-[#168344]" />
-                  <span className="text-sm font-bold text-[#294734]">
+                  <FileText className="mb-2 h-6 w-6 text-[var(--sp-green-dark)]" />
+                  <span className="text-sm font-bold text-[var(--sp-forest)]">
                     {resumeName || "Choose a resume file"}
                   </span>
-                  <span className="mt-1 text-xs text-[#6b766e]">
+                  <span className="mt-1 text-xs text-[var(--sp-sage)]">
                     PDF, DOC, or DOCX · 5 MB maximum
                   </span>
                   <input
@@ -437,34 +428,34 @@ export default function CareersApplicationForm() {
               </div>
             </div>
 
-            <div className="mt-8 space-y-4 border-t border-[#d8dfd8] pt-7">
-              <label className="flex items-start gap-3 text-sm leading-6 text-[#45554a]">
+            <div className="mt-8 space-y-4 border-t border-[var(--sp-rule)]/60 pt-7">
+              <label className="flex items-start gap-3 text-sm leading-6 text-[var(--sp-ink)]/78">
                 <input
                   type="checkbox"
                   name="workAuthorized"
                   value="yes"
                   required
-                  className="mt-1 h-4 w-4 accent-[#168344]"
+                  className="mt-1 h-4 w-4 accent-[var(--sp-green-dark)]"
                 />
                 <span>
                   I confirm that I am legally authorized to work in the United
                   States.
                 </span>
               </label>
-              <label className="flex items-start gap-3 text-sm leading-6 text-[#45554a]">
+              <label className="flex items-start gap-3 text-sm leading-6 text-[var(--sp-ink)]/78">
                 <input
                   type="checkbox"
                   name="accuracyConfirmed"
                   value="yes"
                   required
-                  className="mt-1 h-4 w-4 accent-[#168344]"
+                  className="mt-1 h-4 w-4 accent-[var(--sp-green-dark)]"
                 />
                 <span>
                   I certify that the information provided in this application
                   is true and complete to the best of my knowledge.
                 </span>
               </label>
-              <p className="text-xs leading-5 text-[#707c73]">
+              <p className="text-xs leading-5 text-[var(--sp-sage)]">
                 Southern Pallet is an equal opportunity employer. Submission of
                 this form does not guarantee employment.
               </p>
@@ -480,15 +471,15 @@ export default function CareersApplicationForm() {
               </div>
             )}
 
-            <div className="mt-8 flex flex-col gap-4 border-t border-[#d8dfd8] pt-8 sm:flex-row sm:items-center sm:justify-between">
-              <p className="max-w-xl text-xs leading-5 text-[#707c73]">
+            <div className="mt-8 flex flex-col gap-4 border-t border-[var(--sp-rule)]/60 pt-8 sm:flex-row sm:items-center sm:justify-between">
+              <p className="max-w-xl text-xs leading-5 text-[var(--sp-sage)]">
                 Your application will be reviewed only for employment-related
                 purposes.
               </p>
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="h-12 rounded-none bg-[#1e4a2b] px-8 font-bold text-white hover:bg-[#14371f] disabled:cursor-not-allowed"
+                className="h-12 rounded-none bg-[var(--sp-forest)] px-8 font-bold text-white hover:bg-[var(--sp-green-dark)] disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

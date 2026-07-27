@@ -1,120 +1,122 @@
-import { Button } from "@/components/ui/button";
-import { CheckCircle, Phone, Mail } from "lucide-react";
-import Link from "next/link";
+import { ArrowRight, CheckCircle2, Mail, Phone } from "lucide-react";
 import { Metadata } from "next";
+import Link from "next/link";
 import PublicSiteShell from "@/components/public-site-shell";
+import SharedFooter from "@/components/shared-footer";
+import SharedHeader from "@/components/shared-header";
 
 export const metadata: Metadata = {
   title: "Your Pallet Inquiry has been Received",
   description:
     "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
   alternates: {
-    canonical: 'https://www.southernpalletcompany.com/thank-you',
+    canonical: "https://www.southernpalletcompany.com/thank-you",
   },
   openGraph: {
     title: "Your Pallet Inquiry has been Received | Southern Pallet",
-    description: "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
-    url: 'https://www.southernpalletcompany.com/thank-you',
-    images: ['/southern_pallet_og_image.png'],
+    description:
+      "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
+    url: "https://www.southernpalletcompany.com/thank-you",
+    images: ["/southern_pallet_og_image.png"],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Your Pallet Inquiry has been Received | Southern Pallet',
-    description: "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
-    images: ['/southern_pallet_og_image.png'],
+    card: "summary_large_image",
+    title: "Your Pallet Inquiry has been Received | Southern Pallet",
+    description:
+      "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
+    images: ["/southern_pallet_og_image.png"],
   },
-  robots: {
-    index: false,
-    follow: true,
-  }
+  robots: { index: false, follow: true },
 };
+
+const nextSteps = [
+  "Our team reviews the details you submitted.",
+  "We prepare the right pricing or pickup recommendation.",
+  "You receive a response by email or phone, usually within one business hour.",
+];
 
 export default function ThankYouPage() {
   return (
-    <PublicSiteShell className="bg-[#1e4a2b] text-white flex items-center justify-center px-6">
-      <div className="max-w-2xl mx-auto text-center">
-        <div className="mb-8">
-          <CheckCircle className="w-20 h-20 text-[#22c55e] mx-auto mb-6" />
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Thank You!
-          </h1>
-          <h2 className="text-xl md:text-2xl text-gray-200 mb-6">
-            Your quote request has been submitted successfully
-          </h2>
-        </div>
-
-        <div className="bg-[#001f35] p-8 rounded-lg border border-gray-600 mb-8">
-          <h3 className="text-2xl font-bold text-[#fbca0b] mb-4">
-            What happens next?
-          </h3>
-          <div className="space-y-4 text-left">
-            <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-[#fbca0b] text-black rounded-full flex items-center justify-center text-sm font-bold mt-1">
-                1
-              </div>
-              <p className="text-gray-200">
-                Our team will review your quote request within the next hour
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-[#fbca0b] text-black rounded-full flex items-center justify-center text-sm font-bold mt-1">
-                2
-              </div>
-              <p className="text-gray-200">
-                We&apos;ll prepare a personalized quote based on your specific needs
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-[#fbca0b] text-black rounded-full flex items-center justify-center text-sm font-bold mt-1">
-                3
-              </div>
-              <p className="text-gray-200">
-                You&apos;ll receive your competitive quote via email or phone call
-              </p>
+    <PublicSiteShell>
+      <SharedHeader />
+      <main
+        data-submission-confirmation="true"
+        className="sp-grid min-h-[calc(100vh-5rem)] bg-[var(--sp-cream)] pt-20"
+      >
+        <section className="mx-auto grid max-w-7xl lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="flex flex-col justify-center border-x border-[var(--sp-rule)] px-6 py-16 sm:px-10 lg:min-h-[680px] lg:px-14">
+            <CheckCircle2 className="size-12 text-[var(--sp-green-dark)]" strokeWidth={1.6} />
+            <p className="sp-eyebrow mt-8 text-[var(--sp-green-dark)]">Request received</p>
+            <h1 className="sp-display mt-5 max-w-xl text-5xl text-[var(--sp-forest)] sm:text-6xl">
+              Your request is with our team.
+            </h1>
+            <p className="mt-7 max-w-lg text-base leading-7 text-[var(--sp-ink)]/68">
+              We have the information you submitted and will follow up with the
+              right next step for your pallet request.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/"
+                className="inline-flex min-h-12 items-center justify-center gap-3 bg-[var(--sp-green)] px-6 text-sm font-bold uppercase tracking-[0.08em] text-[var(--sp-forest-deep)] hover:bg-[var(--sp-forest)] hover:text-white"
+              >
+                Return home <ArrowRight className="size-4" />
+              </Link>
+              <Link
+                href="/#products"
+                className="inline-flex min-h-12 items-center justify-center border border-[var(--sp-rule)] px-6 text-sm font-semibold text-[var(--sp-forest)] hover:border-[var(--sp-forest)]"
+              >
+                View products
+              </Link>
             </div>
           </div>
-        </div>
 
-        <div className="bg-white text-black p-6 rounded-lg mb-8">
-          <h3 className="text-xl font-bold text-[#002947] mb-4">
-            Need immediate assistance?
-          </h3>
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
-            <div className="flex items-center gap-2">
-              <Phone className="w-5 h-5 text-[#002947]" />
-              <span className="font-semibold text-[#002947]">
-                (601) 746-5012
-              </span>
+          <div className="border-r border-[var(--sp-rule)] bg-[var(--sp-paper)] px-6 py-16 sm:px-10 lg:px-14">
+            <p className="sp-eyebrow text-[var(--sp-green-dark)]">What happens next</p>
+            <div className="mt-7 border-t border-[var(--sp-rule)]">
+              {nextSteps.map((step, index) => (
+                <div
+                  key={step}
+                  className="grid grid-cols-[3rem_1fr] gap-4 border-b border-[var(--sp-rule)] py-6"
+                >
+                  <span className="text-sm font-semibold text-[var(--sp-green-dark)]">
+                    0{index + 1}
+                  </span>
+                  <p className="text-base leading-7 text-[var(--sp-ink)]/72">{step}</p>
+                </div>
+              ))}
             </div>
-            <div className="flex items-center gap-2">
-              <Mail className="w-5 h-5 text-[#002947]" />
-              <span className="font-semibold text-[#002947]">
-                info@southernpallet.co
-              </span>
+
+            <div className="mt-12 bg-[var(--sp-forest)] p-7 text-white">
+              <p className="text-xl font-semibold">Need immediate assistance?</p>
+              <p className="mt-2 text-sm leading-6 text-white/65">
+                Contact our team directly during business hours.
+              </p>
+              <div className="mt-6 grid gap-3">
+                <a
+                  href="tel:+16017465012"
+                  className="flex items-center gap-3 border-t border-white/20 pt-4 text-sm font-semibold"
+                >
+                  <Phone className="size-4 text-[var(--sp-green)]" />
+                  (601) 746-5012
+                </a>
+                <a
+                  href="mailto:info@southernpallet.co"
+                  className="flex items-center gap-3 border-t border-white/20 pt-4 text-sm font-semibold"
+                >
+                  <Mail className="size-4 text-[var(--sp-green)]" />
+                  info@southernpallet.co
+                </a>
+              </div>
             </div>
+
+            <p className="mt-8 text-xs leading-5 text-[var(--sp-sage)]">
+              Most quotes are returned within one business hour. Delivery
+              timing depends on product, quantity, and destination.
+            </p>
           </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/">
-            <Button className="bg-[#22c55e] text-black hover:bg-[#16a34a] font-semibold">
-              Return to Homepage
-            </Button>
-          </Link>
-          <Link href="/#products">
-            <Button 
-              variant="outline" 
-              className="text-white border-white/50 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white"
-            >
-              View Our Products
-            </Button>
-          </Link>
-        </div>
-
-        <p className="text-gray-400 text-sm mt-8">
-          Most quotes are returned within 1 hour • Most deliveries within 24 hours
-        </p>
-      </div>
+        </section>
+      </main>
+      <SharedFooter />
     </PublicSiteShell>
   );
-} 
+}

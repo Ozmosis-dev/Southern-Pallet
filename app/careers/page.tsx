@@ -28,23 +28,17 @@ export const metadata: Metadata = {
 
 export default function CareersPage() {
   return (
-    <PublicSiteShell className="bg-[#f3f0e7]">
+    <PublicSiteShell className="bg-[var(--sp-cream)]">
       <SharedHeader />
 
       <main>
-        <section className="relative overflow-hidden bg-[#173b24] pt-18 text-white">
-          <div
-            className="pointer-events-none absolute inset-0 opacity-10"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(120deg, transparent 0, transparent 54px, rgba(255,255,255,.14) 55px, transparent 56px)",
-            }}
-          />
+        <section className="relative overflow-hidden bg-[var(--sp-forest)] pt-18 text-white">
+          <div className="sp-diagonal pointer-events-none absolute inset-0 opacity-10" />
           <div className="relative mx-auto grid min-h-[520px] max-w-7xl lg:grid-cols-[0.95fr_1.05fr]">
             <div className="flex flex-col justify-center px-6 py-16 sm:px-10 lg:px-16 lg:py-20">
               <div className="mb-8 flex items-center gap-3">
-                <span className="h-px w-12 bg-[#22c55e]" />
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#7ee29a]">
+                <span className="h-px w-12 bg-[var(--sp-green)]" />
+                <p className="sp-eyebrow text-[var(--sp-green)]">
                   Careers at Southern Pallet
                 </p>
               </div>
@@ -53,24 +47,24 @@ export default function CareersPage() {
                 <br />
                 application.
               </h1>
-              <p className="mt-7 max-w-xl text-base leading-7 text-[#d6e2d8] sm:text-lg">
+              <p className="mt-7 max-w-xl text-base leading-7 text-white/75 sm:text-lg">
                 We’re always interested in dependable people who value safety,
                 teamwork, and doing the job right. Share your experience and
                 the kind of work you’re looking for.
               </p>
-              <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-sm text-[#c6d5c9]">
+              <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-sm text-white/70">
                 <span className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-[#22c55e]" />
+                  <MapPin className="h-4 w-4 text-[var(--sp-green)]" />
                   Theodore, AL
                 </span>
                 <span className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-[#22c55e]" />
+                  <MapPin className="h-4 w-4 text-[var(--sp-green)]" />
                   Poplarville, MS
                 </span>
               </div>
               <a
                 href="#application"
-                className="mt-10 inline-flex w-fit items-center gap-3 border-b border-[#7ee29a] pb-2 text-sm font-bold uppercase tracking-[0.16em] text-white transition hover:text-[#7ee29a]"
+                className="mt-10 inline-flex w-fit items-center gap-3 border-b border-[var(--sp-green)] pb-2 text-sm font-bold uppercase tracking-[0.12em] text-white transition hover:text-[var(--sp-green)]"
               >
                 Start application
                 <ArrowDown className="h-4 w-4" />
@@ -86,12 +80,12 @@ export default function CareersPage() {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 55vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#173b24]/55 via-transparent to-transparent lg:from-[#173b24]/35" />
-              <div className="absolute bottom-0 left-0 right-0 border-t border-white/20 bg-[#122e1d]/80 px-6 py-5 backdrop-blur-sm sm:px-10">
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7ee29a]">
+              <div className="absolute inset-0 bg-gradient-to-r from-[var(--sp-forest)]/55 via-transparent to-transparent lg:from-[var(--sp-forest)]/35" />
+              <div className="absolute bottom-0 left-0 right-0 border-t border-white/20 bg-[var(--sp-forest-deep)]/80 px-6 py-5 backdrop-blur-sm sm:px-10">
+                <p className="sp-eyebrow text-[var(--sp-green)]">
                   Built on reliability
                 </p>
-                <p className="mt-2 max-w-lg text-sm leading-6 text-[#e1ebe3]">
+                <p className="mt-2 max-w-lg text-sm leading-6 text-white/75">
                   Applications are kept on file and reviewed as opportunities
                   become available.
                 </p>
