@@ -51,183 +51,152 @@ export default function SharedFooter() {
     };
   }, []);
   return (
-    <footer className="bg-[#1e4a2b] text-white py-6">
-      <div className="max-w-full mx-auto px-8 lg:px-12 xl:px-16">
-        <div className="border-b border-gray-600 mb-6"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-4 lg:ml-32 xl:ml-40">
-          {/* Logo and Description */}
+    <footer className="border-t-4 border-[#22c55e] bg-[#102c1b] text-white">
+      <div className="mx-auto max-w-7xl px-6 pb-6 pt-16 sm:px-8 lg:pt-20">
+        <div className="grid gap-12 border-b border-white/12 pb-14 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <Image
+              src="/logo.svg"
+              alt="Southern Pallet Recycling"
+              width={190}
+              height={48}
+              className="h-12 w-auto"
+            />
+            <p className="mt-7 max-w-sm text-sm leading-7 text-white/65">
+              Quality new and recycled wooden pallets, responsive service, and
+              dependable delivery throughout the southeastern United States.
+            </p>
+            <a
+              href="/careers"
+              className="mt-8 inline-flex border-b border-[#22c55e] pb-1 text-xs font-extrabold uppercase tracking-[0.2em] text-white hover:text-[#7ee29a]"
+            >
+              Careers at Southern Pallet
+            </a>
+          </div>
+
           <div className="lg:col-span-2">
-            {/* Mobile layout - logo top, description bottom */}
-            <div className="flex flex-col mb-6 lg:hidden">
-              <Image
-                src="/logo.svg"
-                alt="Southern Pallet Recycling"
-                width={40}
-                height={40}
-                className="h-10 w-auto mb-4"
-              />
-              <p className="text-gray-300 text-sm">
-                Providing quality new and recycled wooden pallets throughout the
-                southeastern United States since 2025.
-              </p>
-            </div>
-
-            {/* Desktop layout - logo and description */}
-            <div className="hidden lg:block">
-              <div className="flex items-center gap-4 mb-6">
-                <Image
-                  src="/logo.svg"
-                  alt="Southern Pallet Recycling"
-                  width={48}
-                  height={48}
-                  className="h-12 w-auto"
-                />
-              </div>
-              <p className="text-gray-300 mb-6 max-w-md">
-                Providing quality new and recycled wooden pallets throughout the
-                southeastern United States since 2025.
-              </p>
+            <p className="mb-5 text-xs font-extrabold uppercase tracking-[0.24em] text-[#7ee29a]">
+              Products
+            </p>
+            <div className="flex flex-col gap-3 text-sm text-white/65">
+              <span>Standard pallets</span>
+              <span>Custom pallets</span>
+              <span>Recycled pallets</span>
+              <span>Heat-treated pallets</span>
+              <span>Specialty products</span>
             </div>
           </div>
 
-          {/* Products */}
-          <div>
-            <h3 className="text-[#22c55e] font-bold text-lg mb-4">Products</h3>
-            <div className="flex flex-col gap-2">
-              <span className="text-gray-300 select-none">
-                Standard Pallets
-              </span>
-              <span className="text-gray-300 select-none">Custom Pallets</span>
-              <span className="text-gray-300 select-none">
-                Recycled Pallets
-              </span>
-              <span className="text-gray-300 select-none">
-                Heat-Treated Pallets
-              </span>
-              <span className="text-gray-300 select-none">
-                Specialty Products
-              </span>
-            </div>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-[#22c55e] font-bold text-lg mb-4">Services</h3>
-            <div className="flex flex-col gap-2">
-              <span className="text-gray-300 select-none">
-                Pallet Manufacturing
-              </span>
-              <span className="text-gray-300 select-none">
-                Pallet Recycling
-              </span>
-              <span className="text-gray-300 select-none">Pallet Repair</span>
-              <span className="text-gray-300 select-none">Local Delivery</span>
-              <span className="text-gray-300 select-none">
-                Custom Solutions
-              </span>
-            </div>
-          </div>
-
-          {/* Contact Us */}
           <div className="lg:col-span-2">
-            <h3 className="text-[#22c55e] font-bold text-lg mb-4">
-              Contact Us
-            </h3>
+            <p className="mb-5 text-xs font-extrabold uppercase tracking-[0.24em] text-[#7ee29a]">
+              Services
+            </p>
+            <div className="flex flex-col gap-3 text-sm text-white/65">
+              <span>Pallet manufacturing</span>
+              <a href="/recycle-pallets" className="hover:text-white">
+                Pallet recycling
+              </a>
+              <span>Pallet repair</span>
+              <a href="/#delivery" className="hover:text-white">
+                Regional delivery
+              </a>
+              <a href="/blog" className="hover:text-white">
+                Resource library
+              </a>
+            </div>
+          </div>
 
-            {/* Corporate Office */}
-            <div className="mb-6">
-              <h4 className="text-white font-semibold mb-2">
-                Corporate Office:
-              </h4>
-              <div className="text-gray-300">
-                <div>5695 Rabbit Creek Dr Ste 101</div>
-                <div>Theodore, AL 36582</div>
+          <div className="grid gap-8 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1">
+            <div>
+              <p className="mb-5 text-xs font-extrabold uppercase tracking-[0.24em] text-[#7ee29a]">
+                Facilities
+              </p>
+              <div className="grid gap-5 text-sm leading-6 text-white/65 sm:grid-cols-2 lg:grid-cols-1">
+                <address className="not-italic">
+                  <strong className="block font-semibold text-white">
+                    Corporate office
+                  </strong>
+                  5695 Rabbit Creek Dr Ste 101
+                  <br />
+                  Theodore, AL 36582
+                </address>
+                <address className="not-italic">
+                  <strong className="block font-semibold text-white">
+                    Manufacturing facility
+                  </strong>
+                  119 Industrial Park Dr
+                  <br />
+                  Poplarville, MS 39470
+                </address>
               </div>
             </div>
 
-            {/* Manufacturing Facility */}
-            <div className="mb-6">
-              <h4 className="text-white font-semibold mb-2">
-                Manufacturing Facility:
-              </h4>
-              <div className="text-gray-300">
-                <div>119 Industrial Park Dr</div>
-                <div>Poplarville, MS 39470</div>
-              </div>
-            </div>
-
-            {/* Contact Info */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 text-sm">
               <a
                 href="tel:+16017465012"
-                className="flex items-center text-gray-300 hover:text-[#22c55e] transition-colors"
+                className="flex items-center gap-3 text-white/70 hover:text-white"
               >
-                <Phone className="w-4 h-4 text-[#22c55e] mr-2" />
+                <Phone className="h-4 w-4 text-[#22c55e]" />
                 <span>(601) 746-5012</span>
               </a>
               <a
                 href="mailto:info@southernpallet.co"
-                className="flex items-center text-gray-300 hover:text-[#22c55e] transition-colors"
+                className="flex items-center gap-3 text-white/70 hover:text-white"
               >
-                <Mail className="w-4 h-4 text-[#22c55e] mr-2" />
+                <Mail className="h-4 w-4 text-[#22c55e]" />
                 <span>info@southernpallet.co</span>
               </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom Border */}
-        <div className="border-t border-gray-600 pt-3">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm mb-4 md:mb-0 text-center md:text-left">
-              © 2025 Southern Pallet Company. All rights reserved.
-            </div>
-            <div className="flex gap-6">
-              <button
-                onClick={() => openModal("privacy")}
-                className="text-gray-400 text-sm select-none"
-              >
-                Privacy Policy
-              </button>
-              <button
-                onClick={() => openModal("terms")}
-                className="text-gray-400 text-sm select-none"
-              >
-                Terms of Service
-              </button>
-            </div>
+        <div className="flex flex-col gap-4 pt-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2025 Southern Pallet Company. All rights reserved.</p>
+          <div className="flex gap-6">
+            <button
+              onClick={() => openModal("privacy")}
+              className="hover:text-white"
+            >
+              Privacy Policy
+            </button>
+            <button
+              onClick={() => openModal("terms")}
+              className="hover:text-white"
+            >
+              Terms of Service
+            </button>
           </div>
         </div>
 
         {/* Modal */}
         {activeModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4">
             {/* Background blur overlay */}
             <div
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#071a0e]/78 backdrop-blur-sm"
               onClick={closeModal}
             ></div>
 
             {/* Modal content */}
-            <div className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
+            <div className="relative max-h-[82vh] w-full max-w-2xl overflow-hidden border-t-4 border-[#22c55e] bg-[#fffef9] shadow-[0_30px_100px_rgba(3,18,9,0.35)]">
               {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                <h2 className="text-2xl font-bold text-gray-900">
+              <div className="flex items-center justify-between border-b border-[#bdc8bd] p-6">
+                <h2 className="text-4xl font-extrabold leading-none text-[#183523]">
                   {activeModal === "privacy"
                     ? "Privacy Policy"
                     : "Terms of Service"}
                 </h2>
                 <button
                   onClick={closeModal}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  className="border border-[#bdc8bd] p-2 text-[#647168] hover:border-[#168344] hover:text-[#183523]"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
               {/* Content */}
-              <div className="p-6 overflow-y-auto max-h-[60vh]">
-                <div className="text-gray-700">
+              <div className="max-h-[62vh] overflow-y-auto p-6 sm:p-8">
+                <div className="text-sm leading-7 text-[#45554a]">
                   {activeModal === "privacy" ? (
                     <div className="space-y-4">
                       <p>

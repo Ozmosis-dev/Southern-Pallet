@@ -4,24 +4,37 @@ const baseUrl = process.env.TEST_BASE_URL ?? "http://127.0.0.1:3000";
 
 const routes = [
   { path: "/", sectionPrefix: "#", homeHref: "#home" },
-  { path: "/blog", sectionPrefix: "/#", homeHref: "/" },
+  { path: "/blog", sectionPrefix: "/#", homeHref: "/", activeLabel: "Blog" },
   {
     path: "/blog/where-to-buy-used-pallets",
     sectionPrefix: "/#",
     homeHref: "/",
+    activeLabel: "Blog",
   },
   {
     path: "/blog/pallet-recycling-environmental-benefits",
     sectionPrefix: "/#",
     homeHref: "/",
+    activeLabel: "Blog",
   },
   {
     path: "/blog/cost-effective-pallet-management-strategies",
     sectionPrefix: "/#",
     homeHref: "/",
+    activeLabel: "Blog",
   },
-  { path: "/recycle-pallets", sectionPrefix: "/#", homeHref: "/" },
-  { path: "/careers", sectionPrefix: "/#", homeHref: "/" },
+  {
+    path: "/recycle-pallets",
+    sectionPrefix: "/#",
+    homeHref: "/",
+    activeLabel: "Recycle Pallets",
+  },
+  {
+    path: "/careers",
+    sectionPrefix: "/#",
+    homeHref: "/",
+    activeLabel: "Careers",
+  },
 ];
 
 const sectionLinks = [
@@ -40,6 +53,14 @@ function getLinkHrefs(html, label) {
   );
 
   return [...html.matchAll(linkPattern)].map((match) => match[1]);
+}
+
+function hasActiveLink(html, label) {
+  const escapedLabel = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const linkPattern = new RegExp(
+    `<a\\b[^>]*aria-current="page"[^>]*>\\s*${escapedLabel}\\s*</a>|<a\\b(?=[^>]*>\\s*${escapedLabel}\\s*</a>)[^>]*aria-current="page"[^>]*>`,
+  );
+  return linkPattern.test(html);
 }
 
 for (const route of routes) {
@@ -75,6 +96,13 @@ for (const route of routes) {
     careersHrefs.every((href) => href === "/careers"),
     `${route.path} Careers links should target /careers; received ${careersHrefs.join(", ")}`,
   );
+
+  if (route.activeLabel) {
+    assert.ok(
+      hasActiveLink(html, route.activeLabel),
+      `${route.path} should mark ${route.activeLabel} as the current page`,
+    );
+  }
 }
 
 console.log(`Header navigation verified across ${routes.length} routes.`);

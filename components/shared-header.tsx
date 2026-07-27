@@ -133,77 +133,97 @@ export default function SharedHeader({
     };
   };
 
+  const routeLinkClass = (href: string) => {
+    const isActive =
+      href === "/blog" ? pathname.startsWith("/blog") : pathname === href;
+
+    return `relative px-3 py-2 text-[13px] font-semibold tracking-[-0.01em] transition-colors after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:origin-left after:bg-[#22c55e] after:transition-transform ${
+      isActive
+        ? "text-white after:scale-x-100"
+        : "text-white/78 hover:text-white after:scale-x-0 hover:after:scale-x-100"
+    }`;
+  };
+
+  const sectionLinkClass =
+    "relative px-3 py-2 text-[13px] font-semibold tracking-[-0.01em] text-white/78 transition-colors after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[#22c55e] after:transition-transform hover:text-white hover:after:scale-x-100";
+
+  const mobileLinkClass =
+    "border-b border-white/10 py-3 text-base font-semibold text-white/80 transition-colors hover:border-[#22c55e] hover:text-white";
+
   return (
-          <header className="fixed top-0 left-0 right-0 z-50 bg-[#1e4a2b] text-white shadow-lg">
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-18 px-4">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#173b24]/96 text-white shadow-[0_8px_30px_rgba(8,30,17,0.12)] backdrop-blur-md">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-7">
         <div className="flex items-center gap-1">
           <button
             onClick={handleLogoClick}
-            className="cursor-pointer hover:opacity-80 transition-opacity"
+            className="cursor-pointer transition-opacity hover:opacity-80"
             aria-label={isHomePage ? "Scroll to top" : "Go to homepage"}
           >
             <Image 
               src="/logo.svg" 
               alt="Southern Pallet Recycling" 
-              width={32}
-              height={32}
-              className="h-8 w-auto"
+              width={168}
+              height={42}
+              className="h-10 w-auto"
             />
           </button>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden xl:flex items-center gap-8">
+        <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Primary navigation">
           <a
             href={getNavHref("products")}
             onClick={getNavClickHandler("products")}
-            className="hover:text-[#22c55e] transition-colors"
+            className={sectionLinkClass}
           >
             Products
           </a>
           <a
             href={getNavHref("services")}
             onClick={getNavClickHandler("services")}
-            className="hover:text-[#22c55e] transition-colors"
+            className={sectionLinkClass}
           >
             Services
           </a>
           <a
             href="/recycle-pallets"
-            className="hover:text-[#22c55e] transition-colors"
+            className={routeLinkClass("/recycle-pallets")}
+            aria-current={pathname === "/recycle-pallets" ? "page" : undefined}
           >
             Recycle Pallets
           </a>
           <a
             href="/blog"
-            className="hover:text-[#22c55e] transition-colors"
+            className={routeLinkClass("/blog")}
+            aria-current={pathname.startsWith("/blog") ? "page" : undefined}
           >
             Blog
           </a>
           <a
             href="/careers"
-            className="hover:text-[#22c55e] transition-colors"
+            className={routeLinkClass("/careers")}
+            aria-current={pathname === "/careers" ? "page" : undefined}
           >
             Careers
           </a>
           <a
             href={getNavHref("about")}
             onClick={getNavClickHandler("about")}
-            className="hover:text-[#22c55e] transition-colors"
+            className={sectionLinkClass}
           >
             About Us
           </a>
           <a
             href={getNavHref("delivery")}
             onClick={getNavClickHandler("delivery")}
-            className="hover:text-[#22c55e] transition-colors"
+            className={sectionLinkClass}
           >
             Delivery
           </a>
           <a
             href={getNavHref("contact")}
             onClick={getNavClickHandler("contact")}
-            className="hover:text-[#22c55e] transition-colors"
+            className={sectionLinkClass}
           >
             Contact
           </a>
@@ -212,7 +232,7 @@ export default function SharedHeader({
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="xl:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
+          className="border border-white/15 p-2.5 transition-colors hover:border-[#22c55e] hover:bg-white/5 xl:hidden"
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
@@ -223,7 +243,7 @@ export default function SharedHeader({
         {/* Mobile Navigation Backdrop */}
         {isMenuOpen && (
           <div
-            className="fixed inset-0 bg-black/50 transition-opacity xl:hidden"
+            className="fixed inset-0 bg-[#071a0e]/70 backdrop-blur-sm transition-opacity xl:hidden"
             onClick={() => setIsMenuOpen(false)}
           />
         )}
@@ -231,78 +251,81 @@ export default function SharedHeader({
         {/* Mobile Navigation */}
         <div
           id="mobile-navigation"
-          className={`fixed top-0 right-0 h-full w-64 bg-[#1e4a2b] shadow-lg transform transition-transform duration-300 ease-in-out ${
+          className={`fixed right-0 top-0 h-full w-[min(22rem,88vw)] border-l border-white/10 bg-[#102c1b] shadow-[-24px_0_70px_rgba(3,18,9,0.28)] transform transition-transform duration-300 ease-in-out ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           } xl:hidden z-[60]`}
         >
-          <div className="p-4">
+          <div className="p-6">
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="mb-4 p-2 hover:bg-white/10 rounded-lg transition-colors"
+              className="mb-8 border border-white/15 p-2 transition-colors hover:border-[#22c55e] hover:bg-white/5"
               aria-label="Close navigation menu"
             >
               <X className="w-6 h-6" />
             </button>
-            <nav className="flex flex-col gap-4">
+            <nav className="flex flex-col" aria-label="Mobile navigation">
               <a
                 href={isHomePage ? "#home" : "/"}
-                className="hover:text-[#22c55e] transition-colors py-2"
+                className={mobileLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </a>
               <a
                 href={getNavHref("products")}
-                className="hover:text-[#22c55e] transition-colors py-2"
+                className={mobileLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
               </a>
               <a
                 href={getNavHref("services")}
-                className="hover:text-[#22c55e] transition-colors py-2"
+                className={mobileLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Services
               </a>
               <a
                 href="/recycle-pallets"
-                className="hover:text-[#22c55e] transition-colors py-2"
+                className={mobileLinkClass}
+                aria-current={pathname === "/recycle-pallets" ? "page" : undefined}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Recycle Pallets
               </a>
               <a
                 href="/blog"
-                className="hover:text-[#22c55e] transition-colors py-2"
+                className={mobileLinkClass}
+                aria-current={pathname.startsWith("/blog") ? "page" : undefined}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blog
               </a>
               <a
                 href="/careers"
-                className="hover:text-[#22c55e] transition-colors py-2"
+                className={mobileLinkClass}
+                aria-current={pathname === "/careers" ? "page" : undefined}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Careers
               </a>
               <a
                 href={getNavHref("about")}
-                className="hover:text-[#22c55e] transition-colors py-2"
+                className={mobileLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us
               </a>
               <a
                 href={getNavHref("delivery")}
-                className="hover:text-[#22c55e] transition-colors py-2"
+                className={mobileLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Delivery
               </a>
               <a
                 href={getNavHref("contact")}
-                className="hover:text-[#22c55e] transition-colors py-2"
+                className={mobileLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
@@ -312,7 +335,7 @@ export default function SharedHeader({
         </div>
 
         <Button
-          className="hidden xl:inline-flex bg-[#22c55e] text-black hover:bg-[#16a34a] font-semibold"
+          className="hidden h-10 rounded-none bg-[#22c55e] px-5 font-bold text-[#102c1b] shadow-none hover:-translate-y-0.5 hover:bg-[#43d875] active:translate-y-px xl:inline-flex"
           onClick={handleGetQuoteClick}
         >
           Get Quote
