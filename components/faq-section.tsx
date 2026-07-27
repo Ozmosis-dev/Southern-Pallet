@@ -60,42 +60,50 @@ export default function FAQSection() {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#1e4a2b] mb-4">
-            Frequently Asked Questions
+    <section className="bg-[var(--sp-cream)] py-24 lg:py-32">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[0.7fr_1.3fr] lg:px-10">
+        <div>
+          <p className="sp-eyebrow text-[var(--sp-green-dark)]">Straight answers</p>
+          <h2 className="sp-display mt-5 max-w-md text-5xl leading-[0.94] text-[var(--sp-forest)] sm:text-6xl">
+            Pallet questions, answered.
           </h2>
-          <p className="text-gray-600 text-lg">
-            Everything you need to know about our pallet products and services
+          <p className="mt-6 max-w-sm text-base leading-7 text-[var(--sp-ink)]/65">
+            Everything you need to know about our products, pricing, delivery,
+            and recycling services.
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="border-t border-[var(--sp-rule)]">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-[#e2e2e2] rounded-lg">
+            <div key={index} className="border-b border-[var(--sp-rule)]">
               <button
                 onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left"
+                className="group flex w-full items-center justify-between gap-6 py-6 text-left"
+                aria-expanded={openFAQ === index}
               >
-                <span className="font-semibold text-[#1e4a2b]">
-                  {faq.question}
+                <span className="flex items-baseline gap-4">
+                  <span className="sp-display text-lg text-[var(--sp-green-dark)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-base font-extrabold text-[var(--sp-forest)] group-hover:text-[var(--sp-green-dark)]">
+                    {faq.question}
+                  </span>
                 </span>
                 {openFAQ === index ? (
-                  <Minus className="w-5 h-5 text-[#1e4a2b]" />
+                  <Minus className="size-5 shrink-0 text-[var(--sp-green-dark)]" />
                 ) : (
-                  <Plus className="w-5 h-5 text-[#1e4a2b]" />
+                  <Plus className="size-5 shrink-0 text-[var(--sp-green-dark)]" />
                 )}
               </button>
               {openFAQ === index && (
-                <div className="px-6 pb-6">
+                <div className="pb-7 pl-0 sm:pl-12">
                   {faq.answer.includes("<table") ? (
                     <div
-                      className="text-gray-600"
+                      className="max-w-3xl text-sm leading-7 text-[var(--sp-ink)]/68"
                       dangerouslySetInnerHTML={{ __html: faq.answer }}
                     />
                   ) : (
-                    <div className="text-gray-600 whitespace-pre-line">
+                    <div className="max-w-3xl whitespace-pre-line text-sm leading-7 text-[var(--sp-ink)]/68">
                       {faq.answer}
                     </div>
                   )}

@@ -1,98 +1,67 @@
 import { Package, Recycle, Wrench, Truck } from "lucide-react";
 import Image from "next/image";
 
+const services = [
+  {
+    icon: Package,
+    title: "Pallet manufacturing",
+    copy: "Standard and custom pallets built to specification with quality lumber and expert craftsmanship.",
+  },
+  {
+    icon: Recycle,
+    title: "Pallet recycling",
+    copy: "Responsible recovery and reuse programs that reduce waste while lowering supply costs.",
+  },
+  {
+    icon: Wrench,
+    title: "Pallet repair",
+    copy: "Professional repair and reconditioning services that extend pallet life and protect your investment.",
+  },
+  {
+    icon: Truck,
+    title: "Regional delivery",
+    copy: "Reliable Southeast delivery supported by our own fleet and a team that understands your schedule.",
+  },
+];
+
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-20 bg-[#1e4a2b] text-white relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          {Array.from({ length: 20 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute border border-white"
-              style={{
-                width: `${100 + i * 50}px`,
-                height: `${100 + i * 50}px`,
-                borderRadius: "50%",
-                left: `${-50 - i * 25}px`,
-                top: `${-50 - i * 25}px`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Complete Pallet Services</h2>
-          <p className="text-xl text-gray-200">
-            From manufacturing to recycling to delivery, we provide complete
-            pallet solutions for businesses throughout the southeastern United
-            States.
-          </p>
-        </div>
-
-        <div className="relative min-h-[500px] md:min-h-[600px]">
-          {/* Central pallet image */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:block">
+    <section id="services" className="relative overflow-hidden bg-[var(--sp-forest)] py-24 text-white lg:py-32">
+      <div className="sp-diagonal absolute inset-0 opacity-10" aria-hidden="true" />
+      <div className="relative mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
+        <div>
+          <p className="sp-eyebrow text-[var(--sp-green)]">One accountable partner</p>
+          <h2 className="sp-display mt-5 max-w-2xl text-5xl leading-[0.92] sm:text-7xl">
+            Complete pallet service, from the first board to final delivery.
+          </h2>
+          <div className="relative mt-12 aspect-[5/3] overflow-hidden border border-white/20">
             <Image
               src="/jack.svg"
-              alt="Pallet with forklift"
-              width={500}
-              height={500}
-              className="w-96 h-96 object-contain"
+              alt="Pallet handling equipment"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 55vw, 100vw"
             />
-          </div>
-
-          {/* Service cards - simple grid on mobile, circular arrangement on desktop */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8 relative">
-            {/* Top row */}
-            <div className="md:translate-y-12 md:-translate-x-4">
-              <div className="bg-[#163d20] p-6 rounded-lg border border-gray-600 shadow-lg shadow-black/30 h-56 w-full max-w-64 flex flex-col justify-between mx-auto">
-                <Package className="w-8 h-8 text-[#22c55e] mb-4" />
-                <h3 className="text-xl font-bold mb-4">Pallet Manufacturing</h3>
-                <p className="text-gray-300 text-sm">
-                  Custom and standard pallets built to your specifications using
-                  quality lumber and expert craftsmanship.
-                </p>
-              </div>
-            </div>
-
-            <div className="md:translate-y-12 md:-translate-x-4">
-              <div className="bg-[#163d20] p-6 rounded-lg border border-gray-600 shadow-lg shadow-black/30 h-56 w-full max-w-64 flex flex-col justify-between mx-auto">
-                <Recycle className="w-8 h-8 text-[#22c55e] mb-4" />
-                <h3 className="text-xl font-bold mb-4">Pallet Recycling</h3>
-                <p className="text-gray-300 text-sm">
-                  Our core service: environmentally responsible pallet recycling
-                  that helps reduce waste and lower costs.
-                </p>
-              </div>
-            </div>
-
-            {/* Bottom row */}
-            <div className="md:translate-y-[100px] md:translate-x-4">
-              <div className="bg-[#163d20] p-6 rounded-lg border border-gray-600 shadow-lg shadow-black/30 h-56 w-full max-w-64 flex flex-col justify-between mx-auto">
-                <Wrench className="w-8 h-8 text-[#22c55e] mb-4" />
-                <h3 className="text-xl font-bold mb-4">Pallet Repair</h3>
-                <p className="text-gray-300 text-sm">
-                  Extend the life of your pallets with our professional repair
-                  and reconditioning services.
-                </p>
-              </div>
-            </div>
-
-            <div className="md:translate-y-[100px] md:translate-x-4">
-              <div className="bg-[#163d20] p-6 rounded-lg border border-gray-600 shadow-lg shadow-black/30 h-56 w-full max-w-64 flex flex-col justify-between mx-auto">
-                <Truck className="w-8 h-8 text-[#22c55e] mb-4" />
-                <h3 className="text-xl font-bold mb-4">Regional Delivery</h3>
-                <p className="text-gray-300 text-sm">
-                  Prompt delivery throughout the southeastern United States with
-                  our own fleet of trucks.
-                </p>
-              </div>
+            <div className="absolute bottom-0 left-0 bg-[var(--sp-green)] px-5 py-4 text-xs font-extrabold uppercase tracking-[0.13em] text-[var(--sp-forest-deep)]">
+              Manufactured · Recovered · Delivered
             </div>
           </div>
+        </div>
+
+        <div className="border-t border-white/25 lg:mt-14">
+          {services.map(({ icon: Icon, title, copy }, index) => (
+            <article
+              key={title}
+              className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-white/25 py-7 sm:grid-cols-[3rem_1fr_auto]"
+            >
+              <span className="sp-display text-xl text-[var(--sp-green)]">0{index + 1}</span>
+              <div>
+                <h3 className="sp-display text-3xl">{title}</h3>
+                <p className="mt-2 max-w-md text-sm leading-6 text-white/65">{copy}</p>
+              </div>
+              <Icon className="hidden size-6 text-[var(--sp-green)] sm:block" strokeWidth={1.7} />
+            </article>
+          ))}
         </div>
       </div>
     </section>

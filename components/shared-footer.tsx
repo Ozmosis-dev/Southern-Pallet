@@ -3,6 +3,7 @@
 import { Mail, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SharedFooter() {
   const [activeModal, setActiveModal] = useState<string | null>(null);
@@ -66,12 +67,12 @@ export default function SharedFooter() {
               Quality new and recycled wooden pallets, responsive service, and
               dependable delivery throughout the southeastern United States.
             </p>
-            <a
+            <Link
               href="/careers"
               className="mt-8 inline-flex border-b border-[#22c55e] pb-1 text-xs font-extrabold uppercase tracking-[0.2em] text-white hover:text-[#7ee29a]"
             >
               Careers at Southern Pallet
-            </a>
+            </Link>
           </div>
 
           <div className="lg:col-span-2">
@@ -93,16 +94,16 @@ export default function SharedFooter() {
             </p>
             <div className="flex flex-col gap-3 text-sm text-white/65">
               <span>Pallet manufacturing</span>
-              <a href="/recycle-pallets" className="hover:text-white">
+              <Link href="/recycle-pallets" className="hover:text-white">
                 Pallet recycling
-              </a>
+              </Link>
               <span>Pallet repair</span>
-              <a href="/#delivery" className="hover:text-white">
+              <Link href="/#delivery" className="hover:text-white">
                 Regional delivery
-              </a>
-              <a href="/blog" className="hover:text-white">
+              </Link>
+              <Link href="/blog" className="hover:text-white">
                 Resource library
-              </a>
+              </Link>
             </div>
           </div>
 

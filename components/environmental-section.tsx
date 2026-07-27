@@ -1,58 +1,42 @@
-import { Button } from "@/components/ui/button";
-import { Recycle } from "lucide-react";
+import { ArrowRight, Recycle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function EnvironmentalSection() {
   return (
-    <section id="environmental" className="py-20">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="hidden md:block rounded-lg overflow-hidden">
-            <Image
-              src="/recycle.svg"
-              alt="Wooden pallets for recycling"
-              width={600}
-              height={400}
-              className="w-full h-full object-cover"
-            />
+    <section id="environmental" className="bg-[var(--sp-cream)]">
+      <div className="mx-auto grid max-w-7xl lg:grid-cols-2">
+        <div className="relative min-h-[440px] border-x border-[var(--sp-rule)] lg:min-h-[650px]">
+          <Image
+            src="/recycle.svg"
+            alt="Wooden pallets ready to be recovered and recycled"
+            fill
+            className="object-cover"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+          />
+          <div className="absolute left-0 top-0 bg-[var(--sp-green)] p-5 text-[var(--sp-forest-deep)]">
+            <Recycle className="size-8" strokeWidth={1.8} />
           </div>
-
-          <div className="bg-[#1e4a2b] text-white p-12 rounded-lg">
-            <div className="text-sm font-semibold text-[#22c55e] mb-4">
-              We&apos;ve Saved
-            </div>
-            
-            {/* Mobile layout - icon left, text right */}
-            <div className="flex items-center gap-4 mb-6 md:hidden">
-              <Recycle className="w-12 h-12 text-white flex-shrink-0" />
-              <div>
-                <div className="text-4xl font-bold mb-1">500K+</div>
-                <div className="text-lg">Pallets from Landfills</div>
-              </div>
-            </div>
-
-            {/* Desktop layout - original vertical */}
-            <div className="hidden md:block">
-              <div className="text-5xl font-bold mb-2">500K+</div>
-              <div className="text-xl mb-6">Pallets from Landfills</div>
-              <div className="flex items-center mb-8">
-                <Recycle className="w-16 h-16 text-white mr-4" />
-              </div>
-            </div>
-
-            <p className="text-gray-200 mb-8">
-              Our recycling initiative helps companies cut costs and waste by
-              collecting, repairing, and reconditioning used pallets — giving
-              them a second life and reducing environmental impact.
-            </p>
-
-            <Link href="/recycle-pallets">
-              <Button className="bg-[#22c55e] text-black hover:bg-[#16a34a] font-semibold">
-                Join the Movement
-              </Button>
-            </Link>
-          </div>
+        </div>
+        <div className="flex flex-col justify-center border-r border-[var(--sp-rule)] px-6 py-20 sm:px-12 lg:px-16">
+          <p className="sp-eyebrow text-[var(--sp-green-dark)]">Materials in motion</p>
+          <p className="sp-display mt-6 text-[6rem] leading-none text-[var(--sp-forest)] sm:text-[9rem]">
+            500K+
+          </p>
+          <h2 className="sp-display max-w-xl text-4xl leading-none text-[var(--sp-forest)] sm:text-5xl">
+            Pallets kept out of landfills every year.
+          </h2>
+          <p className="mt-7 max-w-lg text-base leading-7 text-[var(--sp-ink)]/68">
+            Our recycling initiative helps companies cut costs and waste by
+            collecting, repairing, and reconditioning used pallets—giving
+            useful material a second life.
+          </p>
+          <Link
+            href="/recycle-pallets"
+            className="mt-9 inline-flex min-h-12 w-fit items-center gap-3 bg-[var(--sp-forest)] px-6 text-xs font-extrabold uppercase tracking-[0.12em] text-white hover:bg-[var(--sp-green-dark)]"
+          >
+            Join the movement <ArrowRight className="size-4" />
+          </Link>
         </div>
       </div>
     </section>

@@ -1,320 +1,190 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Phone, Mail, X } from "lucide-react";
+import { ArrowRight, Mail, Phone, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
+const products = [
+  {
+    name: "Recycled pallets",
+    price: "Starting at $4.00",
+    suffix: "per pallet",
+    image: "/recyled_pallet_card.jpg",
+    alt: "Recycled wood pallets",
+    copy: "Environmentally responsible, cost-effective pallets inspected and repaired for dependable everyday use.",
+    features: [
+      "Thoroughly inspected",
+      "Repaired to specification",
+      "Multiple grades available",
+      "Bulk quantities available",
+    ],
+    action: "Order recycled pallets",
+  },
+  {
+    name: "New & hybrid pallets",
+    price: "Starting at $9.50",
+    suffix: "per pallet",
+    image: "/grade-a.svg",
+    alt: "New and hybrid pallets",
+    copy: "High-quality pallets built with premium lumber for strength, consistency, and performance.",
+    features: [
+      'Standard 48" × 40"',
+      "Four-way entry",
+      "Up to 2,800 lb capacity",
+      "Kiln-dried lumber",
+    ],
+    action: "Request a quote",
+  },
+  {
+    name: "Custom new & used",
+    price: "Custom quote",
+    suffix: "built to spec",
+    image: "/custom.svg",
+    alt: "Custom-built pallets",
+    copy: "Purpose-built pallets designed around specialized cargo, equipment, and operational requirements.",
+    features: [
+      "Custom dimensions",
+      "Weight capacity options",
+      "Special wood treatments",
+      "Reinforced designs",
+    ],
+    action: "Talk to our team",
+  },
+];
+
+function scrollToContact() {
+  const element = document.getElementById("contact");
+  if (!element) return;
+  const headerOffset = 80;
+  const elementPosition =
+    element.getBoundingClientRect().top + window.scrollY - headerOffset;
+  window.scrollTo({ top: elementPosition, behavior: "smooth" });
+}
+
 export default function ProductsSection() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
   return (
-    <section id="products" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#1e4a2b] mb-4">
-            Quality Pallet Solutions for Every Need
-          </h2>
-          <p className="text-gray-600 text-lg">
-            We offer a variety of standard and custom pallet options to meet
-            your specific requirements.
+    <section id="products" className="bg-[var(--sp-paper)] py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="grid gap-8 border-b border-[var(--sp-rule)] pb-10 lg:grid-cols-[1fr_0.7fr] lg:items-end">
+          <div>
+            <p className="sp-eyebrow text-[var(--sp-green-dark)]">Product lineup</p>
+            <h2 className="sp-display mt-5 max-w-3xl text-5xl leading-[0.94] text-[var(--sp-forest)] sm:text-6xl">
+              The right pallet for every load.
+            </h2>
+          </div>
+          <p className="max-w-xl text-base leading-7 text-[var(--sp-ink)]/68 lg:justify-self-end">
+            Choose proven standard sizes or work with our team on a custom
+            configuration. Every order is matched to your volume, timing, and
+            delivery needs.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Recycled Pallets */}
-          <div className="bg-white rounded-lg border border-gray-500 overflow-hidden shadow-lg">
-            <div className="h-48 bg-gray-100">
-              <Image
-                src="/recyled_pallet_card.jpg"
-                alt="Recycled pallets"
-                width={400}
-                height={200}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-2xl font-bold text-[#1e4a2b] mb-4">
-                Recycled Pallets
-              </h3>
-              <div className="text-3xl font-bold text-[#1e4a2b] mb-2">
-                Starting at $4.00 <span className="text-base font-normal">per pallet</span>
+        <div className="grid border-l border-[var(--sp-rule)] lg:grid-cols-3">
+          {products.map((product, index) => (
+            <article
+              key={product.name}
+              className="group flex flex-col border-b border-r border-[var(--sp-rule)]"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-[var(--sp-cream)]">
+                <Image
+                  src={product.image}
+                  alt={product.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  sizes="(min-width: 1024px) 33vw, 100vw"
+                />
+                <span className="absolute left-0 top-0 bg-[var(--sp-forest)] px-4 py-3 text-xs font-extrabold tracking-[0.15em] text-white">
+                  0{index + 1}
+                </span>
               </div>
-              <p className="text-gray-600 mb-6">
-                Environmentally friendly and cost-effective recycled pallets
-                that meet quality standards for a variety of applications.
-              </p>
-
-              <ul className="space-y-2 mb-8">
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Thoroughly inspected
-                </li>
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Repaired to specifications
-                </li>
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Environmentally responsible
-                </li>
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Cost-effective solution
-                </li>
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Multiple grades available
-                </li>
-              </ul>
-
-              <Button 
-                className="w-full bg-[#22c55e] text-black hover:bg-[#16a34a] font-semibold"
-                onClick={() => {
-                  const element = document.getElementById('contact');
-                  if (element) {
-                    const headerOffset = 80;
-                    const elementPosition = element.getBoundingClientRect().top + window.scrollY - headerOffset;
-                    const startPosition = window.scrollY;
-                    const distance = elementPosition - startPosition;
-                    const duration = 2000;
-                    let start: number;
-
-                    const animation = (currentTime: number) => {
-                      if (!start) start = currentTime;
-                      const timeElapsed = currentTime - start;
-                      const progress = Math.min(timeElapsed / duration, 1);
-
-                      const easeInOutCubic = (p: number): number => {
-                        return p < 0.5
-                          ? 4 * p * p * p
-                          : 1 - Math.pow(-2 * p + 2, 3) / 2;
-                      };
-
-                      window.scrollTo({
-                        top: startPosition + distance * easeInOutCubic(progress)
-                      });
-
-                      if (progress < 1) {
-                        requestAnimationFrame(animation);
-                      }
-                    };
-
-                    requestAnimationFrame(animation);
+              <div className="flex flex-1 flex-col p-6 sm:p-8">
+                <h3 className="sp-display text-4xl text-[var(--sp-forest)]">
+                  {product.name}
+                </h3>
+                <p className="mt-5 text-2xl font-extrabold text-[var(--sp-forest)]">
+                  {product.price}
+                  <span className="ml-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--sp-ink)]/50">
+                    {product.suffix}
+                  </span>
+                </p>
+                <p className="mt-5 text-sm leading-6 text-[var(--sp-ink)]/68">
+                  {product.copy}
+                </p>
+                <ul className="mt-6 grid gap-2 border-t border-[var(--sp-rule)] pt-5 text-sm font-semibold text-[var(--sp-ink)]/78">
+                  {product.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-3">
+                      <span className="size-1.5 bg-[var(--sp-green-dark)]" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  onClick={() =>
+                    index === 2
+                      ? setIsContactModalOpen(true)
+                      : scrollToContact()
                   }
-                }}
-              >
-                Order Now <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
-          </div>
-
-          {/* A-Grade New Pallets */}
-          <div className="bg-white rounded-lg border border-gray-500 overflow-hidden shadow-lg">
-            <div className="h-48 bg-gray-100">
-              <Image
-                src="/grade-a.svg"
-                alt="New and Hybrid Pallets"
-                width={400}
-                height={200}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-2xl font-bold text-[#1e4a2b] mb-4">
-                New and Hybrid Pallets
-              </h3>
-              <div className="text-3xl font-bold text-[#1e4a2b] mb-2">
-               Starting at $9.50{" "}
-                <span className="text-base font-normal">per pallet</span>
+                  className="mt-8 inline-flex min-h-12 items-center justify-between bg-[var(--sp-green)] px-5 text-left text-xs font-extrabold uppercase tracking-[0.11em] text-[var(--sp-forest-deep)] hover:bg-[var(--sp-forest)] hover:text-white"
+                >
+                  {product.action} <ArrowRight className="size-4" />
+                </button>
               </div>
-              <p className="text-gray-600 mb-6">
-                Our high-quality new pallets are built to your specifications
-                using premium lumber for maximum durability and performance.
-              </p>
-
-              <ul className="space-y-2 mb-8">
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  48&quot; x 40&quot; dimensions
-                </li>
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  4-way entry
-                </li>
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Holds up to 2,800 lbs
-                </li>
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Kiln-dried lumber
-                </li>
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Available in bulk quantities
-                </li>
-              </ul>
-
-              <Button 
-                className="w-full bg-[#22c55e] text-black hover:bg-[#16a34a] font-semibold"
-                onClick={() => {
-                  const element = document.getElementById('contact');
-                  if (element) {
-                    const headerOffset = 80;
-                    const elementPosition = element.getBoundingClientRect().top + window.scrollY - headerOffset;
-                    const startPosition = window.scrollY;
-                    const distance = elementPosition - startPosition;
-                    const duration = 2000;
-                    let start: number;
-
-                    const animation = (currentTime: number) => {
-                      if (!start) start = currentTime;
-                      const timeElapsed = currentTime - start;
-                      const progress = Math.min(timeElapsed / duration, 1);
-
-                      const easeInOutCubic = (p: number): number => {
-                        return p < 0.5
-                          ? 4 * p * p * p
-                          : 1 - Math.pow(-2 * p + 2, 3) / 2;
-                      };
-
-                      window.scrollTo({
-                        top: startPosition + distance * easeInOutCubic(progress)
-                      });
-
-                      if (progress < 1) {
-                        requestAnimationFrame(animation);
-                      }
-                    };
-
-                    requestAnimationFrame(animation);
-                  }
-                }}
-              >
-                Get Quote <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
-          </div>
-
-          {/* Custom Pallets */}
-          <div className="bg-white rounded-lg border border-gray-500 overflow-hidden shadow-lg">
-            <div className="h-48 bg-gray-100">
-              <Image
-                src="/custom.svg"
-                alt="Custom pallets"
-                width={400}
-                height={200}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-2xl font-bold text-[#1e4a2b] mb-4">
-                Custom New & Used
-              </h3>
-              <div className="text-3xl font-bold text-[#1e4a2b] mb-2">
-                Custom quote
-              </div>
-              <p className="text-gray-600 mb-6">
-                Custom-built pallets designed to your exact specifications for
-                specialized applications and unique requirements.
-              </p>
-
-              <ul className="space-y-2 mb-8">
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Custom dimensions
-                </li>
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Weight capacity options
-                </li>
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Special wood treatments
-                </li>
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Reinforced designs available
-                </li>
-                <li className="flex items-center text-sm text-gray-700">
-                  <div className="w-2 h-2 bg-[#1e4a2b] rounded-full mr-3"></div>
-                  Perfect for unique cargo
-                </li>
-              </ul>
-
-              <Button 
-                className="w-full bg-[#22c55e] text-black hover:bg-[#16a34a] font-semibold"
-                onClick={() => setIsContactModalOpen(true)}
-              >
-                Call Now <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
       </div>
 
-      {/* Contact Modal */}
       {isContactModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="custom-pallet-title"
+        >
+          <button
+            className="absolute inset-0 bg-[var(--sp-forest-deep)]/80 backdrop-blur-sm"
             onClick={() => setIsContactModalOpen(false)}
+            aria-label="Close contact options"
           />
-          
-          {/* Modal */}
-          <div className="relative bg-white rounded-lg shadow-xl p-8 mx-4 max-w-md w-full">
-            {/* Close button */}
+          <div className="relative w-full max-w-md border border-[var(--sp-rule)] bg-[var(--sp-paper)] p-8 shadow-2xl">
             <button
               onClick={() => setIsContactModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+              className="absolute right-4 top-4 p-2 text-[var(--sp-ink)]/55 hover:text-[var(--sp-forest)]"
+              aria-label="Close"
             >
-              <X className="w-6 h-6" />
+              <X className="size-5" />
             </button>
-
-            {/* Modal content */}
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-[#1e4a2b] mb-2">
-                Contact Us for Custom Pallets
-              </h3>
-              <p className="text-gray-600">
-                Choose how you&apos;d like to get in touch with us
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              {/* Call Option */}
+            <p className="sp-eyebrow text-[var(--sp-green-dark)]">Custom orders</p>
+            <h3 id="custom-pallet-title" className="sp-display mt-3 text-4xl text-[var(--sp-forest)]">
+              Let&apos;s build the right pallet.
+            </h3>
+            <p className="mt-3 text-sm leading-6 text-[var(--sp-ink)]/65">
+              Choose how you&apos;d like to reach our team.
+            </p>
+            <div className="mt-7 grid gap-3">
               <a
                 href="tel:+16017465012"
-                className="flex items-center justify-center gap-4 w-full p-4 bg-[#1e4a2b] text-white rounded-lg hover:bg-[#2d5a3d] transition-colors"
+                className="flex items-center gap-4 bg-[var(--sp-forest)] p-4 font-bold text-white"
                 onClick={() => setIsContactModalOpen(false)}
               >
-                <Phone className="w-6 h-6" />
-                <div className="text-left">
-                  <div className="font-semibold">Call Now</div>
-                  <div className="text-sm text-gray-200">(601) 746-5012</div>
-                </div>
+                <Phone className="size-5 text-[var(--sp-green)]" />
+                <span>Call (601) 746-5012</span>
               </a>
-
-              {/* Email Option */}
               <a
                 href="mailto:info@southernpallet.co?subject=Custom Pallet Quote Request&body=Hi, I'm interested in getting a quote for custom pallets. Please contact me with more information."
-                className="flex items-center justify-center gap-4 w-full p-4 bg-[#22c55e] text-black rounded-lg hover:bg-[#16a34a] transition-colors"
+                className="flex items-center gap-4 bg-[var(--sp-green)] p-4 font-bold text-[var(--sp-forest-deep)]"
                 onClick={() => setIsContactModalOpen(false)}
               >
-                <Mail className="w-6 h-6" />
-                <div className="text-left">
-                  <div className="font-semibold">Send Email</div>
-                  <div className="text-sm text-gray-700">info@southernpallet.co</div>
-                </div>
+                <Mail className="size-5" />
+                <span>Email info@southernpallet.co</span>
               </a>
             </div>
-
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-500">
-                We typically respond within 1 hour during business hours
-              </p>
-            </div>
+            <p className="mt-5 text-xs text-[var(--sp-ink)]/55">
+              We typically respond within one hour during business hours.
+            </p>
           </div>
         </div>
       )}

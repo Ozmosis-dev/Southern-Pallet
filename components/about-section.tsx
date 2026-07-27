@@ -1,128 +1,76 @@
 import { Clock, MapPin, Star, Settings } from "lucide-react";
 
+const strengths = [
+  {
+    icon: Clock,
+    title: "Fast turnaround",
+    copy: "Most orders ready within 24–48 hours.",
+  },
+  {
+    icon: MapPin,
+    title: "Regional delivery",
+    copy: "Serving businesses throughout the Southeast.",
+  },
+  {
+    icon: Star,
+    title: "Quality guaranteed",
+    copy: "Built to last with carefully selected materials.",
+  },
+  {
+    icon: Settings,
+    title: "Custom solutions",
+    copy: "Pallets manufactured to your exact specifications.",
+  },
+];
+
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-[#f4f4f6]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16">
-          <div>
-            <h2 className="text-4xl font-bold text-[#1e4a2b] mb-6">
-              About Us: Family-Owned Pallet Company
-            </h2>
-            <p className="text-gray-700 mb-6">
+    <section id="about" className="sp-grid bg-[var(--sp-cream)] py-24 lg:py-32">
+      <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
+        <div>
+          <p className="sp-eyebrow text-[var(--sp-green-dark)]">Built for industry</p>
+          <h2 className="sp-display mt-5 max-w-xl text-5xl leading-[0.94] text-[var(--sp-forest)] sm:text-6xl">
+            A family-owned pallet partner that moves at your speed.
+          </h2>
+          <div className="mt-8 max-w-xl space-y-5 text-base leading-7 text-[var(--sp-ink)]/72">
+            <p>
               Southern Pallet Recycling is a new and innovative pallet company
               dedicated to providing quality service. We manufacture new
               pallets, recycle used pallets, and provide reliable delivery to
               meet your specific needs.
             </p>
-            <p className="text-gray-700 mb-8">
-              As a leader in sustainable pallet solutions, we understand the
-              unique needs of businesses in our region and pride ourselves on
-              providing personalized service with quick turnaround times. Learn more about our <a href="/recycle-pallets" className="text-[#1e4a2b] font-semibold hover:underline">pallet recycling services</a> and how we help businesses achieve their sustainability goals.
+            <p>
+              Our 60,000 sq ft manufacturing and recycling facility in
+              Poplarville, Mississippi helps us serve businesses across the
+              Southeast with dependable production and quick turnaround times.
             </p>
-
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold text-[#1e4a2b] mb-4">
-                Our Facility
-              </h3>
-              <p className="text-gray-700">
-                Our 60,000 sq ft manufacturing and recycling facility in
-                Poplarville, MS allows us to produce high-quality pallets
-                efficiently and meet the demands of businesses throughout the
-                southeastern United States.
-              </p>
-            </div>
+            <a
+              href="/recycle-pallets"
+              className="inline-flex border-b-2 border-[var(--sp-green-dark)] pb-1 font-extrabold text-[var(--sp-forest)]"
+            >
+              Explore pallet recycling
+            </a>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            <div className="bg-white p-3 sm:p-6 rounded-lg border border-gray-500 flex sm:block items-start gap-3 -mt-20 sm:mt-0">
-              <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-[#1e4a2b] flex-shrink-0 mt-1 sm:mt-0 sm:mb-4" />
-              <div className="sm:block">
-                <h3 className="text-lg sm:text-xl font-bold text-[#1e4a2b] mb-1 sm:mb-2">
-                  Fast
-                  <span className="sm:hidden"> Turnaround</span>
-                  <br className="hidden sm:block" />
-                  <span className="hidden sm:inline">Turnaround</span>
+        <div className="border-t border-[var(--sp-rule)]">
+          {strengths.map(({ icon: Icon, title, copy }, index) => (
+            <article
+              key={title}
+              className="grid grid-cols-[3rem_1fr] gap-4 border-b border-[var(--sp-rule)] py-7 sm:grid-cols-[4rem_1fr_auto] sm:items-center"
+            >
+              <span className="sp-display text-2xl text-[var(--sp-green-dark)]">
+                0{index + 1}
+              </span>
+              <div>
+                <h3 className="sp-display text-3xl text-[var(--sp-forest)]">
+                  {title}
                 </h3>
-                <p className="text-gray-600 text-xs sm:text-sm">
-                  <span className="sm:hidden">
-                    Most orders ready within 24-48 hours
-                  </span>
-                  <span className="hidden sm:block">
-                    Most orders ready
-                    <br />
-                    within 24-48 hours
-                  </span>
-                </p>
+                <p className="mt-1 text-sm text-[var(--sp-ink)]/65">{copy}</p>
               </div>
-            </div>
-
-            <div className="bg-white p-3 sm:p-6 rounded-lg border border-gray-500 flex sm:block items-start gap-3">
-              <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-[#1e4a2b] flex-shrink-0 mt-1 sm:mt-0 sm:mb-4" />
-              <div className="sm:block">
-                <h3 className="text-lg sm:text-xl font-bold text-[#1e4a2b] mb-1 sm:mb-2">
-                  Regional
-                  <span className="sm:hidden"> Delivery</span>
-                  <br className="hidden sm:block" />
-                  <span className="hidden sm:inline">Delivery</span>
-                </h3>
-                <p className="text-gray-600 text-xs sm:text-sm">
-                  <span className="sm:hidden">
-                    Serving the entire Southeast
-                  </span>
-                  <span className="hidden sm:block">
-                    Serving the entire
-                    <br />
-                    Southeast
-                  </span>
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-3 sm:p-6 rounded-lg border border-gray-500 flex sm:block items-start gap-3">
-              <Star className="w-6 h-6 sm:w-8 sm:h-8 text-[#1e4a2b] flex-shrink-0 mt-1 sm:mt-0 sm:mb-4" />
-              <div className="sm:block">
-                <h3 className="text-lg sm:text-xl font-bold text-[#1e4a2b] mb-1 sm:mb-2">
-                  Quality
-                  <span className="sm:hidden"> Guaranteed</span>
-                  <br className="hidden sm:block" />
-                  <span className="hidden sm:inline">Guaranteed</span>
-                </h3>
-                <p className="text-gray-600 text-xs sm:text-sm">
-                  <span className="sm:hidden">
-                    Built to last with premium materials
-                  </span>
-                  <span className="hidden sm:block">
-                    Built to last with
-                    <br />
-                    premium materials
-                  </span>
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-3 sm:p-6 rounded-lg border border-gray-500 flex sm:block items-start gap-3 -mb-15 sm:mb-0">
-              <Settings className="w-6 h-6 sm:w-8 sm:h-8 text-[#1e4a2b] flex-shrink-0 mt-1 sm:mt-0 sm:mb-4" />
-              <div className="sm:block">
-                <h3 className="text-lg sm:text-xl font-bold text-[#1e4a2b] mb-1 sm:mb-2">
-                  Custom
-                  <span className="sm:hidden"> Solutions</span>
-                  <br className="hidden sm:block" />
-                  <span className="hidden sm:inline">Solutions</span>
-                </h3>
-                <p className="text-gray-600 text-xs sm:text-sm">
-                  <span className="sm:hidden">
-                    Pallets built to your specifications
-                  </span>
-                  <span className="hidden sm:block">
-                    Pallets built to your
-                    <br />
-                    specifications
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
+              <Icon className="hidden size-7 text-[var(--sp-green-dark)] sm:block" strokeWidth={1.7} />
+            </article>
+          ))}
         </div>
       </div>
     </section>

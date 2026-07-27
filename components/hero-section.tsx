@@ -1,99 +1,71 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
+const stats = [
+  ["60K", "Sq ft manufacturing facility"],
+  ["500K+", "Pallets recycled annually"],
+  ["100%", "On-time delivery focus"],
+];
 
 export default function HeroSection() {
   return (
-    <section className="relative bg-[#1e4a2b] text-white min-h-[600px] overflow-hidden pt-40">
-      {/* Background and image section */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[#1e4a2b]"></div>
-        {/* Mobile banner */}
-        <div className="lg:hidden absolute -top-32 -left-60 -right-60 h-[600px] md:h-full md:w-1/2 md:right-0 md:left-auto bg-[#1e4a2b] overflow-hidden">
-          <Image
-            src="/stack.svg"
-            alt="Stack of wooden pallets"
-            width={1400}
-            height={1000}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        {/* Large screen slanted section */}
-        <div
-          className="hidden lg:block absolute right-0 top-0 w-1/2 h-full bg-[#1e4a2b] overflow-hidden"
-          style={{
-            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          }}
-        >
-          <Image
-            src="/stack.svg"
-            alt="Stack of wooden pallets"
-            width={800}
-            height={600}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-[320px] md:pt-20 pb-20 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-        <div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Pallets Delivered
-            <br />
-            Fast. Every Time.
-          </h1>
-          <p className="md:text-xl mb-8 text-gray-200">
-            No delays. No headaches. No surprises. Just reliable pallets when
-            you need them, where you need them.
+    <section id="home" className="relative overflow-hidden bg-[var(--sp-forest)] pt-20 text-white">
+      <div className="sp-grid absolute inset-0 opacity-10" aria-hidden="true" />
+      <div className="relative mx-auto grid min-h-[740px] max-w-7xl lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="flex flex-col justify-center px-6 py-20 lg:px-10 lg:py-28">
+          <p className="sp-eyebrow mb-7 text-[var(--sp-green)]">
+            Pallet supply · Southeast
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <a 
-              href="#contact" 
-              className="bg-[#22c55e] text-black px-8 py-3 rounded font-semibold hover:bg-[#16a34a] transition-colors text-center"
+          <h1 className="sp-display max-w-3xl text-6xl leading-[0.87] text-white sm:text-7xl lg:text-[6.8rem]">
+            Pallets delivered fast. Every time.
+          </h1>
+          <p className="mt-8 max-w-xl text-lg leading-8 text-white/72">
+            No delays. No headaches. No surprises. Just dependable pallet
+            supply, recycling, and delivery built around your operation.
+          </p>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="#contact"
+              className="inline-flex min-h-12 items-center justify-center gap-3 bg-[var(--sp-green)] px-7 text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--sp-forest-deep)] hover:bg-white"
             >
-              Get Free Quote
+              Get a free quote <ArrowRight className="size-4" />
             </a>
-            <a 
-              href="/recycle-pallets" 
-              className="border-2 border-white text-white px-8 py-3 rounded font-semibold hover:bg-white hover:text-[#1e4a2b] transition-colors text-center"
+            <Link
+              href="/recycle-pallets"
+              className="inline-flex min-h-12 items-center justify-center border border-white/50 px-7 text-sm font-extrabold uppercase tracking-[0.12em] text-white hover:border-white hover:bg-white hover:text-[var(--sp-forest-deep)]"
             >
-              Sell Your Pallets
-            </a>
-          </div>
-
-          <div className="grid grid-cols-3 gap-0 md:gap-8 -mx-6 md:mx-0">
-            <div className="text-center px-6 md:px-2">
-              <div className="text-3xl md:text-4xl font-bold text-[#22c55e] mb-1 md:mb-2">
-                60K
-              </div>
-              <div className="text-xs md:text-sm text-center">
-                Sq Ft Manufacturing
-                <br />& Recycling Facility
-              </div>
-            </div>
-            <div className="text-center border-x border-gray-400 px-8 md:px-4">
-              <div className="text-3xl md:text-4xl font-bold text-[#22c55e] mb-1 md:mb-2">
-                500K+
-              </div>
-              <div className="text-xs md:text-sm">
-                Pallets Recycled
-                <br />
-                Annually
-              </div>
-            </div>
-            <div className="text-center px-6 md:px-2">
-              <div className="text-3xl md:text-4xl font-bold text-[#22c55e] mb-1 md:mb-2">
-                100%
-              </div>
-              <div className="text-sm">
-                On time
-                <br />
-                Delivery
-              </div>
-            </div>
+              Sell your pallets
+            </Link>
           </div>
         </div>
 
-        <div className="relative"></div>
+        <div className="relative min-h-[440px] border-t border-white/15 lg:min-h-full lg:border-l lg:border-t-0">
+          <Image
+            src="/stack.svg"
+            alt="A large stack of wooden pallets ready for delivery"
+            fill
+            priority
+            className="object-cover"
+            sizes="(min-width: 1024px) 53vw, 100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--sp-forest-deep)]/65 via-transparent to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 grid grid-cols-3 border-t border-white/25 bg-[var(--sp-forest-deep)]/90 backdrop-blur-sm">
+            {stats.map(([value, label], index) => (
+              <div
+                key={value}
+                className={`p-4 sm:p-6 ${index ? "border-l border-white/20" : ""}`}
+              >
+                <p className="sp-display text-3xl text-[var(--sp-green)] sm:text-5xl">
+                  {value}
+                </p>
+                <p className="mt-1 text-[10px] font-bold uppercase leading-4 tracking-[0.08em] text-white/70 sm:text-xs">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

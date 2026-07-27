@@ -139,42 +139,45 @@ export default function ContactSection() {
     }
   };
   return (
-    <section id="contact" className="py-20 bg-[#1e4a2b] text-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16">
+    <section id="contact" className="relative overflow-hidden bg-[var(--sp-forest)] py-24 text-white lg:py-32">
+      <div className="sp-diagonal absolute inset-0 opacity-10" aria-hidden="true" />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <h2 className="text-4xl font-bold mb-4">Need Pallets Now?</h2>
-            <h3 className="text-2xl mb-8">Let&apos;s talk!</h3>
-            <p className="text-gray-200 text-lg mb-12">
+            <p className="sp-eyebrow text-[var(--sp-green)]">Quote desk</p>
+            <h2 className="sp-display mt-5 text-6xl leading-[0.9] sm:text-7xl">
+              Need pallets now?
+            </h2>
+            <p className="mt-7 max-w-md text-lg leading-8 text-white/70">
               Most quotes returned in under 1 hour. Deliveries will be made the
               following day, within 24hrs. That&apos;s the Southern Pallet
               difference.
             </p>
 
-            <div className="space-y-6">
-              <div className="flex items-center">
-                <Phone className="w-6 h-6 mr-4" />
+            <div className="mt-12 border-t border-white/25">
+              <div className="flex items-center gap-4 border-b border-white/25 py-5">
+                <Phone className="size-5 text-[var(--sp-green)]" />
                 <div>
-                  <div className="font-semibold">
-                    Call Direct : (601) 746-5012
+                  <div className="text-sm font-bold">
+                    Call direct · (601) 746-5012
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center">
-                <Mail className="w-6 h-6 mr-4" />
+              <div className="flex items-center gap-4 border-b border-white/25 py-5">
+                <Mail className="size-5 text-[var(--sp-green)]" />
                 <div>
-                  <div className="font-semibold">
-                    Email : info@southernpallet.co
+                  <div className="text-sm font-bold">
+                    Email · info@southernpallet.co
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-start">
-                <MapPin className="w-6 h-6 mr-4 mt-1" />
+              <div className="flex items-start gap-4 border-b border-white/25 py-5">
+                <MapPin className="mt-1 size-5 text-[var(--sp-green)]" />
                 <div>
-                  <div className="font-semibold mb-2">Headquarters :</div>
-                  <div className="text-gray-200">
+                  <div className="text-xs font-extrabold uppercase tracking-[0.12em]">Headquarters</div>
+                  <div className="mt-2 text-sm leading-6 text-white/65">
                     5695 Rabbit Creek Dr Ste 101
                     <br />
                     Theodore, AL 36582
@@ -182,25 +185,25 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="flex items-start">
-                <Clock className="w-6 h-6 mr-4 mt-1" />
+              <div className="flex items-start gap-4 border-b border-white/25 py-5">
+                <Clock className="mt-1 size-5 text-[var(--sp-green)]" />
                 <div>
-                  <div className="font-semibold mb-2">Business Hours :</div>
-                  <div className="text-gray-200">
+                  <div className="text-xs font-extrabold uppercase tracking-[0.12em]">Business hours</div>
+                  <div className="mt-2 text-sm text-white/65">
                     Monday - Friday: 7:00 AM - 4:00 PM (CST)
-                    <br />
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-white text-black p-8 rounded-lg">
-            <h3 className="text-2xl font-bold mb-8 text-center">
-              Request A Quote
+          <div className="border border-white/20 bg-[var(--sp-paper)] p-6 text-[var(--sp-ink)] sm:p-10">
+            <p className="sp-eyebrow text-[var(--sp-green-dark)]">Tell us what you need</p>
+            <h3 className="sp-display mt-3 text-4xl text-[var(--sp-forest)]">
+              Request a quote
             </h3>
 
-            <form className="space-y-6" onSubmit={handleFormSubmit}>
+            <form className="mt-8 space-y-6" onSubmit={handleFormSubmit}>
               <div
                 className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
                 aria-hidden="true"
@@ -219,7 +222,7 @@ export default function ContactSection() {
                   <label className="block text-sm font-medium mb-2">Name</label>
                   <Input
                     name="name"
-                    className="border border-gray-500"
+                    className="rounded-none border-[var(--sp-rule)] bg-white"
                     placeholder="Your name"
                     required
                   />
@@ -230,7 +233,7 @@ export default function ContactSection() {
                   </label>
                   <Input
                     name="company"
-                    className="border border-gray-500"
+                    className="rounded-none border-[var(--sp-rule)] bg-white"
                     placeholder="Your company"
                   />
                 </div>
@@ -243,7 +246,7 @@ export default function ContactSection() {
                   </label>
                   <Input
                     name="email"
-                    className="border border-gray-500"
+                    className="rounded-none border-[var(--sp-rule)] bg-white"
                     type="email"
                     placeholder="Your email"
                     required
@@ -254,7 +257,7 @@ export default function ContactSection() {
                     Phone
                   </label>
                   <Input
-                    className="border border-gray-500"
+                    className="rounded-none border-[var(--sp-rule)] bg-white"
                     type="tel"
                     placeholder="(555) 123-4567"
                     value={phoneNumber || ""}
@@ -269,7 +272,7 @@ export default function ContactSection() {
                   Product Interest
                 </label>
                 <Select name="productInterest">
-                  <SelectTrigger className="border border-gray-500 w-full">
+                  <SelectTrigger className="w-full rounded-none border-[var(--sp-rule)] bg-white">
                     <SelectValue placeholder="Select product" />
                   </SelectTrigger>
                   <SelectContent>
@@ -288,7 +291,7 @@ export default function ContactSection() {
                 </label>
                 <Textarea
                   name="message"
-                  className="border border-gray-500"
+                  className="rounded-none border-[var(--sp-rule)] bg-white"
                   placeholder="Tell us about your pallet needs"
                   rows={4}
                 />
@@ -340,7 +343,7 @@ export default function ContactSection() {
                 <p
                   role="alert"
                   aria-live="polite"
-                  className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+                  className="border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
                 >
                   {submissionError}
                 </p>
@@ -349,7 +352,7 @@ export default function ContactSection() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#22c55e] text-black hover:bg-[#16a34a] font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                className="min-h-12 w-full rounded-none bg-[var(--sp-green)] font-extrabold uppercase tracking-[0.1em] text-[var(--sp-forest-deep)] hover:bg-[var(--sp-forest)] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? "Submitting..." : "Submit Request"}
               </Button>
