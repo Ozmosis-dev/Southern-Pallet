@@ -20,10 +20,10 @@ export default function EnvironmentalSection() {
         </div>
         <div className="flex flex-col justify-center border-r border-[var(--sp-rule)] px-6 py-20 sm:px-12 lg:px-16">
           <p className="sp-eyebrow text-[var(--sp-green-dark)]">Materials in motion</p>
-          <p className="sp-display mt-6 text-[6rem] leading-none text-[var(--sp-forest)] sm:text-[9rem]">
+          <p className="sp-display mt-6 text-6xl text-[var(--sp-forest)]">
             500K+
           </p>
-          <h2 className="sp-display max-w-xl text-4xl leading-none text-[var(--sp-forest)] sm:text-5xl">
+          <h2 className="sp-display mt-3 max-w-xl text-3xl text-[var(--sp-forest)] sm:text-4xl">
             Pallets kept out of landfills every year.
           </h2>
           <p className="mt-7 max-w-lg text-base leading-7 text-[var(--sp-ink)]/68">
@@ -33,7 +33,7 @@ export default function EnvironmentalSection() {
           </p>
           <Link
             href="/recycle-pallets"
-            className="mt-9 inline-flex min-h-12 w-fit items-center gap-3 bg-[var(--sp-forest)] px-6 text-xs font-extrabold uppercase tracking-[0.12em] text-white hover:bg-[var(--sp-green-dark)]"
+            className="mt-9 inline-flex min-h-12 w-fit items-center gap-3 bg-[var(--sp-forest)] px-6 text-xs font-bold uppercase tracking-[0.1em] text-white hover:bg-[var(--sp-green-dark)]"
           >
             Join the movement <ArrowRight className="size-4" />
           </Link>

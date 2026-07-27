@@ -48,7 +48,7 @@ export default function CareersPage() {
                   Careers at Southern Pallet
                 </p>
               </div>
-              <h1 className="max-w-2xl text-5xl font-black leading-[0.94] tracking-[-0.055em] sm:text-6xl lg:text-7xl">
+              <h1 className="max-w-2xl text-5xl font-semibold leading-[1.08] tracking-[-0.025em] sm:text-6xl">
                 General
                 <br />
                 application.

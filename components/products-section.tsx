@@ -70,7 +70,7 @@ export default function ProductsSection() {
         <div className="grid gap-8 border-b border-[var(--sp-rule)] pb-10 lg:grid-cols-[1fr_0.7fr] lg:items-end">
           <div>
             <p className="sp-eyebrow text-[var(--sp-green-dark)]">Product lineup</p>
-            <h2 className="sp-display mt-5 max-w-3xl text-5xl leading-[0.94] text-[var(--sp-forest)] sm:text-6xl">
+            <h2 className="sp-display mt-5 max-w-3xl text-4xl text-[var(--sp-forest)] sm:text-5xl">
               The right pallet for every load.
             </h2>
           </div>
@@ -100,10 +100,10 @@ export default function ProductsSection() {
                 </span>
               </div>
               <div className="flex flex-1 flex-col p-6 sm:p-8">
-                <h3 className="sp-display text-4xl text-[var(--sp-forest)]">
+                <h3 className="sp-display text-3xl text-[var(--sp-forest)]">
                   {product.name}
                 </h3>
-                <p className="mt-5 text-2xl font-extrabold text-[var(--sp-forest)]">
+                <p className="mt-5 text-2xl font-semibold text-[var(--sp-forest)]">
                   {product.price}
                   <span className="ml-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--sp-ink)]/50">
                     {product.suffix}
@@ -127,7 +127,7 @@ export default function ProductsSection() {
                       ? setIsContactModalOpen(true)
                       : scrollToContact()
                   }
-                  className="mt-8 inline-flex min-h-12 items-center justify-between bg-[var(--sp-green)] px-5 text-left text-xs font-extrabold uppercase tracking-[0.11em] text-[var(--sp-forest-deep)] hover:bg-[var(--sp-forest)] hover:text-white"
+                  className="mt-8 inline-flex min-h-12 items-center justify-between bg-[var(--sp-green)] px-5 text-left text-xs font-bold uppercase tracking-[0.1em] text-[var(--sp-forest-deep)] hover:bg-[var(--sp-forest)] hover:text-white"
                 >
                   {product.action} <ArrowRight className="size-4" />
                 </button>
@@ -158,7 +158,7 @@ export default function ProductsSection() {
               <X className="size-5" />
             </button>
             <p className="sp-eyebrow text-[var(--sp-green-dark)]">Custom orders</p>
-            <h3 id="custom-pallet-title" className="sp-display mt-3 text-4xl text-[var(--sp-forest)]">
+            <h3 id="custom-pallet-title" className="sp-display mt-3 text-3xl text-[var(--sp-forest)]">
               Let&apos;s build the right pallet.
             </h3>
             <p className="mt-3 text-sm leading-6 text-[var(--sp-ink)]/65">

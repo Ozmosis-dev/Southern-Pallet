@@ -64,7 +64,7 @@ export default function FAQSection() {
       <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[0.7fr_1.3fr] lg:px-10">
         <div>
           <p className="sp-eyebrow text-[var(--sp-green-dark)]">Straight answers</p>
-          <h2 className="sp-display mt-5 max-w-md text-5xl leading-[0.94] text-[var(--sp-forest)] sm:text-6xl">
+          <h2 className="sp-display mt-5 max-w-md text-4xl text-[var(--sp-forest)] sm:text-5xl">
             Pallet questions, answered.
           </h2>
           <p className="mt-6 max-w-sm text-base leading-7 text-[var(--sp-ink)]/65">
@@ -85,7 +85,7 @@ export default function FAQSection() {
                   <span className="sp-display text-lg text-[var(--sp-green-dark)]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-base font-extrabold text-[var(--sp-forest)] group-hover:text-[var(--sp-green-dark)]">
+                  <span className="text-base font-semibold text-[var(--sp-forest)] group-hover:text-[var(--sp-green-dark)]">
                     {faq.question}
                   </span>
                 </span>

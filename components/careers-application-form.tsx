@@ -121,7 +121,7 @@ export default function CareersApplicationForm() {
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-[#168344]">
               General application
             </p>
-            <h2 className="max-w-xl text-3xl font-black tracking-[-0.04em] text-[#183523] sm:text-4xl">
+            <h2 className="max-w-xl text-3xl font-semibold tracking-[-0.025em] text-[#183523] sm:text-4xl">
               Tell us where you can make an impact.
             </h2>
           </div>
@@ -174,7 +174,7 @@ export default function CareersApplicationForm() {
                 01
               </span>
               <div>
-                <h3 className="text-xl font-black text-[#183523]">
+                <h3 className="text-xl font-semibold text-[#183523]">
                   Opportunity preferences
                 </h3>
                 <p className="mt-1 text-sm text-[#647168]">
@@ -226,7 +226,7 @@ export default function CareersApplicationForm() {
                 02
               </span>
               <div>
-                <h3 className="text-xl font-black text-[#183523]">
+                <h3 className="text-xl font-semibold text-[#183523]">
                   Applicant information
                 </h3>
                 <p className="mt-1 text-sm text-[#647168]">
@@ -349,7 +349,7 @@ export default function CareersApplicationForm() {
                 03
               </span>
               <div>
-                <h3 className="text-xl font-black text-[#183523]">
+                <h3 className="text-xl font-semibold text-[#183523]">
                   Availability and experience
                 </h3>
                 <p className="mt-1 text-sm text-[#647168]">

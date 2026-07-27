@@ -29,7 +29,7 @@ export default function AboutSection() {
       <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
         <div>
           <p className="sp-eyebrow text-[var(--sp-green-dark)]">Built for industry</p>
-          <h2 className="sp-display mt-5 max-w-xl text-5xl leading-[0.94] text-[var(--sp-forest)] sm:text-6xl">
+          <h2 className="sp-display mt-5 max-w-xl text-4xl text-[var(--sp-forest)] sm:text-5xl">
             A family-owned pallet partner that moves at your speed.
           </h2>
           <div className="mt-8 max-w-xl space-y-5 text-base leading-7 text-[var(--sp-ink)]/72">
@@ -46,7 +46,7 @@ export default function AboutSection() {
             </p>
             <a
               href="/recycle-pallets"
-              className="inline-flex border-b-2 border-[var(--sp-green-dark)] pb-1 font-extrabold text-[var(--sp-forest)]"
+              className="inline-flex border-b-2 border-[var(--sp-green-dark)] pb-1 font-semibold text-[var(--sp-forest)]"
             >
               Explore pallet recycling
             </a>
@@ -59,11 +59,11 @@ export default function AboutSection() {
               key={title}
               className="grid grid-cols-[3rem_1fr] gap-4 border-b border-[var(--sp-rule)] py-7 sm:grid-cols-[4rem_1fr_auto] sm:items-center"
             >
-              <span className="sp-display text-2xl text-[var(--sp-green-dark)]">
+              <span className="sp-display text-xl text-[var(--sp-green-dark)]">
                 0{index + 1}
               </span>
               <div>
-                <h3 className="sp-display text-3xl text-[var(--sp-forest)]">
+                <h3 className="sp-display text-2xl text-[var(--sp-forest)]">
                   {title}
                 </h3>
                 <p className="mt-1 text-sm text-[var(--sp-ink)]/65">{copy}</p>

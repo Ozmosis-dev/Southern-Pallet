@@ -1,10 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import {
-  Barlow_Condensed,
-  Geist,
-  Geist_Mono,
-  Manrope,
-} from "next/font/google";
+import { Geist, Geist_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
@@ -21,13 +16,6 @@ const geistMono = Geist_Mono({
 const publicBody = Manrope({
   variable: "--font-public-body",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const publicDisplay = Barlow_Condensed({
-  variable: "--font-public-display",
-  subsets: ["latin"],
-  weight: ["600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -239,7 +227,7 @@ export default function RootLayout({
 
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${publicBody.variable} ${publicDisplay.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${publicBody.variable} antialiased`}
       >
         {/* Google Tag Manager (noscript) */}
         {gtmId && (

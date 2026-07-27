@@ -17,7 +17,7 @@ export default function HeroSection() {
           <p className="sp-eyebrow mb-7 text-[var(--sp-green)]">
             Pallet supply · Southeast
           </p>
-          <h1 className="sp-display max-w-3xl text-6xl leading-[0.87] text-white sm:text-7xl lg:text-[6.8rem]">
+          <h1 className="sp-display max-w-3xl text-5xl text-white sm:text-6xl">
             Pallets delivered fast. Every time.
           </h1>
           <p className="mt-8 max-w-xl text-lg leading-8 text-white/72">
@@ -27,13 +27,13 @@ export default function HeroSection() {
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a
               href="#contact"
-              className="inline-flex min-h-12 items-center justify-center gap-3 bg-[var(--sp-green)] px-7 text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--sp-forest-deep)] hover:bg-white"
+              className="inline-flex min-h-12 items-center justify-center gap-3 bg-[var(--sp-green)] px-7 text-sm font-bold uppercase tracking-[0.1em] text-[var(--sp-forest-deep)] hover:bg-white"
             >
               Get a free quote <ArrowRight className="size-4" />
             </a>
             <Link
               href="/recycle-pallets"
-              className="inline-flex min-h-12 items-center justify-center border border-white/50 px-7 text-sm font-extrabold uppercase tracking-[0.12em] text-white hover:border-white hover:bg-white hover:text-[var(--sp-forest-deep)]"
+              className="inline-flex min-h-12 items-center justify-center border border-white/50 px-7 text-sm font-bold uppercase tracking-[0.1em] text-white hover:border-white hover:bg-white hover:text-[var(--sp-forest-deep)]"
             >
               Sell your pallets
             </Link>
@@ -56,7 +56,7 @@ export default function HeroSection() {
                 key={value}
                 className={`p-4 sm:p-6 ${index ? "border-l border-white/20" : ""}`}
               >
-                <p className="sp-display text-3xl text-[var(--sp-green)] sm:text-5xl">
+                <p className="sp-display text-2xl text-[var(--sp-green)] sm:text-4xl">
                   {value}
                 </p>
                 <p className="mt-1 text-[10px] font-bold uppercase leading-4 tracking-[0.08em] text-white/70 sm:text-xs">

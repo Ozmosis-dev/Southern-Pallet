@@ -140,7 +140,10 @@
 }
 
 .public-site :is(h1, h2, h3, .font-display) {
-  font-family: var(--font-public-display), sans-serif;
+  font-family: var(--font-public-body), sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
   text-wrap: balance;
 }
 
@@ -182,18 +185,18 @@
 
 .public-site .sp-eyebrow {
   color: var(--sp-green-dark);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.26em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   line-height: 1.4;
   text-transform: uppercase;
 }
 
 .public-site .sp-display {
-  font-family: var(--font-public-display), sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 0.95;
+  font-family: var(--font-public-body), sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
   text-wrap: balance;
 }
 

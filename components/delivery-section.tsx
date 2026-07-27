@@ -23,7 +23,7 @@ export default function DeliverySection() {
       <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-10">
         <div className="flex flex-col justify-center">
           <p className="sp-eyebrow text-[var(--sp-green-dark)]">Regional fleet</p>
-          <h2 className="sp-display mt-5 text-5xl leading-[0.94] text-[var(--sp-forest)] sm:text-6xl">
+          <h2 className="sp-display mt-5 text-4xl text-[var(--sp-forest)] sm:text-5xl">
             Delivery throughout the Southeast.
           </h2>
           <p className="mt-6 max-w-xl text-base leading-7 text-[var(--sp-ink)]/68">
@@ -36,7 +36,7 @@ export default function DeliverySection() {
             <div className="flex items-start gap-4">
               <MapPin className="mt-1 size-5 shrink-0 text-[var(--sp-green-dark)]" />
               <div>
-                <h3 className="text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--sp-forest)]">
+                <h3 className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--sp-forest)]">
                   Service area
                 </h3>
                 <p className="mt-3 text-sm leading-7 text-[var(--sp-ink)]/68">
@@ -50,7 +50,7 @@ export default function DeliverySection() {
             <div className="flex items-start gap-4">
               <Clock className="mt-1 size-5 shrink-0 text-[var(--sp-green-dark)]" />
               <div className="text-sm leading-7 text-[var(--sp-ink)]/68">
-                <h3 className="text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--sp-forest)]">
+                <h3 className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--sp-forest)]">
                   Delivery schedule
                 </h3>
                 <p className="mt-3">Monday–Friday · 7:00 AM–5:00 PM CST</p>
@@ -65,7 +65,7 @@ export default function DeliverySection() {
           <button
             type="button"
             onClick={() => setIsContactModalOpen(true)}
-            className="mt-8 inline-flex min-h-12 w-fit items-center gap-3 bg-[var(--sp-green)] px-6 text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--sp-forest-deep)] hover:bg-[var(--sp-forest)] hover:text-white"
+            className="mt-8 inline-flex min-h-12 w-fit items-center gap-3 bg-[var(--sp-green)] px-6 text-xs font-bold uppercase tracking-[0.1em] text-[var(--sp-forest-deep)] hover:bg-[var(--sp-forest)] hover:text-white"
           >
             Schedule delivery <ArrowRight className="size-4" />
           </button>
@@ -80,7 +80,7 @@ export default function DeliverySection() {
             sizes="(min-width: 1024px) 55vw, 100vw"
           />
           <div className="absolute bottom-0 left-0 border-r border-t border-[var(--sp-rule)] bg-[var(--sp-forest)] p-6 text-white">
-            <p className="sp-display text-4xl text-[var(--sp-green)]">8 states</p>
+            <p className="sp-display text-3xl text-[var(--sp-green)]">8 states</p>
             <p className="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-white/65">
               One delivery partner
             </p>
@@ -109,7 +109,7 @@ export default function DeliverySection() {
               <X className="size-5" />
             </button>
             <p className="sp-eyebrow text-[var(--sp-green-dark)]">Delivery desk</p>
-            <h3 id="delivery-contact-title" className="sp-display mt-3 text-4xl text-[var(--sp-forest)]">
+            <h3 id="delivery-contact-title" className="sp-display mt-3 text-3xl text-[var(--sp-forest)]">
               Schedule your delivery.
             </h3>
             <p className="mt-3 text-sm leading-6 text-[var(--sp-ink)]/65">

@@ -31,7 +31,7 @@ export default function ServicesSection() {
       <div className="relative mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
         <div>
           <p className="sp-eyebrow text-[var(--sp-green)]">One accountable partner</p>
-          <h2 className="sp-display mt-5 max-w-2xl text-5xl leading-[0.92] sm:text-7xl">
+          <h2 className="sp-display mt-5 max-w-2xl text-4xl sm:text-5xl">
             Complete pallet service, from the first board to final delivery.
           </h2>
           <div className="relative mt-12 aspect-[5/3] overflow-hidden border border-white/20">
@@ -42,7 +42,7 @@ export default function ServicesSection() {
               className="object-cover"
               sizes="(min-width: 1024px) 55vw, 100vw"
             />
-            <div className="absolute bottom-0 left-0 bg-[var(--sp-green)] px-5 py-4 text-xs font-extrabold uppercase tracking-[0.13em] text-[var(--sp-forest-deep)]">
+            <div className="absolute bottom-0 left-0 bg-[var(--sp-green)] px-5 py-4 text-xs font-bold uppercase tracking-[0.1em] text-[var(--sp-forest-deep)]">
               Manufactured · Recovered · Delivered
             </div>
           </div>
@@ -56,7 +56,7 @@ export default function ServicesSection() {
             >
               <span className="sp-display text-xl text-[var(--sp-green)]">0{index + 1}</span>
               <div>
-                <h3 className="sp-display text-3xl">{title}</h3>
+                <h3 className="sp-display text-2xl">{title}</h3>
                 <p className="mt-2 max-w-md text-sm leading-6 text-white/65">{copy}</p>
               </div>
               <Icon className="hidden size-6 text-[var(--sp-green)] sm:block" strokeWidth={1.7} />

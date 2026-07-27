@@ -145,7 +145,7 @@ export default function ContactSection() {
         <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="sp-eyebrow text-[var(--sp-green)]">Quote desk</p>
-            <h2 className="sp-display mt-5 text-6xl leading-[0.9] sm:text-7xl">
+            <h2 className="sp-display mt-5 text-5xl sm:text-6xl">
               Need pallets now?
             </h2>
             <p className="mt-7 max-w-md text-lg leading-8 text-white/70">
@@ -176,7 +176,7 @@ export default function ContactSection() {
               <div className="flex items-start gap-4 border-b border-white/25 py-5">
                 <MapPin className="mt-1 size-5 text-[var(--sp-green)]" />
                 <div>
-                  <div className="text-xs font-extrabold uppercase tracking-[0.12em]">Headquarters</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.1em]">Headquarters</div>
                   <div className="mt-2 text-sm leading-6 text-white/65">
                     5695 Rabbit Creek Dr Ste 101
                     <br />
@@ -188,7 +188,7 @@ export default function ContactSection() {
               <div className="flex items-start gap-4 border-b border-white/25 py-5">
                 <Clock className="mt-1 size-5 text-[var(--sp-green)]" />
                 <div>
-                  <div className="text-xs font-extrabold uppercase tracking-[0.12em]">Business hours</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.1em]">Business hours</div>
                   <div className="mt-2 text-sm text-white/65">
                     Monday - Friday: 7:00 AM - 4:00 PM (CST)
                   </div>
@@ -199,7 +199,7 @@ export default function ContactSection() {
 
           <div className="border border-white/20 bg-[var(--sp-paper)] p-6 text-[var(--sp-ink)] sm:p-10">
             <p className="sp-eyebrow text-[var(--sp-green-dark)]">Tell us what you need</p>
-            <h3 className="sp-display mt-3 text-4xl text-[var(--sp-forest)]">
+            <h3 className="sp-display mt-3 text-3xl text-[var(--sp-forest)]">
               Request a quote
             </h3>
 
@@ -352,7 +352,7 @@ export default function ContactSection() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="min-h-12 w-full rounded-none bg-[var(--sp-green)] font-extrabold uppercase tracking-[0.1em] text-[var(--sp-forest-deep)] hover:bg-[var(--sp-forest)] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                className="min-h-12 w-full rounded-none bg-[var(--sp-green)] font-bold uppercase tracking-[0.08em] text-[var(--sp-forest-deep)] hover:bg-[var(--sp-forest)] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? "Submitting..." : "Submit Request"}
               </Button>
