@@ -35,7 +35,7 @@ See `env.example.txt` for the full list with comments. Summary:
 |---|---|---|
 | `RESEND_API_KEY` | Server-side API key for email delivery | Required for Resend |
 | `LEAD_NOTIFICATION_EMAIL` | Inbox that receives quote and recycling leads | Required for those Resend forms |
-| `CAREERS_NOTIFICATION_EMAIL` | Separate inbox that receives career applications | Required for career delivery |
+| `CAREERS_NOTIFICATION_EMAIL` | Comma-separated inboxes that receive career applications | Required for career delivery |
 | `LEAD_FROM_EMAIL` | Verified sender identity used by Resend | Required for Resend |
 | `LEAD_WEBHOOK_URL` | Optional secondary destination for lead JSON | No |
 | `LEAD_DELIVERY_TIMEOUT_MS` | Outbound delivery timeout; defaults to 8000 ms | No |
@@ -64,8 +64,9 @@ server-only delivery module:
 - When `LEAD_WEBHOOK_URL` is set, the same lead is also posted there as JSON.
   Zapier, Make, or a custom endpoint can use this optional secondary channel.
   Career applications are email-only and are never sent to the webhook.
-- Career applications use `CAREERS_NOTIFICATION_EMAIL`, so employment
-  submissions remain separate from sales and recycling leads.
+- Career applications use the comma-separated recipients in
+  `CAREERS_NOTIFICATION_EMAIL`, so employment submissions can reach multiple
+  hiring contacts while remaining separate from sales and recycling leads.
 - If neither channel is configured, the API returns `503` instead of showing a
   false success. If every configured channel fails, it returns `502`.
 - Resend requests use an idempotency key to prevent duplicate notification

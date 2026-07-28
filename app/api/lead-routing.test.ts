@@ -347,7 +347,7 @@ test("null JSON bodies return 400 for both form routes", async () => {
   assert.equal(recycleResponse.status, 400);
 });
 
-test("career delivery uses its own recipient and includes a resume", async () => {
+test("career delivery supports multiple recipients and includes a resume", async () => {
   clearDeliveryEnvironment();
   process.env.RESEND_API_KEY = "re_test_key";
   process.env.LEAD_NOTIFICATION_EMAIL = "quotes@example.com";
@@ -364,7 +364,7 @@ test("career delivery uses its own recipient and includes a resume", async () =>
     formType: "career_application",
     subject: "New Southern Pallet employment application",
     replyTo: "applicant@example.com",
-    notificationEmail: "careers@example.com",
+    notificationEmail: "careers@example.com, staffing@example.com",
     allowWebhook: false,
     attachments: [
       {
@@ -381,7 +381,10 @@ test("career delivery uses its own recipient and includes a resume", async () =>
   });
 
   assert.deepEqual(result.channels, ["resend"]);
-  assert.deepEqual(sentBody?.to, ["careers@example.com"]);
+  assert.deepEqual(sentBody?.to, [
+    "careers@example.com",
+    "staffing@example.com",
+  ]);
   assert.deepEqual(sentBody?.attachments, [
     {
       filename: "resume.pdf",

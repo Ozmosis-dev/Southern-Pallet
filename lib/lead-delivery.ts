@@ -119,15 +119,20 @@ export async function deliverLead({
   allowWebhook = true,
 }: DeliverLeadOptions): Promise<{ channels: string[] }> {
   const apiKey = process.env.RESEND_API_KEY?.trim();
-  const notificationEmail =
-    notificationEmailOverride?.trim() ||
-    process.env.LEAD_NOTIFICATION_EMAIL?.trim();
+  const notificationEmails = (
+    notificationEmailOverride ||
+    process.env.LEAD_NOTIFICATION_EMAIL ||
+    ""
+  )
+    .split(",")
+    .map((email) => email.trim())
+    .filter(Boolean);
   const fromEmail = process.env.LEAD_FROM_EMAIL?.trim();
   const webhookUrl = allowWebhook
     ? process.env.LEAD_WEBHOOK_URL?.trim()
     : undefined;
   const hasResendConfiguration = Boolean(
-    apiKey || notificationEmail || fromEmail,
+    apiKey || notificationEmails.length > 0 || fromEmail,
   );
   const timeoutMs = getDeliveryTimeoutMs();
   const channels: string[] = [];
@@ -142,7 +147,7 @@ export async function deliverLead({
   }
 
   if (hasResendConfiguration) {
-    if (!apiKey || !notificationEmail || !fromEmail) {
+    if (!apiKey || notificationEmails.length === 0 || !fromEmail) {
       failures.push("Resend lead delivery configuration is incomplete.");
     } else {
       deliveryTasks.push({
@@ -159,7 +164,7 @@ export async function deliverLead({
               resend.emails.send(
                 {
                   from: fromEmail,
-                  to: [notificationEmail],
+                  to: notificationEmails,
                   replyTo,
                   subject,
                   text: buildLeadEmailText(formType, payload),
