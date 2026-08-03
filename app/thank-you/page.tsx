@@ -4,21 +4,21 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Your Pallet Inquiry has been Received",
+  title: "Pallet Quote Request Received",
   description:
     "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
   alternates: {
-    canonical: 'https://www.southernpalletcompany.com/thank-you',
+    canonical: "/thank-you",
   },
   openGraph: {
-    title: "Your Pallet Inquiry has been Received | Southern Pallet",
+    title: "Pallet Quote Request Received",
     description: "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
-    url: 'https://www.southernpalletcompany.com/thank-you',
+    url: "/thank-you",
     images: ['/southern_pallet_og_image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Your Pallet Inquiry has been Received | Southern Pallet',
+    title: "Pallet Quote Request Received",
     description: "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
     images: ['/southern_pallet_og_image.png'],
   },
@@ -116,4 +116,4 @@ export default function ThankYouPage() {
       </div>
     </div>
   );
-} 
+}

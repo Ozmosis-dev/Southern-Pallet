@@ -6,29 +6,14 @@ export default function HeroSection() {
       {/* Background and image section */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[#1e4a2b]"></div>
-        {/* Mobile banner */}
-        <div className="lg:hidden absolute -top-32 -left-60 -right-60 h-[600px] md:h-full md:w-1/2 md:right-0 md:left-auto bg-[#1e4a2b] overflow-hidden">
+        <div className="absolute -left-60 -right-60 -top-32 h-[600px] overflow-hidden bg-[#1e4a2b] md:left-auto md:right-0 md:top-0 md:h-full md:w-1/2">
           <Image
-            src="/stack.svg"
-            alt="Stack of wooden pallets"
-            width={1400}
-            height={1000}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        {/* Large screen slanted section */}
-        <div
-          className="hidden lg:block absolute right-0 top-0 w-1/2 h-full bg-[#1e4a2b] overflow-hidden"
-          style={{
-            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          }}
-        >
-          <Image
-            src="/stack.svg"
-            alt="Stack of wooden pallets"
-            width={800}
-            height={600}
-            className="absolute inset-0 w-full h-full object-cover"
+            src="/recyled_pallet_card.jpg"
+            alt="Stacks of recycled wood pallets inside a warehouse"
+            fill
+            priority
+            sizes="(max-width: 767px) 100vw, 50vw"
+            className="object-cover"
           />
         </div>
       </div>
@@ -36,13 +21,13 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-[320px] md:pt-20 pb-20 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
         <div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Pallets Delivered
+            New, Recycled & Custom
             <br />
-            Fast. Every Time.
+            Wood Pallets
           </h1>
           <p className="md:text-xl mb-8 text-gray-200">
-            No delays. No headaches. No surprises. Just reliable pallets when
-            you need them, where you need them.
+            Reliable pallet supply, recycling, and regional delivery for
+            businesses across Alabama, Mississippi, and the Southeast.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mb-12">

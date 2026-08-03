@@ -42,16 +42,18 @@ export default function RecycleHeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-[320px] md:pt-20 pb-20">
         <div className="max-w-2xl relative">
           <h1 className="text-5xl md:text-6xl font-bold mb-3 leading-tight">
-            We Buy <span className="text-[#22c55e]">Used Pallets</span>
+            Sell & Recycle{" "}
+            <span className="text-[#22c55e]">Used Wood Pallets</span>
           </h1>
 
           <h2 className="text-2xl md:text-3xl font-bold mb-6">
-            Sell Your Pallets for Top Value
+            Request a Pallet Buyback or Pickup Quote
           </h2>
 
           <p className="text-xl mb-12 text-gray-200 leading-relaxed">
-            We offer competitive prices for standard and box pallets, providing
-            a seamless process to turn your excess inventory into profit.
+            Tell us the pallet size, condition, quantity, and location. We&apos;ll
+            review the load and recommend the most practical pickup, reuse, or
+            recycling option.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -80,19 +82,27 @@ export default function RecycleHeroSection() {
           {/* Stats grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-16 text-center">
             <div className="px-4 sm:border-r border-gray-600 last:border-r-0">
-                          <div className="text-4xl font-bold text-[#22c55e] mb-2">$$$</div>
-            <div className="text-sm text-gray-300">
-              Best Rates in Southeast
-            </div>
-          </div>
-          <div className="px-4 sm:border-r border-gray-600 last:border-r-0">
-            <div className="text-4xl font-bold text-[#22c55e] mb-2">24h</div>
-            <div className="text-sm text-gray-300">Quick Pickup Service</div>
-          </div>
-          <div className="px-4 sm:border-r border-gray-600 last:border-r-0">
-            <div className="text-4xl font-bold text-[#22c55e] mb-2">100%</div>
+              <div className="text-3xl font-bold text-[#22c55e] mb-2">
+                Fair
+              </div>
               <div className="text-sm text-gray-300">
-                Satisfaction Guaranteed
+                Condition-Based Quotes
+              </div>
+            </div>
+            <div className="px-4 sm:border-r border-gray-600 last:border-r-0">
+              <div className="text-3xl font-bold text-[#22c55e] mb-2">
+                Flexible
+              </div>
+              <div className="text-sm text-gray-300">
+                Pickup and Drop-Off Options
+              </div>
+            </div>
+            <div className="px-4 sm:border-r border-gray-600 last:border-r-0">
+              <div className="text-3xl font-bold text-[#22c55e] mb-2">
+                Reuse
+              </div>
+              <div className="text-sm text-gray-300">
+                Repair and Recycling Paths
               </div>
             </div>
           </div>

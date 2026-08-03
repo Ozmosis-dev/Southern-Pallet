@@ -1,6 +1,6 @@
 # Southern Pallet — website
 
-Marketing site for Southern Pallet (southernpallet.co / southernpalletcompany.com). Next.js (App Router), React 19, Tailwind CSS 4. No database, no server-side data storage — it's a static/marketing site with two lead-capture forms.
+Marketing site for Southern Pallet (`southernpallet.co`). Next.js (App Router), React 19, Tailwind CSS 4. No database, no server-side data storage — it's a static/marketing site with two lead-capture forms.
 
 ## Stack
 
@@ -58,4 +58,4 @@ This page shows an investor presentation behind a password prompt. Worth knowing
 
 ## SEO notes
 
-- `robots.txt` currently points its sitemap at `southernpalletcompany.com`, a different domain from `southernpallet.co`. Worth confirming which domain is canonical and aligning `robots.txt` / `sitemap.xml` / the `metadataBase` in `app/layout.tsx` to match.
+- `https://southernpallet.co` is the canonical site origin. Metadata, structured data, `robots.txt`, and `sitemap.xml` are generated from the shared settings in `lib/site-config.ts`.
