@@ -8,26 +8,32 @@ import DeliverySection from "../components/delivery-section"
 import FAQSection from "../components/faq-section"
 import ContactSection from "../components/contact-section"
 import Footer from "../components/footer"
-import { Metadata } from "next"
+import type { Metadata } from "next"
 import PublicSiteShell from "../components/public-site-shell"
+import { DEFAULT_OG_IMAGE } from "@/lib/site-config"
 
 export const metadata: Metadata = {
-  title: "Pallets for Sale Near Me | Used & New Wood Pallets Supplier",
-  description: "Southern Pallet offers new & used wood pallets for sale near you. Trusted pallet supplier with fast delivery, recycling, and complete pallet management.",
+  title: {
+    absolute: "Wood Pallet Supplier in Alabama & Mississippi | Southern Pallet",
+  },
+  description:
+    "Order new, recycled, heat-treated, and custom wood pallets with regional delivery, repair, and recycling across Alabama, Mississippi, and the Southeast.",
   alternates: {
-    canonical: 'https://southernpallet.co',
+    canonical: "/",
   },
   openGraph: {
-    title: "Pallets for Sale Near Me | Used & New Wood Pallets Supplier",
-    description: "Southern Pallet offers new & used wood pallets for sale near you. Trusted pallet supplier with fast delivery, recycling, and complete pallet management.",
-    url: 'https://southernpallet.co',
-    images: ['/southern_pallet_og_image.png'],
+    title: "Wood Pallet Supplier in Alabama & Mississippi",
+    description:
+      "Order new, recycled, heat-treated, and custom wood pallets with regional delivery, repair, and recycling across the Southeast.",
+    url: "/",
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Pallets for Sale Near Me | Used & New Wood Pallets Supplier',
-    description: 'Southern Pallet offers new & used wood pallets for sale near you. Trusted pallet supplier with fast delivery, recycling, and complete pallet management.',
-    images: ['/southern_pallet_og_image.png'],
+    card: "summary_large_image",
+    title: "Wood Pallet Supplier in Alabama & Mississippi",
+    description:
+      "Order new, recycled, heat-treated, and custom wood pallets with regional delivery, repair, and recycling across the Southeast.",
+    images: [DEFAULT_OG_IMAGE.url],
   },
 }
 

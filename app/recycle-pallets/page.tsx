@@ -5,71 +5,78 @@ import RecycleQuoteSection from "../../components/recycle-quote-section";
 import RecycleProcessSection from "../../components/recycle-process-section";
 import RecycleCTASection from "../../components/recycle-cta-section";
 import RecycleFooter from "../../components/recycle-footer";
-import { Metadata } from "next";
-import Script from "next/script";
+import type { Metadata } from "next";
 import PublicSiteShell from "../../components/public-site-shell";
+import JsonLd from "@/components/seo/json-ld";
+import {
+  BUSINESS_ID,
+  DEFAULT_OG_IMAGE,
+  SERVICE_STATES,
+  SITE_URL,
+} from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Recycle Wood Pallets | Used Pallet Recycling Near Me Supplier",
+  title: "Used Pallet Recycling & Buyback",
   description:
-    "Southern Pallet makes it easy to recycle wood pallets. We buy and resell used pallets, providing affordable pallet recycling and supply services near you.",
+    "Sell surplus wood pallets or schedule pallet recycling and pickup with Southern Pallet. Serving businesses across Alabama, Mississippi, and the Southeast.",
   alternates: {
-    canonical: 'https://southernpallet.co/recycle-pallets',
+    canonical: "/recycle-pallets",
   },
   openGraph: {
-    title: "Recycle Wood Pallets | Used Pallet Recycling Near Me Supplier",
-    description: "Southern Pallet makes it easy to recycle wood pallets. We buy and resell used pallets, providing affordable pallet recycling and supply services near you.",
-    url: 'https://southernpallet.co/recycle-pallets',
-    images: ['/southern_pallet_og_image.png'],
+    title: "Used Pallet Recycling & Buyback",
+    description:
+      "Sell surplus wood pallets or schedule recycling and pickup with Southern Pallet across Alabama, Mississippi, and the Southeast.",
+    url: "/recycle-pallets",
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Recycle Wood Pallets | Used Pallet Recycling Near Me Supplier',
-    description: 'Southern Pallet makes it easy to recycle wood pallets. We buy and resell used pallets, providing affordable pallet recycling and supply services near you.',
-    images: ['/southern_pallet_og_image.png'],
+    card: "summary_large_image",
+    title: "Used Pallet Recycling & Buyback",
+    description:
+      "Sell surplus wood pallets or schedule recycling and pickup with Southern Pallet across Alabama, Mississippi, and the Southeast.",
+    images: [DEFAULT_OG_IMAGE.url],
   },
-  keywords: [
-    "sell pallets",
-    "pallet recycling",
-    "used pallets",
-    "pallet buyback",
-    "pallet disposal",
-    "Alabama pallet recycling",
-    "sustainable pallets"
+};
+
+const recyclingSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": `${SITE_URL}/recycle-pallets#service`,
+      name: "Used Wood Pallet Recycling and Buyback",
+      description:
+        "Pallet pickup, repair, reuse, and recycling for businesses with surplus wood pallets.",
+      url: `${SITE_URL}/recycle-pallets`,
+      provider: { "@id": BUSINESS_ID },
+      serviceType: "Wood pallet recycling and buyback",
+      areaServed: SERVICE_STATES.map((name) => ({ "@type": "State", name })),
+      offers: {
+        "@type": "Offer",
+        description:
+          "Condition- and quantity-based quotes for eligible used wood pallets.",
+        url: `${SITE_URL}/recycle-pallets#sell-pallets`,
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Pallet Recycling",
+          item: `${SITE_URL}/recycle-pallets`,
+        },
+      ],
+    },
   ],
 };
 
 export default function RecyclePalletsPage() {
   return (
     <PublicSiteShell>
-      {/* Page-specific Schema for Recycling Service */}
-      <Script
-        id="schema-recycle-service"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Pallet Recycling Service",
-            "description": "Professional pallet recycling and buyback service offering competitive prices for used wooden pallets.",
-            "provider": {
-              "@type": "Organization",
-              "name": "Southern Pallet",
-              "url": "https://www.southernpalletcompany.com"
-            },
-            "serviceType": "Pallet Recycling",
-            "areaServed": {
-              "@type": "State",
-              "name": ["Alabama", "Mississippi", "Tennessee", "Georgia", "Florida"]
-            },
-            "offers": {
-              "@type": "Offer",
-              "description": "Competitive cash offers for used wooden pallets",
-              "businessFunction": "http://purl.org/goodrelations/v1#Buy"
-            }
-          })
-        }}
-      />
+      <JsonLd data={recyclingSchema} />
       
       <RecycleHeader />
       <RecycleHeroSection />

@@ -4,27 +4,28 @@ import Link from "next/link";
 import PublicSiteShell from "@/components/public-site-shell";
 import SharedFooter from "@/components/shared-footer";
 import SharedHeader from "@/components/shared-header";
+import { DEFAULT_OG_IMAGE } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Your Pallet Inquiry has been Received",
+  title: "Pallet Request Received",
   description:
     "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
   alternates: {
-    canonical: "https://www.southernpalletcompany.com/thank-you",
+    canonical: "/thank-you",
   },
   openGraph: {
-    title: "Your Pallet Inquiry has been Received | Southern Pallet",
+    title: "Pallet Request Received",
     description:
       "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
-    url: "https://www.southernpalletcompany.com/thank-you",
-    images: ["/southern_pallet_og_image.png"],
+    url: "/thank-you",
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Pallet Inquiry has been Received | Southern Pallet",
+    title: "Pallet Request Received",
     description:
       "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
-    images: ["/southern_pallet_og_image.png"],
+    images: [DEFAULT_OG_IMAGE.url],
   },
   robots: { index: false, follow: true },
 };

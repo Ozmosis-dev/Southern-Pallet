@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const stats = [
-  ["Market-based", "Competitive rates"],
-  ["24 hours", "Fast pickup response"],
-  ["Any volume", "Flexible quantities"],
+  ["Condition-based", "Practical quotes"],
+  ["Flexible", "Pickup and drop-off"],
+  ["Reuse first", "Repair and recycling"],
 ];
 
 export default function RecycleHeroSection() {
@@ -25,7 +25,7 @@ export default function RecycleHeroSection() {
         <div className="flex flex-col justify-center px-6 py-20 lg:px-10">
           <p className="sp-eyebrow text-[var(--sp-green)]">Pallet recovery program</p>
           <h1 className="sp-display mt-6 max-w-2xl text-5xl sm:text-6xl">
-            Turn used pallets into working value.
+            Sell & recycle used wood pallets.
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-white/72">
             We buy standard and box pallets throughout the Southeast, with

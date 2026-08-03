@@ -1,35 +1,51 @@
-import { Metadata } from "next"
+import type { Metadata } from "next"
 import BlogArticleShell from "../../../components/blog-article-shell"
 import Link from "next/link"
+import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/site-config"
+
+const title = "Where to Buy Used Pallets for Your Business"
+const description =
+  "Compare used pallet suppliers, understand grades and specifications, and use a practical inspection checklist before ordering recycled wood pallets."
+const path = "/blog/where-to-buy-used-pallets"
+const datePublished = "2026-07-26"
+const dateModified = "2026-08-03"
 
 export const metadata: Metadata = {
-  title: "Where to Buy Used Pallets Near Me | Southern Pallet Supplier",
-  description: "Learn the best places to buy used pallets near you. Southern Pallet supplies recycled pallets with fast delivery, affordable prices, and trusted quality.",
+  title,
+  description,
   alternates: {
-    canonical: 'https://southernpallet.co/blog/where-to-buy-used-pallets',
+    canonical: path,
   },
+  authors: [{ name: "Southern Pallet", url: SITE_URL }],
   openGraph: {
-    title: "Where to Buy Used Pallets Near Me | Southern Pallet Supplier",
-    description: "Learn the best places to buy used pallets near you. Southern Pallet supplies recycled pallets with fast delivery, affordable prices, and trusted quality.",
-    url: 'https://southernpallet.co/blog/where-to-buy-used-pallets',
-    images: ['/southern_pallet_og_image.png'],
+    type: "article",
+    title,
+    description,
+    url: path,
+    images: [DEFAULT_OG_IMAGE],
+    publishedTime: datePublished,
+    modifiedTime: dateModified,
+    authors: [SITE_URL],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Where to Buy Used Pallets Near Me | Southern Pallet Supplier',
-    description: 'Learn the best places to buy used pallets near you. Southern Pallet supplies recycled pallets with fast delivery, affordable prices, and trusted quality.',
-    images: ['/southern_pallet_og_image.png'],
+    card: "summary_large_image",
+    title,
+    description,
+    images: [DEFAULT_OG_IMAGE.url],
   },
 }
 
 export default function WhereToBuyUsedPalletsPage() {
   return (
     <BlogArticleShell
-      title="Where to buy used pallets near you"
+      title={title}
       description="How to compare local sources, evaluate pallet quality, and find a dependable recycled pallet supplier."
       image="/recyled_pallet_card.jpg"
       imageAlt="Quality used wooden pallets stacked in a warehouse"
       readTime="5 min read"
+      path={path}
+      datePublished={datePublished}
+      dateModified={dateModified}
     >
         <div className="prose prose-lg max-w-none">
           <p className="text-xl text-gray-700 mb-12 leading-relaxed">
@@ -38,13 +54,13 @@ export default function WhereToBuyUsedPalletsPage() {
 
           <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Why Businesses Choose Used Pallets</h2>
           <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-            The shift toward used pallets is driven by both economic and environmental factors. Companies are increasingly recognizing that recycled pallets offer the same functionality as new ones at a fraction of the cost.
+            The shift toward used pallets is driven by both economic and environmental factors. For suitable loads, properly graded recycled pallets can meet the required specification while avoiding the cost of a newly built pallet.
           </p>
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
             Beyond cost savings, used pallets support corporate sustainability initiatives and reduce waste in landfills. This makes them an attractive option for environmentally conscious businesses.
           </p>
           <ul className="space-y-3 mb-12">
-            <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Cost Savings:</strong> 30-50% less expensive than new pallets</li>
+            <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Cost Control:</strong> Match the pallet grade and condition to the actual load requirement</li>
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Environmental Benefits:</strong> Reduces waste and supports sustainability</li>
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Flexible Sizing:</strong> Wider variety of sizes and specifications</li>
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Local Availability:</strong> Multiple suppliers with convenient pickup/delivery</li>
@@ -64,7 +80,7 @@ export default function WhereToBuyUsedPalletsPage() {
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span>Quality inspection and repair services</li>
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span>Consistent inventory and availability</li>
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span>Professional delivery and pickup services</li>
-            <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span>Warranty and quality guarantees</li>
+            <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span>Written grade, condition, and replacement terms</li>
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span>Bulk pricing for large orders</li>
           </ul>
 

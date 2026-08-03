@@ -5,20 +5,28 @@ import SharedHeader from "@/components/shared-header";
 import SharedFooter from "@/components/shared-footer";
 import CareersApplicationForm from "@/components/careers-application-form";
 import PublicSiteShell from "@/components/public-site-shell";
+import { DEFAULT_OG_IMAGE } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "General Employment Application",
+  title: "Pallet Company Careers in Alabama & Mississippi",
   description:
-    "Submit a general employment application to Southern Pallet for opportunities at our Alabama and Mississippi locations.",
+    "Apply for pallet manufacturing, recycling, logistics, and operations opportunities with Southern Pallet in Theodore, Alabama and Poplarville, Mississippi.",
   alternates: {
-    canonical: "https://southernpallet.co/careers",
+    canonical: "/careers",
   },
   openGraph: {
-    title: "General Employment Application | Southern Pallet",
+    title: "Pallet Company Careers in Alabama & Mississippi",
     description:
       "Tell us about your experience and interest in joining Southern Pallet.",
-    url: "https://southernpallet.co/careers",
-    images: ["/southern_pallet_og_image.png"],
+    url: "/careers",
+    images: [DEFAULT_OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pallet Company Careers in Alabama & Mississippi",
+    description:
+      "Apply for opportunities with Southern Pallet in Theodore, Alabama and Poplarville, Mississippi.",
+    images: [DEFAULT_OG_IMAGE.url],
   },
   robots: {
     index: true,

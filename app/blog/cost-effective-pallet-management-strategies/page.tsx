@@ -1,35 +1,51 @@
-import { Metadata } from "next"
+import type { Metadata } from "next"
 import BlogArticleShell from "../../../components/blog-article-shell"
 import Link from "next/link"
+import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/site-config"
+
+const title = "How to Reduce Pallet Costs: 8 Practical Steps"
+const description =
+  "Reduce pallet spend by improving specifications, purchasing, handling, inventory control, repair, returns, delivery planning, and performance tracking."
+const path = "/blog/cost-effective-pallet-management-strategies"
+const datePublished = "2026-07-26"
+const dateModified = "2026-08-03"
 
 export const metadata: Metadata = {
-  title: "Cost-Effective Pallet Management Strategies | Southern Pallet Solutions",
-  description: "Learn proven strategies to reduce pallet costs while maintaining quality. Discover Southern Pallet's cost-effective pallet management solutions for businesses of all sizes.",
+  title,
+  description,
   alternates: {
-    canonical: 'https://southernpallet.co/blog/cost-effective-pallet-management-strategies',
+    canonical: path,
   },
+  authors: [{ name: "Southern Pallet", url: SITE_URL }],
   openGraph: {
-    title: "Cost-Effective Pallet Management Strategies | Southern Pallet Solutions",
-    description: "Learn proven strategies to reduce pallet costs while maintaining quality. Discover Southern Pallet's cost-effective pallet management solutions for businesses of all sizes.",
-    url: 'https://southernpallet.co/blog/cost-effective-pallet-management-strategies',
-    images: ['/southern_pallet_og_image.png'],
+    type: "article",
+    title,
+    description,
+    url: path,
+    images: [DEFAULT_OG_IMAGE],
+    publishedTime: datePublished,
+    modifiedTime: dateModified,
+    authors: [SITE_URL],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Cost-Effective Pallet Management Strategies | Southern Pallet Solutions',
-    description: 'Learn proven strategies to reduce pallet costs while maintaining quality. Discover Southern Pallet\'s cost-effective pallet management solutions for businesses of all sizes.',
-    images: ['/southern_pallet_og_image.png'],
+    card: "summary_large_image",
+    title,
+    description,
+    images: [DEFAULT_OG_IMAGE.url],
   },
 }
 
 export default function CostEffectivePalletManagementStrategiesPage() {
   return (
     <BlogArticleShell
-      title="Cost-effective pallet management strategies"
+      title={title}
       description="Practical ways to reduce procurement, storage, maintenance, and transportation costs."
       image="/stack.svg"
       imageAlt="Organized wooden pallets ready for distribution"
       readTime="7 min read"
+      path={path}
+      datePublished={datePublished}
+      dateModified={dateModified}
     >
         <div className="prose prose-lg max-w-none">
           <p className="text-xl text-gray-700 mb-12 leading-relaxed">
@@ -53,7 +69,7 @@ export default function CostEffectivePalletManagementStrategiesPage() {
 
           <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Strategic Procurement Approaches</h2>
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-            Smart procurement strategies can reduce pallet costs by 30-50% while maintaining quality standards. These approaches focus on optimizing the purchasing process and building strong supplier relationships.
+            Smart procurement starts with a clear specification, predictable order quantities, and a supplier that can explain grade and delivery terms. These controls reduce avoidable spend without compromising load requirements.
           </p>
 
           <h3 className="text-2xl font-semibold text-gray-800 mb-4 mt-12">Bulk Purchasing and Volume Discounts</h3>
@@ -69,7 +85,7 @@ export default function CostEffectivePalletManagementStrategiesPage() {
 
           <h3 className="text-2xl font-semibold text-gray-800 mb-4 mt-12">Used vs. New Pallet Analysis</h3>
           <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-            Evaluating the cost-benefit ratio of used versus new pallets is essential for cost optimization. Used pallets often provide the same functionality at a fraction of the cost.
+            Evaluating new and recycled pallets by application is essential for cost control. A properly graded recycled pallet may be the better fit for some domestic loads, while new or custom pallets may be required for others.
           </p>
           <ul className="space-y-2 mb-8">
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span>Assess quality requirements for each application</li>
@@ -161,7 +177,7 @@ export default function CostEffectivePalletManagementStrategiesPage() {
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Volume Pricing:</strong> Competitive rates for bulk purchases</li>
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Maintenance Services:</strong> Professional repair and refurbishment</li>
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Recycling Programs:</strong> Turn used pallets into cash</li>
-            <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Technology Integration:</strong> Digital solutions for better management</li>
+            <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Performance Reporting:</strong> Simple records for orders, loss, repairs, and returns</li>
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Ongoing Support:</strong> Continuous optimization and improvement</li>
           </ul>
 

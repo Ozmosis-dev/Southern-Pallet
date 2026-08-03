@@ -4,6 +4,8 @@ import Link from "next/link";
 import Footer from "./footer";
 import Header from "./header";
 import PublicSiteShell from "./public-site-shell";
+import JsonLd from "./seo/json-ld";
+import { BUSINESS_ID, SITE_URL, absoluteUrl } from "@/lib/site-config";
 
 interface BlogArticleShellProps {
   title: string;
@@ -11,6 +13,9 @@ interface BlogArticleShellProps {
   image: string;
   imageAlt: string;
   readTime: string;
+  path: string;
+  datePublished: string;
+  dateModified: string;
   children: React.ReactNode;
 }
 
@@ -20,10 +25,51 @@ export default function BlogArticleShell({
   image,
   imageAlt,
   readTime,
+  path,
+  datePublished,
+  dateModified,
   children,
 }: BlogArticleShellProps) {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${SITE_URL}${path}#article`,
+        headline: title,
+        description,
+        image: absoluteUrl(image),
+        datePublished,
+        dateModified,
+        mainEntityOfPage: `${SITE_URL}${path}`,
+        author: { "@id": BUSINESS_ID },
+        publisher: { "@id": BUSINESS_ID },
+        inLanguage: "en-US",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Pallet Resources",
+            item: `${SITE_URL}/blog`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: title,
+            item: `${SITE_URL}${path}`,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <PublicSiteShell>
+      <JsonLd data={articleSchema} />
       <Header />
       <main data-blog-article="true" className="bg-[var(--sp-paper)] pt-20">
         <header className="border-b border-[var(--sp-rule)] bg-[var(--sp-cream)]">
@@ -43,8 +89,10 @@ export default function BlogArticleShell({
               <p className="mt-6 max-w-xl text-base leading-7 text-[var(--sp-ink)]/68">
                 {description}
               </p>
-              <p className="mt-7 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--sp-sage)]">
+              <p className="mt-7 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--sp-sage)]">
                 <Clock3 className="size-4 text-[var(--sp-green-dark)]" />
+                <time dateTime={dateModified}>Updated August 3, 2026</time>
+                <span aria-hidden="true">·</span>
                 {readTime}
               </p>
             </div>

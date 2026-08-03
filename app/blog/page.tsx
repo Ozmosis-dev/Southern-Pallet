@@ -5,25 +5,27 @@ import Link from "next/link";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import PublicSiteShell from "../../components/public-site-shell";
+import JsonLd from "@/components/seo/json-ld";
+import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Pallet Blog | Pallets for Sale, Recycling & Supplier Tips",
+  title: "Wood Pallet Guides & Recycling Resources",
   description:
-    "Explore our pallet blog for guides on buying new & used pallets, pallet recycling, supplier insights, and pallet management solutions near you.",
-  alternates: { canonical: "https://southernpallet.co/blog" },
+    "Practical guides for buying, inspecting, reusing, recycling, and managing wood pallets from Southern Pallet's manufacturing and recycling team.",
+  alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Pallet Blog | Pallets for Sale, Recycling & Supplier Tips",
+    title: "Wood Pallet Guides & Recycling Resources",
     description:
-      "Explore our pallet blog for guides on buying new & used pallets, pallet recycling, supplier insights, and pallet management solutions near you.",
-    url: "https://southernpallet.co/blog",
-    images: ["/southern_pallet_og_image.png"],
+      "Practical guides for buying, inspecting, reusing, recycling, and managing wood pallets.",
+    url: "/blog",
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pallet Blog | Pallets for Sale, Recycling & Supplier Tips",
+    title: "Wood Pallet Guides & Recycling Resources",
     description:
-      "Explore our pallet blog for guides on buying new & used pallets, pallet recycling, supplier insights, and pallet management solutions near you.",
-    images: ["/southern_pallet_og_image.png"],
+      "Practical guides for buying, inspecting, reusing, recycling, and managing wood pallets.",
+    images: [DEFAULT_OG_IMAGE.url],
   },
 };
 
@@ -60,11 +62,30 @@ const posts = [
   },
 ];
 
+const blogIndexSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Southern Pallet Resources",
+  url: `${SITE_URL}/blog`,
+  description:
+    "Guides about buying, inspecting, reusing, recycling, and managing wood pallets.",
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: posts.map((post, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${SITE_URL}${post.href}`,
+      name: post.title,
+    })),
+  },
+};
+
 export default function BlogPage() {
   const [featured, ...supporting] = posts;
 
   return (
     <PublicSiteShell>
+      <JsonLd data={blogIndexSchema} />
       <Header />
       <main data-blog-index="true" className="bg-[var(--sp-paper)] pt-20">
         <section className="sp-grid border-b border-[var(--sp-rule)] bg-[var(--sp-cream)] py-20 lg:py-28">

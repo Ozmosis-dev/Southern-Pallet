@@ -18,7 +18,7 @@ export default function HeroSection() {
             Pallet supply · Southeast
           </p>
           <h1 className="sp-display max-w-3xl text-5xl text-white sm:text-6xl">
-            Pallets delivered fast. Every time.
+            New, recycled & custom wood pallets.
           </h1>
           <p className="mt-8 max-w-xl text-lg leading-8 text-white/72">
             No delays. No headaches. No surprises. Just dependable pallet
@@ -42,8 +42,8 @@ export default function HeroSection() {
 
         <div className="relative min-h-[440px] border-t border-white/15 lg:min-h-full lg:border-l lg:border-t-0">
           <Image
-            src="/stack.svg"
-            alt="A large stack of wooden pallets ready for delivery"
+            src="/recyled_pallet_card.jpg"
+            alt="Stacks of inspected recycled wood pallets ready for delivery"
             fill
             priority
             className="object-cover"
