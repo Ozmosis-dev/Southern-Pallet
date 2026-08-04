@@ -40,6 +40,7 @@ See `env.example.txt` for the full list with comments. Summary:
 | `LEAD_WEBHOOK_URL` | Optional secondary destination for lead JSON | No |
 | `LEAD_DELIVERY_TIMEOUT_MS` | Outbound delivery timeout; defaults to 8000 ms | No |
 | `NEXT_PUBLIC_GTM_ID` | Google Tag Manager container ID | No — GTM script doesn't load at all if unset |
+| `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` | Google Analytics 4 measurement ID | No — GA script doesn't load at all if unset |
 | `NEXT_PUBLIC_BUSINESS_PLAN_PASSWORD` | Gate value for `/private/business-plan` | No — defaults to `changeme` |
 
 Nothing is required for the site to build and run, but at least one complete
@@ -94,7 +95,9 @@ domain. Keep all three values out of source control.
 
 ## Analytics / tag manager
 
-Google Tag Manager is wired up but disabled by default (`NEXT_PUBLIC_GTM_ID` unset). Set it to your own GTM container ID (`GTM-XXXXXXX`) to enable it — see `app/layout.tsx`. There is no other analytics snippet in the codebase.
+Google Analytics 4 and Google Tag Manager are wired up independently and disabled by default. Set `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` to a GA4 measurement ID (`G-XXXXXXXXXX`) and/or `NEXT_PUBLIC_GTM_ID` to a GTM container ID (`GTM-XXXXXXX`) to enable them — see `app/layout.tsx`.
+
+For the Southern Pallet GA4 property, set `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` to `G-XGFY05LYNP` in the deployment environment and redeploy.
 
 ## The `/private/business-plan` page
 
