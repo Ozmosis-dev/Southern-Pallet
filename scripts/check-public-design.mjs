@@ -11,11 +11,13 @@ const publicRoutes = [
   "/blog/cost-effective-pallet-management-strategies",
   "/thank-you",
 ];
+let careersHtml = "";
 
 for (const route of publicRoutes) {
   const response = await fetch(`${baseUrl}${route}`);
   assert.equal(response.status, 200, `${route} should render successfully`);
   const html = await response.text();
+  if (route === "/careers") careersHtml = html;
   assert.match(
     html,
     /data-public-site="true"/,
@@ -29,6 +31,23 @@ for (const route of publicRoutes) {
     );
   }
 }
+
+const careersMain = careersHtml.match(/<main>([\s\S]*?)<\/main>/)?.[1] ?? "";
+assert.match(
+  careersHtml,
+  /<title>Pallet Company Careers in Theodore, Alabama \| Southern Pallet<\/title>/,
+  "the careers title should describe hiring in Theodore only",
+);
+assert.match(
+  careersMain,
+  /Theodore, (?:AL|Alabama)/,
+  "the careers page should list Theodore as the hiring location",
+);
+assert.doesNotMatch(
+  careersMain,
+  /Poplarville|Either location/,
+  "the careers page should not offer Poplarville or an either-location choice",
+);
 
 const privateResponse = await fetch(`${baseUrl}/private/business-plan`);
 assert.equal(privateResponse.status, 200);

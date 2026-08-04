@@ -202,10 +202,6 @@ export default function CareersApplicationForm() {
                     Select a location
                   </option>
                   <option value="Theodore, AL">Theodore, Alabama</option>
-                  <option value="Poplarville, MS">
-                    Poplarville, Mississippi
-                  </option>
-                  <option value="Either location">Either location</option>
                 </select>
               </div>
             </div>

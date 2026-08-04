@@ -8,14 +8,14 @@ import PublicSiteShell from "@/components/public-site-shell";
 import { DEFAULT_OG_IMAGE } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Pallet Company Careers in Alabama & Mississippi",
+  title: "Pallet Company Careers in Theodore, Alabama",
   description:
-    "Apply for pallet manufacturing, recycling, logistics, and operations opportunities with Southern Pallet in Theodore, Alabama and Poplarville, Mississippi.",
+    "Apply for pallet manufacturing, recycling, logistics, and operations opportunities with Southern Pallet in Theodore, Alabama.",
   alternates: {
     canonical: "/careers",
   },
   openGraph: {
-    title: "Pallet Company Careers in Alabama & Mississippi",
+    title: "Pallet Company Careers in Theodore, Alabama",
     description:
       "Tell us about your experience and interest in joining Southern Pallet.",
     url: "/careers",
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pallet Company Careers in Alabama & Mississippi",
+    title: "Pallet Company Careers in Theodore, Alabama",
     description:
-      "Apply for opportunities with Southern Pallet in Theodore, Alabama and Poplarville, Mississippi.",
+      "Apply for opportunities with Southern Pallet in Theodore, Alabama.",
     images: [DEFAULT_OG_IMAGE.url],
   },
   robots: {
@@ -64,10 +64,6 @@ export default function CareersPage() {
                 <span className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-[var(--sp-green)]" />
                   Theodore, AL
-                </span>
-                <span className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-[var(--sp-green)]" />
-                  Poplarville, MS
                 </span>
               </div>
               <a
