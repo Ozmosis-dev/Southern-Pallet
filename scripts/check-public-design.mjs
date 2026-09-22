@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 const baseUrl = process.env.TEST_BASE_URL ?? "http://127.0.0.1:3000";
 const publicRoutes = [
   "/",
+  "/contact",
   "/recycle-pallets",
   "/careers",
   "/blog",

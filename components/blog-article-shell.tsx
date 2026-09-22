@@ -119,7 +119,7 @@ export default function BlogArticleShell({
               </p>
             </div>
             <Link
-              href="/#contact"
+              href="/contact"
               className="mt-5 inline-flex min-h-11 items-center bg-[var(--sp-forest)] px-5 text-xs font-bold uppercase tracking-[0.1em] text-white hover:bg-[var(--sp-green-dark)] sm:mt-0"
             >
               Request a quote

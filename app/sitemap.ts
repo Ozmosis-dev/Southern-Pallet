@@ -3,6 +3,7 @@ import { absoluteUrl } from "@/lib/site-config";
 
 const routes = [
   { path: "/", changeFrequency: "weekly", priority: 1 },
+  { path: "/contact", changeFrequency: "monthly", priority: 0.8 },
   { path: "/recycle-pallets", changeFrequency: "weekly", priority: 0.9 },
   { path: "/careers", changeFrequency: "monthly", priority: 0.6 },
   { path: "/blog", changeFrequency: "monthly", priority: 0.7 },

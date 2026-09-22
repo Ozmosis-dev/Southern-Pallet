@@ -8,8 +8,8 @@ export default function EnvironmentalSection() {
       <div className="mx-auto grid max-w-7xl lg:grid-cols-2">
         <div className="relative min-h-[440px] border-x border-[var(--sp-rule)] lg:min-h-[650px]">
           <Image
-            src="/recycle.svg"
-            alt="Wooden pallets ready to be recovered and recycled"
+            src="/wood-pallet-recycling.webp"
+            alt="Wood pallet boards sorted for recovery and recycling"
             fill
             className="object-cover"
             sizes="(min-width: 1024px) 50vw, 100vw"

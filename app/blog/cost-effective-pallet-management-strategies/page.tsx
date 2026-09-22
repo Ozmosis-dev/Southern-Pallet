@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import BlogArticleShell from "../../../components/blog-article-shell"
 import Link from "next/link"
-import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/site-config"
+import { SITE_URL } from "@/lib/site-config"
+import { createSocialMetadata } from "@/lib/social-metadata"
 
 const title = "How to Reduce Pallet Costs: 8 Practical Steps"
 const description =
-  "Reduce pallet spend by improving specifications, purchasing, handling, inventory control, repair, returns, delivery planning, and performance tracking."
+  "Learn eight practical ways to reduce pallet costs through specifications, purchasing, handling, inventory control, repairs, returns, and delivery planning."
 const path = "/blog/cost-effective-pallet-management-strategies"
 const datePublished = "2026-07-26"
 const dateModified = "2026-08-03"
@@ -17,22 +18,13 @@ export const metadata: Metadata = {
     canonical: path,
   },
   authors: [{ name: "Southern Pallet", url: SITE_URL }],
-  openGraph: {
-    type: "article",
+  ...createSocialMetadata({
     title,
     description,
-    url: path,
-    images: [DEFAULT_OG_IMAGE],
-    publishedTime: datePublished,
-    modifiedTime: dateModified,
-    authors: [SITE_URL],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-    images: [DEFAULT_OG_IMAGE.url],
-  },
+    path,
+    card: "pallet-costs",
+    article: { publishedTime: datePublished, modifiedTime: dateModified },
+  }),
 }
 
 export default function CostEffectivePalletManagementStrategiesPage() {
@@ -40,8 +32,8 @@ export default function CostEffectivePalletManagementStrategiesPage() {
     <BlogArticleShell
       title={title}
       description="Practical ways to reduce procurement, storage, maintenance, and transportation costs."
-      image="/stack.svg"
-      imageAlt="Organized wooden pallets ready for distribution"
+      image="/stacked-wood-pallets.webp"
+      imageAlt="Organized stacks of wood pallets ready for distribution"
       readTime="7 min read"
       path={path}
       datePublished={datePublished}
@@ -181,7 +173,7 @@ export default function CostEffectivePalletManagementStrategiesPage() {
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Ongoing Support:</strong> Continuous optimization and improvement</li>
           </ul>
 
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Conclusion</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Put Your Pallet Cost Strategy Into Practice</h2>
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
             Implementing cost-effective pallet management strategies requires a comprehensive approach that addresses procurement, inventory, transportation, and technology. By partnering with Southern Pallet, businesses can achieve significant cost savings while maintaining quality and efficiency.
           </p>
@@ -189,7 +181,7 @@ export default function CostEffectivePalletManagementStrategiesPage() {
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 my-8">
             <h3 className="text-xl font-semibold mb-2">Ready to optimize your pallet costs?</h3>
             <p>Contact Southern Pallet for a comprehensive cost analysis and customized optimization strategy.</p>
-            <Link href="/#contact" className="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Get Cost Analysis</Link>
+            <Link href="/contact" className="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Get Cost Analysis</Link>
           </div>
         </div>
     </BlogArticleShell>

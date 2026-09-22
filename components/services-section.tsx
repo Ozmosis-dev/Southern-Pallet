@@ -36,8 +36,8 @@ export default function ServicesSection() {
           </h2>
           <div className="relative mt-12 aspect-[5/3] overflow-hidden border border-white/20">
             <Image
-              src="/jack.svg"
-              alt="Pallet handling equipment"
+              src="/pallet-handling-equipment.webp"
+              alt="Pallet jack moving a tall stack of recycled wood pallets"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 55vw, 100vw"

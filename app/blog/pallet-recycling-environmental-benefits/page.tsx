@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import BlogArticleShell from "../../../components/blog-article-shell"
 import Link from "next/link"
-import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/site-config"
+import { SITE_URL } from "@/lib/site-config"
+import { createSocialMetadata } from "@/lib/social-metadata"
 
 const title = "Environmental Benefits of Recycling Wood Pallets"
 const description =
-  "Learn how pallet repair, reuse, component recovery, and responsible recycling can extend material life and reduce avoidable wood waste."
+  "Discover how wood pallet recycling, repair, reuse, and component recovery reduce waste, conserve materials, and support measurable sustainability goals."
 const path = "/blog/pallet-recycling-environmental-benefits"
 const datePublished = "2026-07-26"
 const dateModified = "2026-08-03"
@@ -17,22 +18,13 @@ export const metadata: Metadata = {
     canonical: path,
   },
   authors: [{ name: "Southern Pallet", url: SITE_URL }],
-  openGraph: {
-    type: "article",
+  ...createSocialMetadata({
     title,
     description,
-    url: path,
-    images: [DEFAULT_OG_IMAGE],
-    publishedTime: datePublished,
-    modifiedTime: dateModified,
-    authors: [SITE_URL],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-    images: [DEFAULT_OG_IMAGE.url],
-  },
+    path,
+    card: "recycling-benefits",
+    article: { publishedTime: datePublished, modifiedTime: dateModified },
+  }),
 }
 
 export default function PalletRecyclingEnvironmentalBenefitsPage() {
@@ -40,8 +32,8 @@ export default function PalletRecyclingEnvironmentalBenefitsPage() {
     <BlogArticleShell
       title={title}
       description="How pallet recovery reduces material waste and supports practical sustainability goals."
-      image="/recyle_pallet_hero.jpg"
-      imageAlt="Wood pallets stacked at a professional recycling facility"
+      image="/used-wood-pallets-recycling.jpg"
+      imageAlt="Used wood pallets stacked at a professional recycling facility"
       readTime="6 min read"
       path={path}
       datePublished={datePublished}
@@ -156,7 +148,7 @@ export default function PalletRecyclingEnvironmentalBenefitsPage() {
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Condition-Based Quotes:</strong> Explain eligibility and pricing based on the submitted load details</li>
           </ul>
 
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Conclusion</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Build a Practical Pallet Recycling Program</h2>
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
             A sound pallet program follows a practical hierarchy: keep safe pallets in service, repair them when appropriate, recover usable components, and document the final path for material that cannot return to use.
           </p>
@@ -164,7 +156,7 @@ export default function PalletRecyclingEnvironmentalBenefitsPage() {
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 my-8">
             <h3 className="text-xl font-semibold mb-2">Need a practical pallet recovery plan?</h3>
             <p>Share the pallet size, condition, quantity, and location so Southern Pallet can review the available next steps.</p>
-            <Link href="/#contact" className="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Request a Review</Link>
+            <Link href="/contact" className="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Request a Review</Link>
           </div>
         </div>
     </BlogArticleShell>

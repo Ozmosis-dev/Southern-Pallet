@@ -10,32 +10,25 @@ import PublicSiteShell from "../../components/public-site-shell";
 import JsonLd from "@/components/seo/json-ld";
 import {
   BUSINESS_ID,
-  DEFAULT_OG_IMAGE,
   SERVICE_STATES,
   SITE_URL,
 } from "@/lib/site-config";
+import { createSocialMetadata } from "@/lib/social-metadata";
 
 export const metadata: Metadata = {
   title: "Used Pallet Recycling & Buyback",
   description:
-    "Sell surplus wood pallets or schedule pallet recycling and pickup with Southern Pallet. Serving businesses across Alabama, Mississippi, and the Southeast.",
+    "Sell surplus wood pallets or schedule pickup, repair, and recycling with Southern Pallet, serving businesses across Alabama, Mississippi, and the Southeast.",
   alternates: {
     canonical: "/recycle-pallets",
   },
-  openGraph: {
+  ...createSocialMetadata({
     title: "Used Pallet Recycling & Buyback",
     description:
       "Sell surplus wood pallets or schedule recycling and pickup with Southern Pallet across Alabama, Mississippi, and the Southeast.",
-    url: "/recycle-pallets",
-    images: [DEFAULT_OG_IMAGE],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Used Pallet Recycling & Buyback",
-    description:
-      "Sell surplus wood pallets or schedule recycling and pickup with Southern Pallet across Alabama, Mississippi, and the Southeast.",
-    images: [DEFAULT_OG_IMAGE.url],
-  },
+    path: "/recycle-pallets",
+    card: "recycling",
+  }),
 };
 
 const recyclingSchema = {
@@ -79,11 +72,13 @@ export default function RecyclePalletsPage() {
       <JsonLd data={recyclingSchema} />
       
       <RecycleHeader />
-      <RecycleHeroSection />
-      <RecycleBuySection />
-      <RecycleQuoteSection />
-      <RecycleProcessSection />
-      <RecycleCTASection />
+      <main>
+        <RecycleHeroSection />
+        <RecycleBuySection />
+        <RecycleQuoteSection />
+        <RecycleProcessSection />
+        <RecycleCTASection />
+      </main>
       <RecycleFooter />
     </PublicSiteShell>
   );

@@ -8,10 +8,10 @@ export const DEFAULT_DESCRIPTION =
   "Southern Pallet supplies new, recycled, and custom wood pallets with regional delivery, repair, recycling, and buyback service across the Southeast.";
 
 export const DEFAULT_OG_IMAGE = {
-  url: "/southern_pallet_og_image.png",
+  url: "/social-card/v1/home",
   width: 1200,
-  height: 850,
-  alt: "Southern Pallet wood pallet manufacturing and recycling services",
+  height: 630,
+  alt: "Southern Pallet Southeast wood pallet supply and delivery",
 } as const;
 
 export const CONTACT = {
@@ -28,12 +28,22 @@ export const CORPORATE_OFFICE = {
   addressCountry: "US",
 } as const;
 
+export const CORPORATE_OFFICE_GEO = {
+  latitude: 30.572143316657,
+  longitude: -88.130261943997,
+} as const;
+
 export const MANUFACTURING_FACILITY = {
   streetAddress: "119 Industrial Park Dr",
   addressLocality: "Poplarville",
   addressRegion: "MS",
   postalCode: "39470",
   addressCountry: "US",
+} as const;
+
+export const MANUFACTURING_FACILITY_GEO = {
+  latitude: 30.827312000955,
+  longitude: -89.524405075319,
 } as const;
 
 export const SERVICE_STATES = [

@@ -4,6 +4,12 @@ const baseUrl = process.env.TEST_BASE_URL ?? "http://127.0.0.1:3000";
 
 const routes = [
   { path: "/", sectionPrefix: "#", homeHref: "#home" },
+  {
+    path: "/contact",
+    sectionPrefix: "/#",
+    homeHref: "/",
+    activeLabel: "Contact",
+  },
   { path: "/blog", sectionPrefix: "/#", homeHref: "/", activeLabel: "Blog" },
   {
     path: "/blog/where-to-buy-used-pallets",
@@ -42,7 +48,6 @@ const sectionLinks = [
   ["Services", "services"],
   ["About Us", "about"],
   ["Delivery", "delivery"],
-  ["Contact", "contact"],
 ];
 
 function getLinkHrefs(html, label) {
@@ -91,6 +96,16 @@ for (const route of routes) {
   assert.ok(
     careersHrefs.length > 0,
     `${route.path} should render the Careers link`,
+  );
+
+  const contactHrefs = getLinkHrefs(html, "Contact");
+  assert.ok(
+    contactHrefs.length > 0,
+    `${route.path} should render the Contact link`,
+  );
+  assert.ok(
+    contactHrefs.every((href) => href === "/contact"),
+    `${route.path} Contact links should target /contact; received ${contactHrefs.join(", ")}`,
   );
   assert.ok(
     careersHrefs.every((href) => href === "/careers"),

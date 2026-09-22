@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const steps = [
   ["01", "Share your inventory", "Tell us the pallet type, approximate quantity, condition, and location."],
   ["02", "Receive an evaluation", "Our team reviews the details and follows up with current pricing and options."],
@@ -16,6 +18,28 @@ export default function RecycleProcessSection() {
           <p className="mt-6 max-w-md text-sm leading-7 text-[var(--sp-ink)]/65">
             Standard 48&quot; × 40&quot; pallets in usable condition are often
             the most valuable, but we evaluate every request individually.
+            Compare our{" "}
+            <Link
+              href="/#products"
+              className="font-semibold text-[var(--sp-forest)] underline decoration-[var(--sp-green-dark)] underline-offset-4 hover:text-[var(--sp-green-dark)]"
+            >
+              new and recycled wood pallet options
+            </Link>
+            , learn about{" "}
+            <Link
+              href="/#about"
+              className="font-semibold text-[var(--sp-forest)] underline decoration-[var(--sp-green-dark)] underline-offset-4 hover:text-[var(--sp-green-dark)]"
+            >
+              Southern Pallet’s recovery operation
+            </Link>
+            , or{" "}
+            <Link
+              href="/contact"
+              className="font-semibold text-[var(--sp-forest)] underline decoration-[var(--sp-green-dark)] underline-offset-4 hover:text-[var(--sp-green-dark)]"
+            >
+              contact our pallet recycling team
+            </Link>
+            .
           </p>
         </div>
         <div className="border-t border-[var(--sp-rule)]">

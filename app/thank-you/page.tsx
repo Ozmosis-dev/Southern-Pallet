@@ -4,29 +4,23 @@ import Link from "next/link";
 import PublicSiteShell from "@/components/public-site-shell";
 import SharedFooter from "@/components/shared-footer";
 import SharedHeader from "@/components/shared-header";
-import { DEFAULT_OG_IMAGE } from "@/lib/site-config";
+import { createSocialMetadata } from "@/lib/social-metadata";
+
+const description =
+  "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.";
 
 export const metadata: Metadata = {
   title: "Pallet Request Received",
-  description:
-    "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
+  description,
   alternates: {
     canonical: "/thank-you",
   },
-  openGraph: {
+  ...createSocialMetadata({
     title: "Pallet Request Received",
-    description:
-      "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
-    url: "/thank-you",
-    images: [DEFAULT_OG_IMAGE],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Pallet Request Received",
-    description:
-      "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.",
-    images: [DEFAULT_OG_IMAGE.url],
-  },
+    description,
+    path: "/thank-you",
+    card: "request-received",
+  }),
   robots: { index: false, follow: true },
 };
 
@@ -49,7 +43,7 @@ export default function ThankYouPage() {
             <CheckCircle2 className="size-12 text-[var(--sp-green-dark)]" strokeWidth={1.6} />
             <p className="sp-eyebrow mt-8 text-[var(--sp-green-dark)]">Request received</p>
             <h1 className="sp-display mt-5 max-w-xl text-5xl text-[var(--sp-forest)] sm:text-6xl">
-              Your request is with our team.
+              Your wood pallet request is with our team.
             </h1>
             <p className="mt-7 max-w-lg text-base leading-7 text-[var(--sp-ink)]/68">
               We have the information you submitted and will follow up with the

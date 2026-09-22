@@ -18,6 +18,7 @@ function check(label, test) {
 
 const publicPages = [
   "app/page.tsx",
+  "app/contact/page.tsx",
   "app/recycle-pallets/page.tsx",
   "app/careers/page.tsx",
   "app/blog/page.tsx",
@@ -25,6 +26,16 @@ const publicPages = [
   "app/blog/pallet-recycling-environmental-benefits/page.tsx",
   "app/blog/cost-effective-pallet-management-strategies/page.tsx",
 ];
+
+function extractMetaDescription(file) {
+  const source = read(file);
+  const match = source.match(
+    /(?:const description\s*=|description:)\s*\n?\s*"([^"]+)"/,
+  );
+
+  assert.ok(match, `${file} must define a static metadata description`);
+  return match[1];
+}
 
 check("all canonical signals use southernpallet.co", () => {
   const files = [
@@ -61,6 +72,7 @@ check("the sitemap contains only indexable public routes", () => {
   const sitemap = read("app/sitemap.ts");
   for (const route of [
     '"/"',
+    '"/contact"',
     '"/recycle-pallets"',
     '"/careers"',
     '"/blog"',
@@ -84,8 +96,28 @@ check("child page titles do not duplicate the root brand template", () => {
   }
 });
 
+check("indexable pages have unique 150-160 character meta descriptions", () => {
+  const descriptions = publicPages.map((file) => ({
+    file,
+    description: extractMetaDescription(file),
+  }));
+
+  for (const { file, description } of descriptions) {
+    assert.ok(
+      description.length >= 150 && description.length <= 160,
+      `${file} description is ${description.length} characters`,
+    );
+  }
+
+  assert.equal(
+    new Set(descriptions.map(({ description }) => description)).size,
+    descriptions.length,
+    "indexable page descriptions must be unique",
+  );
+});
+
 check("blog articles provide complete article signals", () => {
-  for (const file of publicPages.slice(4)) {
+  for (const file of publicPages.slice(5)) {
     const source = read(file);
     assert.match(source, /datePublished/);
     assert.match(source, /dateModified/);
@@ -97,14 +129,18 @@ check("blog articles provide complete article signals", () => {
   assert.match(shell, /<time/);
 });
 
-check("internal quote links resolve to the homepage contact section", () => {
-  for (const file of publicPages) {
-    assert.doesNotMatch(read(file), /href=["']\/contact["']/);
+check("internal quote links resolve to the standalone contact page", () => {
+  for (const file of [
+    ...publicPages.slice(5),
+    "components/blog-article-shell.tsx",
+  ]) {
+    assert.doesNotMatch(read(file), /href=["']\/#contact["']/);
+    assert.match(read(file), /href=["']\/contact["']/);
   }
 });
 
 check("unsupported blog claims are absent", () => {
-  const source = publicPages.slice(3).map(read).join("\n");
+  const source = publicPages.slice(4).map(read).join("\n");
   for (const claim of [
     /30-50%/,
     /40 million trees/i,
@@ -136,6 +172,37 @@ check("the homepage LCP image uses an optimizable priority asset", () => {
 check("structured data URLs target real page anchors", () => {
   assert.match(read("app/recycle-pallets/page.tsx"), /#sell-pallets/);
   assert.match(read("components/recycle-cta-section.tsx"), /id="sell-pallets"/);
+});
+
+check("the homepage LocalBusiness schema includes complete contact and geo data", () => {
+  const homepage = read("app/page.tsx");
+  const contactSection = read("components/contact-section.tsx");
+  const siteConfig = read("lib/site-config.ts");
+  const siteSchema = read("lib/site-schema.ts");
+
+  assert.match(homepage, /localBusinessSchema/);
+  assert.match(siteSchema, /LocalBusiness/);
+  assert.match(siteSchema, /telephone:\s*CONTACT\.phone/);
+  assert.match(siteSchema, /priceRange:\s*"\$4\.00 and up"/);
+  assert.match(siteSchema, /address:\s*{[\s\S]*CORPORATE_OFFICE/);
+  assert.match(siteSchema, /geo:\s*{[\s\S]*GeoCoordinates/);
+  assert.match(siteSchema, /openingHoursSpecification/);
+  assert.match(siteSchema, /absoluteUrl\("\/contact"\)/);
+  assert.match(contactSection, /id="contact"/);
+  assert.match(siteConfig, /latitude:\s*30\.572143316657/);
+  assert.match(siteConfig, /longitude:\s*-88\.130261943997/);
+});
+
+check("the standalone contact page is indexable and reuses business data", () => {
+  const contactPagePath = "app/contact/page.tsx";
+  assert.equal(existsSync(join(root, contactPagePath)), true);
+
+  const contactPage = read(contactPagePath);
+  assert.match(contactPage, /export const metadata:\s*Metadata/);
+  assert.match(contactPage, /canonical:\s*"\/contact"/);
+  assert.match(contactPage, /ContactSection/);
+  assert.match(contactPage, /localBusinessSchema/);
+  assert.match(read("app/sitemap.ts"), /path:\s*"\/contact"/);
 });
 
 if (failures.length > 0) {

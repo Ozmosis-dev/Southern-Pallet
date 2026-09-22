@@ -6,7 +6,11 @@ const canonicalOrigin = "https://southernpallet.co";
 const publicRoutes = [
   {
     path: "/",
-    title: "Wood Pallet Supplier in Alabama & Mississippi | Southern Pallet",
+    title: "Southeast Wood Pallet Supplier | Southern Pallet",
+  },
+  {
+    path: "/contact",
+    title: "Contact Our Pallet Team | Southern Pallet",
   },
   {
     path: "/recycle-pallets",
@@ -14,7 +18,7 @@ const publicRoutes = [
   },
   {
     path: "/careers",
-    title: "Pallet Company Careers in Alabama & Mississippi | Southern Pallet",
+    title: "Pallet Company Careers in Theodore, Alabama | Southern Pallet",
   },
   {
     path: "/blog",
@@ -73,6 +77,28 @@ function containsType(value, expectedType) {
     return true;
   }
   return Object.values(value).some((item) => containsType(item, expectedType));
+}
+
+function findTypedNode(value, expectedType) {
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const match = findTypedNode(item, expectedType);
+      if (match) return match;
+    }
+    return null;
+  }
+  if (!value || typeof value !== "object") return null;
+  if (
+    value["@type"] === expectedType ||
+    (Array.isArray(value["@type"]) && value["@type"].includes(expectedType))
+  ) {
+    return value;
+  }
+  for (const item of Object.values(value)) {
+    const match = findTypedNode(item, expectedType);
+    if (match) return match;
+  }
+  return null;
 }
 
 for (const route of publicRoutes) {
@@ -135,6 +161,26 @@ for (const route of publicRoutes) {
       jsonLd.some((value) => containsType(value, route.schemaType)),
       `${route.path} should render ${route.schemaType} JSON-LD`,
     );
+  }
+
+  if (route.path === "/") {
+    const business = jsonLd
+      .map((value) => findTypedNode(value, "LocalBusiness"))
+      .find(Boolean);
+    assert.ok(business, "homepage should render LocalBusiness JSON-LD");
+    assert.equal(business.name, "Southern Pallet");
+    assert.equal(business.url, canonicalOrigin);
+    assert.equal(business.telephone, "+16017465012");
+    assert.equal(business.priceRange, "$4.00 and up");
+    assert.equal(business.address?.streetAddress, "5695 Rabbit Creek Dr Ste 101");
+    assert.equal(business.address?.addressLocality, "Theodore");
+    assert.equal(business.address?.addressRegion, "AL");
+    assert.equal(business.address?.postalCode, "36582");
+    assert.equal(business.geo?.latitude, 30.572143316657);
+    assert.equal(business.geo?.longitude, -88.130261943997);
+    assert.equal(business.contactPoint?.url, `${canonicalOrigin}/contact`);
+    assert.equal(business.openingHoursSpecification?.opens, "07:00");
+    assert.equal(business.openingHoursSpecification?.closes, "16:00");
   }
 }
 

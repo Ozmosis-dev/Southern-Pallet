@@ -19,6 +19,7 @@ export default function SharedHeader({
   const pathname = usePathname();
   const isHomePage =
     pathname === "/" && !isRecyclePage && !isPrivatePage;
+  const isContactPage = pathname === "/contact";
 
   const handleLogoClick = () => {
     if (!isHomePage) {
@@ -52,8 +53,8 @@ export default function SharedHeader({
   };
 
   const handleGetQuoteClick = (e: React.MouseEvent) => {
-    if (!isHomePage) {
-      window.location.href = "/#contact";
+    if (!isHomePage && !isContactPage) {
+      window.location.href = "/contact";
     } else {
       e.preventDefault();
       const element = document.getElementById("contact");
@@ -244,9 +245,9 @@ export default function SharedHeader({
             Delivery
           </a>
           <a
-            href={getNavHref("contact")}
-            onClick={getNavClickHandler("contact")}
-            className={isPrivatePage ? privateDesktopLinkClass : sectionLinkClass}
+            href="/contact"
+            className={isPrivatePage ? privateDesktopLinkClass : routeLinkClass("/contact")}
+            aria-current={isContactPage ? "page" : undefined}
           >
             Contact
           </a>
@@ -363,8 +364,9 @@ export default function SharedHeader({
                 Delivery
               </a>
               <a
-                href={getNavHref("contact")}
+                href="/contact"
                 className={isPrivatePage ? privateMobileLinkClass : mobileLinkClass}
+                aria-current={isContactPage ? "page" : undefined}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact

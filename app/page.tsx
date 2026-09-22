@@ -10,36 +10,32 @@ import ContactSection from "../components/contact-section"
 import Footer from "../components/footer"
 import type { Metadata } from "next"
 import PublicSiteShell from "../components/public-site-shell"
-import { DEFAULT_OG_IMAGE } from "@/lib/site-config"
+import JsonLd from "@/components/seo/json-ld"
+import { localBusinessSchema } from "@/lib/site-schema"
+import { createSocialMetadata } from "@/lib/social-metadata"
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Wood Pallet Supplier in Alabama & Mississippi | Southern Pallet",
+    absolute: "Southeast Wood Pallet Supplier | Southern Pallet",
   },
   description:
-    "Order new, recycled, heat-treated, and custom wood pallets with regional delivery, repair, and recycling across Alabama, Mississippi, and the Southeast.",
+    "Order new, recycled, heat-treated, and custom wood pallets with regional delivery, repair, recycling, and buyback service for businesses across the Southeast.",
   alternates: {
     canonical: "/",
   },
-  openGraph: {
-    title: "Wood Pallet Supplier in Alabama & Mississippi",
+  ...createSocialMetadata({
+    title: "Southeast Wood Pallet Supplier",
     description:
       "Order new, recycled, heat-treated, and custom wood pallets with regional delivery, repair, and recycling across the Southeast.",
-    url: "/",
-    images: [DEFAULT_OG_IMAGE],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Wood Pallet Supplier in Alabama & Mississippi",
-    description:
-      "Order new, recycled, heat-treated, and custom wood pallets with regional delivery, repair, and recycling across the Southeast.",
-    images: [DEFAULT_OG_IMAGE.url],
-  },
+    path: "/",
+    card: "home",
+  }),
 }
 
 export default function Page() {
   return (
     <PublicSiteShell>
+      <JsonLd data={localBusinessSchema} />
       <Header />
       <HeroSection />
       <AboutSection />

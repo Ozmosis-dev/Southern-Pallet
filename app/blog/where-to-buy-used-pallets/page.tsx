@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import BlogArticleShell from "../../../components/blog-article-shell"
 import Link from "next/link"
-import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/site-config"
+import { SITE_URL } from "@/lib/site-config"
+import { createSocialMetadata } from "@/lib/social-metadata"
 
 const title = "Where to Buy Used Pallets for Your Business"
 const description =
-  "Compare used pallet suppliers, understand grades and specifications, and use a practical inspection checklist before ordering recycled wood pallets."
+  "Learn where to buy used pallets, compare recycled pallet suppliers and grades, inspect quality, and choose the right wood pallets for your business needs."
 const path = "/blog/where-to-buy-used-pallets"
 const datePublished = "2026-07-26"
 const dateModified = "2026-08-03"
@@ -17,22 +18,13 @@ export const metadata: Metadata = {
     canonical: path,
   },
   authors: [{ name: "Southern Pallet", url: SITE_URL }],
-  openGraph: {
-    type: "article",
+  ...createSocialMetadata({
     title,
     description,
-    url: path,
-    images: [DEFAULT_OG_IMAGE],
-    publishedTime: datePublished,
-    modifiedTime: dateModified,
-    authors: [SITE_URL],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-    images: [DEFAULT_OG_IMAGE.url],
-  },
+    path,
+    card: "used-pallet-buying",
+    article: { publishedTime: datePublished, modifiedTime: dateModified },
+  }),
 }
 
 export default function WhereToBuyUsedPalletsPage() {
@@ -40,8 +32,8 @@ export default function WhereToBuyUsedPalletsPage() {
     <BlogArticleShell
       title={title}
       description="How to compare local sources, evaluate pallet quality, and find a dependable recycled pallet supplier."
-      image="/recyled_pallet_card.jpg"
-      imageAlt="Quality used wooden pallets stacked in a warehouse"
+      image="/inspected-recycled-wood-pallets.jpg"
+      imageAlt="Inspected used wood pallets stacked in a supplier warehouse"
       readTime="5 min read"
       path={path}
       datePublished={datePublished}
@@ -161,7 +153,7 @@ export default function WhereToBuyUsedPalletsPage() {
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Environmental Commitment:</strong> Supporting sustainable business practices</li>
           </ul>
 
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Conclusion</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Choose the Right Used Pallet Supplier</h2>
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
             Finding the right source for used pallets requires careful consideration of quality, cost, and service. While multiple options exist, choosing a professional supplier like Southern Pallet ensures the best combination of quality, service, and value for your business needs.
           </p>
@@ -169,7 +161,7 @@ export default function WhereToBuyUsedPalletsPage() {
         <div className="bg-green-50 border border-green-200 rounded-lg p-6 my-8">
           <h3 className="text-xl font-semibold mb-2">Ready to get started with quality used pallets?</h3>
           <p>Request a quote today by calling us or visiting our location. Our team is ready to help.</p>
-          <Link href="/#contact" className="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Request a Quote</Link>
+          <Link href="/contact" className="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Request a Quote</Link>
         </div>
         </div>
     </BlogArticleShell>

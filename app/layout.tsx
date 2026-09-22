@@ -6,18 +6,12 @@ import Script from "next/script";
 import JsonLd from "@/components/seo/json-ld";
 import {
   BUSINESS_ID,
-  CONTACT,
-  CORPORATE_OFFICE,
   DEFAULT_DESCRIPTION,
-  DEFAULT_OG_IMAGE,
-  LEGAL_NAME,
-  MANUFACTURING_FACILITY,
-  SERVICE_STATES,
   SITE_NAME,
   SITE_URL,
   WEBSITE_ID,
-  absoluteUrl,
 } from "@/lib/site-config";
+import { createSocialMetadata } from "@/lib/social-metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +32,7 @@ const publicBody = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Wood Pallet Supplier in Alabama & Mississippi | Southern Pallet",
+    default: "Southeast Wood Pallet Supplier | Southern Pallet",
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
@@ -55,21 +49,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "/",
-    title: "Wood Pallet Supplier in Alabama & Mississippi",
+  ...createSocialMetadata({
+    title: "Southeast Wood Pallet Supplier",
     description: DEFAULT_DESCRIPTION,
-    siteName: SITE_NAME,
-    images: [DEFAULT_OG_IMAGE],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Wood Pallet Supplier in Alabama & Mississippi",
-    description: DEFAULT_DESCRIPTION,
-    images: [DEFAULT_OG_IMAGE.url],
-  },
+    path: "/",
+    card: "home",
+  }),
   robots: {
     index: true,
     follow: true,
@@ -96,102 +81,16 @@ export const viewport: Viewport = {
   themeColor: "#1e4a2b",
 };
 
-const organizationSchema = {
+const websiteSchema = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": ["Organization", "LocalBusiness"],
-      "@id": BUSINESS_ID,
-      name: SITE_NAME,
-      legalName: LEGAL_NAME,
-      alternateName: "Southern Pallet Recycling",
-      url: SITE_URL,
-      logo: {
-        "@type": "ImageObject",
-        url: absoluteUrl("/southern-pallet-logo.png"),
-        width: 1076,
-        height: 309,
-      },
-      image: absoluteUrl(DEFAULT_OG_IMAGE.url),
-      description: DEFAULT_DESCRIPTION,
-      telephone: CONTACT.phone,
-      email: CONTACT.email,
-      address: {
-        "@type": "PostalAddress",
-        ...CORPORATE_OFFICE,
-      },
-      location: [
-        {
-          "@type": "Place",
-          name: "Southern Pallet Corporate Office",
-          address: {
-            "@type": "PostalAddress",
-            ...CORPORATE_OFFICE,
-          },
-        },
-        {
-          "@type": "Place",
-          name: "Southern Pallet Manufacturing and Recycling Facility",
-          address: {
-            "@type": "PostalAddress",
-            ...MANUFACTURING_FACILITY,
-          },
-        },
-      ],
-      contactPoint: {
-        "@type": "ContactPoint",
-        telephone: CONTACT.phone,
-        email: CONTACT.email,
-        contactType: "sales and customer service",
-        areaServed: "US",
-        availableLanguage: "English",
-      },
-      openingHoursSpecification: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-        ],
-        opens: "07:00",
-        closes: "16:00",
-      },
-      areaServed: SERVICE_STATES.map((name) => ({
-        "@type": "State",
-        name,
-      })),
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Pallet products and services",
-        itemListElement: [
-          "New and custom wood pallets",
-          "Recycled wood pallets",
-          "Heat-treated pallets",
-          "Pallet repair",
-          "Pallet recycling and buyback",
-          "Regional pallet delivery",
-        ].map((name) => ({
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name,
-          },
-        })),
-      },
-    },
-    {
-      "@type": "WebSite",
-      "@id": WEBSITE_ID,
-      url: SITE_URL,
-      name: SITE_NAME,
-      publisher: {
-        "@id": BUSINESS_ID,
-      },
-      inLanguage: "en-US",
-    },
-  ],
+  "@type": "WebSite",
+  "@id": WEBSITE_ID,
+  url: SITE_URL,
+  name: SITE_NAME,
+  publisher: {
+    "@id": BUSINESS_ID,
+  },
+  inLanguage: "en-US",
 };
 
 export default function RootLayout({
@@ -205,7 +104,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
 
         {/* Google Tag Manager — set NEXT_PUBLIC_GTM_ID to enable, see README.md */}
         {gtmId && (

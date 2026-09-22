@@ -1,33 +1,27 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowDown, MapPin } from "lucide-react";
 import SharedHeader from "@/components/shared-header";
 import SharedFooter from "@/components/shared-footer";
 import CareersApplicationForm from "@/components/careers-application-form";
 import PublicSiteShell from "@/components/public-site-shell";
-import { DEFAULT_OG_IMAGE } from "@/lib/site-config";
+import { createSocialMetadata } from "@/lib/social-metadata";
 
 export const metadata: Metadata = {
   title: "Pallet Company Careers in Theodore, Alabama",
   description:
-    "Apply for pallet manufacturing, recycling, logistics, and operations opportunities with Southern Pallet in Theodore, Alabama.",
+    "Explore pallet manufacturing, recycling, logistics, and operations careers with Southern Pallet in Theodore, Alabama, and submit a general application today.",
   alternates: {
     canonical: "/careers",
   },
-  openGraph: {
+  ...createSocialMetadata({
     title: "Pallet Company Careers in Theodore, Alabama",
     description:
       "Tell us about your experience and interest in joining Southern Pallet.",
-    url: "/careers",
-    images: [DEFAULT_OG_IMAGE],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Pallet Company Careers in Theodore, Alabama",
-    description:
-      "Apply for opportunities with Southern Pallet in Theodore, Alabama.",
-    images: [DEFAULT_OG_IMAGE.url],
-  },
+    path: "/careers",
+    card: "careers",
+  }),
   robots: {
     index: true,
     follow: true,
@@ -51,14 +45,38 @@ export default function CareersPage() {
                 </p>
               </div>
               <h1 className="max-w-2xl text-5xl font-semibold leading-[1.08] tracking-[-0.025em] sm:text-6xl">
-                General
+                Pallet company careers
                 <br />
-                application.
+                in Theodore, Alabama.
               </h1>
               <p className="mt-7 max-w-xl text-base leading-7 text-white/75 sm:text-lg">
                 We’re always interested in dependable people who value safety,
                 teamwork, and doing the job right. Share your experience and
                 the kind of work you’re looking for.
+              </p>
+              <p className="mt-5 max-w-xl text-sm leading-7 text-white/70">
+                Learn more about our{" "}
+                <Link
+                  href="/#about"
+                  className="font-semibold text-white underline decoration-[var(--sp-green)] underline-offset-4 hover:text-[var(--sp-green)]"
+                >
+                  family-owned pallet company
+                </Link>
+                , explore the{" "}
+                <Link
+                  href="/#products"
+                  className="font-semibold text-white underline decoration-[var(--sp-green)] underline-offset-4 hover:text-[var(--sp-green)]"
+                >
+                  wood pallet products our team supports
+                </Link>
+                , or{" "}
+                <Link
+                  href="/contact"
+                  className="font-semibold text-white underline decoration-[var(--sp-green)] underline-offset-4 hover:text-[var(--sp-green)]"
+                >
+                  contact our operations team
+                </Link>
+                .
               </p>
               <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-sm text-white/70">
                 <span className="flex items-center gap-2">
@@ -77,8 +95,8 @@ export default function CareersPage() {
 
             <div className="relative min-h-80 lg:min-h-full">
               <Image
-                src="/recyle_pallet_hero.jpg"
-                alt="Stacks of wooden pallets at a Southern Pallet facility"
+                src="/used-wood-pallets-recycling.jpg"
+                alt="Stacks of wood pallets at the Southern Pallet manufacturing facility"
                 fill
                 priority
                 className="object-cover"

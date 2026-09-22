@@ -6,27 +6,21 @@ import Footer from "../../components/footer";
 import Header from "../../components/header";
 import PublicSiteShell from "../../components/public-site-shell";
 import JsonLd from "@/components/seo/json-ld";
-import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/site-config";
+import { SITE_URL } from "@/lib/site-config";
+import { createSocialMetadata } from "@/lib/social-metadata";
 
 export const metadata: Metadata = {
   title: "Wood Pallet Guides & Recycling Resources",
   description:
-    "Practical guides for buying, inspecting, reusing, recycling, and managing wood pallets from Southern Pallet's manufacturing and recycling team.",
+    "Explore practical wood pallet guides on buying, grading, recycling, cost control, and inventory management from Southern Pallet's experienced regional team.",
   alternates: { canonical: "/blog" },
-  openGraph: {
+  ...createSocialMetadata({
     title: "Wood Pallet Guides & Recycling Resources",
     description:
       "Practical guides for buying, inspecting, reusing, recycling, and managing wood pallets.",
-    url: "/blog",
-    images: [DEFAULT_OG_IMAGE],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Wood Pallet Guides & Recycling Resources",
-    description:
-      "Practical guides for buying, inspecting, reusing, recycling, and managing wood pallets.",
-    images: [DEFAULT_OG_IMAGE.url],
-  },
+    path: "/blog",
+    card: "resources",
+  }),
 };
 
 const posts = [
@@ -35,8 +29,8 @@ const posts = [
     title: "Where to buy used pallets near you",
     description:
       "How to compare local sources, evaluate quality, and find a dependable recycled pallet supplier.",
-    image: "/recyled_pallet_card.jpg",
-    alt: "Stacks of inspected recycled wooden pallets",
+    image: "/inspected-recycled-wood-pallets.jpg",
+    alt: "Stacks of inspected recycled wood pallets available for purchase",
     readTime: "5 min read",
     topic: "Buying guide",
   },
@@ -45,8 +39,8 @@ const posts = [
     title: "The environmental value of pallet recycling",
     description:
       "How recovery programs reduce waste, conserve material, and support practical sustainability goals.",
-    image: "/recyle_pallet_hero.jpg",
-    alt: "Wood pallets stacked at a recycling facility",
+    image: "/used-wood-pallets-recycling.jpg",
+    alt: "Used wood pallets stacked inside a recycling facility",
     readTime: "6 min read",
     topic: "Sustainability",
   },
@@ -55,8 +49,8 @@ const posts = [
     title: "Cost-effective pallet management strategies",
     description:
       "Practical ways to reduce procurement, storage, repair, and transportation costs without sacrificing quality.",
-    image: "/stack.svg",
-    alt: "Organized wooden pallets ready for distribution",
+    image: "/stacked-wood-pallets.webp",
+    alt: "Organized stacks of wood pallets ready for distribution",
     readTime: "7 min read",
     topic: "Operations",
   },
@@ -93,12 +87,33 @@ export default function BlogPage() {
             <div>
               <p className="sp-eyebrow text-[var(--sp-green-dark)]">Southern Pallet field notes</p>
               <h1 className="sp-display mt-5 max-w-2xl text-5xl text-[var(--sp-forest)] sm:text-6xl">
-                Practical guidance for better pallet operations.
+                Wood pallet guides for better operations.
               </h1>
             </div>
             <p className="max-w-xl text-base leading-7 text-[var(--sp-ink)]/68 lg:justify-self-end">
               Guides on sourcing pallets, managing inventory, controlling cost,
-              and building a more responsible recovery program.
+              and building a more responsible recovery program. Compare our{" "}
+              <Link
+                href="/#products"
+                className="font-semibold text-[var(--sp-forest)] underline decoration-[var(--sp-green-dark)] underline-offset-4 hover:text-[var(--sp-green-dark)]"
+              >
+                wood pallet product options
+              </Link>
+              , learn about{" "}
+              <Link
+                href="/#about"
+                className="font-semibold text-[var(--sp-forest)] underline decoration-[var(--sp-green-dark)] underline-offset-4 hover:text-[var(--sp-green-dark)]"
+              >
+                Southern Pallet’s regional operation
+              </Link>
+              , or{" "}
+              <Link
+                href="/contact"
+                className="font-semibold text-[var(--sp-forest)] underline decoration-[var(--sp-green-dark)] underline-offset-4 hover:text-[var(--sp-green-dark)]"
+              >
+                contact our pallet supply team
+              </Link>
+              .
             </p>
           </div>
         </section>

@@ -51,8 +51,8 @@ export default function RecycleHeroSection() {
 
         <div className="relative min-h-[420px] border-t border-white/15 lg:min-h-full lg:border-l lg:border-t-0">
           <Image
-            src="/recyle_pallet_hero.jpg"
-            alt="Stacks of used wooden pallets ready for recovery"
+            src="/used-wood-pallets-recycling.jpg"
+            alt="Stacks of used wood pallets ready for pickup and recycling"
             fill
             priority
             className="object-cover"

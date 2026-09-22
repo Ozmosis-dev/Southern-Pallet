@@ -45,14 +45,14 @@ export default function TestimonialsSection() {
       title: "CFO, Rins Mine",
       content:
         "Consequat reprehenderit laborum nisi cillum. Sit minim voluptate consequat fugiat enim ex aliqua minim est incididunt velit exercitation. Pariatur cupidatat aute ullamco velit quis cillum minim excepteur cupidatat id minim in nostrud ipsum voluptate. Nulla excepteur id reprehenderit tempor incididunt adipisicing adipisicing consectetur. Officia dolor eiusmod id ipsum minim laborum in ut minim cillum do pariatur laborum officia. Aute cupidatat ullamco reprehenderit. Sunt officia nisi Lorem. Commodo id in incididunt culpa.",
-      avatar: "/jackson.svg?height=60&width=60",
+      avatar: "/jackson-headshot.webp",
     },
     {
       name: "Edward Austin",
       title: "CFO, Rins Mine",
       content:
         "Eiusmod enim ea pariatur. Eu esse in eu nulla ea cillum Lorem cillum eiusmod velit in sunt incididunt sint. Enim non ipsum cillum et et labore nisi sunt ullamco. Et sit excepteur laborum irure culpa excepteur. Irure excepteur excepteur laborum.",
-      avatar: "/edward.svg?height=60&width=60",
+      avatar: "/edward-austin-headshot.webp",
     },
   ];
 
@@ -78,7 +78,7 @@ export default function TestimonialsSection() {
                     <div className="flex items-center mb-4 md:mb-6">
                       <Image
                         src={testimonial.avatar || "/placeholder.svg"}
-                        alt={testimonial.name}
+                        alt={`Portrait of ${testimonial.name}`}
                         width={64}
                         height={64}
                         className="w-12 h-12 md:w-16 md:h-16 rounded-full mr-4 object-cover"

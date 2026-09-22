@@ -9,8 +9,8 @@ const products = [
     name: "Recycled pallets",
     price: "Starting at $4.00",
     suffix: "per pallet",
-    image: "/recyled_pallet_card.jpg",
-    alt: "Recycled wood pallets",
+    image: "/inspected-recycled-wood-pallets.jpg",
+    alt: "Stacks of inspected recycled wood pallets ready for shipment",
     copy: "Environmentally responsible, cost-effective pallets inspected and repaired for dependable everyday use.",
     features: [
       "Thoroughly inspected",
@@ -24,8 +24,8 @@ const products = [
     name: "New & hybrid pallets",
     price: "Starting at $9.50",
     suffix: "per pallet",
-    image: "/grade-a.svg",
-    alt: "New and hybrid pallets",
+    image: "/new-hybrid-wood-pallets.webp",
+    alt: "New and hybrid wood pallets stacked for regional delivery",
     copy: "High-quality pallets built with premium lumber for strength, consistency, and performance.",
     features: [
       'Standard 48" × 40"',
@@ -39,8 +39,8 @@ const products = [
     name: "Custom new & used",
     price: "Custom quote",
     suffix: "built to spec",
-    image: "/custom.svg",
-    alt: "Custom-built pallets",
+    image: "/custom-wood-pallet.webp",
+    alt: "Custom-built wood pallets prepared to customer specifications",
     copy: "Purpose-built pallets designed around specialized cargo, equipment, and operational requirements.",
     features: [
       "Custom dimensions",
