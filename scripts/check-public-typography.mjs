@@ -14,6 +14,11 @@ assert.doesNotMatch(
   /Barlow_Condensed/,
   "public pages should not load the compressed Barlow Condensed display face",
 );
+assert.doesNotMatch(
+  layout,
+  /\bGeist(?:_Mono)?\b/,
+  "the global layout should not preload unused Geist fonts",
+);
 assert.match(
   styles,
   /\.public-site \.sp-display[\s\S]*?font-weight:\s*600;/,

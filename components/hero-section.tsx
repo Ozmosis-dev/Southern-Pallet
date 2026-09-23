@@ -46,6 +46,8 @@ export default function HeroSection() {
             alt="Stacks of inspected recycled wood pallets ready for Southeast delivery"
             fill
             priority
+            fetchPriority="high"
+            quality={40}
             className="object-cover"
             sizes="(min-width: 1024px) 53vw, 100vw"
           />

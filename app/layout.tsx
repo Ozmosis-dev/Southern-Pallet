@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Geist, Geist_Mono, Manrope } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import JsonLd from "@/components/seo/json-ld";
@@ -12,16 +12,6 @@ import {
   WEBSITE_ID,
 } from "@/lib/site-config";
 import { createSocialMetadata } from "@/lib/social-metadata";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const publicBody = Manrope({
   variable: "--font-public-body",
@@ -118,9 +108,7 @@ export default function RootLayout({
         )}
         {/* End Google Tag Manager */}
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${publicBody.variable} antialiased`}
-      >
+      <body className={`${publicBody.variable} antialiased`}>
         {/* Google Tag Manager (noscript) */}
         {gtmId && (
           <noscript>

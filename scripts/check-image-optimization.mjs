@@ -11,6 +11,30 @@ if (!/formats\s*:\s*\[[^\]]*["']image\/webp["']/.test(nextConfig)) {
   errors.push("next.config.ts: explicitly enable WebP output for optimized images.");
 }
 
+const heroSource = readFileSync(
+  join(projectRoot, "components", "hero-section.tsx"),
+  "utf8",
+);
+const heroImage = heroSource.match(
+  /<Image\b[\s\S]*?src=["']\/inspected-recycled-wood-pallets\.jpg["'][\s\S]*?\/>/,
+)?.[0];
+
+if (!heroImage) {
+  errors.push("components/hero-section.tsx: hero LCP image could not be found.");
+} else {
+  if (!/\bfetchPriority\s*=\s*["']high["']/.test(heroImage)) {
+    errors.push(
+      'components/hero-section.tsx: hero LCP image must use fetchPriority="high".',
+    );
+  }
+
+  if (!/\bquality\s*=\s*\{\s*40\s*\}/.test(heroImage)) {
+    errors.push(
+      "components/hero-section.tsx: hero LCP image must use quality={40}.",
+    );
+  }
+}
+
 function walk(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
