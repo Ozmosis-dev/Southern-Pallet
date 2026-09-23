@@ -1,6 +1,8 @@
-# Southern Pallet — website
+# Southern Pallet Recycling — website
 
-Marketing site for Southern Pallet ([southernpallet.co](https://southernpallet.co)). Next.js (App Router), React 19, Tailwind CSS 4. No database, no server-side data storage — it's a static/marketing site with three submission forms.
+Marketing site for Southern Pallet Recycling ([southernpallet.co](https://southernpallet.co)). Next.js (App Router), React 19, Tailwind CSS 4. No database, no server-side data storage — it's a static/marketing site with three submission forms.
+
+The canonical public NAP is Southern Pallet Recycling, 119 Industrial Park Dr, Poplarville, MS 39470, (601) 746-5012. Poplarville is the primary operating and employment location. The Theodore, Alabama address is a satellite corporate office. Summerford Pallet is a former partner and is not affiliated with Southern Pallet Recycling.
 
 ## Stack
 
@@ -97,7 +99,7 @@ domain. Keep all three values out of source control.
 
 Google Analytics 4 and Google Tag Manager are wired up independently and disabled by default. Set `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` to a GA4 measurement ID (`G-XXXXXXXXXX`) and/or `NEXT_PUBLIC_GTM_ID` to a GTM container ID (`GTM-XXXXXXX`) to enable them — see `app/layout.tsx`.
 
-For the Southern Pallet GA4 property, set `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` to `G-XGFY05LYNP` in the deployment environment and redeploy.
+For the Southern Pallet Recycling GA4 property, set `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` to `G-XGFY05LYNP` in the deployment environment and redeploy.
 
 ## The `/private/business-plan` page
 

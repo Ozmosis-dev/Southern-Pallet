@@ -32,7 +32,7 @@ const publicBody = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Southeast Wood Pallet Supplier | Southern Pallet",
+    default: "Southeast Wood Pallet Supplier | Southern Pallet Recycling",
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,

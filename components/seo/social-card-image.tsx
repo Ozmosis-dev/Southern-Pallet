@@ -57,7 +57,7 @@ export default function SocialCardImage({ card, imageUrl }: SocialCardImageProps
               letterSpacing: "-0.02em",
             }}
           >
-            Southern Pallet
+            Southern Pallet Recycling
           </div>
         </div>
 

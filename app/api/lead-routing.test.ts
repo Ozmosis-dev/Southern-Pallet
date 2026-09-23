@@ -68,7 +68,7 @@ test("contact submissions are delivered through Resend when configured", async (
   clearDeliveryEnvironment();
   process.env.RESEND_API_KEY = "re_test_key";
   process.env.LEAD_NOTIFICATION_EMAIL = "info@example.com";
-  process.env.LEAD_FROM_EMAIL = "Southern Pallet Website <leads@example.com>";
+  process.env.LEAD_FROM_EMAIL = "Southern Pallet Recycling Website <leads@example.com>";
 
   let sentRequest:
     | {
@@ -92,7 +92,7 @@ test("contact submissions are delivered through Resend when configured", async (
   assert.equal(sentRequest?.url, "https://api.resend.com/emails");
 
   const body = JSON.parse(String(sentRequest?.init?.body));
-  assert.equal(body.from, "Southern Pallet Website <leads@example.com>");
+  assert.equal(body.from, "Southern Pallet Recycling Website <leads@example.com>");
   assert.deepEqual(body.to, ["info@example.com"]);
   assert.equal(body.reply_to, "jordan@example.com");
   assert.match(body.subject, /quote request/i);
@@ -108,7 +108,7 @@ test("recycle submissions use the recycle email label and subject", async () => 
   clearDeliveryEnvironment();
   process.env.RESEND_API_KEY = "re_test_key";
   process.env.LEAD_NOTIFICATION_EMAIL = "info@example.com";
-  process.env.LEAD_FROM_EMAIL = "Southern Pallet Website <leads@example.com>";
+  process.env.LEAD_FROM_EMAIL = "Southern Pallet Recycling Website <leads@example.com>";
 
   let sentBody: Record<string, unknown> | undefined;
   globalThis.fetch = async (_input, init) => {
@@ -232,7 +232,7 @@ test("a stalled webhook does not block a successful Resend delivery", async () =
   clearDeliveryEnvironment();
   process.env.RESEND_API_KEY = "re_test_key";
   process.env.LEAD_NOTIFICATION_EMAIL = "info@example.com";
-  process.env.LEAD_FROM_EMAIL = "Southern Pallet Website <leads@example.com>";
+  process.env.LEAD_FROM_EMAIL = "Southern Pallet Recycling Website <leads@example.com>";
   process.env.LEAD_WEBHOOK_URL = "https://hooks.example.com/leads";
   process.env.LEAD_DELIVERY_TIMEOUT_MS = "10";
 
@@ -292,7 +292,7 @@ test("user retries reuse the same Resend idempotency key", async () => {
   clearDeliveryEnvironment();
   process.env.RESEND_API_KEY = "re_test_key";
   process.env.LEAD_NOTIFICATION_EMAIL = "info@example.com";
-  process.env.LEAD_FROM_EMAIL = "Southern Pallet Website <leads@example.com>";
+  process.env.LEAD_FROM_EMAIL = "Southern Pallet Recycling Website <leads@example.com>";
 
   const idempotencyKeys: string[] = [];
   globalThis.fetch = async (_input, init) => {
@@ -351,7 +351,7 @@ test("career delivery supports multiple recipients and includes a resume", async
   clearDeliveryEnvironment();
   process.env.RESEND_API_KEY = "re_test_key";
   process.env.LEAD_NOTIFICATION_EMAIL = "quotes@example.com";
-  process.env.LEAD_FROM_EMAIL = "Southern Pallet Website <leads@example.com>";
+  process.env.LEAD_FROM_EMAIL = "Southern Pallet Recycling Website <leads@example.com>";
   process.env.LEAD_WEBHOOK_URL = "https://hooks.example.com/leads";
 
   let sentBody: Record<string, unknown> | undefined;
@@ -362,7 +362,7 @@ test("career delivery supports multiple recipients and includes a resume", async
 
   const result = await deliverLead({
     formType: "career_application",
-    subject: "New Southern Pallet employment application",
+    subject: "New Southern Pallet Recycling employment application",
     replyTo: "applicant@example.com",
     notificationEmail: "careers@example.com, staffing@example.com",
     allowWebhook: false,

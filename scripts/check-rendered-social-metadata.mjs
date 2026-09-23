@@ -3,7 +3,7 @@ import { join } from "node:path";
 import sharp from "sharp";
 
 const baseUrl = process.env.SITE_URL || "http://127.0.0.1:3000";
-const expectedSiteName = "Southern Pallet";
+const expectedSiteName = "Southern Pallet Recycling";
 const failures = [];
 
 const socialCardSource = readFileSync(

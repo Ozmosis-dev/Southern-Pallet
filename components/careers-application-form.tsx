@@ -118,7 +118,7 @@ export default function CareersApplicationForm() {
           </div>
           <p className="max-w-2xl text-base leading-7 text-[var(--sp-ink)]/68">
             Complete the application below. If your background aligns with a
-            current or future opportunity, a member of the Southern Pallet team
+            current or future opportunity, a member of the Southern Pallet Recycling team
             will contact you.
           </p>
         </div>
@@ -133,7 +133,7 @@ export default function CareersApplicationForm() {
             <div>
               <p className="font-bold">Application received.</p>
               <p className="mt-1 text-sm leading-6">
-                Thank you for your interest in Southern Pallet. We’ll review
+                Thank you for your interest in Southern Pallet Recycling. We’ll review
                 your information and contact you if there is a match.
               </p>
             </div>
@@ -201,7 +201,7 @@ export default function CareersApplicationForm() {
                   <option value="" disabled>
                     Select a location
                   </option>
-                  <option value="Theodore, AL">Theodore, Alabama</option>
+                  <option value="Poplarville, MS">Poplarville, Mississippi</option>
                 </select>
               </div>
             </div>
@@ -452,7 +452,7 @@ export default function CareersApplicationForm() {
                 </span>
               </label>
               <p className="text-xs leading-5 text-[var(--sp-sage)]">
-                Southern Pallet is an equal opportunity employer. Submission of
+                Southern Pallet Recycling is an equal opportunity employer. Submission of
                 this form does not guarantee employment.
               </p>
             </div>

@@ -11,7 +11,7 @@ import { localBusinessSchema } from "@/lib/site-schema";
 import { createSocialMetadata } from "@/lib/social-metadata";
 
 const description =
-  "Request a wood pallet quote from Southern Pallet for new, recycled, heat-treated, or custom pallets, recycling, pickup, repair, and regional delivery.";
+  "Request a wood pallet quote from Southern Pallet Recycling for new, recycled, heat-treated, or custom pallets, pickup, repair, recycling, and delivery.";
 
 export const metadata: Metadata = {
   title: "Contact Our Pallet Team",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "/contact",
   },
   ...createSocialMetadata({
-    title: "Contact Southern Pallet for a Wood Pallet Quote",
+    title: "Contact Southern Pallet Recycling for a Wood Pallet Quote",
     description,
     path: "/contact",
     card: "contact",
@@ -30,23 +30,23 @@ export const metadata: Metadata = {
 const facilities = [
   {
     index: "01",
-    label: "Corporate office",
-    city: "Theodore, Alabama",
-    address: ["5695 Rabbit Creek Dr Ste 101", "Theodore, AL 36582"],
-    description:
-      "Sales, account support, scheduling, and regional customer coordination.",
-    directions:
-      "https://www.google.com/maps/search/?api=1&query=5695+Rabbit+Creek+Dr+Ste+101+Theodore+AL+36582",
-  },
-  {
-    index: "02",
-    label: "Manufacturing facility",
+    label: "Primary manufacturing & recycling facility",
     city: "Poplarville, Mississippi",
     address: ["119 Industrial Park Dr", "Poplarville, MS 39470"],
     description:
-      "Pallet manufacturing, repair, recycling, inventory, and dispatch operations.",
+      "Primary operations for pallet manufacturing, repair, recycling, inventory, dispatch, and employment.",
     directions:
-      "https://www.google.com/maps/search/?api=1&query=119+Industrial+Park+Dr+Poplarville+MS+39470",
+      "https://www.google.com/maps/search/?api=1&query=Southern+Pallet+Recycling+119+Industrial+Park+Dr+Poplarville+MS+39470",
+  },
+  {
+    index: "02",
+    label: "Satellite corporate office",
+    city: "Theodore, Alabama",
+    address: ["5695 Rabbit Creek Dr Ste 101", "Theodore, AL 36582"],
+    description:
+      "A secondary office supporting sales, account service, scheduling, and regional coordination.",
+    directions:
+      "https://www.google.com/maps/search/?api=1&query=Southern+Pallet+Recycling+5695+Rabbit+Creek+Dr+Ste+101+Theodore+AL+36582",
   },
 ];
 
@@ -137,7 +137,7 @@ export default function ContactPage() {
             <div className="relative min-h-[430px] lg:min-h-full">
               <Image
                 src="/used-wood-pallets-recycling.jpg"
-                alt="Stacks of used wood pallets ready for Southern Pallet pickup and recycling"
+                alt="Stacks of used wood pallets ready for Southern Pallet Recycling pickup and recycling"
                 fill
                 priority
                 className="object-cover"
@@ -176,9 +176,9 @@ export default function ContactPage() {
                 </h2>
               </div>
               <p className="max-w-xl text-base leading-7 text-[var(--sp-ink)]/68 lg:justify-self-end">
-                Sales and scheduling are coordinated from Theodore, while our
-                Poplarville operation keeps manufacturing, repair, recycling,
-                and dispatch moving.
+                Poplarville is our primary manufacturing, recycling, and
+                employment location. Our Theodore satellite office supports
+                sales, account service, and regional coordination.
               </p>
             </div>
 

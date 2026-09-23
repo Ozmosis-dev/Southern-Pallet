@@ -1,13 +1,13 @@
 import {
   BUSINESS_ID,
   CONTACT,
-  CORPORATE_OFFICE,
-  CORPORATE_OFFICE_GEO,
   DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
   LEGAL_NAME,
-  MANUFACTURING_FACILITY,
-  MANUFACTURING_FACILITY_GEO,
+  PRIMARY_FACILITY,
+  PRIMARY_FACILITY_GEO,
+  SATELLITE_OFFICE,
+  SATELLITE_OFFICE_GEO,
   SERVICE_STATES,
   SITE_NAME,
   SITE_URL,
@@ -20,7 +20,6 @@ export const localBusinessSchema = {
   "@id": BUSINESS_ID,
   name: SITE_NAME,
   legalName: LEGAL_NAME,
-  alternateName: "Southern Pallet Recycling",
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
@@ -35,35 +34,35 @@ export const localBusinessSchema = {
   priceRange: "$4.00 and up",
   address: {
     "@type": "PostalAddress",
-    ...CORPORATE_OFFICE,
+    ...PRIMARY_FACILITY,
   },
   geo: {
     "@type": "GeoCoordinates",
-    ...CORPORATE_OFFICE_GEO,
+    ...PRIMARY_FACILITY_GEO,
   },
   location: [
     {
       "@type": "Place",
-      name: "Southern Pallet Corporate Office",
+      name: "Southern Pallet Recycling Primary Manufacturing and Recycling Facility",
       address: {
         "@type": "PostalAddress",
-        ...CORPORATE_OFFICE,
+        ...PRIMARY_FACILITY,
       },
       geo: {
         "@type": "GeoCoordinates",
-        ...CORPORATE_OFFICE_GEO,
+        ...PRIMARY_FACILITY_GEO,
       },
     },
     {
       "@type": "Place",
-      name: "Southern Pallet Manufacturing and Recycling Facility",
+      name: "Southern Pallet Recycling Satellite Corporate Office",
       address: {
         "@type": "PostalAddress",
-        ...MANUFACTURING_FACILITY,
+        ...SATELLITE_OFFICE,
       },
       geo: {
         "@type": "GeoCoordinates",
-        ...MANUFACTURING_FACILITY_GEO,
+        ...SATELLITE_OFFICE_GEO,
       },
     },
   ],

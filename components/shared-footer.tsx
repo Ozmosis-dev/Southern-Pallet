@@ -78,7 +78,7 @@ export default function SharedFooter({
               href="/careers"
               className="mt-8 inline-flex border-b border-[#22c55e] pb-1 text-xs font-extrabold uppercase tracking-[0.2em] text-white hover:text-[#7ee29a]"
             >
-              Careers at Southern Pallet
+              Careers at Southern Pallet Recycling
             </Link>}
           </div>
 
@@ -135,19 +135,19 @@ export default function SharedFooter({
               <div className={isPrivatePage ? "space-y-6 text-gray-300" : "grid gap-5 text-sm leading-6 text-white/65 sm:grid-cols-2 lg:grid-cols-1"}>
                 <address className="not-italic">
                   <strong className="mb-2 block font-semibold text-white">
-                    {isPrivatePage ? "Corporate Office:" : "Corporate office"}
-                  </strong>
-                  5695 Rabbit Creek Dr Ste 101
-                  <br />
-                  Theodore, AL 36582
-                </address>
-                <address className="not-italic">
-                  <strong className="mb-2 block font-semibold text-white">
-                    {isPrivatePage ? "Manufacturing Facility:" : "Manufacturing facility"}
+                    {isPrivatePage ? "Primary Facility:" : "Primary manufacturing & recycling facility"}
                   </strong>
                   119 Industrial Park Dr
                   <br />
                   Poplarville, MS 39470
+                </address>
+                <address className="not-italic">
+                  <strong className="mb-2 block font-semibold text-white">
+                    {isPrivatePage ? "Satellite Corporate Office:" : "Satellite corporate office"}
+                  </strong>
+                  5695 Rabbit Creek Dr Ste 101
+                  <br />
+                  Theodore, AL 36582
                 </address>
               </div>
             </div>
@@ -172,7 +172,7 @@ export default function SharedFooter({
         </div>
 
         <div className={isPrivatePage ? "flex flex-col items-center justify-between border-t border-gray-600 pt-3 text-sm text-gray-400 md:flex-row" : "flex flex-col gap-4 pt-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between"}>
-          <p>© 2025 Southern Pallet Company. All rights reserved.</p>
+          <p>© 2025 Southern Pallet Recycling. All rights reserved.</p>
           <div className="flex gap-6">
             <button
               onClick={() => openModal("privacy")}
@@ -235,7 +235,7 @@ export default function SharedFooter({
                   {activeModal === "privacy" ? (
                     <div className="space-y-4">
                       <p>
-                        Your privacy is important to us at Southern Pallet
+                        Your privacy is important to us at Southern Pallet Recycling
                         Company (&quot;Company,&quot; &quot;we,&quot;
                         &quot;our,&quot; or &quot;us&quot;). This Privacy Policy
                         explains how we collect, use, disclose, and safeguard
@@ -313,7 +313,7 @@ export default function SharedFooter({
                   ) : (
                     <div className="space-y-4">
                       <p>
-                        Welcome to Southern Pallet Company (&quot;Company,&quot;
+                        Welcome to Southern Pallet Recycling (&quot;Company,&quot;
                         &quot;we,&quot; &quot;our,&quot; or &quot;us&quot;).
                         These Terms of Service (&quot;Terms&quot;) govern your
                         access to and use of our website at southernpallet.co
@@ -333,7 +333,7 @@ export default function SharedFooter({
 
                       <p>
                         The content on the Site, including text, images, and
-                        software, is owned by Southern Pallet Company or
+                        software, is owned by Southern Pallet Recycling or
                         licensed to us. You may not copy, distribute, or modify
                         content without prior written consent. Unauthorized use
                         of content may result in legal action.
@@ -361,7 +361,7 @@ export default function SharedFooter({
 
                       <p>
                         The Site is provided &quot;as is&quot; without
-                        warranties of any kind. Southern Pallet Company
+                        warranties of any kind. Southern Pallet Recycling
                         disclaims all liability for damages arising from your
                         use of the Site, including loss of data, revenue, or
                         opportunities.

@@ -10,31 +10,31 @@ export const SOCIAL_CARDS = {
     eyebrow: "PALLET SUPPLY · SOUTHEAST",
     title: "Southeast wood pallet supplier.",
     image: "/inspected-recycled-wood-pallets.jpg",
-    alt: "Southern Pallet Southeast wood pallet supply and delivery",
+    alt: "Southern Pallet Recycling Southeast wood pallet supply and delivery",
   },
   contact: {
     eyebrow: "QUOTES · DELIVERY · SUPPORT",
     title: "Talk directly with our pallet team.",
     image: "/used-wood-pallets-recycling.jpg",
-    alt: "Contact Southern Pallet for a wood pallet quote",
+    alt: "Contact Southern Pallet Recycling for a wood pallet quote",
   },
   recycling: {
     eyebrow: "PALLET RECOVERY · BUYBACK",
     title: "Put used wood pallets back to work.",
     image: "/used-wood-pallets-recycling.jpg",
-    alt: "Southern Pallet used wood pallet recycling and buyback",
+    alt: "Southern Pallet Recycling used wood pallet recycling and buyback",
   },
   careers: {
-    eyebrow: "CAREERS · THEODORE, ALABAMA",
+    eyebrow: "CAREERS · POPLARVILLE, MISSISSIPPI",
     title: "Build dependable operations with us.",
     image: "/inspected-recycled-wood-pallets.jpg",
-    alt: "Careers in pallet manufacturing and operations at Southern Pallet",
+    alt: "Careers in pallet manufacturing and operations at Southern Pallet Recycling",
   },
   resources: {
-    eyebrow: "SOUTHERN PALLET FIELD NOTES",
+    eyebrow: "SOUTHERN PALLET RECYCLING FIELD NOTES",
     title: "Wood pallet guides for better operations.",
     image: "/used-wood-pallets-recycling.jpg",
-    alt: "Southern Pallet wood pallet guides and recycling resources",
+    alt: "Southern Pallet Recycling wood pallet guides and recycling resources",
   },
   "used-pallet-buying": {
     eyebrow: "BUYING GUIDE",
@@ -58,7 +58,7 @@ export const SOCIAL_CARDS = {
     eyebrow: "REQUEST RECEIVED",
     title: "Your pallet request is with our team.",
     image: "/inspected-recycled-wood-pallets.jpg",
-    alt: "Southern Pallet request confirmation",
+    alt: "Southern Pallet Recycling request confirmation",
   },
 } as const;
 

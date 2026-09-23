@@ -1,4 +1,4 @@
-# Claude Code notes — Southern Pallet website
+# Claude Code notes — Southern Pallet Recycling website
 
 See `AGENTS.md` for the general agent-facing project context (stack, conventions, form/webhook pattern, what not to hardcode). This file is just the Claude-Code-specific pointer to it — there's nothing Claude-specific to add beyond what's already in `AGENTS.md` and `README.md`.
 

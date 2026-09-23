@@ -6,38 +6,37 @@ const canonicalOrigin = "https://southernpallet.co";
 const publicRoutes = [
   {
     path: "/",
-    title: "Southeast Wood Pallet Supplier | Southern Pallet",
+    title: "Southeast Wood Pallet Supplier | Southern Pallet Recycling",
   },
   {
     path: "/contact",
-    title: "Contact Our Pallet Team | Southern Pallet",
+    title: "Contact Our Pallet Team | Southern Pallet Recycling",
   },
   {
     path: "/recycle-pallets",
-    title: "Used Pallet Recycling & Buyback | Southern Pallet",
+    title: "Used Pallet Recycling & Buyback | Southern Pallet Recycling",
   },
   {
     path: "/careers",
-    title: "Pallet Company Careers in Theodore, Alabama | Southern Pallet",
+    title: "Pallet Careers in Poplarville, MS | Southern Pallet Recycling",
   },
   {
     path: "/blog",
-    title: "Wood Pallet Guides & Recycling Resources | Southern Pallet",
+    title: "Wood Pallet Guides | Southern Pallet Recycling",
   },
   {
     path: "/blog/where-to-buy-used-pallets",
-    title: "Where to Buy Used Pallets for Your Business | Southern Pallet",
+    title: "Where to Buy Used Pallets | Southern Pallet Recycling",
     schemaType: "BlogPosting",
   },
   {
     path: "/blog/pallet-recycling-environmental-benefits",
-    title:
-      "Environmental Benefits of Recycling Wood Pallets | Southern Pallet",
+    title: "Wood Pallet Recycling Benefits | Southern Pallet Recycling",
     schemaType: "BlogPosting",
   },
   {
     path: "/blog/cost-effective-pallet-management-strategies",
-    title: "How to Reduce Pallet Costs: 8 Practical Steps | Southern Pallet",
+    title: "How to Reduce Pallet Costs | Southern Pallet Recycling",
     schemaType: "BlogPosting",
   },
 ];
@@ -168,16 +167,26 @@ for (const route of publicRoutes) {
       .map((value) => findTypedNode(value, "LocalBusiness"))
       .find(Boolean);
     assert.ok(business, "homepage should render LocalBusiness JSON-LD");
-    assert.equal(business.name, "Southern Pallet");
+    assert.equal(business.name, "Southern Pallet Recycling");
+    assert.equal(business.legalName, "Southern Pallet Recycling");
+    assert.equal(business.alternateName, undefined);
     assert.equal(business.url, canonicalOrigin);
     assert.equal(business.telephone, "+16017465012");
     assert.equal(business.priceRange, "$4.00 and up");
-    assert.equal(business.address?.streetAddress, "5695 Rabbit Creek Dr Ste 101");
-    assert.equal(business.address?.addressLocality, "Theodore");
-    assert.equal(business.address?.addressRegion, "AL");
-    assert.equal(business.address?.postalCode, "36582");
-    assert.equal(business.geo?.latitude, 30.572143316657);
-    assert.equal(business.geo?.longitude, -88.130261943997);
+    assert.equal(business.address?.streetAddress, "119 Industrial Park Dr");
+    assert.equal(business.address?.addressLocality, "Poplarville");
+    assert.equal(business.address?.addressRegion, "MS");
+    assert.equal(business.address?.postalCode, "39470");
+    assert.equal(business.geo?.latitude, 30.827312000955);
+    assert.equal(business.geo?.longitude, -89.524405075319);
+    assert.equal(
+      business.location?.[0]?.name,
+      "Southern Pallet Recycling Primary Manufacturing and Recycling Facility",
+    );
+    assert.equal(
+      business.location?.[1]?.name,
+      "Southern Pallet Recycling Satellite Corporate Office",
+    );
     assert.equal(business.contactPoint?.url, `${canonicalOrigin}/contact`);
     assert.equal(business.openingHoursSpecification?.opens, "07:00");
     assert.equal(business.openingHoursSpecification?.closes, "16:00");

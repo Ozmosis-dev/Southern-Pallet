@@ -114,7 +114,7 @@ for (const route of routes) {
 
   assert.match(
     html,
-    /<a\b(?=[^>]*href="tel:\+16017465012")(?=[^>]*aria-label="Call Southern Pallet at \(601\) 746-5012")[^>]*>/,
+    /<a\b(?=[^>]*href="tel:\+16017465012")(?=[^>]*aria-label="Call Southern Pallet Recycling at \(601\) 746-5012")[^>]*>/,
     `${route.path} should render the header phone call action`,
   );
 

@@ -36,18 +36,18 @@ for (const route of publicRoutes) {
 const careersMain = careersHtml.match(/<main>([\s\S]*?)<\/main>/)?.[1] ?? "";
 assert.match(
   careersHtml,
-  /<title>Pallet Company Careers in Theodore, Alabama \| Southern Pallet<\/title>/,
-  "the careers title should describe hiring in Theodore only",
+  /<title>Pallet Careers in Poplarville, MS \| Southern Pallet Recycling<\/title>/,
+  "the careers title should focus on Poplarville",
 );
 assert.match(
   careersMain,
-  /Theodore, (?:AL|Alabama)/,
-  "the careers page should list Theodore as the hiring location",
+  /Poplarville, (?:MS|Mississippi)/,
+  "the careers page should list Poplarville as the hiring location",
 );
 assert.doesNotMatch(
   careersMain,
-  /Poplarville|Either location/,
-  "the careers page should not offer Poplarville or an either-location choice",
+  /Theodore|Either location/,
+  "the careers page should not offer Theodore or an either-location choice",
 );
 
 const privateResponse = await fetch(`${baseUrl}/private/business-plan`);

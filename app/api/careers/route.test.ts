@@ -28,7 +28,7 @@ function createApplicationForm(
 ): FormData {
   const values: Record<string, string | File | null> = {
     positionInterest: "Production team",
-    preferredLocation: "Theodore, AL",
+    preferredLocation: "Poplarville, MS",
     firstName: "Jordan",
     lastName: "Applicant",
     email: "jordan@example.com",
@@ -91,7 +91,7 @@ afterEach(() => {
 
 test("valid applications email the careers inbox with the resume attached", async () => {
   process.env.RESEND_API_KEY = "re_test_key";
-  process.env.LEAD_FROM_EMAIL = "Southern Pallet Careers <careers@example.com>";
+  process.env.LEAD_FROM_EMAIL = "Southern Pallet Recycling Careers <careers@example.com>";
   process.env.CAREERS_NOTIFICATION_EMAIL = "jobs@example.com";
   process.env.LEAD_WEBHOOK_URL = "https://hooks.example.com/leads";
 
@@ -130,7 +130,7 @@ test("valid applications email the careers inbox with the resume attached", asyn
 
 test("applications return 503 when the careers inbox is not configured", async () => {
   process.env.RESEND_API_KEY = "re_test_key";
-  process.env.LEAD_FROM_EMAIL = "Southern Pallet Careers <careers@example.com>";
+  process.env.LEAD_FROM_EMAIL = "Southern Pallet Recycling Careers <careers@example.com>";
   globalThis.fetch = async () => {
     throw new Error("No delivery should be attempted");
   };

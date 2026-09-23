@@ -10,9 +10,9 @@ import { SITE_URL } from "@/lib/site-config";
 import { createSocialMetadata } from "@/lib/social-metadata";
 
 export const metadata: Metadata = {
-  title: "Wood Pallet Guides & Recycling Resources",
+  title: "Wood Pallet Guides",
   description:
-    "Explore practical wood pallet guides on buying, grading, recycling, cost control, and inventory management from Southern Pallet's experienced regional team.",
+    "Explore practical wood pallet guides on buying, grading, recycling, cost control, and inventory management from Southern Pallet Recycling's regional team.",
   alternates: { canonical: "/blog" },
   ...createSocialMetadata({
     title: "Wood Pallet Guides & Recycling Resources",
@@ -59,7 +59,7 @@ const posts = [
 const blogIndexSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Southern Pallet Resources",
+  name: "Southern Pallet Recycling Resources",
   url: `${SITE_URL}/blog`,
   description:
     "Guides about buying, inspecting, reusing, recycling, and managing wood pallets.",
@@ -85,7 +85,7 @@ export default function BlogPage() {
         <section className="sp-grid border-b border-[var(--sp-rule)] bg-[var(--sp-cream)] py-20 lg:py-28">
           <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end lg:px-10">
             <div>
-              <p className="sp-eyebrow text-[var(--sp-green-dark)]">Southern Pallet field notes</p>
+              <p className="sp-eyebrow text-[var(--sp-green-dark)]">Southern Pallet Recycling field notes</p>
               <h1 className="sp-display mt-5 max-w-2xl text-5xl text-[var(--sp-forest)] sm:text-6xl">
                 Wood pallet guides for better operations.
               </h1>
@@ -104,7 +104,7 @@ export default function BlogPage() {
                 href="/#about"
                 className="font-semibold text-[var(--sp-forest)] underline decoration-[var(--sp-green-dark)] underline-offset-4 hover:text-[var(--sp-green-dark)]"
               >
-                Southern Pallet’s regional operation
+                Southern Pallet Recycling’s regional operation
               </Link>
               , or{" "}
               <Link

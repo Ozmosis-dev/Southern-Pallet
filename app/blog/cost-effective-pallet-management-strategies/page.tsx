@@ -12,12 +12,12 @@ const datePublished = "2026-07-26"
 const dateModified = "2026-08-03"
 
 export const metadata: Metadata = {
-  title,
+  title: "How to Reduce Pallet Costs",
   description,
   alternates: {
     canonical: path,
   },
-  authors: [{ name: "Southern Pallet", url: SITE_URL }],
+  authors: [{ name: "Southern Pallet Recycling", url: SITE_URL }],
   ...createSocialMetadata({
     title,
     description,
@@ -158,9 +158,9 @@ export default function CostEffectivePalletManagementStrategiesPage() {
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Cloud-Based Solutions:</strong> Provide accessibility and scalability</li>
           </ul>
 
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Southern Pallet&apos;s Cost Optimization Services</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Southern Pallet Recycling&apos;s Cost Optimization Services</h2>
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-            Southern Pallet offers comprehensive cost optimization services designed to help businesses maximize their pallet investment while minimizing expenses. Our expertise spans the entire pallet lifecycle.
+            Southern Pallet Recycling offers comprehensive cost optimization services designed to help businesses maximize their pallet investment while minimizing expenses. Our expertise spans the entire pallet lifecycle.
           </p>
 
           <ul className="space-y-3 mb-12">
@@ -175,12 +175,12 @@ export default function CostEffectivePalletManagementStrategiesPage() {
 
           <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Put Your Pallet Cost Strategy Into Practice</h2>
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-            Implementing cost-effective pallet management strategies requires a comprehensive approach that addresses procurement, inventory, transportation, and technology. By partnering with Southern Pallet, businesses can achieve significant cost savings while maintaining quality and efficiency.
+            Implementing cost-effective pallet management strategies requires a comprehensive approach that addresses procurement, inventory, transportation, and technology. By partnering with Southern Pallet Recycling, businesses can achieve significant cost savings while maintaining quality and efficiency.
           </p>
 
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 my-8">
             <h3 className="text-xl font-semibold mb-2">Ready to optimize your pallet costs?</h3>
-            <p>Contact Southern Pallet for a comprehensive cost analysis and customized optimization strategy.</p>
+            <p>Contact Southern Pallet Recycling for a comprehensive cost analysis and customized optimization strategy.</p>
             <Link href="/contact" className="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Get Cost Analysis</Link>
           </div>
         </div>

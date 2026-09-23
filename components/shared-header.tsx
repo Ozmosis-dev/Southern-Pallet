@@ -378,7 +378,7 @@ export default function SharedHeader({
         <div className={isPrivatePage ? "hidden xl:block" : "hidden items-center gap-2 xl:flex"}>
           {!isPrivatePage && <a
             href="tel:+16017465012"
-            aria-label="Call Southern Pallet at (601) 746-5012"
+            aria-label="Call Southern Pallet Recycling at (601) 746-5012"
             className="inline-flex h-10 items-center gap-2 border border-white/30 px-4 text-xs font-semibold text-white hover:border-white hover:bg-white hover:text-[#102c1b]"
           >
             <Phone className="size-4" />

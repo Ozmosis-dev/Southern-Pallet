@@ -16,7 +16,7 @@ import { createSocialMetadata } from "@/lib/social-metadata"
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Southeast Wood Pallet Supplier | Southern Pallet",
+    absolute: "Southeast Wood Pallet Supplier | Southern Pallet Recycling",
   },
   description:
     "Order new, recycled, heat-treated, and custom wood pallets with regional delivery, repair, recycling, and buyback service for businesses across the Southeast.",

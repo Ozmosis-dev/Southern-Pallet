@@ -1,10 +1,18 @@
-# Agent notes — Southern Pallet website
+# Agent notes — Southern Pallet Recycling website
 
 Context for AI coding agents working in this repo.
 
 ## What this is
 
-A Next.js 15 / React 19 / Tailwind 4 marketing site for Southern Pallet, a pallet manufacturing/recycling company. No backend service, no database — it's a static-ish marketing site with two lead-capture forms that forward to an external webhook.
+A Next.js 15 / React 19 / Tailwind 4 marketing site for Southern Pallet Recycling, a pallet manufacturing/recycling company. No backend service, no database — it's a static-ish marketing site with two lead-capture forms that forward to an external webhook.
+
+## Business identity and locations
+
+- The exact public business name is **Southern Pallet Recycling**. “Southern Pallet” is only an abbreviated domain reference; do not use it as the business name in metadata, schema, citations, page copy, or form communications.
+- The canonical primary NAP is **Southern Pallet Recycling, 119 Industrial Park Dr, Poplarville, MS 39470, (601) 746-5012**.
+- Poplarville is the primary manufacturing, recycling, employment, and local-search location. Careers content must focus on Poplarville, Mississippi.
+- **5695 Rabbit Creek Dr Ste 101, Theodore, AL 36582** is a satellite corporate office. Do not call it the headquarters or make it the primary LocalBusiness address.
+- Summerford Pallet is a former partner that previously shared the Poplarville location and is no longer affiliated with Southern Pallet Recycling. Never imply a current connection or merge the two entities in structured data or citations.
 
 ## Key facts
 

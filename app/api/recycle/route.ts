@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
 
     const delivery = await deliverLead({
       formType: 'pallet_sell_request',
-      subject: 'New Southern Pallet recycling quote request',
+      subject: 'New Southern Pallet Recycling quote request',
       replyTo: formData.email,
       payload: leadPayload,
     });

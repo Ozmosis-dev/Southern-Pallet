@@ -7,7 +7,7 @@ import SharedHeader from "@/components/shared-header";
 import { createSocialMetadata } from "@/lib/social-metadata";
 
 const description =
-  "We've received your request and will be in touch soon. Southern Pallet appreciates your interest in our pallet services.";
+  "We've received your request and will be in touch soon. Southern Pallet Recycling appreciates your interest in our pallet services.";
 
 export const metadata: Metadata = {
   title: "Pallet Request Received",

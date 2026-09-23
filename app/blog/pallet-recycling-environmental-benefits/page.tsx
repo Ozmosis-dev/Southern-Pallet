@@ -12,12 +12,12 @@ const datePublished = "2026-07-26"
 const dateModified = "2026-08-03"
 
 export const metadata: Metadata = {
-  title,
+  title: "Wood Pallet Recycling Benefits",
   description,
   alternates: {
     canonical: path,
   },
-  authors: [{ name: "Southern Pallet", url: SITE_URL }],
+  authors: [{ name: "Southern Pallet Recycling", url: SITE_URL }],
   ...createSocialMetadata({
     title,
     description,
@@ -136,9 +136,9 @@ export default function PalletRecyclingEnvironmentalBenefitsPage() {
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Accurate Communication:</strong> Report measured results without extending them beyond their scope</li>
           </ul>
 
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">How Southern Pallet supports pallet recovery</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">How Southern Pallet Recycling supports pallet recovery</h2>
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-            Southern Pallet helps businesses evaluate surplus pallets and choose a practical reuse, repair, pickup, or recycling path based on pallet size, condition, quantity, and location.
+            Southern Pallet Recycling helps businesses evaluate surplus pallets and choose a practical reuse, repair, pickup, or recycling path based on pallet size, condition, quantity, and location.
           </p>
 
           <ul className="space-y-3 mb-12">
@@ -155,7 +155,7 @@ export default function PalletRecyclingEnvironmentalBenefitsPage() {
 
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 my-8">
             <h3 className="text-xl font-semibold mb-2">Need a practical pallet recovery plan?</h3>
-            <p>Share the pallet size, condition, quantity, and location so Southern Pallet can review the available next steps.</p>
+            <p>Share the pallet size, condition, quantity, and location so Southern Pallet Recycling can review the available next steps.</p>
             <Link href="/contact" className="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Request a Review</Link>
           </div>
         </div>

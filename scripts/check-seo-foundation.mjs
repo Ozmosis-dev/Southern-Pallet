@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { extname, join } from "node:path";
 
 const root = process.cwd();
 const read = (path) => readFileSync(join(root, path), "utf8");
@@ -35,6 +35,20 @@ function extractMetaDescription(file) {
 
   assert.ok(match, `${file} must define a static metadata description`);
   return match[1];
+}
+
+function sourceFiles(directory) {
+  return readdirSync(join(root, directory), {
+    recursive: true,
+    withFileTypes: true,
+  })
+    .filter(
+      (entry) =>
+        entry.isFile() &&
+        [".ts", ".tsx"].includes(extname(entry.name)) &&
+        !entry.name.endsWith(".test.ts"),
+    )
+    .map((entry) => join(entry.parentPath, entry.name));
 }
 
 check("all canonical signals use southernpallet.co", () => {
@@ -92,8 +106,44 @@ check("conversion and private routes provide page-level noindex", () => {
 
 check("child page titles do not duplicate the root brand template", () => {
   for (const file of publicPages) {
-    assert.doesNotMatch(read(file), /title:\s*["'][^"']*\|\s*Southern Pallet/);
+    assert.doesNotMatch(
+      read(file),
+      /title:\s*["'][^"']*\|\s*Southern Pallet Recycling/,
+    );
   }
+});
+
+check("the canonical business identity and location roles are explicit", () => {
+  const siteConfig = read("lib/site-config.ts");
+  assert.match(siteConfig, /SITE_NAME\s*=\s*"Southern Pallet Recycling"/);
+  assert.match(siteConfig, /LEGAL_NAME\s*=\s*SITE_NAME/);
+  assert.match(
+    siteConfig,
+    /PRIMARY_FACILITY\s*=\s*{[\s\S]*streetAddress:\s*"119 Industrial Park Dr"[\s\S]*addressLocality:\s*"Poplarville"[\s\S]*addressRegion:\s*"MS"[\s\S]*postalCode:\s*"39470"/,
+  );
+  assert.match(
+    siteConfig,
+    /SATELLITE_OFFICE\s*=\s*{[\s\S]*streetAddress:\s*"5695 Rabbit Creek Dr Ste 101"[\s\S]*addressLocality:\s*"Theodore"[\s\S]*addressRegion:\s*"AL"[\s\S]*postalCode:\s*"36582"/,
+  );
+});
+
+check("public application code uses the full business name and no Summerford affiliation", () => {
+  const files = ["app", "components", "lib"]
+    .flatMap(sourceFiles)
+    .map((file) => readFileSync(file, "utf8"))
+    .join("\n");
+
+  assert.doesNotMatch(files, /Southern Pallet(?! Recycling)/);
+  assert.doesNotMatch(files, /Summerford/i);
+});
+
+check("careers focuses on the primary Poplarville facility", () => {
+  const careersPage = read("app/careers/page.tsx");
+  const careersForm = read("components/careers-application-form.tsx");
+  assert.match(careersPage, /Poplarville, Mississippi/);
+  assert.doesNotMatch(careersPage, /Theodore/);
+  assert.match(careersForm, /value="Poplarville, MS"/);
+  assert.doesNotMatch(careersForm, /value="Theodore, AL"/);
 });
 
 check("indexable pages have unique 150-160 character meta descriptions", () => {
@@ -184,13 +234,13 @@ check("the homepage LocalBusiness schema includes complete contact and geo data"
   assert.match(siteSchema, /LocalBusiness/);
   assert.match(siteSchema, /telephone:\s*CONTACT\.phone/);
   assert.match(siteSchema, /priceRange:\s*"\$4\.00 and up"/);
-  assert.match(siteSchema, /address:\s*{[\s\S]*CORPORATE_OFFICE/);
+  assert.match(siteSchema, /address:\s*{[\s\S]*PRIMARY_FACILITY/);
   assert.match(siteSchema, /geo:\s*{[\s\S]*GeoCoordinates/);
   assert.match(siteSchema, /openingHoursSpecification/);
   assert.match(siteSchema, /absoluteUrl\("\/contact"\)/);
   assert.match(contactSection, /id="contact"/);
-  assert.match(siteConfig, /latitude:\s*30\.572143316657/);
-  assert.match(siteConfig, /longitude:\s*-88\.130261943997/);
+  assert.match(siteConfig, /latitude:\s*30\.827312000955/);
+  assert.match(siteConfig, /longitude:\s*-89\.524405075319/);
 });
 
 check("the standalone contact page is indexable and reuses business data", () => {

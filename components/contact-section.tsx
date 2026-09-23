@@ -150,7 +150,7 @@ export default function ContactSection() {
             </h2>
             <p className="mt-7 max-w-md text-lg leading-8 text-white/70">
               Most quotes returned in under 1 hour. Deliveries will be made the
-              following day, within 24hrs. That&apos;s the Southern Pallet
+              following day, within 24hrs. That&apos;s the Southern Pallet Recycling
               difference.
             </p>
 
@@ -176,11 +176,11 @@ export default function ContactSection() {
               <div className="flex items-start gap-4 border-b border-white/25 py-5">
                 <MapPin className="mt-1 size-5 text-[var(--sp-green)]" />
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-[0.1em]">Headquarters</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.1em]">Primary facility</div>
                   <div className="mt-2 text-sm leading-6 text-white/65">
-                    5695 Rabbit Creek Dr Ste 101
+                    119 Industrial Park Dr
                     <br />
-                    Theodore, AL 36582
+                    Poplarville, MS 39470
                   </div>
                 </div>
               </div>

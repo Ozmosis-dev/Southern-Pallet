@@ -1,17 +1,17 @@
-export const SITE_NAME = "Southern Pallet";
-export const LEGAL_NAME = "Southern Pallet Company";
+export const SITE_NAME = "Southern Pallet Recycling";
+export const LEGAL_NAME = SITE_NAME;
 export const SITE_URL = "https://southernpallet.co";
 export const BUSINESS_ID = `${SITE_URL}/#business`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 
 export const DEFAULT_DESCRIPTION =
-  "Southern Pallet supplies new, recycled, and custom wood pallets with regional delivery, repair, recycling, and buyback service across the Southeast.";
+  "Southern Pallet Recycling supplies new, recycled, and custom wood pallets with regional delivery, repair, recycling, and buyback service across the Southeast.";
 
 export const DEFAULT_OG_IMAGE = {
   url: "/social-card/v1/home",
   width: 1200,
   height: 630,
-  alt: "Southern Pallet Southeast wood pallet supply and delivery",
+  alt: "Southern Pallet Recycling Southeast wood pallet supply and delivery",
 } as const;
 
 export const CONTACT = {
@@ -20,20 +20,7 @@ export const CONTACT = {
   email: "info@southernpallet.co",
 } as const;
 
-export const CORPORATE_OFFICE = {
-  streetAddress: "5695 Rabbit Creek Dr Ste 101",
-  addressLocality: "Theodore",
-  addressRegion: "AL",
-  postalCode: "36582",
-  addressCountry: "US",
-} as const;
-
-export const CORPORATE_OFFICE_GEO = {
-  latitude: 30.572143316657,
-  longitude: -88.130261943997,
-} as const;
-
-export const MANUFACTURING_FACILITY = {
+export const PRIMARY_FACILITY = {
   streetAddress: "119 Industrial Park Dr",
   addressLocality: "Poplarville",
   addressRegion: "MS",
@@ -41,9 +28,22 @@ export const MANUFACTURING_FACILITY = {
   addressCountry: "US",
 } as const;
 
-export const MANUFACTURING_FACILITY_GEO = {
+export const PRIMARY_FACILITY_GEO = {
   latitude: 30.827312000955,
   longitude: -89.524405075319,
+} as const;
+
+export const SATELLITE_OFFICE = {
+  streetAddress: "5695 Rabbit Creek Dr Ste 101",
+  addressLocality: "Theodore",
+  addressRegion: "AL",
+  postalCode: "36582",
+  addressCountry: "US",
+} as const;
+
+export const SATELLITE_OFFICE_GEO = {
+  latitude: 30.572143316657,
+  longitude: -88.130261943997,
 } as const;
 
 export const SERVICE_STATES = [

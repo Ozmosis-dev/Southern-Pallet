@@ -9,16 +9,16 @@ import PublicSiteShell from "@/components/public-site-shell";
 import { createSocialMetadata } from "@/lib/social-metadata";
 
 export const metadata: Metadata = {
-  title: "Pallet Company Careers in Theodore, Alabama",
+  title: "Pallet Careers in Poplarville, MS",
   description:
-    "Explore pallet manufacturing, recycling, logistics, and operations careers with Southern Pallet in Theodore, Alabama, and submit a general application today.",
+    "Explore pallet manufacturing, recycling, logistics, and operations careers with Southern Pallet Recycling in Poplarville, Mississippi, and apply today.",
   alternates: {
     canonical: "/careers",
   },
   ...createSocialMetadata({
-    title: "Pallet Company Careers in Theodore, Alabama",
+    title: "Pallet Careers in Poplarville, Mississippi",
     description:
-      "Tell us about your experience and interest in joining Southern Pallet.",
+      "Tell us about your experience and interest in joining Southern Pallet Recycling in Poplarville, Mississippi.",
     path: "/careers",
     card: "careers",
   }),
@@ -41,13 +41,13 @@ export default function CareersPage() {
               <div className="mb-8 flex items-center gap-3">
                 <span className="h-px w-12 bg-[var(--sp-green)]" />
                 <p className="sp-eyebrow text-[var(--sp-green)]">
-                  Careers at Southern Pallet
+                  Careers at Southern Pallet Recycling
                 </p>
               </div>
               <h1 className="max-w-2xl text-5xl font-semibold leading-[1.08] tracking-[-0.025em] sm:text-6xl">
                 Pallet company careers
                 <br />
-                in Theodore, Alabama.
+                in Poplarville, Mississippi.
               </h1>
               <p className="mt-7 max-w-xl text-base leading-7 text-white/75 sm:text-lg">
                 We’re always interested in dependable people who value safety,
@@ -81,7 +81,7 @@ export default function CareersPage() {
               <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-sm text-white/70">
                 <span className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-[var(--sp-green)]" />
-                  Theodore, AL
+                  Poplarville, MS
                 </span>
               </div>
               <a
@@ -96,7 +96,7 @@ export default function CareersPage() {
             <div className="relative min-h-80 lg:min-h-full">
               <Image
                 src="/used-wood-pallets-recycling.jpg"
-                alt="Stacks of wood pallets at the Southern Pallet manufacturing facility"
+                alt="Stacks of wood pallets at the Southern Pallet Recycling facility in Poplarville, Mississippi"
                 fill
                 priority
                 className="object-cover"

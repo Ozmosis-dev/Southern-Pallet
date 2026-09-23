@@ -106,7 +106,7 @@ export function buildLeadEmailText(
     .map(([field, value]) => `${formatFieldName(field)}:\n${formatValue(value)}`)
     .join("\n\n");
 
-  return `New Southern Pallet website lead\n\nForm Type:\n${formType}\n\n${fields}`;
+  return `New Southern Pallet Recycling website lead\n\nForm Type:\n${formType}\n\n${fields}`;
 }
 
 export async function deliverLead({

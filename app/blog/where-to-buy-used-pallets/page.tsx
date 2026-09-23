@@ -12,12 +12,12 @@ const datePublished = "2026-07-26"
 const dateModified = "2026-08-03"
 
 export const metadata: Metadata = {
-  title,
+  title: "Where to Buy Used Pallets",
   description,
   alternates: {
     canonical: path,
   },
-  authors: [{ name: "Southern Pallet", url: SITE_URL }],
+  authors: [{ name: "Southern Pallet Recycling", url: SITE_URL }],
   ...createSocialMetadata({
     title,
     description,
@@ -66,7 +66,7 @@ export default function WhereToBuyUsedPalletsPage() {
 
           <h3 className="text-2xl font-semibold text-gray-800 mb-4 mt-12">Dedicated Pallet Suppliers</h3>
           <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-            Professional suppliers like Southern Pallet specialize in buying, refurbishing, and selling used pallets. These companies provide the highest level of service and quality assurance.
+            Professional suppliers like Southern Pallet Recycling specialize in buying, refurbishing, and selling used pallets. These companies provide the highest level of service and quality assurance.
           </p>
           <ul className="space-y-2 mb-8">
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span>Quality inspection and repair services</li>
@@ -137,9 +137,9 @@ export default function WhereToBuyUsedPalletsPage() {
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span><strong>Best for:</strong> Domestic shipping, cost-sensitive operations, sustainable initiatives</li>
           </ul>
 
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Why Southern Pallet is a Trusted Supplier</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Why Southern Pallet Recycling is a Trusted Supplier</h2>
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-            Southern Pallet stands out as a reliable partner for all your used pallet needs. Our comprehensive approach ensures you get quality products and exceptional service.
+            Southern Pallet Recycling stands out as a reliable partner for all your used pallet needs. Our comprehensive approach ensures you get quality products and exceptional service.
           </p>
 
           <ul className="space-y-3 mb-12">
@@ -155,7 +155,7 @@ export default function WhereToBuyUsedPalletsPage() {
 
           <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-16">Choose the Right Used Pallet Supplier</h2>
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-            Finding the right source for used pallets requires careful consideration of quality, cost, and service. While multiple options exist, choosing a professional supplier like Southern Pallet ensures the best combination of quality, service, and value for your business needs.
+            Finding the right source for used pallets requires careful consideration of quality, cost, and service. While multiple options exist, choosing a professional supplier like Southern Pallet Recycling ensures the best combination of quality, service, and value for your business needs.
           </p>
 
         <div className="bg-green-50 border border-green-200 rounded-lg p-6 my-8">

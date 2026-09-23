@@ -30,7 +30,7 @@ export default function RecycleProcessSection() {
               href="/#about"
               className="font-semibold text-[var(--sp-forest)] underline decoration-[var(--sp-green-dark)] underline-offset-4 hover:text-[var(--sp-green-dark)]"
             >
-              Southern Pallet’s recovery operation
+              Southern Pallet Recycling’s recovery operation
             </Link>
             , or{" "}
             <Link
