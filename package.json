@@ -12,6 +12,7 @@
     "test:seo:rendered": "node scripts/check-rendered-seo.mjs",
     "test:social": "node scripts/check-rendered-social-metadata.mjs",
     "test:analytics": "node scripts/check-rendered-google-analytics.mjs",
+    "test:analytics:source": "node --import tsx --test lib/analytics.test.ts && node scripts/check-analytics-foundation.mjs",
     "test:navigation": "node scripts/check-header-navigation.mjs",
     "test:design": "node scripts/check-public-design.mjs",
     "test:images": "node scripts/check-image-optimization.mjs",

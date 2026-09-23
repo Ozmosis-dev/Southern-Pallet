@@ -14,6 +14,7 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { buildThankYouUrl } from "@/lib/form-redirect";
+import { trackLeadGeneration } from "@/lib/analytics";
 
 export default function ContactSection() {
   const router = useRouter();
@@ -110,24 +111,11 @@ export default function ContactSection() {
       const result = await response.json();
       console.log("✅ Contact form submitted successfully:", result);
 
-      // GTM Conversion Tracking Event
-      if (typeof window !== "undefined") {
-        const gtmWindow = window as typeof window & {
-          dataLayer?: Array<Record<string, string | number>>;
-        };
-        if (gtmWindow.dataLayer) {
-          gtmWindow.dataLayer.push({
-            event: "quote_request_completed",
-            event_category: "Contact",
-            event_action: "Quote Request",
-            event_label: "Main Contact Form",
-            quote_type: data.productInterest || "",
-            company: data.company || "",
-            conversion_value: 100,
-            currency: "USD",
-          });
-        }
-      }
+      trackLeadGeneration({
+        formName: "Main Contact Form",
+        formType: "quote_request",
+        submissionId: data.submissionId,
+      });
 
       router.push(buildThankYouUrl("quote_request", utmParams));
     } catch (error) {

@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
@@ -123,7 +122,21 @@ export default function RootLayout({
         {/* End Google Tag Manager (noscript) */}
         {children}
       </body>
-      {googleAnalyticsId && <GoogleAnalytics gaId={googleAnalyticsId} />}
+      {googleAnalyticsId && (
+        <>
+          <Script id="google-analytics-init" strategy="afterInteractive">
+            {`window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+            window.gtag('js', new Date());
+            window.gtag('config', '${googleAnalyticsId}');`}
+          </Script>
+          <Script
+            id="google-analytics-loader"
+            src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+            strategy="lazyOnload"
+          />
+        </>
+      )}
     </html>
   );
 }

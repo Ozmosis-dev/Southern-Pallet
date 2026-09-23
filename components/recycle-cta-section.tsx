@@ -13,6 +13,7 @@ import {
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { buildThankYouUrl } from "@/lib/form-redirect";
+import { trackLeadGeneration } from "@/lib/analytics";
 
 export default function RecycleCTASection() {
   const router = useRouter();
@@ -115,24 +116,11 @@ export default function RecycleCTASection() {
       const result = await response.json();
       console.log("✅ Recycle form submitted successfully:", result);
 
-      // GTM Conversion Tracking Event
-      if (typeof window !== "undefined") {
-        const gtmWindow = window as typeof window & {
-          dataLayer?: Array<Record<string, string | number>>;
-        };
-        if (gtmWindow.dataLayer) {
-          gtmWindow.dataLayer.push({
-            event: "recycle_quote_completed",
-            event_category: "Recycling",
-            event_action: "Recycle Quote Request",
-            event_label: "Pallet Recycling Form",
-            pallet_type: formData.palletType || "",
-            quantity: formData.quantity || "",
-            conversion_value: 150,
-            currency: "USD",
-          });
-        }
-      }
+      trackLeadGeneration({
+        formName: "Pallet Recycling Form",
+        formType: "recycle_request",
+        submissionId: submissionData.submissionId,
+      });
 
       router.push(buildThankYouUrl("recycle_request", utmParams));
     } catch (error) {

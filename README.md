@@ -101,6 +101,8 @@ Google Analytics 4 and Google Tag Manager are wired up independently and disable
 
 For the Southern Pallet Recycling GA4 property, set `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` to `G-XGFY05LYNP` in the deployment environment and redeploy.
 
+The external GA4 library loads with Next.js `lazyOnload`. Successful contact and recycling submissions emit the recommended `generate_lead` event after the API accepts the request. The event includes only the form name, form type, and non-personal submission ID; `generate_lead` is configured as a key event in the Southern Pallet GA4 property.
+
 ## The `/private/business-plan` page
 
 This page shows an investor presentation behind a password prompt. Worth knowing before you rely on it: **the password check runs client-side** (see the comment in `app/private/business-plan/page.tsx`), so it ships to every visitor's browser and can be read out of the compiled JS — it hides the page from casual browsing, it is not real access control. If this content needs to stay actually confidential, replace it with server-side auth (middleware + a real session, or take the page down).
@@ -111,4 +113,5 @@ This page shows an investor presentation behind a password prompt. Worth knowing
 - Global organization metadata and structured data are defined in `app/layout.tsx` and `lib/site-config.ts`.
 - Page-level titles, descriptions, canonicals, social tags, and article data live with each App Router page.
 - `app/robots.ts` and `app/sitemap.ts` generate the crawl files. Do not add competing static files under `public/`.
+- `/thank-you` is a noindex conversion-confirmation route and is intentionally excluded from the sitemap and public content inventory.
 - Run `npm run test:seo` for source-level checks and `npm run test:seo:rendered` against a running production build for rendered metadata checks.

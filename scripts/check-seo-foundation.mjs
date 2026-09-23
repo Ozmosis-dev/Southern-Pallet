@@ -27,6 +27,10 @@ const publicPages = [
   "app/blog/cost-effective-pallet-management-strategies/page.tsx",
 ];
 
+check("the conversion page is excluded from the public content inventory", () => {
+  assert.equal(publicPages.includes("app/thank-you/page.tsx"), false);
+});
+
 function extractMetaDescription(file) {
   const source = read(file);
   const match = source.match(
