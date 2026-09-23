@@ -75,6 +75,20 @@ check("the root layout does not hard-code a canonical link", () => {
   assert.doesNotMatch(read("app/layout.tsx"), /<link\s+rel=["']canonical["']/);
 });
 
+check("Next.js redirects www to the non-www canonical hostname with one 301", () => {
+  const nextConfig = read("next.config.ts");
+
+  assert.match(nextConfig, /trailingSlash:\s*false/);
+  assert.match(nextConfig, /source:\s*["']\/:path\*["']/);
+  assert.match(nextConfig, /type:\s*["']host["']/);
+  assert.match(nextConfig, /value:\s*["']www\.southernpallet\.co["']/);
+  assert.match(
+    nextConfig,
+    /destination:\s*["']https:\/\/southernpallet\.co\/:path\*["']/,
+  );
+  assert.match(nextConfig, /statusCode:\s*301/);
+});
+
 check("robots and sitemap use Next metadata routes", () => {
   assert.equal(existsSync(join(root, "app/robots.ts")), true);
   assert.equal(existsSync(join(root, "app/sitemap.ts")), true);
