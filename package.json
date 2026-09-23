@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test:seo": "node scripts/check-seo-foundation.mjs",
+    "test:recycle-content": "node --import tsx scripts/check-recycle-page-content.mjs",
     "test:seo:rendered": "node scripts/check-rendered-seo.mjs",
     "test:social": "node scripts/check-rendered-social-metadata.mjs",
     "test:analytics": "node scripts/check-rendered-google-analytics.mjs",

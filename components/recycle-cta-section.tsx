@@ -156,7 +156,7 @@ export default function RecycleCTASection() {
           <p className="max-w-2xl text-base leading-7 text-white/68 lg:justify-self-end">
             Fill out the form below and we&apos;ll contact you with a
             competitive quote for your pallets. We buy standard and box pallets
-            in any quantity.
+            after reviewing the type, condition, quantity, and location.
           </p>
         </div>
 

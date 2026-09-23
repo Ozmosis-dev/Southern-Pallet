@@ -3,6 +3,7 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { RECYCLE_PAGE_H1 } from "@/lib/recycle-page-content";
 
 const stats = [
   ["Condition-based", "Practical quotes"],
@@ -24,8 +25,8 @@ export default function RecycleHeroSection() {
       <div className="relative mx-auto grid min-h-[680px] max-w-7xl lg:grid-cols-[0.9fr_1.1fr]">
         <div className="flex flex-col justify-center px-6 py-20 lg:px-10">
           <p className="sp-eyebrow text-[var(--sp-green)]">Pallet recovery program</p>
-          <h1 className="sp-display mt-6 max-w-2xl text-5xl sm:text-6xl">
-            Sell & recycle used wood pallets.
+          <h1 className="sp-display mt-6 max-w-3xl text-4xl sm:text-5xl xl:text-6xl">
+            {RECYCLE_PAGE_H1}
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-white/72">
             We buy standard and box pallets throughout the Southeast, with

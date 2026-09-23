@@ -3,6 +3,7 @@ import RecycleHeroSection from "../../components/recycle-hero-section";
 import RecycleBuySection from "../../components/recycle-buy-section";
 import RecycleQuoteSection from "../../components/recycle-quote-section";
 import RecycleProcessSection from "../../components/recycle-process-section";
+import RecycleFAQSection from "../../components/recycle-faq-section";
 import RecycleCTASection from "../../components/recycle-cta-section";
 import RecycleFooter from "../../components/recycle-footer";
 import type { Metadata } from "next";
@@ -14,6 +15,7 @@ import {
   SITE_URL,
 } from "@/lib/site-config";
 import { createSocialMetadata } from "@/lib/social-metadata";
+import { recycleFaqs } from "@/lib/recycle-page-content";
 
 export const metadata: Metadata = {
   title: "Used Pallet Recycling & Buyback",
@@ -63,6 +65,18 @@ const recyclingSchema = {
         },
       ],
     },
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}/recycle-pallets#faq`,
+      mainEntity: recycleFaqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.paragraphs.join(" "),
+        },
+      })),
+    },
   ],
 };
 
@@ -77,6 +91,7 @@ export default function RecyclePalletsPage() {
         <RecycleBuySection />
         <RecycleQuoteSection />
         <RecycleProcessSection />
+        <RecycleFAQSection />
         <RecycleCTASection />
       </main>
       <RecycleFooter />
