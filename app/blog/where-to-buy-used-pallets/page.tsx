@@ -9,7 +9,7 @@ const description =
   "Learn where to buy used pallets, compare recycled pallet suppliers and grades, inspect quality, and choose the right wood pallets for your business needs."
 const path = "/blog/where-to-buy-used-pallets"
 const datePublished = "2026-07-26"
-const dateModified = "2026-08-03"
+const dateModified = "2026-10-03"
 
 export const metadata: Metadata = {
   title: "Where to Buy Used Pallets",
@@ -66,7 +66,7 @@ export default function WhereToBuyUsedPalletsPage() {
 
           <h3 className="text-2xl font-semibold text-gray-800 mb-4 mt-12">Dedicated Pallet Suppliers</h3>
           <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-            Professional suppliers like Southern Pallet Recycling specialize in buying, refurbishing, and selling used pallets. These companies provide the highest level of service and quality assurance.
+            Professional suppliers like Southern Pallet Recycling specialize in buying, refurbishing, and selling used pallets. These companies provide the highest level of service and quality assurance. See our <Link href="/pallet-supply" className="text-blue-600 hover:text-blue-800 underline font-medium">used and recycled pallet supply</Link> for available grades, sizes, and delivery.
           </p>
           <ul className="space-y-2 mb-8">
             <li className="flex items-start"><span className="text-green-600 font-semibold mr-2">•</span>Quality inspection and repair services</li>

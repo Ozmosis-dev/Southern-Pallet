@@ -100,7 +100,13 @@ export default function SharedFooter({
               Services
             </p>
             <div className={isPrivatePage ? "flex flex-col gap-2 text-gray-300" : "flex flex-col gap-3 text-sm text-white/65"}>
-              <span>Pallet manufacturing</span>
+              {isPrivatePage ? (
+                <span>Pallet manufacturing</span>
+              ) : (
+                <Link href="/pallet-supply" className="hover:text-white">
+                  Pallet supply
+                </Link>
+              )}
               {isPrivatePage ? (
                 <span>Pallet recycling</span>
               ) : (

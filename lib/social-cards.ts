@@ -24,6 +24,12 @@ export const SOCIAL_CARDS = {
     image: "/used-wood-pallets-recycling.jpg",
     alt: "Southern Pallet Recycling used wood pallet recycling and buyback",
   },
+  supply: {
+    eyebrow: "PALLET SUPPLY · NEW · USED · CUSTOM",
+    title: "Wood pallets for sale, delivered.",
+    image: "/inspected-recycled-wood-pallets.jpg",
+    alt: "Southern Pallet Recycling new, used, and custom wood pallets for sale",
+  },
   careers: {
     eyebrow: "CAREERS · POPLARVILLE, MISSISSIPPI",
     title: "Build dependable operations with us.",

@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
         destination: "https://southernpallet.co/:path*",
         statusCode: 301,
       },
+      {
+        source: "/buy-pallets",
+        destination: "/pallet-supply",
+        statusCode: 301,
+      },
     ];
   },
   images: {

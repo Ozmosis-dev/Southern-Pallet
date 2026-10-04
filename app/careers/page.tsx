@@ -46,6 +46,7 @@ export default function CareersPage() {
               </div>
               <h1 className="max-w-2xl text-5xl font-semibold leading-[1.08] tracking-[-0.025em] sm:text-6xl">
                 Pallet company careers
+                {" "}
                 <br />
                 in Poplarville, Mississippi.
               </h1>

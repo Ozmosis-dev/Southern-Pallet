@@ -68,6 +68,7 @@ export default function ContactPage() {
 
                 <h1 className="sp-display mt-8 text-6xl text-[var(--sp-forest)] sm:text-7xl xl:text-[5.6rem] xl:leading-[0.96]">
                   Request a wood
+                  {" "}
                   <br />
                   pallet quote.
                 </h1>
