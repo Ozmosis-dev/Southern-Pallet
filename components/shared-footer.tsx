@@ -125,6 +125,9 @@ export default function SharedFooter({
                   <Link href="/#delivery" className="hover:text-white">
                     Regional delivery
                   </Link>
+                  <Link href="/pallet-services" className="hover:text-white">
+                    All pallet services
+                  </Link>
                   <Link href="/blog" className="hover:text-white">
                     Resource library
                   </Link>

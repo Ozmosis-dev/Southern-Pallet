@@ -106,6 +106,7 @@ check("the sitemap contains only indexable public routes", () => {
     '"/"',
     '"/contact"',
     '"/recycle-pallets"',
+    '"/pallet-services"',
     '"/pallet-supply"',
     '"/careers"',
     '"/blog"',

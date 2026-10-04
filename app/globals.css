@@ -308,3 +308,30 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Pallet services: illustration float and service-card micro-interactions */
+@keyframes sp-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.public-site .sp-float {
+  animation: sp-float 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .public-site .sp-float {
+    animation: none;
+  }
+
+  .public-site .sp-card,
+  .public-site .sp-card * {
+    transition: none !important;
+    transform: none !important;
+  }
+}

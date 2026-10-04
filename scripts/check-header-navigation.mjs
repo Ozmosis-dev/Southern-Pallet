@@ -41,11 +41,16 @@ const routes = [
     homeHref: "/",
     activeLabel: "Careers",
   },
+  {
+    path: "/pallet-services",
+    sectionPrefix: "/#",
+    homeHref: "/",
+    activeLabel: "Services",
+  },
 ];
 
 const sectionLinks = [
   ["Products", "products"],
-  ["Services", "services"],
   ["About Us", "about"],
   ["Delivery", "delivery"],
 ];
@@ -84,6 +89,13 @@ for (const route of routes) {
       `${route.path} ${label} links should target ${expectedHref}; received ${hrefs.join(", ")}`,
     );
   }
+
+  const servicesHrefs = getLinkHrefs(html, "Services");
+  assert.ok(servicesHrefs.length > 0, `${route.path} should render the Services link`);
+  assert.ok(
+    servicesHrefs.every((href) => href === "/pallet-services"),
+    `${route.path} Services links should target /pallet-services; received ${servicesHrefs.join(", ")}`,
+  );
 
   const homeHrefs = getLinkHrefs(html, "Home");
   assert.ok(homeHrefs.length > 0, `${route.path} should render the mobile Home link`);

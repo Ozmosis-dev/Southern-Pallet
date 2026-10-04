@@ -203,9 +203,10 @@ export default function SharedHeader({
             Products
           </a>
           <a
-            href={getNavHref("services")}
-            onClick={getNavClickHandler("services")}
-            className={isPrivatePage ? privateDesktopLinkClass : sectionLinkClass}
+            href={isPrivatePage ? getNavHref("services") : "/pallet-services"}
+            onClick={isPrivatePage ? getNavClickHandler("services") : undefined}
+            className={isPrivatePage ? privateDesktopLinkClass : routeLinkClass("/pallet-services")}
+            aria-current={pathname === "/pallet-services" ? "page" : undefined}
           >
             Services
           </a>
@@ -319,8 +320,9 @@ export default function SharedHeader({
                 Products
               </a>
               <a
-                href={getNavHref("services")}
+                href={isPrivatePage ? getNavHref("services") : "/pallet-services"}
                 className={isPrivatePage ? privateMobileLinkClass : mobileLinkClass}
+                aria-current={pathname === "/pallet-services" ? "page" : undefined}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Services

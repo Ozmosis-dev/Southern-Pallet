@@ -24,6 +24,12 @@ export const SOCIAL_CARDS = {
     image: "/used-wood-pallets-recycling.jpg",
     alt: "Southern Pallet Recycling used wood pallet recycling and buyback",
   },
+  services: {
+    eyebrow: "PALLET SERVICES · SOUTHEAST",
+    title: "Supply, repair, recycling, and delivery.",
+    image: "/inspected-recycled-wood-pallets.jpg",
+    alt: "Southern Pallet Recycling pallet manufacturing, repair, recycling, and delivery services",
+  },
   supply: {
     eyebrow: "PALLET SUPPLY · NEW · USED · CUSTOM",
     title: "Wood pallets for sale, delivered.",

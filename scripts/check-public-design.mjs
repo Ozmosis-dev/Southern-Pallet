@@ -5,6 +5,7 @@ const publicRoutes = [
   "/",
   "/contact",
   "/recycle-pallets",
+  "/pallet-services",
   "/pallet-supply",
   "/careers",
   "/blog",

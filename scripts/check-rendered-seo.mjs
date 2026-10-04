@@ -17,6 +17,10 @@ const publicRoutes = [
     title: "Used Pallet Recycling & Buyback | Southern Pallet Recycling",
   },
   {
+    path: "/pallet-services",
+    title: "Pallet Services for Businesses | Southern Pallet Recycling",
+  },
+  {
     path: "/pallet-supply",
     title: "New & Used Pallets for Sale | Southern Pallet Recycling",
   },

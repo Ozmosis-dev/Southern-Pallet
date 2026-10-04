@@ -241,6 +241,13 @@ export default function PalletSupplyPage() {
                   className="font-semibold text-[var(--sp-green-dark)] underline"
                 >
                   buy and recycle used pallets
+                </Link>{" "}
+                and offer{" "}
+                <Link
+                  href="/pallet-services"
+                  className="font-semibold text-[var(--sp-green-dark)] underline"
+                >
+                  pallet repair and other services
                 </Link>
                 .
               </p>

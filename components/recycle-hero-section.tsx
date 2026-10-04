@@ -42,7 +42,7 @@ export default function RecycleHeroSection() {
               Get a pallet quote <ArrowDown className="size-4" />
             </button>
             <Link
-              href="/#services"
+              href="/pallet-services"
               className="inline-flex min-h-12 shrink-0 items-center justify-center gap-3 whitespace-nowrap border border-white/45 px-5 text-sm font-bold uppercase tracking-[0.1em] text-white hover:bg-white hover:text-[var(--sp-forest-deep)] xl:px-7"
             >
               View all services <ArrowRight className="size-4" />

@@ -1,5 +1,6 @@
 import { Package, Recycle, Wrench, Truck } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const services = [
   {
@@ -62,6 +63,12 @@ export default function ServicesSection() {
               <Icon className="hidden size-6 text-[var(--sp-green)] sm:block" strokeWidth={1.7} />
             </article>
           ))}
+          <Link
+            href="/pallet-services"
+            className="mt-8 inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.1em] text-[var(--sp-green)] hover:text-white"
+          >
+            View all pallet services <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </div>
     </section>
