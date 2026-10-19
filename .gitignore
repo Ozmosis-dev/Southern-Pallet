@@ -42,3 +42,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Internal SEO actuals and private ChatGPT artifact references (public repository)
+/docs/seo/

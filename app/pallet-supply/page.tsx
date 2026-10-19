@@ -178,6 +178,16 @@ export default function PalletSupplyPage() {
                 </article>
               ))}
             </div>
+            <p className="mt-8 max-w-3xl text-base leading-8 text-[var(--sp-ink)]/80">
+              Planning an export order? Review our{" "}
+              <Link
+                href="/pallet-supply/heat-treated-pallets"
+                className="font-semibold text-[var(--sp-green-dark)] underline underline-offset-4"
+              >
+                heat-treated pallet supply and export ordering checklist
+              </Link>{" "}
+              before you request a quote.
+            </p>
           </div>
         </section>
 

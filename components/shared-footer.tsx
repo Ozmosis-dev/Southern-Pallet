@@ -90,7 +90,11 @@ export default function SharedFooter({
               <span>Standard pallets</span>
               <span>Custom pallets</span>
               <span>Recycled pallets</span>
-              <span>Heat-treated pallets</span>
+              {isPrivatePage ? <span>Heat-treated pallets</span> : (
+                <Link href="/pallet-supply/heat-treated-pallets" className="hover:text-white hover:underline">
+                  Heat-treated pallets
+                </Link>
+              )}
               <span>Specialty products</span>
             </div>
           </div>

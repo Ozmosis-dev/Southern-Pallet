@@ -42,6 +42,12 @@ export const SOCIAL_CARDS = {
     image: "/inspected-recycled-wood-pallets.jpg",
     alt: "Southern Pallet Recycling pallet supply and recycling in Poplarville, Mississippi",
   },
+  "heat-treated": {
+    eyebrow: "EXPORT PALLET SUPPLY",
+    title: "Heat-treated pallets for your next shipment.",
+    image: "/inspected-recycled-wood-pallets.jpg",
+    alt: "Southern Pallet Recycling heat-treated wood pallet supply for export shipments",
+  },
   "pallet-grades": {
     eyebrow: "RECYCLED PALLET BUYING GUIDE",
     title: "Grade A or Grade B? Buy the right specification.",

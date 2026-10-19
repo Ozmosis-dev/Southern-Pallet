@@ -7,6 +7,7 @@ const routes = [
   { path: "/recycle-pallets", modified: "2026-10-19", changeFrequency: "weekly", priority: 0.9 },
   { path: "/pallet-services", modified: "2026-10-04", changeFrequency: "monthly", priority: 0.9 },
   { path: "/pallet-supply", modified: "2026-10-19", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/pallet-supply/heat-treated-pallets", modified: "2026-10-19", changeFrequency: "monthly", priority: 0.8 },
   { path: "/locations/poplarville-ms", modified: "2026-10-19", changeFrequency: "monthly", priority: 0.8 },
   { path: "/blog/grade-a-vs-grade-b-pallets", modified: "2026-10-19", changeFrequency: "monthly", priority: 0.7 },
   { path: "/careers", changeFrequency: "monthly", priority: 0.6 },

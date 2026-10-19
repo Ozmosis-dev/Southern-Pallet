@@ -25,6 +25,8 @@ A Next.js 15 / React 19 / Tailwind 4 marketing site for Southern Pallet Recyclin
 
 ## Conventions
 
+- **SEO tracking:** Start with local `docs/seo/README.md`, `docs/seo/scorecard.md`, and the newest dated JSON snapshot in `docs/seo/snapshots/` for every SEO session. They define the fixed keyword cohort, page inventory, reporting windows, indexing requests, evidence, and next actions. Preserve original snapshot dates and distinguish unavailable metrics from zero. These files are deliberately gitignored because the repository is public. The private ChatGPT Page and weekly Codex review are linked in local `docs/seo/cloud-artifact.json`. In a fresh checkout without those files, find the private ChatGPT Page titled **Southern Pallet Recycling SEO Scorecard** and recover its measurement contract before proceeding; never publish internal metrics in Git or public website routes.
+
 - App Router (`app/`), not Pages Router.
 - Tailwind utility classes directly in JSX; shared UI primitives in `components/ui/` (button, input, select, textarea) follow a shadcn-ish pattern.
 - No test suite currently exists in this repo.

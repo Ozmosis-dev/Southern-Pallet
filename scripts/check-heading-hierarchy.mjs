@@ -8,6 +8,7 @@ const routes = [
   { path: "/recycle-pallets", primaryKeyword: "recycle used pallets" },
   { path: "/pallet-services", primaryKeyword: "pallet services" },
   { path: "/pallet-supply", primaryKeyword: "48x40 and custom sizes" },
+  { path: "/pallet-supply/heat-treated-pallets", primaryKeyword: "heat-treated pallets" },
   { path: "/locations/poplarville-ms", primaryKeyword: "wood pallet supply" },
   { path: "/blog/grade-a-vs-grade-b-pallets", primaryKeyword: "grade a vs grade b pallets" },
   { path: "/careers", primaryKeyword: "pallet company careers" },

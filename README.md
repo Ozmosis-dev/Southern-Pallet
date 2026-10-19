@@ -115,3 +115,7 @@ This page shows an investor presentation behind a password prompt. Worth knowing
 - `app/robots.ts` and `app/sitemap.ts` generate the crawl files. Do not add competing static files under `public/`.
 - `/thank-you` is a noindex conversion-confirmation route and is intentionally excluded from the sitemap and public content inventory.
 - Run `npm run test:seo` for source-level checks and `npm run test:seo:rendered` against a running production build for rendered metadata checks.
+
+## Ongoing SEO scorecard
+
+Local tracking lives in `docs/seo/README.md`, `docs/seo/scorecard.md`, and dated snapshots. This directory is deliberately gitignored because this repository is public. The portable private ChatGPT Page is titled **Southern Pallet Recycling SEO Scorecard**; its reference and the recurring Codex review are saved in local `docs/seo/cloud-artifact.json`. Use that Page to recover context in a fresh checkout. Regenerate a local scorecard with `node scripts/render-seo-scorecard.mjs` once the private snapshot and contract are present. Never add internal analytics actuals to public website routes or Git history.

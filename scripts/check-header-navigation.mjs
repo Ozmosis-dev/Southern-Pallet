@@ -4,6 +4,7 @@ const baseUrl = process.env.TEST_BASE_URL ?? "http://127.0.0.1:3000";
 
 const routes = [
   { path: "/pallet-supply", sectionPrefix: "/#", activeLabel: "Products" },
+  { path: "/pallet-supply/heat-treated-pallets", sectionPrefix: "/#", activeLabel: "Products" },
   { path: "/locations/poplarville-ms", sectionPrefix: "/#", activeLabel: "Poplarville" },
   { path: "/blog/grade-a-vs-grade-b-pallets", sectionPrefix: "/#", activeLabel: "Blog" },
   { path: "/", sectionPrefix: "#", homeHref: "#home" },

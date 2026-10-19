@@ -30,6 +30,11 @@ const publicRoutes = [
     schemaType: "Service",
   },
   {
+    path: "/pallet-supply/heat-treated-pallets",
+    title: "Heat Treated Pallets for Export | Southern Pallet Recycling",
+    schemaType: "Service",
+  },
+  {
     path: "/blog/grade-a-vs-grade-b-pallets",
     title: "Grade A vs Grade B Pallets: A Buying Guide | Southern Pallet Recycling",
     schemaType: "BlogPosting",

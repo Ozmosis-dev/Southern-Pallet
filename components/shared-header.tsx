@@ -33,9 +33,8 @@ export default function SharedHeader({
     { label: "Delivery", href: sectionHref("delivery") },
     { label: "Contact", href: "/contact" },
   ];
-  const isActive = (href: string) => href === "/blog"
-    ? pathname.startsWith("/blog")
-    : pathname === href;
+  const isActive = (href: string) => pathname === href ||
+    (["/blog", "/pallet-supply"].includes(href) && pathname.startsWith(`${href}/`));
 
   useEffect(() => {
     if (!isMenuOpen) return;

@@ -22,6 +22,7 @@ const publicPages = [
   "app/recycle-pallets/page.tsx",
   "app/careers/page.tsx",
   "app/pallet-supply/page.tsx",
+  "app/pallet-supply/heat-treated-pallets/page.tsx",
   "app/pallet-services/page.tsx",
   "app/locations/poplarville-ms/page.tsx",
   "app/blog/page.tsx",
