@@ -46,7 +46,7 @@ export const palletSupplyFaqs = [
   {
     question: "How much does a 48x40 pallet cost?",
     paragraphs: [
-      "Recycled 48x40 pallets start at $4.00 per pallet, and new and hybrid 48x40 pallets start at $9.50 per pallet. In Mississippi, average truckload pricing runs about $4–7 for Grade B, $6–10 for Grade A, and $12–15 for new pallets.",
+      "Recycled 48x40 pallets start at $4.00 per pallet, and new and hybrid 48x40 pallets start at $9.50 per pallet. Ask for current pricing for your required grade and quantity; starting prices are not a delivered quote.",
       "These prices reflect standard configurations at truckload quantities. Your final price depends on grade, customizations such as heat treatment, notching, or strapping, current lumber costs, order volume, and delivery location, and is confirmed in your quote.",
     ],
   },

@@ -149,6 +149,7 @@ export default function SharedFooter({
                   119 Industrial Park Dr
                   <br />
                   Poplarville, MS 39470
+                  {!isPrivatePage && <Link href="/locations/poplarville-ms" className="mt-2 block font-semibold text-white underline underline-offset-4 hover:text-[#7ee29a]">Poplarville pallet facility</Link>}
                 </address>
                 <address className="not-italic">
                   <strong className="mb-2 block font-semibold text-white">

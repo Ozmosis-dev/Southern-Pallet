@@ -9,7 +9,7 @@ const description =
   "Learn where to buy used pallets, compare recycled pallet suppliers and grades, inspect quality, and choose the right wood pallets for your business needs."
 const path = "/blog/where-to-buy-used-pallets"
 const datePublished = "2026-07-26"
-const dateModified = "2026-10-03"
+const dateModified = "2026-10-19"
 
 export const metadata: Metadata = {
   title: "Where to Buy Used Pallets",
@@ -158,6 +158,7 @@ export default function WhereToBuyUsedPalletsPage() {
             Finding the right source for used pallets requires careful consideration of quality, cost, and service. While multiple options exist, choosing a professional supplier like Southern Pallet Recycling ensures the best combination of quality, service, and value for your business needs.
           </p>
 
+        <p className="text-lg text-gray-700 mb-8 leading-relaxed">Before comparing used pallet quotes, read our <Link href="/blog/grade-a-vs-grade-b-pallets">Grade A versus Grade B pallet buying guide</Link> and review the <Link href="/pallet-supply">wood pallet supply options</Link> available from our Poplarville operation.</p>
         <div className="bg-green-50 border border-green-200 rounded-lg p-6 my-8">
           <h3 className="text-xl font-semibold mb-2">Ready to get started with quality used pallets?</h3>
           <p>Request a quote today by calling us or visiting our location. Our team is ready to help.</p>

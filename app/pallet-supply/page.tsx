@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
+import PalletOrderPlanning from "@/components/pallet-order-planning";
 import JsonLd from "@/components/seo/json-ld";
 import PublicSiteShell from "@/components/public-site-shell";
 import SharedFooter from "@/components/shared-footer";
@@ -269,6 +270,8 @@ export default function PalletSupplyPage() {
             </ol>
           </div>
         </section>
+
+        <PalletOrderPlanning />
 
         <section id="faq" className="sp-grid py-24 lg:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">

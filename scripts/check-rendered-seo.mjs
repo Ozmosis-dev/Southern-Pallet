@@ -25,6 +25,16 @@ const publicRoutes = [
     title: "New & Used Pallets for Sale | Southern Pallet Recycling",
   },
   {
+    path: "/locations/poplarville-ms",
+    title: "Wood Pallet Supply & Recycling in Poplarville, MS | Southern Pallet Recycling",
+    schemaType: "Service",
+  },
+  {
+    path: "/blog/grade-a-vs-grade-b-pallets",
+    title: "Grade A vs Grade B Pallets: A Buying Guide | Southern Pallet Recycling",
+    schemaType: "BlogPosting",
+  },
+  {
     path: "/careers",
     title: "Pallet Careers in Poplarville, MS | Southern Pallet Recycling",
   },

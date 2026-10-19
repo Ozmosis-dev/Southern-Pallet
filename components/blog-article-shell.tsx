@@ -90,8 +90,10 @@ export default function BlogArticleShell({
                 {description}
               </p>
               <p className="mt-7 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--sp-sage)]">
+                <span>By Southern Pallet Recycling</span>
+                <span aria-hidden="true">·</span>
                 <Clock3 className="size-4 text-[var(--sp-green-dark)]" />
-                <time dateTime={dateModified}>Updated August 3, 2026</time>
+                <time dateTime={dateModified}>Updated {new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/Chicago" }).format(new Date(dateModified.length === 10 ? `${dateModified}T12:00:00Z` : dateModified))}</time>
                 <span aria-hidden="true">·</span>
                 {readTime}
               </p>

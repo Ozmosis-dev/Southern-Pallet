@@ -1,3 +1,4 @@
+import RecycleLoadPreparation from "@/components/recycle-load-preparation";
 import RecycleHeader from "../../components/recycle-header";
 import RecycleHeroSection from "../../components/recycle-hero-section";
 import RecycleBuySection from "../../components/recycle-buy-section";
@@ -89,6 +90,7 @@ export default function RecyclePalletsPage() {
       <main>
         <RecycleHeroSection />
         <RecycleBuySection />
+        <RecycleLoadPreparation />
         <RecycleQuoteSection />
         <RecycleProcessSection />
         <RecycleFAQSection />

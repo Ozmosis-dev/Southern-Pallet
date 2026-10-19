@@ -36,6 +36,18 @@ export const SOCIAL_CARDS = {
     image: "/inspected-recycled-wood-pallets.jpg",
     alt: "Southern Pallet Recycling new, used, and custom wood pallets for sale",
   },
+  poplarville: {
+    eyebrow: "POPLARVILLE · MISSISSIPPI",
+    title: "Your local wood pallet supply and recycling team.",
+    image: "/inspected-recycled-wood-pallets.jpg",
+    alt: "Southern Pallet Recycling pallet supply and recycling in Poplarville, Mississippi",
+  },
+  "pallet-grades": {
+    eyebrow: "RECYCLED PALLET BUYING GUIDE",
+    title: "Grade A or Grade B? Buy the right specification.",
+    image: "/inspected-recycled-wood-pallets.jpg",
+    alt: "Southern Pallet Recycling guide to Grade A and Grade B recycled wood pallets",
+  },
   careers: {
     eyebrow: "CAREERS · POPLARVILLE, MISSISSIPPI",
     title: "Build dependable operations with us.",

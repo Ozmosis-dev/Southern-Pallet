@@ -3,6 +3,9 @@ import assert from "node:assert/strict";
 const baseUrl = process.env.TEST_BASE_URL ?? "http://127.0.0.1:3000";
 
 const routes = [
+  { path: "/pallet-supply", sectionPrefix: "/#", activeLabel: "Products" },
+  { path: "/locations/poplarville-ms", sectionPrefix: "/#", activeLabel: "Poplarville" },
+  { path: "/blog/grade-a-vs-grade-b-pallets", sectionPrefix: "/#", activeLabel: "Blog" },
   { path: "/", sectionPrefix: "#", homeHref: "#home" },
   {
     path: "/contact",
@@ -50,7 +53,6 @@ const routes = [
 ];
 
 const sectionLinks = [
-  ["Products", "products"],
   ["About Us", "about"],
   ["Delivery", "delivery"],
 ];
@@ -97,12 +99,11 @@ for (const route of routes) {
     `${route.path} Services links should target /pallet-services; received ${servicesHrefs.join(", ")}`,
   );
 
-  const homeHrefs = getLinkHrefs(html, "Home");
-  assert.ok(homeHrefs.length > 0, `${route.path} should render the mobile Home link`);
-  assert.ok(
-    homeHrefs.every((href) => href === route.homeHref),
-    `${route.path} Home links should target ${route.homeHref}; received ${homeHrefs.join(", ")}`,
-  );
+  for (const [label, href] of [["Products", "/pallet-supply"], ["Poplarville", "/locations/poplarville-ms"]]) {
+    const hrefs = getLinkHrefs(html, label);
+    assert.ok(hrefs.length > 0, `${route.path} should render ${label}`);
+    assert.ok(hrefs.every((value) => value === href), `${label} should target ${href}`);
+  }
 
   const careersHrefs = getLinkHrefs(html, "Careers");
   assert.ok(

@@ -25,6 +25,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    href: "/blog/grade-a-vs-grade-b-pallets",
+    title: "Grade A vs Grade B: choose the right recycled pallet",
+    description: "Compare repairs, appearance, handling requirements, and delivered cost before you request a pallet quote.",
+    image: "/inspected-recycled-wood-pallets.jpg",
+    alt: "Recycled wood pallets stacked for business supply",
+    readTime: "5 min read",
+    topic: "Pallet grades",
+  },
+  {
     href: "/blog/where-to-buy-used-pallets",
     title: "Where to buy used pallets near you",
     description:

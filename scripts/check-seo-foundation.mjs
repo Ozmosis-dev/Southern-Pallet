@@ -21,10 +21,14 @@ const publicPages = [
   "app/contact/page.tsx",
   "app/recycle-pallets/page.tsx",
   "app/careers/page.tsx",
+  "app/pallet-supply/page.tsx",
+  "app/pallet-services/page.tsx",
+  "app/locations/poplarville-ms/page.tsx",
   "app/blog/page.tsx",
   "app/blog/where-to-buy-used-pallets/page.tsx",
   "app/blog/pallet-recycling-environmental-benefits/page.tsx",
   "app/blog/cost-effective-pallet-management-strategies/page.tsx",
+  "app/blog/grade-a-vs-grade-b-pallets/page.tsx",
 ];
 
 check("the conversion page is excluded from the public content inventory", () => {
@@ -108,6 +112,8 @@ check("the sitemap contains only indexable public routes", () => {
     '"/recycle-pallets"',
     '"/pallet-services"',
     '"/pallet-supply"',
+    '"/locations/poplarville-ms"',
+    '"/blog/grade-a-vs-grade-b-pallets"',
     '"/careers"',
     '"/blog"',
     '"/blog/where-to-buy-used-pallets"',
@@ -187,7 +193,7 @@ check("indexable pages have unique 150-160 character meta descriptions", () => {
 });
 
 check("blog articles provide complete article signals", () => {
-  for (const file of publicPages.slice(5)) {
+  for (const file of publicPages.filter((file) => file.startsWith("app/blog/") && file !== "app/blog/page.tsx")) {
     const source = read(file);
     assert.match(source, /datePublished/);
     assert.match(source, /dateModified/);
@@ -201,7 +207,7 @@ check("blog articles provide complete article signals", () => {
 
 check("internal quote links resolve to the standalone contact page", () => {
   for (const file of [
-    ...publicPages.slice(5),
+    ...publicPages.filter((file) => file.startsWith("app/blog/") && file !== "app/blog/page.tsx"),
     "components/blog-article-shell.tsx",
   ]) {
     assert.doesNotMatch(read(file), /href=["']\/#contact["']/);
@@ -210,7 +216,7 @@ check("internal quote links resolve to the standalone contact page", () => {
 });
 
 check("unsupported blog claims are absent", () => {
-  const source = publicPages.slice(4).map(read).join("\n");
+  const source = publicPages.filter((file) => file.startsWith("app/blog/")).map(read).join("\n");
   for (const claim of [
     /30-50%/,
     /40 million trees/i,

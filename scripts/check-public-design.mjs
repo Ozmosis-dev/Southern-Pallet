@@ -7,6 +7,8 @@ const publicRoutes = [
   "/recycle-pallets",
   "/pallet-services",
   "/pallet-supply",
+  "/locations/poplarville-ms",
+  "/blog/grade-a-vs-grade-b-pallets",
   "/careers",
   "/blog",
   "/blog/where-to-buy-used-pallets",

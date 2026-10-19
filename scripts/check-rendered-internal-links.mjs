@@ -1,6 +1,6 @@
 const baseUrl = process.env.SITE_URL || "http://127.0.0.1:3000";
 const productionOrigin = "https://southernpallet.co";
-const keyDestinations = ["/#products", "/#about", "/contact"];
+const keyDestinations = ["/pallet-supply", "/#about", "/contact"];
 const genericAnchorText = /^(?:click here|here|learn more|read more|more|details)$/i;
 
 function decodeHtml(value) {
