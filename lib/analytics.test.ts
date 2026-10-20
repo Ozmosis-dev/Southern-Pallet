@@ -25,8 +25,9 @@ test("successful lead forms queue the GA4 generate_lead event without personal d
     target,
   );
 
-  assert.equal(target.dataLayer.length, 1);
-  assert.deepEqual(Array.from(target.dataLayer[0]), [
+  assert.equal(target.dataLayer.length, 2);
+  assert.equal(Array.from(target.dataLayer[0])[1], "form_submission");
+  assert.deepEqual(Array.from(target.dataLayer[1]), [
     "event",
     "generate_lead",
     {
@@ -56,6 +57,7 @@ test("lead tracking uses an existing gtag queue when GA4 is ready", async () => 
   );
 
   assert.deepEqual(calls, [
+    ["event", "form_submission", { form_name: "Pallet Recycling Form", form_type: "recycle_request", submission_id: "submission-456" }],
     [
       "event",
       "generate_lead",
@@ -67,4 +69,22 @@ test("lead tracking uses an existing gtag queue when GA4 is ready", async () => 
     ],
   ]);
   assert.equal(target.dataLayer.length, 0);
+});
+
+test("careers completions are measurable without becoming sales leads", async () => {
+  const analytics = await import(pathToFileURL(analyticsPath).href);
+  assert.equal(typeof analytics.trackCareerApplication, "function");
+  const target = { dataLayer: [] as Array<ArrayLike<unknown>> };
+  analytics.trackCareerApplication({ submissionId: "job-123" }, target);
+  assert.deepEqual(target.dataLayer.map(row=>Array.from(row)[1]), ["form_submission", "job_application_submit"]);
+  const payload = Array.from(target.dataLayer[0])[2];
+  assert.deepEqual(payload, { form_name: "Careers Application", form_type: "career_application", submission_id: "job-123" });
+});
+
+test("phone intent records placement and path without URL query strings or form data", async () => {
+  const analytics = await import(pathToFileURL(analyticsPath).href);
+  assert.equal(typeof analytics.trackPhoneClick, "function");
+  const target = { dataLayer: [] as Array<ArrayLike<unknown>> };
+  analytics.trackPhoneClick({ pagePath: "/contact", placement: "footer" }, target);
+  assert.deepEqual(Array.from(target.dataLayer[0]), ["event", "phone_click", { page_path: "/contact", link_placement: "footer", contact_method: "phone" }]);
 });

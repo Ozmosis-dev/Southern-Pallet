@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import JsonLd from "@/components/seo/json-ld";
+import InteractionAnalytics from "@/components/interaction-analytics";
 import {
   BUSINESS_ID,
   DEFAULT_DESCRIPTION,
@@ -121,6 +122,7 @@ export default function RootLayout({
         )}
         {/* End Google Tag Manager (noscript) */}
         {children}
+        {googleAnalyticsId && <InteractionAnalytics />}
       </body>
       {googleAnalyticsId && (
         <>

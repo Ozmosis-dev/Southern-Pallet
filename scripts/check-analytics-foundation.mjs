@@ -9,6 +9,8 @@ const thankYou = read("app/thank-you/page.tsx");
 const sitemap = read("app/sitemap.ts");
 const contactForm = read("components/contact-section.tsx");
 const recycleForm = read("components/recycle-cta-section.tsx");
+const careersForm = read("components/careers-application-form.tsx");
+const interactionAnalytics = read("components/interaction-analytics.tsx");
 
 assert.doesNotMatch(
   layout,
@@ -26,6 +28,11 @@ assert.match(
   "the external GA4 library must use next/script with lazyOnload",
 );
 assert.match(layout, /gtag\('config', '\$\{googleAnalyticsId\}'\)/);
+assert.match(layout, /googleAnalyticsId && <InteractionAnalytics/);
+assert.match(interactionAnalytics, /document\.addEventListener\("click", onClick, true\)/);
+assert.match(interactionAnalytics, /closest<HTMLAnchorElement>\('a\[href\^="tel:" i\]'/);
+assert.match(careersForm, /trackCareerApplication\(\{ submissionId \}\)/);
+assert.ok(careersForm.indexOf("if (!response.ok)") < careersForm.indexOf("trackCareerApplication({"));
 
 assert.match(
   thankYou,

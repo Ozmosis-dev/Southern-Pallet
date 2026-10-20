@@ -2,74 +2,77 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import assert from "node:assert/strict";
 
 const directory = "docs/seo";
-const source = process.argv[2] ?? `${directory}/snapshots/${readdirSync(`${directory}/snapshots`).filter(f=>f.endsWith('.json')).sort().at(-1)}`;
-const data = JSON.parse(readFileSync(source, "utf8"));
-const contract = JSON.parse(readFileSync(`${directory}/contract.json`, "utf8"));
-assert.equal(data.schemaVersion, 1);
+const readJson = path => JSON.parse(readFileSync(path, "utf8"));
+const source = process.argv[2] ?? readdirSync(`${directory}/snapshots`)
+  .filter(file => file.endsWith(".json"))
+  .map(file => ({ path: `${directory}/snapshots/${file}`, time: Date.parse(readJson(`${directory}/snapshots/${file}`).extractedAt) }))
+  .sort((a, b) => b.time - a.time)[0]?.path;
+assert.ok(source, "A private SEO snapshot is required.");
+const data = readJson(source);
+const contract = readJson(`${directory}/contract.json`);
+const actions = readJson(`${directory}/actions.json`).actions;
 assert.equal(data.filters.property, contract.property);
-assert.equal(data.period.days, 28);
-assert.ok(data.comparison.end < data.period.start, "comparison must not overlap current period");
-assert.equal(new Set(data.indexing.map(r=>r.path)).size, data.indexing.length, "inspection paths must be unique");
-assert.equal(new Set(Object.values(contract.cohorts).flat()).size, Object.values(contract.cohorts).flat().length, "fixed queries must be unique");
-const value = x => x == null ? "Not reported" : String(x);
-const delta = (a,b) => a == null || b == null ? "Unavailable" : `${a-b>0?'+':''}${a-b}${b ? ` (${((a-b)/b*100).toFixed(1)}%)` : ''}`;
-const metricRow = (label,key,suffix='') => `| ${label} | ${value(data.totals[key])}${suffix} | ${value(data.comparison.totals[key])}${suffix} | ${key==='ctrPercent' ? `${(data.totals[key]-data.comparison.totals[key]).toFixed(1)} percentage points` : key==='position' ? `${(data.totals[key]-data.comparison.totals[key]).toFixed(1)} positions` : delta(data.totals[key],data.comparison.totals[key])} |`;
+assert.equal(data.reportingWindows?.length, 3, "Refresh the snapshot with previous month, month to date, and trailing 90-day actuals.");
+assert.equal(new Set(data.indexing.map(row => row.path)).size, data.indexing.length);
+const windows = data.reportingWindows;
+const [previous, current, trailing] = windows;
+assert.deepEqual(windows.map(row => row.id), ["previous_month", "month_to_date", "trailing_90_days"]);
+assert.equal(current.end, trailing.end, "MTD and trailing 90 days must share the same cutoff.");
+const value = number => number == null ? "Unavailable" : String(number);
+const metric = (label, group, key, suffix = "") => `| ${label} | ${windows.map(window => window[group]?.[key] == null ? "Unavailable" : `${window[group][key]}${suffix}`).join(" | ")} |`;
+const heading = `| Metric | Previous month (${previous.start}–${previous.end}) | Current month to date (${current.start}–${current.end}) | Trailing 90 days (${trailing.start}–${trailing.end}) |\n| --- | ---: | ---: | ---: |`;
 let output = `# Southern Pallet Recycling SEO scorecard
 
-Updated ${data.extractedAt}. Source snapshot: [${source.split('/').at(-1)}](snapshots/${source.split('/').at(-1)}). Reporting contract: [weekly workflow](README.md). Private ChatGPT copy: see [cloud artifact](cloud-artifact.json).
+Updated ${data.extractedAt}. Private snapshot: [${source.split("/").at(-1)}](snapshots/${source.split("/").at(-1)}). [Reporting contract](README.md). [Private ChatGPT reference](cloud-artifact.json).
 
 ## Traffic and lead baseline
 
-Google Search Console, Web, all countries and devices. Current ${data.period.start}–${data.period.end}; preceding ${data.comparison.start}–${data.comparison.end}, inclusive. ${data.period.end < data.postReleaseUptake.releaseDate ? 'This window predates the content release; it cannot measure the new content’s uptake.' : 'Interpret new-content uptake alongside release dates and confirmed indexing dates.'}
+GSC: Web, all countries and devices, no query/page filters for totals. GA4: session primary channel group exactly Organic Search. Month to date ends on the latest complete common reporting day, not today. These windows overlap and have different lengths; they are not equal-period growth comparisons. New tracking has no historical backfill.
 
-| Metric | Current 28 days | Prior 28 days | Change |
-| --- | ---: | ---: | ---: |
-${metricRow('Google clicks','clicks')}
-${metricRow('Google impressions','impressions')}
-${metricRow('CTR','ctrPercent','%')}
-${metricRow('Average position','position')}
+${heading}
+${metric("Google clicks", "gsc", "clicks")}
+${metric("Google impressions", "gsc", "impressions")}
+${metric("Google CTR", "gsc", "ctrPercent", "%")}
+${metric("Google average position", "gsc", "position")}
+${metric("Organic sessions", "ga4", "sessions")}
+${metric("Organic engaged sessions", "ga4", "engagedSessions")}
+${metric("Recorded sales form leads", "ga4", "generateLeadKeyEvents")}
+${metric("All successful form submissions", "ga4", "formSubmissions")}
+${metric("Career applications", "ga4", "jobApplications")}
+${metric("Phone number clicks", "ga4", "phoneClicks")}
 
-GA4 property ${data.ga4.propertyId}, ${data.ga4.period.start}–${data.ga4.period.end}, session channel exactly Organic Search: **${value(data.ga4.sessions)} sessions, ${value(data.ga4.engagedSessions)} engaged sessions, ${value(data.ga4.generateLeadKeyEvents)} recorded generate_lead key events**. Qualified leads are unavailable. Prior GA4 comparison is not yet captured. Recorded events are not confirmed sales or exact-query attribution.
-
-${data.ga4.landingPages ? `| Organic landing page | Sessions | Recorded lead events |\n| --- | ---: | ---: |\n${data.ga4.landingPages.map(r=>`| ${r.path} | ${r.sessions} | ${r.generateLeadKeyEvents} |`).join('\n')}` : 'Organic landing-page breakdown unavailable.'}
-
-Seven-day search ${data.sevenDayGsc?.start ?? 'unavailable'}–${data.sevenDayGsc?.end ?? 'unavailable'}: ${value(data.sevenDayGsc?.clicks)} clicks, ${value(data.sevenDayGsc?.impressions)} impressions. GA4 ${data.ga4.sevenDay?.start ?? 'unavailable'}–${data.ga4.sevenDay?.end ?? 'unavailable'}: ${value(data.ga4.sevenDay?.sessions)} organic sessions; retain each source’s exact dates.
+Sales leads use generate_lead for quote and recycling forms. form_submission counts successful completions across all three public forms; job_application_submit keeps careers separate. phone_click measures intent to call, not a connected call. New events begin at the tracking release; unavailable history is not zero. Recorded events are not CRM-qualified sales. Source extracts and exact filters are saved in the snapshot.
 
 ## Fixed keyword cohort version ${contract.version}
 
-Exact queries; ${data.coverage.queryRows} visible query rows captured (limit ${data.coverage.rowLimit}). Not reported means no visible row, not proven zero. Positions describe this property's observed search mix, not a local rank tracker. No monthly market-volume estimate is available.
+Keyword performance below uses ${current.start}–${current.end}. Every keyword includes US average monthly search volume and separate local demand, with provider, geography, source period and retrieval date when available. Search Console impressions measure this website's exposure and are never substituted for market search volume. ${data.keywordVolumes?.status ?? "Volume source unavailable."}
 
-| Cohort and query | Clicks | Impressions | CTR | Position |
-| --- | ---: | ---: | ---: | ---: |
+| Query | US monthly searches | Local monthly searches | MTD clicks | MTD impressions | MTD position |
+| --- | ---: | ---: | ---: | ---: | ---: |
 `;
-for(const [cohort,queries] of Object.entries(contract.cohorts)) for(const query of queries) {
-  const row=data.queries.find(r=>r.key===query);
-  output+=`| ${cohort}: ${query} | ${value(row?.clicks)} | ${value(row?.impressions)} | ${row?row.ctrPercent+'%':'Not reported'} | ${value(row?.position)} |\n`;
+for (const queries of Object.values(contract.cohorts)) for (const query of queries) {
+  const row = current.queryRows.find(row => row[0] === query);
+  const volume = data.keywordVolumes?.rows?.find(row => row.query === query);
+  output += `| ${query} | ${value(volume?.usMonthlySearches)} | ${value(volume?.localMonthlySearches)} | ${row ? row[1] : "Not reported"} | ${row ? row[2] : "Not reported"} | ${row ? row[4] : "Not reported"} |\n`;
 }
-output+=`
+output += `
 ## Canonical page uptake
 
-${data.indexing.filter(r=>r.status==='indexed').length} confirmed indexed out of ${data.indexing.length} inspected canonical pages. Index status is from individual inspection recorded in this snapshot; historical impressions do not prove current index status. Requests below are queue submissions, not indexing guarantees.
+${data.indexing.filter(row => row.status === "indexed").length} confirmed indexed out of ${data.indexing.length} inspected pages, as of ${data.indexingObservedAt ?? data.extractedAt}. These statuses are dated observations, not a fresh inspection at every rendering. Accepted requests do not guarantee indexing.
 
-| Canonical path | Google status | Index request | Baseline clicks / impressions |
-| --- | --- | --- | --- |
-`;
-for(const row of data.indexing) {
-  const observed=data.pages.find(p=>p.key===`https://southernpallet.co${row.path}`);
-  output+=`| ${row.path} | ${row.status} | ${row.request ?? 'Not submitted'} | ${observed?`${observed.clicks} / ${observed.impressions}`:'Not reported'} |\n`;
-}
-output+=`
-Keep historical www and fragment rows in the JSON snapshot; do not add them into property totals. See [release log](release-log.md) for deployment and new-page submission updates after this snapshot.
+| Canonical path | Last observed Google status | Index request |
+| --- | --- | --- |
+${data.indexing.map(row => `| ${row.path} | ${row.status} | ${row.request ?? "Not submitted"} |`).join("\n")}
+
+See [page ledger](pages.json) for first-observed uptake, and [release log](release-log.md) for publication and verification evidence.
 
 ## Next actions in priority order
 
-1. Recheck priority URL indexing, live fetch, and selected canonicals at the next weekly review. Goal: all eligible public canonical pages indexed; preserve intentional noindex pages. Do not repeatedly resubmit accepted requests.
-2. Measure whether recycling queries move from the homepage to /recycle-pallets and gain clicks. Follow the fixed exact-query cohort and the canonical page rows above.
-3. Track the new supply, Poplarville, grade guide, and heat-treated page for first observed crawl/index, impressions, clicks, and organic leads. First 28-day publication window: October 20–November 16; review after GSC data is complete (November 19 or later), then compare once two comparable post-release windows exist.
-4. Treat heat-treated supply as a limited product test. See the private snapshot's productValidation evidence; observed exposure is not evidence of high regional volume. Validate geographic monthly demand before expanding city pages. Confirm city-specific service facts before publishing market pages.
-5. Review recorded lead quality and unknown landing-page attribution. GA4 timezone and preceding-period lead actuals still need capture. The GA4 home screen recommends linking Search Console; integration remains a follow-up, not a blocker to separate source reports.
-
-No traffic target or causal lift claim has been invented. Weekly review thresholds and measurement definitions are in README.md.
+Each weekly run must reconcile this ledger, preserve incomplete work, validate completion evidence, update priorities and prepare up to three runnable approval prompts. Human approval of a prompt requesting a new chat authorizes that chat; do not duplicate a chat already attached to the action. Browser use is available within approved scope.
 `;
-writeFileSync(`${directory}/scorecard.md`,output);
-console.log(`Rendered scorecard from ${source}: ${Object.values(contract.cohorts).flat().length} fixed queries, ${data.indexing.length} inspected pages.`);
+for (const action of [...actions].filter(row => row.status !== "done").sort((a, b) => a.priority - b.priority)) {
+  output += `\n### ${action.id} ${action.title}\n\nStatus: ${action.status}. ${action.scope}\n\nCompletion evidence required: ${action.acceptance}\n`;
+  if (action.priority <= 3) output += `\n\`\`\`codex-prompt\n${action.prompt}\n\`\`\`\n`;
+}
+writeFileSync(`${directory}/scorecard.md`, output);
+console.log(`Rendered three-window scorecard with ${Object.values(contract.cohorts).flat().length} keyword volume slots and ${actions.filter(row => row.status !== "done").length} carried actions.`);

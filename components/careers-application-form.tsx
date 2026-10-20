@@ -5,6 +5,7 @@ import { CheckCircle2, FileText, Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { trackCareerApplication } from "@/lib/analytics";
 
 const MAX_RESUME_SIZE = 5 * 1024 * 1024;
 const ALLOWED_RESUME_TYPES = new Set([
@@ -85,6 +86,7 @@ export default function CareersApplicationForm() {
         throw new Error(result.message || "Application delivery failed.");
       }
 
+      trackCareerApplication({ submissionId });
       form.reset();
       submissionIdRef.current = null;
       setResumeName("");
