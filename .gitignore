@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Internal SEO actuals and private ChatGPT artifact references (public repository)
 /docs/seo/
+
+# Local image review masters and browser evidence; only optimized public assets ship.
+/output/image-concepts/

@@ -1,3 +1,4 @@
+import { pageImageSchema } from "@/lib/site-schema";
 import { ArrowLeft, Clock3 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +13,7 @@ interface BlogArticleShellProps {
   description: string;
   image: string;
   imageAlt: string;
+  imageFit?: "cover" | "contain";
   readTime: string;
   path: string;
   datePublished: string;
@@ -24,6 +26,7 @@ export default function BlogArticleShell({
   description,
   image,
   imageAlt,
+  imageFit = "cover",
   readTime,
   path,
   datePublished,
@@ -70,6 +73,7 @@ export default function BlogArticleShell({
   return (
     <PublicSiteShell>
       <JsonLd data={articleSchema} />
+      <JsonLd data={pageImageSchema(path, image, imageAlt)} />
       <Header />
       <main data-blog-article="true" className="bg-[var(--sp-paper)] pt-20">
         <header className="border-b border-[var(--sp-rule)] bg-[var(--sp-cream)]">
@@ -98,13 +102,13 @@ export default function BlogArticleShell({
                 {readTime}
               </p>
             </div>
-            <div className="relative min-h-[380px] border-t border-[var(--sp-rule)] lg:min-h-[600px] lg:border-l lg:border-t-0">
+            <div className={`relative border-t border-[var(--sp-rule)] lg:border-l lg:border-t-0 ${imageFit === "contain" ? "aspect-[3/2] lg:aspect-auto" : "min-h-[380px] lg:min-h-[600px]"}`}>
               <Image
                 src={image}
                 alt={imageAlt}
                 fill
                 priority
-                className="object-cover"
+                className={imageFit === "contain" ? "object-contain" : "object-cover"}
                 sizes="(min-width: 1024px) 55vw, 100vw"
               />
             </div>

@@ -25,7 +25,7 @@ const comparison = [
 
 export default function PalletGradesGuide() {
   return (
-    <BlogArticleShell title="Grade A vs Grade B pallets: what should you buy?" description={description} image="/inspected-recycled-wood-pallets.jpg" imageAlt="Stacks of recycled wood pallets available for business orders" readTime="5 min read" path="/blog/grade-a-vs-grade-b-pallets" datePublished={datePublished} dateModified={dateModified}>
+    <BlogArticleShell title="Grade A vs Grade B pallets: what should you buy?" description={description} image="/recycled-pallet-grade-comparison.webp" imageFit="contain" imageAlt="Two wood pallets showing different board wear and replacement wood" readTime="5 min read" path="/blog/grade-a-vs-grade-b-pallets" datePublished={datePublished} dateModified={dateModified}>
       <p className="text-xl leading-8">Two quotes can both say “48x40 used pallets” and still describe different inventory. Before you compare the unit price, compare the condition, repairs, handling requirements, and delivery terms.</p>
       <p>Grade A and Grade B are common descriptions for recycled wood pallets. Grade A generally means more uniform stock with fewer visible repairs; Grade B generally includes more repaired components. The labels are a starting point for a buying conversation, not a complete specification.</p>
       <p>Southern Pallet Recycling supplies <Link href="/pallet-supply">new and recycled wood pallets</Link> from its Poplarville, Mississippi operation. This guide helps you describe what you need before requesting a quote.</p>

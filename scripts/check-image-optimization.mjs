@@ -16,7 +16,7 @@ const heroSource = readFileSync(
   "utf8",
 );
 const heroImage = heroSource.match(
-  /<Image\b[\s\S]*?src=["']\/inspected-recycled-wood-pallets\.jpg["'][\s\S]*?\/>/,
+  /<Image\b[\s\S]*?src=["']\/wood-pallet-dispatch\.webp["'][\s\S]*?\/>/,
 )?.[0];
 
 if (!heroImage) {
@@ -28,9 +28,9 @@ if (!heroImage) {
     );
   }
 
-  if (!/\bquality\s*=\s*\{\s*40\s*\}/.test(heroImage)) {
+  if (!/\bquality\s*=\s*\{\s*75\s*\}/.test(heroImage)) {
     errors.push(
-      "components/hero-section.tsx: hero LCP image must use quality={40}.",
+      "components/hero-section.tsx: hero LCP image must use quality={75}.",
     );
   }
 }

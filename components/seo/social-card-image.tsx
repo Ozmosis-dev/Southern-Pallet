@@ -1,4 +1,4 @@
-import { SOCIAL_CARD_SIZE, type SocialCardKey, SOCIAL_CARDS } from "@/lib/social-cards";
+import { PHOTO_FIRST_CARDS, SOCIAL_CARD_SIZE, type SocialCardKey, SOCIAL_CARDS } from "@/lib/social-cards";
 
 interface SocialCardImageProps {
   card: SocialCardKey;
@@ -7,6 +7,9 @@ interface SocialCardImageProps {
 
 export default function SocialCardImage({ card, imageUrl }: SocialCardImageProps) {
   const config = SOCIAL_CARDS[card];
+  if (PHOTO_FIRST_CARDS.includes(card)) {
+    return <div style={{ width: SOCIAL_CARD_SIZE.width, height: SOCIAL_CARD_SIZE.height, display: "flex", backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center" }} />;
+  }
   const titleSize = config.title.length > 42 ? 48 : 56;
 
   return (

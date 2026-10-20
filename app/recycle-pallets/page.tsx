@@ -1,3 +1,4 @@
+import { pageImageSchema } from "@/lib/site-schema";
 import RecycleLoadPreparation from "@/components/recycle-load-preparation";
 import RecycleHeader from "../../components/recycle-header";
 import RecycleHeroSection from "../../components/recycle-hero-section";
@@ -84,6 +85,7 @@ const recyclingSchema = {
 export default function RecyclePalletsPage() {
   return (
     <PublicSiteShell>
+      <JsonLd data={pageImageSchema("/recycle-pallets", "/recycled-pallet-recovery.webp", "Used wood pallets with replacement boards stacked in a recovery bay")} />
       <JsonLd data={recyclingSchema} />
       
       <RecycleHeader />

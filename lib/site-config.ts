@@ -8,10 +8,10 @@ export const DEFAULT_DESCRIPTION =
   "Southern Pallet Recycling supplies new, recycled, and custom wood pallets with regional delivery, repair, recycling, and buyback service across the Southeast.";
 
 export const DEFAULT_OG_IMAGE = {
-  url: "/social-card/v1/home",
+  url: "/social-card/v2/home",
   width: 1200,
   height: 630,
-  alt: "Southern Pallet Recycling Southeast wood pallet supply and delivery",
+  alt: "Used wood pallets stacked beside an open warehouse door",
 } as const;
 
 export const CONTACT = {

@@ -110,3 +110,17 @@ export const localBusinessSchema = {
     })),
   },
 } as const;
+
+export function pageImageSchema(path: string, image: string, caption: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${absoluteUrl(path)}#webpage`,
+    url: absoluteUrl(path),
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: absoluteUrl(image),
+      caption,
+    },
+  };
+}

@@ -42,14 +42,14 @@ export default function HeroSection() {
 
         <div className="relative min-h-[440px] border-t border-white/15 lg:min-h-full lg:border-l lg:border-t-0">
           <Image
-            src="/inspected-recycled-wood-pallets.jpg"
-            alt="Stacks of inspected recycled wood pallets ready for Southeast delivery"
+            src="/wood-pallet-dispatch.webp"
+            alt="Used wood pallets stacked beside an open warehouse door"
             fill
             priority
             fetchPriority="high"
-            quality={40}
-            className="object-cover"
-            sizes="(min-width: 1024px) 53vw, 100vw"
+            quality={75}
+            className="object-cover object-[60%_center]"
+            sizes="(min-width: 1024px) 1200px, (min-width: 660px) 100vw, 660px"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--sp-forest-deep)]/65 via-transparent to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 grid grid-cols-3 border-t border-white/25 bg-[var(--sp-forest-deep)]/90 backdrop-blur-sm">

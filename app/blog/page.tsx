@@ -28,8 +28,8 @@ const posts = [
     href: "/blog/grade-a-vs-grade-b-pallets",
     title: "Grade A vs Grade B: choose the right recycled pallet",
     description: "Compare repairs, appearance, handling requirements, and delivered cost before you request a pallet quote.",
-    image: "/inspected-recycled-wood-pallets.jpg",
-    alt: "Recycled wood pallets stacked for business supply",
+    image: "/recycled-pallet-grade-comparison.webp",
+    alt: "Two wood pallets showing different board wear and replacement wood",
     readTime: "5 min read",
     topic: "Pallet grades",
   },
@@ -132,13 +132,13 @@ export default function BlogPage() {
             href={featured.href}
             className="group grid border border-[var(--sp-rule)] lg:grid-cols-[1.15fr_0.85fr]"
           >
-            <div className="relative min-h-[360px] overflow-hidden lg:min-h-[560px]">
+            <div className="relative aspect-[3/2] overflow-hidden lg:aspect-auto">
               <Image
                 src={featured.image}
                 alt={featured.alt}
                 fill
                 priority
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                className="object-contain"
                 sizes="(min-width: 1024px) 58vw, 100vw"
               />
             </div>

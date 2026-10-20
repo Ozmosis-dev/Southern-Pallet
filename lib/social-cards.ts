@@ -3,14 +3,14 @@ export const SOCIAL_CARD_SIZE = {
   height: 630,
 } as const;
 
-export const SOCIAL_CARD_VERSION = "v1";
+export const SOCIAL_CARD_VERSION = "v2";
 
 export const SOCIAL_CARDS = {
   home: {
     eyebrow: "PALLET SUPPLY · SOUTHEAST",
     title: "Southeast wood pallet supplier.",
-    image: "/inspected-recycled-wood-pallets.jpg",
-    alt: "Southern Pallet Recycling Southeast wood pallet supply and delivery",
+    image: "/wood-pallet-dispatch-social.jpg",
+    alt: "Used wood pallets stacked beside an open warehouse door",
   },
   contact: {
     eyebrow: "QUOTES · DELIVERY · SUPPORT",
@@ -21,8 +21,8 @@ export const SOCIAL_CARDS = {
   recycling: {
     eyebrow: "PALLET RECOVERY · BUYBACK",
     title: "Put used wood pallets back to work.",
-    image: "/used-wood-pallets-recycling.jpg",
-    alt: "Southern Pallet Recycling used wood pallet recycling and buyback",
+    image: "/recycled-pallet-recovery-social.jpg",
+    alt: "Used wood pallets with replacement boards stacked in a recovery bay",
   },
   services: {
     eyebrow: "PALLET SERVICES · SOUTHEAST",
@@ -33,8 +33,8 @@ export const SOCIAL_CARDS = {
   supply: {
     eyebrow: "PALLET SUPPLY · NEW · USED · CUSTOM",
     title: "Wood pallets for sale, delivered.",
-    image: "/inspected-recycled-wood-pallets.jpg",
-    alt: "Southern Pallet Recycling new, used, and custom wood pallets for sale",
+    image: "/wood-pallet-supply-social.jpg",
+    alt: "Clean wood pallets stacked beside a loading bay",
   },
   poplarville: {
     eyebrow: "POPLARVILLE · MISSISSIPPI",
@@ -45,14 +45,14 @@ export const SOCIAL_CARDS = {
   "heat-treated": {
     eyebrow: "EXPORT PALLET SUPPLY",
     title: "Heat-treated pallets for your next shipment.",
-    image: "/inspected-recycled-wood-pallets.jpg",
-    alt: "Southern Pallet Recycling heat-treated wood pallet supply for export shipments",
+    image: "/export-pallet-load-social.jpg",
+    alt: "Wood pallet stacks beside wrapped and strapped cargo",
   },
   "pallet-grades": {
     eyebrow: "RECYCLED PALLET BUYING GUIDE",
     title: "Grade A or Grade B? Buy the right specification.",
-    image: "/inspected-recycled-wood-pallets.jpg",
-    alt: "Southern Pallet Recycling guide to Grade A and Grade B recycled wood pallets",
+    image: "/recycled-pallet-grade-comparison-social.jpg",
+    alt: "Two wood pallets showing different board wear and replacement wood",
   },
   careers: {
     eyebrow: "CAREERS · POPLARVILLE, MISSISSIPPI",
@@ -101,3 +101,6 @@ export function isSocialCardKey(value: string): value is SocialCardKey {
 export function socialCardPath(card: SocialCardKey) {
   return `/social-card/${SOCIAL_CARD_VERSION}/${card}`;
 }
+
+// Approved photographic previews omit baked-in copy. Other cards retain their existing layout.
+export const PHOTO_FIRST_CARDS: readonly SocialCardKey[] = ["home", "recycling", "supply", "heat-treated", "pallet-grades"];

@@ -1,3 +1,4 @@
+import { pageImageSchema } from "@/lib/site-schema";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,6 +34,7 @@ const faqs = [
 
 export default function HeatTreatedPalletsPage() {
   return <PublicSiteShell>
+      <JsonLd data={pageImageSchema("/pallet-supply/heat-treated-pallets", "/export-pallet-load.webp", "Wood pallet stacks beside wrapped and strapped cargo")} />
     <JsonLd data={{ "@context": "https://schema.org", "@graph": [
       { "@type": "Service", "@id": `${SITE_URL}${path}#service`, name: "Heat-treated wood pallet supply", description, url: `${SITE_URL}${path}`, provider: { "@id": BUSINESS_ID }, serviceType: "Heat-treated wood pallets for export shipments" },
       { "@type": "BreadcrumbList", itemListElement: [
@@ -54,7 +56,7 @@ export default function HeatTreatedPalletsPage() {
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/80">Southern Pallet Recycling supplies heat-treated wood pallets from Poplarville, Mississippi. Bring us your shipping specification, quantity, and required date so we can confirm the right pallet order.</p>
             <Link href="/contact" className="mt-8 inline-flex min-h-12 items-center justify-center gap-3 bg-[var(--sp-green)] px-6 text-sm font-bold uppercase tracking-[0.08em] text-[var(--sp-forest-deep)] hover:bg-white">Request an export pallet quote <ArrowRight className="size-4 shrink-0" /></Link>
           </div>
-          <div className="relative min-h-72 lg:min-h-full"><Image src="/stacked-wood-pallets.webp" alt="Stacked wood pallets at Southern Pallet Recycling" fill priority sizes="(min-width: 1024px) 43vw, 100vw" className="object-cover" /></div>
+          <div className="relative min-h-72 lg:min-h-full"><Image src="/export-pallet-load.webp" alt="Wood pallet stacks beside wrapped and strapped cargo" fill priority sizes="(min-width: 1024px) 1080px, (min-width: 432px) 100vw, 432px" className="object-cover" /></div>
         </div>
       </section>
 

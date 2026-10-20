@@ -1,3 +1,4 @@
+import { pageImageSchema } from "@/lib/site-schema";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -100,6 +101,7 @@ const orderSteps = [
 export default function PalletSupplyPage() {
   return (
     <PublicSiteShell>
+      <JsonLd data={pageImageSchema("/pallet-supply", "/wood-pallet-supply.webp", "Clean wood pallets stacked beside a loading bay")} />
       <JsonLd data={palletSupplySchema} />
       <SharedHeader />
 
@@ -135,12 +137,12 @@ export default function PalletSupplyPage() {
             </div>
             <div className="relative min-h-[360px] border-t border-white/15 lg:min-h-full lg:border-l lg:border-t-0">
               <Image
-                src="/stacked-wood-pallets.webp"
-                alt="Stacked 48x40 wood pallets ready for delivery from Southern Pallet Recycling"
+                src="/wood-pallet-supply.webp"
+                alt="Clean wood pallets stacked beside a loading bay"
                 fill
                 priority
                 className="object-cover"
-                sizes="(min-width: 1024px) 50vw, 100vw"
+                sizes="(min-width: 1024px) 1200px, (min-width: 540px) 100vw, 540px"
               />
             </div>
           </div>

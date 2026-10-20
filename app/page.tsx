@@ -1,3 +1,4 @@
+import { pageImageSchema } from "@/lib/site-schema";
 import Header from "../components/header"
 import HeroSection from "../components/hero-section"
 import AboutSection from "../components/about-section"
@@ -35,6 +36,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <PublicSiteShell>
+      <JsonLd data={pageImageSchema("/", "/wood-pallet-dispatch.webp", "Used wood pallets stacked beside an open warehouse door")} />
       <JsonLd data={localBusinessSchema} />
       <Header />
       <HeroSection />

@@ -52,12 +52,12 @@ export default function RecycleHeroSection() {
 
         <div className="relative min-h-[420px] border-t border-white/15 lg:min-h-full lg:border-l lg:border-t-0">
           <Image
-            src="/used-wood-pallets-recycling.jpg"
-            alt="Stacks of used wood pallets ready for pickup and recycling"
+            src="/recycled-pallet-recovery.webp"
+            alt="Used wood pallets with replacement boards stacked in a recovery bay"
             fill
             priority
             className="object-cover"
-            sizes="(min-width: 1024px) 55vw, 100vw"
+            sizes="(min-width: 1024px) 1200px, (min-width: 630px) 100vw, 630px"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--sp-forest-deep)]/70 via-transparent to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 grid grid-cols-3 border-t border-white/25 bg-[var(--sp-forest-deep)]/90 backdrop-blur-sm">
