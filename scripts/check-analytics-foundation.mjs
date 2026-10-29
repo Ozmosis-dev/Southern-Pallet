@@ -15,20 +15,20 @@ const interactionAnalytics = read("components/interaction-analytics.tsx");
 assert.doesNotMatch(
   layout,
   /GoogleAnalytics/,
-  "GA4 must use an explicit next/script lazyOnload integration",
+  "analytics must use the explicit GTM integration",
 );
 assert.match(
   layout,
-  /googletagmanager\.com\/gtag\/js\?id=\$\{googleAnalyticsId\}/,
-  "the GA4 loader must use the configured measurement ID",
+  /googletagmanager\.com\/gtm\.js\?id=/,
+  "the site must load the configured GTM container",
 );
-assert.match(
+assert.doesNotMatch(
   layout,
-  /<Script[\s\S]*?src={`https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=\$\{googleAnalyticsId\}`}[\s\S]*?strategy=["']lazyOnload["'][\s\S]*?\/>/,
-  "the external GA4 library must use next/script with lazyOnload",
+  /googletagmanager\.com\/gtag\/js\?id=/,
+  "GA4 must be configured inside GTM instead of loaded a second time",
 );
-assert.match(layout, /gtag\('config', '\$\{googleAnalyticsId\}'\)/);
-assert.match(layout, /googleAnalyticsId && <InteractionAnalytics/);
+assert.doesNotMatch(layout, /googleAnalyticsId/);
+assert.match(layout, /gtmId && <InteractionAnalytics/);
 assert.match(interactionAnalytics, /document\.addEventListener\("click", onClick, true\)/);
 assert.match(interactionAnalytics, /closest<HTMLAnchorElement>\('a\[href\^="tel:" i\]'/);
 assert.match(careersForm, /trackCareerApplication\(\{ submissionId \}\)/);
@@ -67,5 +67,5 @@ for (const [label, source, formType] of [
 }
 
 console.log(
-  "Analytics foundation passed: thank-you noindex, GA4 lazy-loaded, and lead completions tracked.",
+  "Analytics foundation passed: thank-you noindex, GTM is the only loader, and conversions are tracked.",
 );

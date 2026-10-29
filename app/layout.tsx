@@ -89,7 +89,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
-  const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 
   return (
     <html lang="en">
@@ -122,23 +121,8 @@ export default function RootLayout({
         )}
         {/* End Google Tag Manager (noscript) */}
         {children}
-        {googleAnalyticsId && <InteractionAnalytics />}
+        {gtmId && <InteractionAnalytics />}
       </body>
-      {googleAnalyticsId && (
-        <>
-          <Script id="google-analytics-init" strategy="afterInteractive">
-            {`window.dataLayer = window.dataLayer || [];
-            window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
-            window.gtag('js', new Date());
-            window.gtag('config', '${googleAnalyticsId}');`}
-          </Script>
-          <Script
-            id="google-analytics-loader"
-            src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
-            strategy="lazyOnload"
-          />
-        </>
-      )}
     </html>
   );
 }

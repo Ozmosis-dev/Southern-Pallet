@@ -41,8 +41,7 @@ See `env.example.txt` for the full list with comments. Summary:
 | `LEAD_FROM_EMAIL` | Verified sender identity used by Resend | Required for Resend |
 | `LEAD_WEBHOOK_URL` | Optional secondary destination for lead JSON | No |
 | `LEAD_DELIVERY_TIMEOUT_MS` | Outbound delivery timeout; defaults to 8000 ms | No |
-| `NEXT_PUBLIC_GTM_ID` | Google Tag Manager container ID | No — GTM script doesn't load at all if unset |
-| `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` | Google Analytics 4 measurement ID | No — GA script doesn't load at all if unset |
+| `NEXT_PUBLIC_GTM_ID` | Google Tag Manager container ID | No — GTM and analytics don't load if unset |
 | `NEXT_PUBLIC_BUSINESS_PLAN_PASSWORD` | Gate value for `/private/business-plan` | No — defaults to `changeme` |
 
 Nothing is required for the site to build and run, but at least one complete
@@ -97,11 +96,11 @@ domain. Keep all three values out of source control.
 
 ## Analytics / tag manager
 
-Google Analytics 4 and Google Tag Manager are wired up independently and disabled by default. Set `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` to a GA4 measurement ID (`G-XXXXXXXXXX`) and/or `NEXT_PUBLIC_GTM_ID` to a GTM container ID (`GTM-XXXXXXX`) to enable them — see `app/layout.tsx`.
+Google Analytics 4 is routed through Google Tag Manager and disabled by default. Set `NEXT_PUBLIC_GTM_ID` to the published GTM container ID (`GTM-XXXXXXX`) to enable it — see `app/layout.tsx`.
 
-For the Southern Pallet Recycling GA4 property, set `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` to `G-XGFY05LYNP` in the deployment environment and redeploy.
+The Southern Pallet Recycling GTM container is `GTM-N4F9LKVS`. Its Google tag sends data to the existing GA4 property `G-XGFY05LYNP`. Keep that measurement ID in GTM rather than adding a second native GA tag to the site, or page views and conversions can be counted twice.
 
-The external GA4 library loads with Next.js `lazyOnload`. Successful contact and recycling submissions emit the recommended `generate_lead` event after the API accepts the request. The event includes only the form name, form type, and non-personal submission ID; `generate_lead` is configured as a key event in the Southern Pallet GA4 property.
+The GTM container loads with Next.js `afterInteractive`, and its Google tag starts on `Initialization - All Pages`. Successful contact and recycling submissions emit the recommended `generate_lead` event after the API accepts the request. The event includes only the form name, form type, and non-personal submission ID; `generate_lead` is configured as a key event in the Southern Pallet Recycling GA4 property.
 
 ## The `/private/business-plan` page
 

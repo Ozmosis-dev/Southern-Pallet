@@ -1,6 +1,6 @@
 # Public website event measurement
 
-The configured `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` enables GA4 and the shared phone-click listener. Keep measurement IDs environment-configured. Do not add a second GTM or native tag that sends the same custom events.
+The configured `NEXT_PUBLIC_GTM_ID` enables Google Tag Manager and the shared phone-click listener. The published GTM container holds the Google tag for GA4 measurement ID `G-XGFY05LYNP`. Do not add a second native Google tag that sends the same page views or custom events.
 
 | Event | Trigger | Parameters | Interpretation |
 | --- | --- | --- | --- |
