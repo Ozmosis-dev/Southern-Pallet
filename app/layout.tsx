@@ -62,6 +62,9 @@ export const metadata: Metadata = {
       { url: "/southern_pallet_favicon.png", type: "image/png", sizes: "32x32" },
     ],
   },
+  verification: {
+    google: "B86i3xevCbVA6twX_uRRVmTS-pMxJFptzthzfMLl2H4",
+  },
 };
 
 export const viewport: Viewport = {
