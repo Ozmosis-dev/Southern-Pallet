@@ -17,17 +17,17 @@ import { createSocialMetadata } from "@/lib/social-metadata"
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Southeast Wood Pallet Supplier | Southern Pallet Recycling",
+    absolute: "Heat Treated Pallets Company Poplarville for Quality Pallets",
   },
   description:
-    "Order new, recycled, heat-treated, and custom wood pallets with regional delivery, repair, recycling, and buyback service for businesses across the Southeast.",
+    "Find a heat treated pallets company Poplarville for quality wood pallets. Buy pallets near me with new & recycled options for your shipping and storage needs.",
   alternates: {
     canonical: "/",
   },
   ...createSocialMetadata({
-    title: "Southeast Wood Pallet Supplier",
+    title: "Heat Treated Pallets Company Poplarville for Quality Pallets",
     description:
-      "Order new, recycled, heat-treated, and custom wood pallets with regional delivery, repair, and recycling across the Southeast.",
+      "Find a heat treated pallets company Poplarville for quality wood pallets. Buy pallets near me with new & recycled options for your shipping and storage needs.",
     path: "/",
     card: "home",
   }),

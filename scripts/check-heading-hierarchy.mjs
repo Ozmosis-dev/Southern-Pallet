@@ -5,7 +5,7 @@ const baseUrl = process.env.TEST_BASE_URL ?? "http://127.0.0.1:3000";
 const routes = [
   { path: "/", primaryKeyword: "southeast wood pallet supplier" },
   { path: "/contact", primaryKeyword: "wood pallet quote" },
-  { path: "/recycle-pallets", primaryKeyword: "recycle used pallets" },
+  { path: "/recycle-pallets", primaryKeyword: "pallet recycling company" },
   { path: "/pallet-services", primaryKeyword: "pallet services" },
   { path: "/pallet-supply", primaryKeyword: "48x40 and custom sizes" },
   { path: "/pallet-supply/heat-treated-pallets", primaryKeyword: "heat-treated pallets" },

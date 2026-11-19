@@ -10,13 +10,20 @@ import { BUSINESS_ID, CONTACT, PRIMARY_FACILITY, SITE_NAME, SITE_URL } from "@/l
 import { createSocialMetadata } from "@/lib/social-metadata";
 
 const description =
-  "Buy new and used wood pallets or request recycling in Poplarville, MS. Contact Southern Pallet Recycling for pallet specifications, delivery, and load review.";
+  "Explore pallet delivery in Poplarville with new and used wood pallets, custom sizes & flexible supply options to keep your business operations running smoothly.";
 
 export const metadata: Metadata = {
-  title: "Wood Pallet Supply & Recycling in Poplarville, MS",
+  title: {
+    absolute: "Reliable Pallet Delivery Poplarville for Local Businesses",
+  },
   description,
   alternates: { canonical: "/locations/poplarville-ms" },
-  ...createSocialMetadata({ title: "Wood Pallets in Poplarville, Mississippi", description, path: "/locations/poplarville-ms", card: "poplarville" }),
+  ...createSocialMetadata({
+    title: "Reliable Pallet Delivery Poplarville for Local Businesses",
+    description,
+    path: "/locations/poplarville-ms",
+    card: "poplarville",
+  }),
 };
 
 const schema = {
@@ -59,7 +66,7 @@ export default function PoplarvillePage() {
             <div className="px-6 py-20 lg:px-10 lg:py-28">
               <p className="sp-eyebrow" style={{ color: "var(--sp-green)" }}>Poplarville · Pearl River County · Mississippi</p>
               <h1 className="sp-display mt-6 text-4xl sm:text-5xl xl:text-6xl">Wood pallet supply &amp; recycling in Poplarville, MS.</h1>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-white/75">Buy new and recycled wood pallets, discuss a custom build, or arrange a review of surplus inventory with Southern Pallet Recycling. Our Poplarville facility is the primary location for manufacturing, repair, recycling, and dispatch.</p>
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-white/75">Buy new and recycled wood pallets, discuss a custom build, or arrange a review of surplus inventory with Southern Pallet Recycling. Our Poplarville facility is the primary location for manufacturing, repair, recycling, and dispatch, supporting reliable pallet delivery in Poplarville and surrounding areas to help local businesses meet their pallet supply needs.</p>
               <div className="mt-9 flex flex-wrap gap-4">
                 <Link href="/contact" className="inline-flex min-h-12 items-center gap-3 bg-[var(--sp-green)] px-6 text-sm font-bold text-[var(--sp-forest-deep)] hover:bg-white">Request a pallet quote <ArrowRight className="size-4" /></Link>
                 <a href={`tel:${CONTACT.phone}`} className="inline-flex min-h-12 items-center gap-3 border border-white/40 px-6 text-sm font-bold hover:bg-white hover:text-[var(--sp-forest)]"><Phone className="size-4" />{CONTACT.phoneDisplay}</a>
@@ -76,9 +83,9 @@ export default function PoplarvillePage() {
             <div>
               <p className="sp-eyebrow text-[var(--sp-green-dark)]">Where the work happens</p>
               <h2 className="sp-display mt-5 text-4xl text-[var(--sp-forest)] sm:text-5xl">A Mississippi facility. One team for your pallet needs.</h2>
-              <p className="mt-6 text-base leading-7 text-[var(--sp-ink)]/75">The Poplarville manufacturing and recycling operation brings pallet production, inspection, repair, and recovery together at one primary facility. Businesses in Pearl River County can speak directly with the team about new orders, ongoing supply requirements, and surplus pallet loads.</p>
+              <p className="mt-6 text-base leading-7 text-[var(--sp-ink)]/75">The Poplarville manufacturing and recycling operation brings pallet production, inspection, repair, and recovery together at one primary facility. Businesses in Pearl River County can speak directly with the team about new orders, ongoing supply requirements, and surplus pallet loads. Our team also coordinates pallet delivery in Poplarville and surrounding areas to help businesses maintain a dependable supply of wooden pallets.</p>
               <p className="mt-5 text-base leading-7 text-[var(--sp-ink)]/75">Regional delivery is coordinated from this operation. Provide the destination ZIP code and order details so we can confirm whether the route, quantity, and timing work for your site. Freight and timing are confirmed for each order.</p>
-              <p className="mt-5 text-base leading-7 text-[var(--sp-ink)]/75">Theodore, Alabama is a satellite corporate office supporting sales and coordination. For manufacturing, recycling, or an arranged load handoff, confirm the Poplarville instructions with our team.</p>
+              <p className="mt-5 text-base leading-7 text-[var(--sp-ink)]/75">Theodore, Alabama, is a satellite corporate office supporting sales and coordination. For manufacturing, recycling, or an arranged load handoff, confirm the Poplarville instructions with our team.</p>
             </div>
             <div className="self-start border border-[var(--sp-rule)] bg-[var(--sp-paper)] p-7 sm:p-10">
               <MapPin className="size-7 text-[var(--sp-green-dark)]" />
@@ -107,7 +114,7 @@ export default function PoplarvillePage() {
 
         <section className="border-t border-[var(--sp-rule)] bg-[var(--sp-cream)] py-20">
           <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-2 lg:px-10">
-            <div><h2 className="sp-display text-4xl text-[var(--sp-forest)]">Before you request a quote.</h2><p className="mt-6 text-base leading-7 text-[var(--sp-ink)]/75">For a supply order, include the footprint, preferred grade, quantity, loaded weight, and handling equipment. For a recycling request, include the dimensions, count, condition, and load location. For either request, tell us your target date and loading or unloading arrangements.</p><p className="mt-5 text-base leading-7 text-[var(--sp-ink)]/75">Not sure which grade to buy? Our <Link href="/blog/grade-a-vs-grade-b-pallets" className="font-semibold text-[var(--sp-green-dark)] underline underline-offset-4">Grade A versus Grade B pallet comparison</Link> explains the questions to ask before ordering recycled stock.</p></div>
+            <div><h2 className="sp-display text-4xl text-[var(--sp-forest)]">Before you request a quote.</h2><p className="mt-6 text-base leading-7 text-[var(--sp-ink)]/75">For a supply order, include the footprint, preferred grade, quantity, loaded weight, and handling equipment. For a recycling request, include the dimensions, count, condition, and load location. For either request, tell us your target date and loading or unloading arrangements. Our team can then coordinate the appropriate pallet delivery in Poplarville based on your order requirements, location, and schedule.</p><p className="mt-5 text-base leading-7 text-[var(--sp-ink)]/75">Not sure which grade to buy? Our <Link href="/blog/grade-a-vs-grade-b-pallets" className="font-semibold text-[var(--sp-green-dark)] underline underline-offset-4">Grade A versus Grade B pallet comparison</Link> explains the questions to ask before ordering recycled stock.</p></div>
             <div className="border-l-4 border-[var(--sp-green)] bg-[var(--sp-forest)] p-8 text-white"><h3 className="text-2xl font-semibold">Talk through the load with our team.</h3><p className="mt-5 text-base leading-7 text-white/75">Use one request to share the specification and destination. We will review the details and confirm availability, pricing, and handoff arrangements before an order or recovery is scheduled.</p><Link href="/contact" className="mt-7 inline-flex min-h-12 items-center gap-3 bg-[var(--sp-green)] px-6 text-sm font-bold text-[var(--sp-forest-deep)] hover:bg-white">Contact the Poplarville pallet team <ArrowRight className="size-4" /></Link></div>
           </div>
         </section>

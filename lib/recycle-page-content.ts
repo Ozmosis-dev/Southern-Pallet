@@ -1,5 +1,5 @@
 export const RECYCLE_PAGE_H1 =
-  "We Buy & Recycle Used Pallets — Free Quote and Pickup Across the Southeast";
+  "Professional Pallet Recycling Company for Businesses Across the Southeast";
 
 export const RECYCLE_FAQ_LABEL = "Frequently Asked Questions";
 

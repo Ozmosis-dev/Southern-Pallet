@@ -75,9 +75,15 @@ export default function ProductsSection() {
             </h2>
           </div>
           <p className="max-w-xl text-base leading-7 text-[var(--sp-ink)]/68 lg:justify-self-end">
-            Choose proven standard sizes or work with our team on a custom
-            configuration. Every order is matched to your volume, timing, and
-            delivery needs.
+            Whether you&apos;re searching for heat-treated pallets near me for
+            international shipping or looking for where to buy pallets near me,
+            we offer standard wooden pallets, custom-built solutions, and
+            heat-treated pallets to support your operational requirements. Our
+            team focuses on quality materials, reliable construction, and
+            careful manufacturing to provide pallets that meet your load
+            specifications. We also offer recycled and repaired pallets as
+            cost-effective options for businesses with ongoing shipping and
+            storage needs.
           </p>
         </div>
 
@@ -120,17 +126,19 @@ export default function ProductsSection() {
                     </li>
                   ))}
                 </ul>
-                <button
-                  type="button"
-                  onClick={() =>
-                    index === 2
-                      ? setIsContactModalOpen(true)
-                      : scrollToContact()
-                  }
-                  className="mt-8 inline-flex min-h-12 items-center justify-between bg-[var(--sp-green)] px-5 text-left text-xs font-bold uppercase tracking-[0.1em] text-[var(--sp-forest-deep)] hover:bg-[var(--sp-forest)] hover:text-white"
-                >
-                  {product.action} <ArrowRight className="size-4" />
-                </button>
+                <div className="mt-auto pt-8">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      index === 2
+                        ? setIsContactModalOpen(true)
+                        : scrollToContact()
+                    }
+                    className="inline-flex min-h-12 w-full items-center justify-between bg-[var(--sp-green)] px-5 text-left text-xs font-bold uppercase tracking-[0.1em] text-[var(--sp-forest-deep)] hover:bg-[var(--sp-forest)] hover:text-white"
+                  >
+                    {product.action} <ArrowRight className="size-4" />
+                  </button>
+                </div>
               </div>
             </article>
           ))}

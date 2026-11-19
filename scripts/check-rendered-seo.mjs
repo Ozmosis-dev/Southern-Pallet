@@ -6,7 +6,7 @@ const canonicalOrigin = "https://southernpallet.co";
 const publicRoutes = [
   {
     path: "/",
-    title: "Southeast Wood Pallet Supplier | Southern Pallet Recycling",
+    title: "Heat Treated Pallets Company Poplarville for Quality Pallets",
   },
   {
     path: "/contact",
@@ -14,11 +14,11 @@ const publicRoutes = [
   },
   {
     path: "/recycle-pallets",
-    title: "Used Pallet Recycling & Buyback | Southern Pallet Recycling",
+    title: "Wood Pallet Recycling Company | Southern Pallet Recycling",
   },
   {
     path: "/pallet-services",
-    title: "Pallet Services for Businesses | Southern Pallet Recycling",
+    title: "Pallet Pickup Service & Supply | Southern Pallet Recycling",
   },
   {
     path: "/pallet-supply",
@@ -26,7 +26,7 @@ const publicRoutes = [
   },
   {
     path: "/locations/poplarville-ms",
-    title: "Wood Pallet Supply & Recycling in Poplarville, MS | Southern Pallet Recycling",
+    title: "Reliable Pallet Delivery Poplarville for Local Businesses",
     schemaType: "Service",
   },
   {

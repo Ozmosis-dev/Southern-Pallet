@@ -17,8 +17,9 @@ export default function RecycleProcessSection() {
           </h2>
           <p className="mt-6 max-w-md text-sm leading-7 text-[var(--sp-ink)]/65">
             Standard 48&quot; × 40&quot; pallets in usable condition are often
-            the most valuable, but we evaluate every request individually.
-            Compare our{" "}
+            the most valuable, but we evaluate every request individually. If
+            you&apos;re searching for pallet recycling near me, our team can
+            help you explore suitable recovery options. Compare our{" "}
             <Link
               href="/#products"
               className="font-semibold text-[var(--sp-forest)] underline decoration-[var(--sp-green-dark)] underline-offset-4 hover:text-[var(--sp-green-dark)]"

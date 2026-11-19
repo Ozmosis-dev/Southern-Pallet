@@ -32,16 +32,18 @@ import {
 import { createSocialMetadata } from "@/lib/social-metadata";
 
 const description =
-  "Pallet manufacturing, custom builds, heat treating, repair, recycling, and delivery from Southern Pallet Recycling in Poplarville, MS, serving the Southeast.";
+  "Get reliable pallet pickup service from Southern Pallet Recycling. Find a pallet supplier near me for new, custom, repaired & heat-treated pallets with delivery";
 
 export const metadata: Metadata = {
-  title: "Pallet Services for Businesses",
+  title: {
+    absolute: "Pallet Pickup Service & Supply | Southern Pallet Recycling",
+  },
   description,
   alternates: {
     canonical: "/pallet-services",
   },
   ...createSocialMetadata({
-    title: "Pallet Services for Businesses Across the Southeast",
+    title: "Pallet Pickup Service & Supply",
     description,
     path: "/pallet-services",
     card: "services",
@@ -143,10 +145,14 @@ export default function PalletServicesPage() {
               </h1>
               <p className="mt-7 max-w-xl text-lg leading-8 text-white/72">
                 Southern Pallet Recycling manufactures, repairs, recycles, and
-                delivers wood pallets from a 60,000 sq ft facility in
-                Poplarville, Mississippi. One supplier covers new, custom,
-                heat-treated, and recycled pallets for businesses across the
-                Southeast.
+                delivers wood pallets from a 60,000 sq. ft. facility in
+                Poplarville, Mississippi. If you&apos;re searching for a
+                top-tier pallet supplier near me, you&apos;ll be glad to know we
+                have you covered. We make it easy to source everything from
+                brand-new and custom-built options to reliable recycled and
+                heat-treated pallets. Whether you are a small local shop or a
+                larger operation across the Southeast, we ensure your business
+                stays fully stocked and ready to ship.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-2">
                 <Link
@@ -207,11 +213,13 @@ export default function PalletServicesPage() {
               <p className="max-w-2xl text-base leading-7 text-[var(--sp-ink)]/68 lg:justify-self-end">
                 Working with one pallet company for supply, repair, recycling,
                 and delivery means fewer vendors to manage and one team that
-                knows your specifications. The same crew that builds your new
-                pallets can repair the ones coming back from the dock, buy the
-                surplus you no longer need, and deliver replacements on our own
-                trucks, so your pallet program runs on one schedule and one
-                point of contact.
+                knows your specifications. When searching for a pallet supplier
+                near me, businesses need a partner that can handle every stage
+                of their pallet requirements. The same crew that builds your new
+                pallets can repair the ones coming back from the dock, provide a
+                pallet pickup service for qualifying surplus quantities and
+                locations, and deliver replacements on our own trucks, so your
+                pallet program runs on one schedule and one point of contact.
               </p>
             </div>
             <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">

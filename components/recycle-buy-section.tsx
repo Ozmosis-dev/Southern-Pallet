@@ -48,8 +48,13 @@ export default function RecycleBuySection() {
             </h2>
           </div>
           <p className="max-w-xl text-base leading-7 text-[var(--sp-ink)]/68 lg:justify-self-end">
-            Type, size, condition, quantity, and location all affect value.
-            Share what you have and we’ll give you a clear next step.
+            When searching for reliable pallet recycling companies near me,
+            businesses need a dependable partner to manage their surplus wooden
+            pallets. Southern Pallet Recycling provides professional wood pallet
+            recycling solutions, purchasing qualifying used pallets and
+            evaluating their condition, size, and quantity. We help businesses
+            recover value from unwanted pallets while supporting reuse, reducing
+            waste, and keeping reusable materials in circulation.
           </p>
         </div>
 

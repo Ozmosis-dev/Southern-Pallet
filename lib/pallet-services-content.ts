@@ -102,4 +102,10 @@ export const palletServicesFaqs = [
       "We deliver from our Poplarville, Mississippi facility to businesses in Alabama, Mississippi, Florida, Georgia, Louisiana, Tennessee, North Carolina, and South Carolina. For locations outside that area, contact us to discuss options.",
     ],
   },
+  {
+    question: "Do you offer pallet pickup services for businesses?",
+    paragraphs: [
+      "Yes, Southern Pallet Recycling offers pickup support for qualifying used pallet quantities and locations. Our team evaluates the pallet type, condition, volume, and pickup location before confirming availability and coordinating the collection process.",
+    ],
+  },
 ] as const;

@@ -1,7 +1,6 @@
 import {
   BUSINESS_ID,
   CONTACT,
-  DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
   LEGAL_NAME,
   PRIMARY_FACILITY,
@@ -28,7 +27,8 @@ export const localBusinessSchema = {
     height: 309,
   },
   image: absoluteUrl(DEFAULT_OG_IMAGE.url),
-  description: DEFAULT_DESCRIPTION,
+  description:
+    "Southern Pallet Recycling is a pallet supplier and recycling company in Poplarville, Mississippi, specializing in new, recycled, custom, and heat-treated wood pallets, pallet manufacturing, repair, recycling, and delivery.",
   telephone: CONTACT.phone,
   email: CONTACT.email,
   priceRange: "$4.00 and up",
@@ -93,21 +93,91 @@ export const localBusinessSchema = {
   })),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Pallet products and services",
+    name: "Pallet Products and Services",
     itemListElement: [
-      "New and custom wood pallets",
-      "Recycled wood pallets",
-      "Heat-treated pallets",
-      "Pallet repair",
-      "Pallet recycling and buyback",
-      "Regional pallet delivery",
-    ].map((name) => ({
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name,
+      {
+        "@type": "OfferCatalog",
+        name: "Pallet Products",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Product",
+              name: "New Wood Pallets",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Product",
+              name: "Recycled Wood Pallets",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Product",
+              name: "Custom Wood Pallets",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Product",
+              name: "Heat-Treated Pallets",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Product",
+              name: "Hybrid Wood Pallets",
+            },
+          },
+        ],
       },
-    })),
+      {
+        "@type": "OfferCatalog",
+        name: "Pallet Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Pallet Manufacturing",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Pallet Recycling",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Pallet Repair and Reconditioning",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Pallet Pickup and Recovery",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Pallet Delivery",
+            },
+          },
+        ],
+      },
+    ],
   },
 } as const;
 

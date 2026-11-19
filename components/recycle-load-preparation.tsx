@@ -15,7 +15,7 @@ export default function RecycleLoadPreparation() {
             <p className="sp-eyebrow text-[var(--sp-green-dark)]">Before you sell or recycle</p>
             <h2 className="sp-display mt-5 text-4xl text-[var(--sp-forest)] sm:text-5xl">Turn a mixed pallet stack into a clear request.</h2>
           </div>
-          <p className="max-w-2xl text-base leading-7 text-[var(--sp-ink)]/75">If you are looking for a pallet recycling company or a buyer for used wood pallets, start with an inventory review. Southern Pallet Recycling evaluates the size, condition, quantity, and location before confirming purchase, recovery, or another next step.</p>
+          <p className="max-w-2xl text-base leading-7 text-[var(--sp-ink)]/75">If you are searching for a reliable pallet recycling company or comparing pallet recycling companies near me to find a buyer for used wood pallets, start with an inventory review. Southern Pallet Recycling evaluates the size, condition, quantity, and location of your pallets before confirming purchase, recovery, or the most suitable next step.</p>
         </div>
         <div className="mt-12 grid border-l border-t border-[var(--sp-rule)] lg:grid-cols-3">
           {reviewItems.map(([title, copy], index) => (

@@ -23,7 +23,7 @@ const { RECYCLE_FAQ_LABEL, RECYCLE_PAGE_H1, recycleFaqs } = await import(
 );
 
 const requiredH1 =
-  "We Buy & Recycle Used Pallets — Free Quote and Pickup Across the Southeast";
+  "Professional Pallet Recycling Company for Businesses Across the Southeast";
 const requiredQuestions = [
   "How does pallet recycling work?",
   "What pallets do we buy? (standard, box, GMA, damaged)",

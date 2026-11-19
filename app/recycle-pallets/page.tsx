@@ -20,16 +20,18 @@ import { createSocialMetadata } from "@/lib/social-metadata";
 import { recycleFaqs } from "@/lib/recycle-page-content";
 
 export const metadata: Metadata = {
-  title: "Used Pallet Recycling & Buyback",
+  title: {
+    absolute: "Wood Pallet Recycling Company | Southern Pallet Recycling",
+  },
   description:
-    "Sell surplus wood pallets or schedule pickup, repair, and recycling with Southern Pallet Recycling for businesses across Mississippi and the Southeast.",
+    "Choose Southern Pallet Recycling, a wood pallet recycling company, for pickup, repair, and recovery. Find pallet recycling companies near me for business needs.",
   alternates: {
     canonical: "/recycle-pallets",
   },
   ...createSocialMetadata({
-    title: "Used Pallet Recycling & Buyback",
+    title: "Wood Pallet Recycling Company",
     description:
-      "Sell surplus wood pallets or schedule recycling and pickup with Southern Pallet Recycling across Mississippi and the Southeast.",
+      "Choose Southern Pallet Recycling, a wood pallet recycling company, for pickup, repair, and recovery. Find pallet recycling companies near me for business needs.",
     path: "/recycle-pallets",
     card: "recycling",
   }),

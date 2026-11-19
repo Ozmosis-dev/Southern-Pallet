@@ -29,9 +29,14 @@ export default function RecycleHeroSection() {
             {RECYCLE_PAGE_H1}
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-white/72">
-            We buy standard and box pallets throughout the Southeast, with
-            straightforward quotes and pickup support that keeps excess
-            inventory moving.
+            Southern Pallet Recycling is a reliable pallet recycling company
+            helping businesses recover, reuse, and recycle used wooden pallets
+            through professional Wood Pallet Recycling solutions. If you&apos;re
+            searching for pallet recycling near me, our team offers practical
+            pallet recovery services, competitive evaluations, and pickup
+            support for qualifying quantities and locations. We help businesses
+            manage excess pallet inventory while reducing waste and keeping
+            reusable wood in circulation.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-2">
             <button
